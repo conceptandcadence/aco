@@ -1,0 +1,167 @@
+
+{% if section.settings.display %}
+
+
+  <script>
+
+	function scrollY() {
+		if( window.pageYOffset ) { return window.pageYOffset; }
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+	}
+    
+    addEventListener("DOMContentLoaded", (event) => {
+      let bfcmCollections = document.querySelectorAll('.plp-products');
+
+      function marquee(selector, speed) {
+        const parentSelector = selector;
+        const clone = parentSelector.innerHTML;
+        const firstElement = parentSelector.children[0];
+        let i = 0;
+
+        // Clear content
+        //parentSelector.innerHTML = '';
+
+        let cloneCount = Math.round((window.innerWidth / firstElement.clientWidth) * 1.5);
+
+        for (let i = 0; i < cloneCount; i++) {
+          parentSelector.insertAdjacentHTML('beforeend', clone);
+        }
+
+        setInterval(function () {
+          firstElement.style.marginLeft = `-${i}px`;
+          if (i > firstElement.clientWidth) {
+            i = 0;
+          }
+          i = i + speed;
+        }, 0);
+      }
+
+      bfcmCollections.forEach(function(collection){
+        marquee(collection.querySelector(".featured-products-banner"), 0.15);
+      });
+
+    });
+
+    document.addEventListener('scroll', function() {
+      let top = document.querySelector('header[section-id="header"]').clientHeight + document.querySelector('.site-banner');
+      if ( scrollY() > 50 ) {
+       document.querySelector('.plp-navigation-section').style.top = top;
+      }
+    }, {
+        capture: true,
+        passive: true
+    });
+
+  </script>
+
+  <style>
+
+    .featured-products .plp-products {
+      width: calc(100% + 1px);
+    }
+    .featured-products-banner { 
+      display: flex;
+      background-color: var(--color-blue-bright);
+      color: var(--color-white);
+      position: relative;
+      padding: 24px;
+      width: 100%;
+      grid-column-end: span 2;
+      z-index: 9;
+      overflow: hidden;
+    }
+
+    .featured-products-bannert.is-pinned {
+      opacity: 1;
+    } 
+
+    .featured-products-banner__text {
+      padding: 0 12px;
+      margin: 0;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .button.button--primary.plp-products__load {
+      border: 0;
+      height: 66px;
+      z-index: 10;
+      font-size: 14px;
+      grid-column-end: span 2;
+    }
+
+    @media (min-width: 700px) {
+      .featured-products-banner { 
+        grid-column-end: span 3;
+      }
+      .button.button--primary.plp-products__load {
+        grid-column-end: span 3;
+      }
+      .featured-products-banner__text {
+        font-size: 16px;
+      }
+      .button.button--primary.plp-products__load {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 699px) {
+      .featured-products .plp-item:nth-of-type(-n+3) {
+        border-top: solid 1px var(--color-blue-dark);
+      }
+    }
+    @media (min-width: 700px) {
+      .featured-products .plp-item:nth-of-type(-n+4) { 
+        border-top: solid 1px var(--color-blue-dark);
+      }
+    }
+
+    section.plp-products {
+      border-top: 0 !important;
+    }
+    
+    .plp-navigation-section {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 98px;
+      z-index: 10;
+      border-bottom: solid 1px var(--color-blue-dark);
+      background-color: var(--color-white);
+    }
+    @media (min-width: 700px) {
+      .plp-navigation-section {
+        top: 103px;
+      }
+    }
+    .product-listing {
+      /*overflow: unset !important;*/
+    }
+
+    @media (max-width: 699px) {
+      #collection-nav .shop-filters.expanded {
+          display: block;
+      }
+    }
+  </style>  
+{% endif %}
+
+{% schema %}
+{
+  "name": "BFCM Banner",
+  "class": "bfcm-banner",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "display",
+      "label": "Display Banners",
+      "default": true
+    }
+  ],
+  "blocks": [],
+  "presets": [
+  {
+    "name": "BFCM Banner",
+    "category": "Collections"
+  }]
+}
+{% endschema %}

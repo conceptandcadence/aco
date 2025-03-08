@@ -1,0 +1,279 @@
+section.product-reviews {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: solid 1px var(--color-blue-dark);
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://cdn.shopify.com/s/files/1/1892/3609/files/Paper_04b.jpg?v=1674957278');  
+		@media only screen and (max-width: 699px) {
+      border-top: 0 !important;
+			.reviews-overview__description, .featured-review__stars {
+				display: none !important;
+			}
+			.reviews-overview__score {
+				//display: inline-flex !important;
+			}
+			.reviews-overview__score {
+				margin-top: 0 !important;
+			}
+			.reviews-overview {
+				
+			}
+    }
+    @media only screen and (min-width: 700px) {
+        flex-direction: row;
+        border-top: solid 1px var(--color-blue-dark);
+    }
+    &.no-featured-reviews {
+        .yotpo-review-container {
+            @media only screen and (min-width: 700px) {
+                flex-basis: 100%;
+                border-right: 0;
+            }
+        }
+        .featured-reviews {
+            display: none !important;
+        }
+    }
+    &.no-yotpo-reviews {
+        .reviews-overview {
+            display: none;
+        }
+        .reviews-title {
+          text-align: center;
+        }
+    }
+    &:not(.no-yotpo-reviews) {
+        .no-reviews-yet {
+            display: none !important;
+        }
+    }
+    .yotpo-review-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 36px 64px 56px;
+        @media only screen and (max-width: 699px) {
+            order: 2;
+            border-bottom: solid 1px var(--color-blue-dark);
+						padding: 36px 56px;
+            border-top: 0 !important;
+        }
+        @media only screen and (min-width: 700px) {
+            flex-basis: 50%;
+            min-height: 33.33vw;
+            max-height: 50vw;
+            border-right: solid 1px var(--color-blue-dark);
+            padding: 36px 64px;
+        }
+        &.expanded {
+            overflow-y: scroll;
+        }
+        .yotpo.yotpo-main-widget,
+        .yotpo .yotpo-modal-dialog {
+            max-height: 100%;
+        }
+        .reviews-overview {
+            @media only screen and (max-width: 699px) {
+                width: 100%;
+                max-width: 400px;
+            }
+            .reviews-overview__score {
+                display: flex;
+                .reviews-overview__average {
+                    font-size: 28px;
+                    font-weight: 400;
+                    margin-right: 12px;
+                    margin-top: 2px;
+                }
+                .reviews-overview__stars {
+                    display: flex;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    .reviews-overview__star {
+                        position: relative;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-right: 4px;
+                        overflow: hidden;
+                        width: 0;
+                        .reviews-overview__star-icon {
+                            top: 0;
+                            left: 0;
+                            font-size: 24px;
+                            width: 24px;
+                            height: 32px;
+                            margin: 0 auto;
+                            color: var(--color-blue-dark);
+                        }
+                    }
+                }
+            }
+            .reviews-overview__description {
+                max-width: 250px;
+                margin: 0 0 24px;
+            }
+            .reviews-overview__toggle {
+                font-size: 14px;
+                padding: 8px 16px;
+								@media only screen and (max-width: 699px) {
+									padding: 0;
+									border-top: 0;
+									border-right: 0;
+									border-left: 0;
+									background-color: transparent;
+								}
+            }
+        }
+        .no-reviews-yet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+            @media only screen and (max-width: 699px) {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .reviews-heading {
+                display: flex;
+
+                .reviews-title {
+                    font-size: 24px;
+                    font-weight: 400;
+                    margin-right: 12px;
+                    margin-top: 2px;
+                }
+            }
+            .reviews-write__toggle {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    }
+    .featured-reviews {
+        position: relative;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+        @media only screen and (max-width: 699px) {
+            order: 1;
+						padding-top: 0 !important;
+        }
+        @media only screen and (min-width: 700px) {
+            min-height: 33.33vw;
+            max-height: 50vw;
+            flex-basis: 50%;
+        }
+        .flickity-slider {
+            @media only screen and (max-width: 699px) {
+                min-height: 50vw;
+            }
+        }
+        .featured-review {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            padding: 36px 64px;
+						@media only screen and (max-width: 699px) {
+							//padding: 0 64px 36px;
+						}
+            .featured-review__wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                max-width: 400px;
+            }
+            .featured-review__stars {
+                display: flex;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                .featured-review__star {
+                    top: 0;
+                    left: 0;
+                    font-size: 24px;
+                    width: 24px;
+                    height: 32px;
+                    margin: 0 auto;
+                    color: var(--color-blue-dark);
+                    margin-right: 4px;
+                }
+            }     
+            .featured-review__content { 
+                font-size: 18px;
+                color: var(--color-blue-dark);
+                @media only screen and (min-width: 700px) {
+                    font-size: 24px;
+                }
+                p {
+                    margin: 24px 0;
+										@media only screen and (max-width: 699px) {
+											margin: 0 0 24px;
+										}
+                }
+            }
+            .featured-review__meta {
+                .featured-review__reviewer, .featured-review__product {
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }
+            }
+        }
+        .flickity-button {
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: 0;
+            appearance: none;
+            &.previous {
+                left: 18px;
+                @media (min-width: 1200px) {
+                    left: 10%;
+                }
+            }
+
+            &.next {
+                right: 18px;
+                @media (min-width: 1200px) {
+                    right: 10%;
+                }
+            }
+            .flickity-button-icon {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 18px;
+                height: 18px;
+                transform: translate(-50%, -50%);
+        
+                @media (min-width: 700px) {
+                    width: 12px;
+                    height: 12px;
+                }
+        
+                path {
+                    fill: var(--color-black);
+                }
+            }
+        }
+
+    }
+}

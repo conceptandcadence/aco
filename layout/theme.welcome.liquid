@@ -1,0 +1,169 @@
+<!doctype html>
+    <!--[if IE 9]><html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="{{ shop.locale }}"><!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="theme-color" content="{{ settings.color_primary }}">
+        <link rel="canonical" href="{{ canonical_url }}"> 
+        {% if settings.favicon != blank %}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png"> {% endif %} 
+        {% capture seo_title %} {{ page_title }} {% if current_tags %} {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}} {% endif %} {% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }} {% endif %} {% unless page_title contains shop.name %} &ndash; {{ shop.name }} {% endunless %} {% endcapture %}<title>{{ seo_title }}</title> {% if page_description %}<meta name="description" content="{{ page_description | escape }}"> {% endif %} 
+        {% include 'social-meta-tags' %} 
+
+        {{ content_for_header }} 
+
+        {% include 'styles-critical' %}
+        {% include 'scripts-head' %}    
+        {{ 'styles-reset.min.css' | asset_url | stylesheet_tag }}
+
+        <script type="text/javascript">
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "kz4rhv0qqi");
+        </script>
+
+        <script>
+          window.plpProducts = [];
+        </script>
+      {%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+      {%- assign plan_name = contentForQuerystring | split:'"products":"' | last | split:'"' | first |
+         replace:'\/','/' |
+         replace:'%20',' ' |
+         replace:'\u0026','&' |
+         split: "?" | last
+      -%}
+    </head>
+
+    {% capture body_classes %}template-{{ template.name | handle }} {{ template.suffix | handle }} loading {% if template.name == 'search' %}template-collection{% endif %} {% if settings.banner_fixed %}site-banner--fixed{% endif %} {% if settings.banner_active %}site-banner--active{% endif %}{% endcapture %}
+    <body id="{{ page_title | handle }}" class="{{ body_classes }}">
+        <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a> 
+        {% section 'banner' %}
+        {% section 'header' %} 
+        {% section 'side-mobile-menu' %}
+
+        <main role="main" id="MainContent"> 
+            {{ content_for_layout }}
+        </main> 
+
+        {% section 'footer' %}
+        {% include 'scripts-body' %} 
+
+      <style>
+        html { padding-bottom: 0 !important; }
+        .plp-item:not(.collection-hero) .plp-item__info { pointer-events: none; }
+        .site-footer { position: relative; overflow: hidden; }
+        .site-footer:after {
+            content: '';
+            display: block !important;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100vw;
+            transform: translateY(100%);
+            background-color: #1b3448;
+        }
+
+        #shopify-section-9f07d3f9-9b09-976a-b872-9f6e0aa40d3c {
+            display: none;
+        }     
+        @media (max-width: 699px) {
+          #shopify-section-9f07d3f9-9b09-976a-b872-9f6e0aa40d3c {
+              display: none;
+          }   
+        } 
+        #overdye .plp-header .plp-header__title-image {
+          height: 36px;
+        }
+        @media (min-width: 700px) {
+          #overdye .plp-header .plp-header__title-image {
+            height: 52px;
+          }
+        }
+        @media (max-width: 699px) {
+          body.template-product section.product-info .product-info__container #colorset-wrapper {
+            overflow-x: scroll !important;
+            overflow-y: hidden !important;
+          }
+        }
+        .shipscout-banner {font-size: 14px !important;}
+        [data-rebuy-id="120088"] {
+          display: none !important;
+        }
+        .localize-compare-price, .rebuy-money.compare-at {
+            color: #9a9a9a !important;
+            text-decoration: line-through;
+        }
+@media (min-width: 768px) {
+  .rebuy-cart__flyout-recommendations .rebuy-product-grid.large-carousel .rebuy-product-block:nth-last-child(2):first-child,
+  .rebuy-cart__flyout-recommendations .rebuy-product-grid.large-carousel .rebuy-product-block:nth-of-type(2):last-child {
+      width: 50% !important;
+  }
+   .rebuy-cart__flyout-recommendations .rebuy-product-block .rebuy-product-info {
+    min-height: 84px;
+  }
+}
+@media (min-width: 700px) {
+  .shoppable-look .shoppable-look__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}  
+.fixed-height-header {
+    height: 55.25vw;
+    overflow: hidden;
+}
+@media screen and (min-width: 641px) {
+.fixed-height-header {
+    height: 22.65vw;
+}
+}
+.fixed-height-header .plp-header__image .sizing-chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (min-width: 700px) {
+  body:not(.site-banner--active) section.sizing-chart {
+    top: 90px !important;
+  }
+}
+.variant-selector + .length-selector {
+  margin-top: -20px !important;
+}
+@media (max-width: 699px) {
+  #MainContent { min-width: 100vw; }
+}
+.lp-banner-full__foreground {
+  overflow: hidden;
+}
+
+.shop-the-look-pdp .badge.shorts-length { display:none !important;}
+        
+      </style>  
+
+<script>
+  if (!document.querySelector('.site-banner')) {
+    document.querySelector('body').classList.remove('site-banner--active');
+  }
+</script>
+
+<div data-rebuy-id="120088"></div>
+<style>  
+	.template-page:not(.advc) .plp-products-category, 
+	.template-page:not(.advc) .shop-filters,
+	.template-collection.standard .plp-products-category, 
+	.template-collection.standard .shop-filters
+	 {
+		display: none !important;
+	}
+</style> 
+</body>
+</html>

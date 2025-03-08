@@ -1,0 +1,81 @@
+<section class="product-list" id="featured-collection-{{ section.id }}"> {% if section.settings.title != blank %}<h3 class="collection-title">{{ section.settings.title }}</h3> {% endif %} 
+
+    {% if section.settings.cta_text != blank %} <a href="{{ section.settings.cta_url }}" class="btn landing-btn">{{ section.settings.cta_text }}</a> {% endif %}
+    <div class="products-ccontainer"> 
+        {% for block in section.blocks %} 
+        {% capture product_handle %}{{ block.settings.product_id }}{% endcapture %}
+        <div class="product {{ all_products[product_handle].type | downcase }}
+        {% if nongendered %} nongendered{% endif %}"> 
+        <a href="{{ all_products[product_handle].url | within: collection }}">
+            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: all_products[product_handle].images[1] -%}
+            {%- assign image_url = all_products[product_handle].images[1] | img_url: '1x1' -%}
+            <img class="lazyload-img lifestyle " loading="lazy"
+                src="{{ image_url }}"
+                data-src="{{ image_url }}"
+                data-widths="[{{ supported_sizes }}]"
+                sizes="(max-width: 700px) 50vw,33.33vw"
+                srcset="{{ image_srcset }}"
+                alt="{{ all_products[product_handle].images[1].alt | escape }}">
+            <noscript>
+                <img class="lifestyle" src="{{ all_products[product_handle].images[1] | img_url: '400x' }}" alt="{{ all_products[product_handle].images[1].alt | escape }}">
+            </noscript>
+    
+            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: all_products[product_handle].featured_image -%}
+            {%- assign image_url = all_products[product_handle].featured_image | img_url: '1x1' -%}
+            <img class="lazyload-img placeholder flat " loading="lazy"
+                src="{{ image_url }}"
+                data-src="{{ image_url }}"
+                data-widths="[{{ supported_sizes }}]"
+                sizes="(max-width: 700px) 50vw,33.33vw"
+                srcset="{{ image_srcset }}"
+                alt="{{ all_products[product_handle].featured_image.alt | escape }}">
+            <noscript>
+                <img class="placeholder flat" src="{{ all_products[product_handle].featured_image | img_url: '400x' }}" alt="{{ all_products[product_handle].featured_image.alt | escape }}">
+            </noscript>
+        </a>
+        <p class="product-list--title"> 
+            <a href="{{ all_products[product_handle].url | within: collection }}">{{ all_products[product_handle].title }}</a></p><p class="product-list--price"> {% if all_products[product_handle].compare_at_price_min > all_products[product_handle].price %} <s>{{ all_products[product_handle].compare_at_price_min | money | remove: '.00' }}</s> {% endif %} {{ all_products[product_handle].price | money | remove: '.00' }}</p></div> {% endfor %}</div>
+    
+    </section> 
+
+{% schema %}
+{
+	"name": "Featured Products 1",
+    "max_blocks": 6,
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Section Title"
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "Button Text"
+        },
+        {
+            "type": "url",
+            "id": "cta_url",
+            "label": "Button Link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "Product",
+            "settings": [
+                {
+                   "type": "product",
+                   "id": "product_id",
+                   "label": "Featured Product"
+                }
+            ]
+        }
+    ],
+    "presets": [{
+      "name": "Featured Collection",
+      "category": "Custom Content",
+      "settings": {
+      }
+    }]
+}{% endschema %}

@@ -1,0 +1,80 @@
+<section class="related-products">
+    <h4>Shop the Look</h4> 
+    {% assign number_of_related_products_to_show = "4" %} 
+    {% assign current_product = product %} 
+    {% assign current_product_tags = product.tags %} 
+    {% assign found_first_match = false %} 
+    {% assign found_second_match = false %} 
+    {% assign first_related_product = true %} 
+    {% assign j = 0 %}
+
+    {% if product.tags contains "women" %} 
+        {% assign related_collection = collections.women.products %}
+    {% else %} 
+        {% assign related_collection = collections.shop.products %}
+    {% endif %}  
+    <div class="related-product-wrapper"> 
+        {% for product in related_collection %} 
+          {% unless product.handle contains 'navidium' %}
+            {% unless product.handle == current_product.handle %} 
+                {% for tag in product.tags %} 
+                    {% if tag contains "size-" %} 
+                        {% continue %} 
+                    {% endif %} 
+                    {% if current_product_tags contains tag %} 
+                        {% assign j = j | plus: 1 %}
+                        <div class="product">
+                            <div class="wrap"> 
+                                <a class="link" href="{{ product.url | within: collection }}">
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_image -%}
+                                    {%- assign image_url = product.featured_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 100vw,50vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ product.featured_image.alt | escape }}">
+                                    <noscript>
+                                        <img src="{{ product.featured_image | img_url: '1024x1024' }}" alt="{{ product.featured_image.alt | escape }}">
+                                    </noscript>
+                                </a>
+                            </div>
+                            <p class="product-list--title"> 
+                                <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                            </p>
+                            <p class="product-list--price"> 
+                                {% if on_sale %} 
+                                    <span class="sale-price">${{ product.price | money_without_currency | remove: '.00' }}</span> 
+                                    {% assign compare_price = product.compare_at_price | money_without_currency | remove: '.00' %} 
+                                    <span class="compare-to-price">${{ product.compare_at_price | money_without_currency | remove: '.00' }}</span> 
+                                {% elsif sold_out %} 
+                                    <span class="sold-out-price">Sold Out</span> 
+                                {% else %} 
+                                    ${{ product.price | money_without_currency | remove: '.00' }} 
+                                {% endif %}
+                            </p>
+                        </div> 
+                        {% break %} 
+                    {% endif %}
+                {% endfor %} 
+            {% endunless %} 
+            {% if j == 4 %} 
+                {% break %} 
+            {% endif %} 
+            {% endunless %}
+        {% endfor %} 
+        {% if j == 1 %}
+            <div class="product"></div> 
+            <div class="product"></div>
+            <div class="product"></div> 
+        {% endif %} 
+        {% if j == 2 %}
+            <div class="product"></div>
+            <div class="product"></div> 
+        {% endif %} 
+        {% if j == 3 %}
+            <div class="product"></div> 
+        {% endif %}
+    </div>
+</section>

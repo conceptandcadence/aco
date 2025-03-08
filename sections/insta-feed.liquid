@@ -1,0 +1,59 @@
+<section class="instagram init">
+    {% if section.settings.hashtag != blank %}
+        <h2>{{ section.settings.title }}</h2>
+        <h4>{{ section.settings.hashtag }}</h4>
+    {% else %}
+        {% if section.settings.title != blank %}
+            <h2 class="no-hashtag">{{ section.settings.title }}</h2>
+        {% endif %}
+    {% endif %}
+      <div id="instagram-viewport">
+          <div id="instafeed">
+              <div id="insta-feed" class="instagram-group"></div>
+          </div>
+      </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Instagram Feed",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Headline",
+            "default": "Play clothes for work."
+        },
+        {
+            "type": "text",
+            "id": "hashtag",
+            "label": "Hashtag",
+            "default": "#staycurious"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link (optional)"
+        },
+        {
+            "type": "checkbox",
+            "id": "headline",
+            "label": "headline",
+            "default": false
+        }
+    ],
+    "presets": [
+      {
+        "name": "Instagram Feed",
+        "category": "Custom Content"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

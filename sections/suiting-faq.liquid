@@ -1,0 +1,102 @@
+{% capture copyBody %}
+    <div class="c-ReviewWithVideo__ContentWrapper">
+        <span class="u-h2 c-ReviewWithVideo__ReviewText">
+            {%- if section.settings.title -%}
+                <h3 class="u-h2">
+                    {{ section.settings.title }}
+                </h3>
+            {%- endif -%}
+            <div class="Product__Tabs">
+                {%- for block in section.blocks -%}
+                    {%- if block.settings.title and block.settings.answer -%}
+                        <div class="Collapsible Collapsible--large">
+                            <button class="Collapsible__Button Heading u-h7" data-action="toggle-collapsible" aria-expanded="false">
+                                {{- block.settings.title -}} <span class="Collapsible__Plus"></span>
+                            </button>
+                            <div class="Collapsible__Inner">
+                                <div class="Collapsible__Content">
+                                    <div class="Rte">
+                                        {{- block.settings.answer -}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+            {%- if section.settings.footertext -%}
+            <div class="footer-text">
+                {{ section.settings.footertext }}
+            </div>
+        {%- endif -%}
+        </span>
+    </div>
+{% endcapture %}
+
+<div class="VibeLP_Instructions c-ReviewWithVideo {% if section.settings.reverse == "true" %}reverse{% endif %}">
+    <div class="c-ReviewWithVideo {% if section.settings.reverse == "true" %}reverse{% endif %}">
+        <div class="c-ReviewWithVideo__ReviewContainer FAQ">
+            {{ copyBody }}
+        </div>
+        <div class="c-ReviewWithVideo__VideoContainer FAQ">
+            <div class="c-ReviewWithVideo__VideoWrapper FAQ">
+                {%- if section.settings.image -%}
+<img class="Hero__Image Image--lazyLoad" src="{{ section.settings.image | img_url: '800x' }}" alt="{{ section.settings.image.alt | escape }}">
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+ {
+     "name": "Suiting FAQs",
+     "class": "shopify-section faq",
+     "settings": [
+         {
+             "type": "radio",
+             "label": "Video Alignment",
+             "default": "true",
+             "id": "reverse",
+             "options": [
+                 { "value": "true", "label": "Left"},
+                 { "value": "false", "label": "Right"}
+             ]
+         },
+         {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Headline"
+        },
+        {
+            "type": "richtext",
+            "id": "footertext",
+            "label": "Footer Note"
+        }
+     ],
+     "blocks" : [
+        {
+            "type": "faq",
+            "name": "FAQ Item", 
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer"
+                }
+            ]
+        }
+     ],
+     "presets": []
+   }
+{% endschema %}

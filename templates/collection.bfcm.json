@@ -1,0 +1,669 @@
+{
+  "wrapper": "main.c-landing-page",
+  "sections": {
+    "settings": {
+      "type": "lp-settings",
+      "disabled": true,
+      "settings": {
+        "variation": "3",
+        "display": true
+      }
+    },
+    "166266523192c5ec88": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "1ae0fc96-5388-4409-b67f-243fb12c757f": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "",
+            "text_style": "h3",
+            "alignment": "center",
+            "color": "#ffffff",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "500px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "ddbc1724-20c8-4822-bc59-73782e1b38ea": {
+          "type": "svg",
+          "settings": {
+            "visibility": "desktop",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/GOING_SOMEWHEERERecurso_8.svg?v=1703871676",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "310",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": -92,
+            "padding_bottom_m": -28,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "600",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": -84,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "399285f6-657d-4994-9881-4d34ee91190d": {
+          "type": "svg",
+          "settings": {
+            "visibility": "mobile",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/GOING_SOMEWHEERERecurso_8.svg?v=1703871676",
+            "width_m": "150",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": -100,
+            "padding_bottom_m": 0,
+            "padding_left_m": 164,
+            "padding_right_m": -28,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "315",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "1ae0fc96-5388-4409-b67f-243fb12c757f",
+        "ddbc1724-20c8-4822-bc59-73782e1b38ea",
+        "399285f6-657d-4994-9881-4d34ee91190d"
+      ],
+      "settings": {
+        "title": "Easy Layers",
+        "variation": "0",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/mobile_da58993c-b943-4741-89a2-7a69bf269d8c.jpg",
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 84,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 20,
+        "inner_padding_right_m": 20,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify:\/\/shop_images\/web2.jpg",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 64,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 20,
+        "inner_padding_right_d": 20
+      }
+    },
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957": {
+      "type": "plp-navigation",
+      "blocks": {
+        "52f06991-7a14-41a2-9e90-68023c971c53": {
+          "type": "fabric",
+          "settings": {
+            "label": "Linen",
+            "tag": "material--european-linen",
+            "image": "shopify:\/\/shop_images\/icon-linen.png"
+          }
+        },
+        "0e0e5b82-e927-406b-a254-a88cc224823d": {
+          "type": "fabric",
+          "settings": {
+            "label": "Wool",
+            "tag": "material--wool",
+            "image": "shopify:\/\/shop_images\/icon-wool.png"
+          }
+        },
+        "c8c2e831-470f-40f4-8d52-88d6543d228c": {
+          "type": "fabric",
+          "settings": {
+            "label": "Raw Leather",
+            "tag": "material--raw-leather",
+            "image": "shopify:\/\/shop_images\/icon-leather.png"
+          }
+        },
+        "7b2c1085-b1ea-4b47-b3cc-2e288a3b02d3": {
+          "type": "fabric",
+          "disabled": true,
+          "settings": {
+            "label": "Canvas",
+            "tag": "material--washed-canvas",
+            "image": "shopify:\/\/shop_images\/icon-cotton.png"
+          }
+        },
+        "23a935e8-595b-4178-9538-c2f2b34ccc21": {
+          "type": "fabric",
+          "settings": {
+            "label": "Organic Cotton",
+            "tag": "material--organic-cotton",
+            "image": "shopify:\/\/shop_images\/icon-cotton.png"
+          }
+        },
+        "9d5eb5a7-093c-4c18-bb10-007fb1d60510": {
+          "type": "fabric",
+          "settings": {
+            "label": "Alpaca Wool",
+            "tag": "material--alpaca",
+            "image": "shopify:\/\/shop_images\/icon-wool.png"
+          }
+        },
+        "5ce22a49-a0ac-4e3e-a328-4e14c1a8d712": {
+          "type": "size",
+          "settings": {
+            "label": "XXS"
+          }
+        },
+        "c7682a02-010b-47f1-bf9f-b3ba76834b4e": {
+          "type": "size",
+          "settings": {
+            "label": "XS"
+          }
+        },
+        "70caa407-203c-482b-85f5-c9bda1a5bf51": {
+          "type": "size",
+          "settings": {
+            "label": "S"
+          }
+        },
+        "dcbb5ff8-6fbf-466f-9ed2-db7c631658a2": {
+          "type": "size",
+          "settings": {
+            "label": "M"
+          }
+        },
+        "993ff391-ae4d-49b7-8924-cf0477391a4a": {
+          "type": "size",
+          "settings": {
+            "label": "L"
+          }
+        },
+        "c44c3d52-c975-4934-aca2-7e8046037895": {
+          "type": "size",
+          "settings": {
+            "label": "XL"
+          }
+        },
+        "cdc0e9db-b0f8-4cf2-8129-4fb92c80890b": {
+          "type": "size",
+          "settings": {
+            "label": "XX"
+          }
+        },
+        "27edd140-943b-4c95-8823-77ba7b84b2d5": {
+          "type": "size",
+          "settings": {
+            "label": "26"
+          }
+        },
+        "d77351b6-403e-4152-b912-3943fc8ebfac": {
+          "type": "size",
+          "settings": {
+            "label": "28"
+          }
+        },
+        "a5c350b4-45c5-42c4-bd47-3aafbacc5283": {
+          "type": "size",
+          "settings": {
+            "label": "30"
+          }
+        },
+        "54b8fa63-0ac4-4a5d-a69d-e3453da7ff81": {
+          "type": "size",
+          "settings": {
+            "label": "32"
+          }
+        },
+        "311e4c54-e267-4e49-a771-e35f0b288dd0": {
+          "type": "size",
+          "settings": {
+            "label": "34"
+          }
+        },
+        "24a9075c-ddf4-4270-80b4-184cd9364c5a": {
+          "type": "size",
+          "settings": {
+            "label": "36"
+          }
+        },
+        "36444a16-3fc2-4219-a88e-62391aabf86c": {
+          "type": "size",
+          "settings": {
+            "label": "38"
+          }
+        },
+        "b407f5a8-b587-4468-a32d-cce5ed742a47": {
+          "type": "color",
+          "settings": {
+            "label": "Blue",
+            "tag": "Colorway--Blue",
+            "color": "#1844b6"
+          }
+        },
+        "c347bb46-c91e-48fb-be8b-c454623a7fc2": {
+          "type": "color",
+          "settings": {
+            "label": "Natural",
+            "tag": "Colorway--Natural",
+            "color": "#f2efeb"
+          }
+        },
+        "cd5caa56-bed6-4f71-9fa8-500ac9ad9d3a": {
+          "type": "color",
+          "settings": {
+            "label": "Black",
+            "tag": "Colorway--Black",
+            "color": "#000000"
+          }
+        },
+        "6b072540-e124-43ff-8dd5-133df44d7471": {
+          "type": "color",
+          "settings": {
+            "label": "Green",
+            "tag": "Colorway--Green",
+            "color": "#29632f"
+          }
+        },
+        "b7f86919-fd72-4a8b-bc36-172d2e23d54b": {
+          "type": "color",
+          "settings": {
+            "label": "Red",
+            "tag": "Colorway--Red",
+            "color": "#d73a00"
+          }
+        },
+        "0a5b0597-3e75-487a-8c54-8ca7b885119f": {
+          "type": "color",
+          "settings": {
+            "label": "Brown",
+            "tag": "Colorway--Brown",
+            "color": "#8e725f"
+          }
+        },
+        "2712c6ad-4411-4ffd-9973-521ac70d4dbc": {
+          "type": "color",
+          "settings": {
+            "label": "Pattern",
+            "tag": "Colorway--Pattern",
+            "color": "",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2019-06-27_at_12.06.27_PM_100x100_79459291-b99e-4a69-802e-d7831de2c81b.png"
+          }
+        }
+      },
+      "block_order": [
+        "52f06991-7a14-41a2-9e90-68023c971c53",
+        "0e0e5b82-e927-406b-a254-a88cc224823d",
+        "c8c2e831-470f-40f4-8d52-88d6543d228c",
+        "7b2c1085-b1ea-4b47-b3cc-2e288a3b02d3",
+        "23a935e8-595b-4178-9538-c2f2b34ccc21",
+        "9d5eb5a7-093c-4c18-bb10-007fb1d60510",
+        "5ce22a49-a0ac-4e3e-a328-4e14c1a8d712",
+        "c7682a02-010b-47f1-bf9f-b3ba76834b4e",
+        "70caa407-203c-482b-85f5-c9bda1a5bf51",
+        "dcbb5ff8-6fbf-466f-9ed2-db7c631658a2",
+        "993ff391-ae4d-49b7-8924-cf0477391a4a",
+        "c44c3d52-c975-4934-aca2-7e8046037895",
+        "cdc0e9db-b0f8-4cf2-8129-4fb92c80890b",
+        "27edd140-943b-4c95-8823-77ba7b84b2d5",
+        "d77351b6-403e-4152-b912-3943fc8ebfac",
+        "a5c350b4-45c5-42c4-bd47-3aafbacc5283",
+        "54b8fa63-0ac4-4a5d-a69d-e3453da7ff81",
+        "311e4c54-e267-4e49-a771-e35f0b288dd0",
+        "24a9075c-ddf4-4270-80b4-184cd9364c5a",
+        "36444a16-3fc2-4219-a88e-62391aabf86c",
+        "b407f5a8-b587-4468-a32d-cce5ed742a47",
+        "c347bb46-c91e-48fb-be8b-c454623a7fc2",
+        "cd5caa56-bed6-4f71-9fa8-500ac9ad9d3a",
+        "6b072540-e124-43ff-8dd5-133df44d7471",
+        "b7f86919-fd72-4a8b-bc36-172d2e23d54b",
+        "0a5b0597-3e75-487a-8c54-8ca7b885119f",
+        "2712c6ad-4411-4ffd-9973-521ac70d4dbc"
+      ],
+      "settings": {
+        "fabric_title": "Fabric",
+        "size_title": "Size",
+        "color_title": "Color"
+      }
+    },
+    "bc051e3f-a68b-458c-a637-8dae150e68f7": {
+      "type": "bfcm-banner",
+      "settings": {
+        "display": true
+      }
+    },
+    "44f21b42-4aca-47b6-8497-1db3280fdc71": {
+      "type": "plp-featured-products",
+      "blocks": {
+        "42a4abf7-a5e7-4616-a68f-d360bd628d0e": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 1",
+            "image": "shopify:\/\/shop_images\/chaipants3_8a28d64b-b52a-497b-a79e-c7413c00db08.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 31,
+            "desktop_offset": 0,
+            "product_1": "bo-pants-overdye-chai",
+            "position_1_h": 46,
+            "position_1_v": 50,
+            "product_2": "sun-tee-night",
+            "position_2_h": 50,
+            "position_2_v": 10,
+            "product_3": "the-primo-sandals",
+            "position_3_h": 42,
+            "position_3_v": 91,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "1b9c25ac-e9fe-4d70-9ced-16230438ff5b": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 2",
+            "image": "shopify:\/\/shop_images\/champantsdusk_lifestyle-2_adc9e7ec-9050-46cc-a79b-e8a2ce62d734.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 25,
+            "desktop_offset": 0,
+            "product_1": "kite-jacket-dusk-1",
+            "position_1_h": 59,
+            "position_1_v": 25,
+            "product_2": "playa-shirt-bone",
+            "position_2_h": 48,
+            "position_2_v": 40,
+            "product_3": "cham-pants-dusk",
+            "position_3_h": 56,
+            "position_3_v": 80,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "ddec927d-5776-4826-ad7b-5175bbcd5415": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 3",
+            "image": "shopify:\/\/shop_images\/WEB-KITE-RIVER-3_06726f65-9f24-4070-83c1-a8b52ba25cdc.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 37,
+            "desktop_offset": 1,
+            "product_1": "cham-pants-river",
+            "position_1_h": 63,
+            "position_1_v": 92,
+            "product_2": "campo-sweater-ink",
+            "position_2_h": 77,
+            "position_2_v": 50,
+            "product_3": "kite-jacket-river",
+            "position_3_h": 50,
+            "position_3_v": 37,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "de819e86-d2a2-4c6d-8786-736bcfd8ccdd": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 4",
+            "image": "shopify:\/\/shop_images\/champantslines-6_a092aff1-0404-4b71-a344-3f9867e36c5c.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 13,
+            "desktop_offset": 0,
+            "product_1": "cham-pants-lines",
+            "position_1_h": 81,
+            "position_1_v": 76,
+            "product_2": "copy-of-playa-shirt-snow",
+            "position_2_h": 50,
+            "position_2_v": 34,
+            "product_3": "",
+            "position_3_h": 50,
+            "position_3_v": 50,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "3724b0d6-c251-4e22-a180-c599140dd7b9": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 6",
+            "image": "shopify:\/\/shop_images\/WEB-PARKSHIRT-INK-3.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 19,
+            "desktop_offset": 1,
+            "product_1": "park-shirt-jacket-ink",
+            "position_1_h": 65,
+            "position_1_v": 33,
+            "product_2": "cham-pants-onyx",
+            "position_2_h": 50,
+            "position_2_v": 80,
+            "product_3": "campo-sweater-storm",
+            "position_3_h": 57,
+            "position_3_v": 57,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "5cea8ffa-2346-4f02-ad20-29f1bef11055": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 5",
+            "image": "shopify:\/\/shop_images\/WEB-OLASHIRT-LINES-3.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 7,
+            "desktop_offset": 0,
+            "product_1": "ola-shirt-lines",
+            "position_1_h": 50,
+            "position_1_v": 50,
+            "product_2": "cham-pants-bone-solid",
+            "position_2_h": 69,
+            "position_2_v": 71,
+            "product_3": "",
+            "position_3_h": 50,
+            "position_3_v": 50,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        },
+        "f2cefe48-aa88-4304-a078-18318ed713b0": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM 7",
+            "image": "shopify:\/\/shop_images\/Icehouse_7_4x5_df007b92-fc09-4251-ab0b-2ff1944424a1.jpg",
+            "collection": "mixed-bestsellers",
+            "placement": 43,
+            "desktop_offset": 0,
+            "product_1": "bo-shorts-icehouse",
+            "position_1_h": 54,
+            "position_1_v": 55,
+            "product_2": "copy-of-playa-shirt-snow",
+            "position_2_h": 50,
+            "position_2_v": 21,
+            "product_3": "",
+            "position_3_h": 50,
+            "position_3_v": 50,
+            "product_4": "",
+            "position_4_h": 50,
+            "position_4_v": 50
+          }
+        }
+      },
+      "block_order": [
+        "42a4abf7-a5e7-4616-a68f-d360bd628d0e",
+        "1b9c25ac-e9fe-4d70-9ced-16230438ff5b",
+        "ddec927d-5776-4826-ad7b-5175bbcd5415",
+        "de819e86-d2a2-4c6d-8786-736bcfd8ccdd",
+        "3724b0d6-c251-4e22-a180-c599140dd7b9",
+        "5cea8ffa-2346-4f02-ad20-29f1bef11055",
+        "f2cefe48-aa88-4304-a078-18318ed713b0"
+      ],
+      "settings": {
+        "product_count": 48,
+        "collection": "mixed-bestsellers",
+        "title": "Bestsellers"
+      }
+    },
+    "884105fb-1649-482f-be1b-eaacb3e9997b": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "549d2946-43e1-4c92-bb94-777f4f6066c9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "<p>Cannot be combined with other discounts.<\/p>",
+            "text_style": "h3",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": -12,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": -20,
+            "padding_bottom_d": -8,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "639db84d-6fd8-42de-a4ed-d31607448137": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify:\/\/shop_images\/back-to-top.svg",
+            "link": "#shopify-section-template--14842026655833__16384769-bc5b-41ea-aa75-a2bbf64cf816",
+            "width_m": "90%",
+            "min_width_m": "",
+            "max_width_m": "450px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 28,
+            "padding_bottom_m": 28,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 24,
+            "padding_bottom_d": 24,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "549d2946-43e1-4c92-bb94-777f4f6066c9",
+        "639db84d-6fd8-42de-a4ed-d31607448137"
+      ],
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 36,
+        "padding_bottom_m": 48,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 36,
+        "padding_bottom_d": 48,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 16,
+        "inner_padding_bottom_d": 16,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    }
+  },
+  "order": [
+    "settings",
+    "166266523192c5ec88",
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957",
+    "bc051e3f-a68b-458c-a637-8dae150e68f7",
+    "44f21b42-4aca-47b6-8497-1db3280fdc71",
+    "884105fb-1649-482f-be1b-eaacb3e9997b"
+  ]
+}

@@ -1,0 +1,10 @@
+.c-lp-announcement .lp-announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+}
+.c-lp-announcement .lp-announcement * {
+  margin-top: 0;
+  margin-bottom: 0;
+}

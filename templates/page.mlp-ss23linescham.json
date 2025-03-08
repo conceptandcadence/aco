@@ -1,0 +1,1692 @@
+{
+  "layout": "landing-page",
+  "wrapper": "main.c-landing-page",
+  "sections": {
+    "settings": {
+      "type": "lp-settings",
+      "disabled": true,
+      "settings": {
+        "variation": "3",
+        "display": true
+      }
+    },
+    "166266950988187d24": {
+      "type": "lp-announcement",
+      "blocks": {
+        "e6f5efd5-d34b-4001-842c-fceadbfc68e7": {
+          "type": "message",
+          "settings": {
+            "country": "GB",
+            "message": "<p>Duties and Taxes included on orders shipping to the UK!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e6f5efd5-d34b-4001-842c-fceadbfc68e7"
+      ],
+      "settings": {
+        "variation": "all",
+        "title": "<p>Get 10% OFF Your First Order<\/p>",
+        "background": "#1b3448",
+        "text_color": "#ffffff"
+      }
+    },
+    "166266523192c5ec88": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "b837c112-4623-40ba-b441-3699dcee6dab": {
+          "type": "svg",
+          "settings": {
+            "visibility": "both",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/ac-logo.svg?v=1662675323",
+            "width_m": "100px",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "120px",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 36,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "06e96546-0da9-4db9-bda2-329389ec0266": {
+          "type": "svg",
+          "settings": {
+            "visibility": "both",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/98ebab7d-group-2582.svg?v=1665751801",
+            "width_m": "350px",
+            "min_width_m": "",
+            "max_width_m": "95%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "60%",
+            "min_width_d": "300px",
+            "max_width_d": "650px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "cf63987a-b99c-4ded-9048-2c85e6484398": {
+          "type": "svg",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/hero-callouts.svg?v=1662742673",
+            "width_m": "180px",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 36,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "200px",
+            "min_width_d": "",
+            "max_width_d": "560px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "5250e83a-8793-4842-9419-418851160796": {
+          "type": "button",
+          "settings": {
+            "visibility": "both",
+            "button_text": "Shop Bestsellers",
+            "button_url": "#shopify-section-template--14930659377241__166276277352896d08",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "5888aef6-5f0f-48ad-bab0-f3da25b9ee8b": {
+          "type": "spacer",
+          "settings": {
+            "visibility": "both",
+            "width": "",
+            "min_width": "",
+            "max_width": "",
+            "height": "",
+            "min_height": "",
+            "max_height": "",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_left": 0,
+            "padding_right": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "b837c112-4623-40ba-b441-3699dcee6dab",
+        "06e96546-0da9-4db9-bda2-329389ec0266",
+        "cf63987a-b99c-4ded-9048-2c85e6484398",
+        "5250e83a-8793-4842-9419-418851160796",
+        "5888aef6-5f0f-48ad-bab0-f3da25b9ee8b"
+      ],
+      "settings": {
+        "title": "Easy Layers",
+        "variation": "0",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "space-evenly",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/hero-20m.jpg",
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 32,
+        "inner_padding_right_m": 32,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "space-evenly",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify:\/\/shop_images\/hero-20d.jpg",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 64,
+        "inner_padding_right_d": 64
+      }
+    },
+    "cd721014-94a1-40d8-832c-0e581fb6dadf": {
+      "type": "hp-press-carousel",
+      "blocks": {
+        "badf849a-12aa-4d96-a73c-61f6b0d0554a": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Portuguese-made, French inspired, and totally biodegradable.<\/p>",
+            "logo": "shopify:\/\/shop_images\/esquire.svg",
+            "title": "Esquire",
+            "url": "shopify:\/\/collections\/alexs-picks"
+          }
+        },
+        "8378a3ed-cba3-43a3-a1d1-46b0cf6c16ba": {
+          "type": "review",
+          "settings": {
+            "review": "<p>The perfect summer shorts do exist<\/p>",
+            "name": "Calon L.",
+            "product": "bo-shorts-chalk"
+          }
+        },
+        "03027eee-b1c4-4794-9042-609e909fc2c9": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>This Brooklyn brand just made my new favorite t-shirt<\/p>",
+            "logo": "shopify:\/\/shop_images\/press-gear-patrol.jpg",
+            "title": "Gear Patrol",
+            "url": "shopify:\/\/collections\/tees"
+          }
+        },
+        "2cb56bee-a969-4bcb-b579-08e4ec46d4fa": {
+          "type": "review",
+          "settings": {
+            "review": "<p>As a Florida boy living in New England, I know these pants will keep me in that sunshine state of mind.<\/p>",
+            "name": "Sheldon L",
+            "product": "cham-pants-rio"
+          }
+        },
+        "8da58914-07d4-4889-a45e-d59df31a52ef": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>That range of zesty colors means you can refresh your entire rotation in one swoop.<\/p>",
+            "logo": "shopify:\/\/shop_images\/gq2_a25e8c16-9c7e-42cb-a0d1-f7c5679639fe.jpg",
+            "title": "GQ",
+            "url": ""
+          }
+        },
+        "54986b10-5aca-4c44-9406-a0cd87ba862d": {
+          "type": "review",
+          "settings": {
+            "review": "<p>Best of the best! Beautifully made.<\/p>",
+            "name": "Andreas R.",
+            "product": "cham-pants-lines"
+          }
+        }
+      },
+      "block_order": [
+        "badf849a-12aa-4d96-a73c-61f6b0d0554a",
+        "8378a3ed-cba3-43a3-a1d1-46b0cf6c16ba",
+        "03027eee-b1c4-4794-9042-609e909fc2c9",
+        "2cb56bee-a969-4bcb-b579-08e4ec46d4fa",
+        "8da58914-07d4-4889-a45e-d59df31a52ef",
+        "54986b10-5aca-4c44-9406-a0cd87ba862d"
+      ],
+      "settings": {
+        "variation": "all",
+        "title": "",
+        "subtitle": "",
+        "cell_count": 3,
+        "background": "#ffffff",
+        "background_image": "shopify:\/\/shop_images\/so-white.jpg",
+        "text_color": "#000000",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "166276277352896d08": {
+      "type": "lp-product-carousel",
+      "blocks": {
+        "d7f4db06-7cf3-41f9-abcb-858847aaabb6": {
+          "type": "product",
+          "settings": {
+            "product_1": "bo-shorts-lines-1",
+            "image_number_1": 1,
+            "product_2": "bo-shorts-rio",
+            "image_number_2": 2,
+            "product_3": "bo-shorts-chalk",
+            "image_number_3": 1
+          }
+        },
+        "f621bb82-e82d-4fd3-9742-9fef44ad3925": {
+          "type": "product",
+          "settings": {
+            "product_1": "sun-tee-lines",
+            "image_number_1": 2,
+            "product_2": "sun-tee-rio",
+            "image_number_2": 1,
+            "product_3": "sun-tee-chalk",
+            "image_number_3": 1
+          }
+        },
+        "9199914a-37be-4ae8-b7f3-b6e2caea124c": {
+          "type": "product",
+          "settings": {
+            "product_1": "cham-pants-lines",
+            "image_number_1": 1,
+            "product_2": "cham-pants-rio",
+            "image_number_2": 1,
+            "product_3": "cham-pants-chalk",
+            "image_number_3": 1
+          }
+        },
+        "0c89bed4-babc-426e-8851-49600afa874a": {
+          "type": "product",
+          "settings": {
+            "product_1": "ola-shirt-lines",
+            "image_number_1": 1,
+            "product_2": "ola-shirt-chai-rain",
+            "image_number_2": 1,
+            "product_3": "ola-shirt-night-rain",
+            "image_number_3": 1
+          }
+        },
+        "5a669a8e-b210-4e95-aceb-74d9fed1341d": {
+          "type": "product",
+          "settings": {
+            "product_1": "kite-jacket-lines",
+            "image_number_1": 1,
+            "product_2": "kite-jacket-rio",
+            "image_number_2": 1,
+            "product_3": "kite-jacket-chalk",
+            "image_number_3": 1
+          }
+        }
+      },
+      "block_order": [
+        "d7f4db06-7cf3-41f9-abcb-858847aaabb6",
+        "f621bb82-e82d-4fd3-9742-9fef44ad3925",
+        "9199914a-37be-4ae8-b7f3-b6e2caea124c",
+        "0c89bed4-babc-426e-8851-49600afa874a",
+        "5a669a8e-b210-4e95-aceb-74d9fed1341d"
+      ],
+      "settings": {
+        "variation": "all",
+        "title": "Shop  Lines",
+        "subtitle": "Get 10% OFF Your First Order",
+        "button_text": "Shop This Look",
+        "cell_count": 3,
+        "group_cells": true,
+        "wrap_around": false,
+        "disable_carousel": false,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "padding_top_m": 36,
+        "padding_bottom_m": 48,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 16,
+        "inner_padding_right_m": 16,
+        "padding_top_d": 36,
+        "padding_bottom_d": 36,
+        "padding_left_d": 64,
+        "padding_right_d": 64,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 24,
+        "inner_padding_right_d": 24
+      }
+    },
+    "16637120489d09ede0": {
+      "type": "lp-banner-split",
+      "blocks": {
+        "da46e1b3-f40a-4a57-b090-04eec51ae2a3": {
+          "type": "image",
+          "settings": {
+            "visibility": "desktop",
+            "image": "shopify:\/\/shop_images\/Sustainability-words-new2.gif",
+            "width_m": "320px",
+            "min_width_m": "",
+            "max_width_m": "80%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 8,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 12,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "7cfe8aae-f113-4753-8bc8-fa0e8726f9f2": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "visibility": "mobile",
+            "image": "shopify:\/\/shop_images\/Sustainability-words-new2.gif",
+            "width_m": "320px",
+            "min_width_m": "",
+            "max_width_m": "80%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 8,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 12,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "72a84ada-70b0-4e8e-ac14-3114a0b8019e": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "<p>100% Natural Materials<\/p>",
+            "text_style": "h3",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": -12,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": -12,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "bdcc65e3-d4d2-4453-9a23-accb7e3a5ca3": {
+          "type": "text",
+          "settings": {
+            "visibility": "desktop",
+            "title": "<p>This might come as a surprise: most clothes (65%) are made from plastic. Look at the tags in your closet. If they say <em>polyester<\/em> or <em>nylon<\/em> or <em>acrylic<\/em> that means plastic. <br\/><br\/>Our clothes, on the other hand, are made from 100% natural, renewable materials. And that makes us pretty rare: currently, only 1% of clothes are made from natural materials. <\/p>",
+            "text_style": "p",
+            "alignment": "left",
+            "color": "#000000",
+            "width_m": "320px",
+            "min_width_m": "",
+            "max_width_m": "80%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        }
+      },
+      "block_order": [
+        "da46e1b3-f40a-4a57-b090-04eec51ae2a3",
+        "7cfe8aae-f113-4753-8bc8-fa0e8726f9f2",
+        "72a84ada-70b0-4e8e-ac14-3114a0b8019e",
+        "bdcc65e3-d4d2-4453-9a23-accb7e3a5ca3"
+      ],
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "marquee": false,
+        "marquee_padding": 40,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/sustainability-circle.svg",
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f2741d76343f4749a7d67b3605c6ccb5.mp4",
+        "image_overlay_mobile": "shopify:\/\/shop_images\/sustainability-circle.svg",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 36,
+        "inner_padding_bottom_m": 52,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify:\/\/shop_images\/linen-square.jpg",
+        "video_desktop_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f2741d76343f4749a7d67b3605c6ccb5.mp4",
+        "image_overlay_desktop": "shopify:\/\/shop_images\/sustainability-circle.svg",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "16643192115c8f3e73": {
+      "type": "lp-banner-split",
+      "blocks": {
+        "141f6b29-aa0e-4d19-bc2e-19ff7982f19c": {
+          "type": "svg",
+          "settings": {
+            "visibility": "desktop",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/ac-lockup-boshorts-dark.svg?v=1665757646",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "3aa0453d-ec71-4ba9-a14c-fbd4a5037a04": {
+          "type": "button",
+          "settings": {
+            "visibility": "desktop",
+            "button_text": "Shop Bo Shorts",
+            "button_url": "shopify:\/\/collections\/bo-shorts",
+            "button_style": "button--primary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "4746bf07-2569-42e6-b336-6d231ff7fb36": {
+          "type": "svg",
+          "settings": {
+            "visibility": "mobile",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/ac-lockup-boshorts-light.svg?v=1665757646",
+            "width_m": "240px",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "645aac0e-7dc1-4915-a5e0-4e6c9a078b63": {
+          "type": "button",
+          "settings": {
+            "visibility": "mobile",
+            "button_text": "Shop Bo Shorts",
+            "button_url": "shopify:\/\/collections\/bo-shorts",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 40,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        }
+      },
+      "block_order": [
+        "141f6b29-aa0e-4d19-bc2e-19ff7982f19c",
+        "3aa0453d-ec71-4ba9-a14c-fbd4a5037a04",
+        "4746bf07-2569-42e6-b336-6d231ff7fb36",
+        "645aac0e-7dc1-4915-a5e0-4e6c9a078b63"
+      ],
+      "settings": {
+        "title": "The Kite Jacket",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "marquee": false,
+        "marquee_padding": 40,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/lines_boshorts_02.jpg",
+        "background_color_mobile": "#f6f5f1",
+        "video_mobile_url": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#f6f5f1",
+        "image_desktop": "shopify:\/\/shop_images\/lines_boshorts_02.jpg",
+        "video_desktop_url": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "16638656271a5c6690": {
+      "type": "lp-reviews-carousel",
+      "blocks": {
+        "3ce87eac-7d4f-48f0-99fd-b4f4c8d04631": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "I LOVE these pants",
+            "review": "<p>Honestly, I LOVE these pants. I have been searching for a pair of linen pants that are a little more robust and less flow-y than the usual ones you find, which are a often wide legged and have side pockets rather than jean-style pockets. These are perfect. <\/p>",
+            "name": "Nezam A.",
+            "size_usual": "30",
+            "size_purchased": "31",
+            "height": "5\" 9\"",
+            "product": "cham-pants-dusk"
+          }
+        },
+        "44fd8314-8ff9-462a-b0c2-d552f8c77a4b": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Hell of a jacket",
+            "review": "<p>Hell of a jacket. Great for spring, summer, and fall. Very happy with my purchase.<\/p>",
+            "name": "Aaron S.",
+            "size_usual": "M",
+            "size_purchased": "M",
+            "height": "5' 8\"",
+            "product": "kite-jacket-bone-solid"
+          }
+        },
+        "1139661c-877f-4cef-8175-e3f5f6d23af2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "My New Favorite Shorts",
+            "review": "<p>These shorts were above and beyond what I expected out of a pair of linen shorts. Have rarely taken them off since they arrived. This brand will be my go-to for all things linen.<\/p>",
+            "name": "Matthew D.",
+            "size_usual": "XL",
+            "size_purchased": "XL",
+            "height": "6'3",
+            "product": "bo-shorts-bone"
+          }
+        },
+        "3a0e987e-545b-4429-befa-9beab0a15791": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "Excellent Casual Pants",
+            "review": "<p>Excellent casual pants. I love the reversed direction of the rear pockets on the Lines pattern. The linen fabric makes them feel like an old best friend. Strait legs a plus, true to size.<\/p>",
+            "name": "Michael P.",
+            "size_usual": "31",
+            "size_purchased": "32",
+            "height": "5' 11\"",
+            "product": "cham-pants-lines"
+          }
+        },
+        "f2e7dd67-8041-45ff-8dbc-e70f405336bb": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "The Most Breathable Shirt",
+            "review": "<p>This is the most breathable shirt you can own. Bike to work in it on hot days, it has a casual loose fit which makes it even more breathable.<\/p>",
+            "name": "Steven C.",
+            "size_usual": "L",
+            "size_purchased": "L",
+            "height": "6' 1\"",
+            "product": "sun-tee-bone"
+          }
+        },
+        "cceff097-4b29-4d3f-8960-6c17f0bb610c": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "title": "This is great clothing",
+            "review": "<p>This is great clothing: well cut, sturdy, holds up really well after multiple washing, great fabrics and beautiful colours.<\/p>",
+            "name": "Bruce A.",
+            "size_usual": "M",
+            "size_purchased": "M",
+            "height": "5' 8\"",
+            "product": "sun-tee-pine"
+          }
+        }
+      },
+      "block_order": [
+        "3ce87eac-7d4f-48f0-99fd-b4f4c8d04631",
+        "44fd8314-8ff9-462a-b0c2-d552f8c77a4b",
+        "1139661c-877f-4cef-8175-e3f5f6d23af2",
+        "3a0e987e-545b-4429-befa-9beab0a15791",
+        "f2e7dd67-8041-45ff-8dbc-e70f405336bb",
+        "cceff097-4b29-4d3f-8960-6c17f0bb610c"
+      ],
+      "settings": {
+        "variation": "all",
+        "title": "",
+        "subtitle": "",
+        "cell_count": 3,
+        "show_images": false,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "font_m": 16,
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "font_d": 18,
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "1664325721604fef48": {
+      "type": "lp-banner-split",
+      "blocks": {
+        "2225a08d-8155-48ac-9108-bfea4d1ec7c0": {
+          "type": "svg",
+          "settings": {
+            "visibility": "desktop",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/ac-lockup-suntee-dark.svg?v=1665757646",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "aaf29428-9224-489e-a5d3-24ea7a460178": {
+          "type": "button",
+          "settings": {
+            "visibility": "desktop",
+            "button_text": "Shop Sun Tees",
+            "button_url": "shopify:\/\/collections\/tees",
+            "button_style": "button--primary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "26bf172c-9ac0-4d83-a157-94272f461ac6": {
+          "type": "svg",
+          "settings": {
+            "visibility": "mobile",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/ac-lockup-suntee-light.svg?v=1665757646",
+            "width_m": "240px",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "b4b6caa6-fa00-4892-883f-3d10a0c6563e": {
+          "type": "button",
+          "settings": {
+            "visibility": "mobile",
+            "button_text": "Shop Sun Tees",
+            "button_url": "shopify:\/\/collections\/tees",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 40,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        }
+      },
+      "block_order": [
+        "2225a08d-8155-48ac-9108-bfea4d1ec7c0",
+        "aaf29428-9224-489e-a5d3-24ea7a460178",
+        "26bf172c-9ac0-4d83-a157-94272f461ac6",
+        "b4b6caa6-fa00-4892-883f-3d10a0c6563e"
+      ],
+      "settings": {
+        "title": "The Campo Sweater",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "marquee": true,
+        "marquee_padding": 40,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/WEB-OLASHIRT-LINES-5_03e88888-5ec4-4753-b263-b0f4d3a69804.jpg",
+        "background_color_mobile": "#f6f5f1",
+        "video_mobile_url": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#f6f5f1",
+        "image_desktop": "shopify:\/\/shop_images\/WEB-OLASHIRT-LINES-5_03e88888-5ec4-4753-b263-b0f4d3a69804.jpg",
+        "video_desktop_url": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "15882af7-6889-4859-ae0f-4fa09dd43c07": {
+      "type": "lp-headline",
+      "settings": {
+        "variation": "all",
+        "title": "Made with 100% Natural Materials. No Synthetics.",
+        "subtitle": "",
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "padding_top_m": 40,
+        "padding_bottom_m": 40,
+        "padding_left_m": 32,
+        "padding_right_m": 36,
+        "padding_top_d": 40,
+        "padding_bottom_d": 40,
+        "padding_left_d": 0,
+        "padding_right_d": 0
+      }
+    },
+    "166395597459e74b46": {
+      "type": "lp-feature-carousel",
+      "blocks": {
+        "5e749e5c-8031-4f16-8b20-0404370ff718": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "title": "Merino Wool",
+            "image": "shopify:\/\/shop_images\/merino-wool_79f9dd24-6a83-4610-9564-6b6ed0662a7c.jpg",
+            "description": "<p>Merino wool is a renewable fiber made from super-soft sheep's wool. We get our merino wool from highland sheep in Australia.<\/p>"
+          }
+        },
+        "63ff6b2b-952f-4883-8b4d-aa61577b9401": {
+          "type": "feature",
+          "settings": {
+            "title": "Linen",
+            "image": "shopify:\/\/shop_images\/Sustainability_Mobile1_Linen_938x_1e405170-2ade-449e-a23e-d5245951180d.jpg",
+            "description": "<p>Linen is a sustainable, natural fiber made from the flax plant. Ours comes from Normandy, France.<\/p>"
+          }
+        },
+        "e95ca0bc-c57e-468d-9c28-f11336709218": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "title": "Organic Cotton",
+            "image": "shopify:\/\/shop_images\/organic-cotton_0bf1fbf5-c06d-4ae7-8b28-a9fdee619374.jpg",
+            "description": "<p>Organic cotton is grown without fertilizers or pesticides and uses 70% less water than conventional cotton. Ours comes from Punjab, India.<\/p>"
+          }
+        },
+        "d1537ab6-21df-46dd-a1f0-fe55261cbab1": {
+          "type": "feature",
+          "settings": {
+            "title": "Organic Softeners",
+            "image": "shopify:\/\/shop_images\/Sustainability_Mobile1_Softeners_938x_fd6601ab-ead8-47a9-98d9-f90cbec69f4c.jpg",
+            "description": "<p>All our clothes are washed with organic softeners so they're super soft from first wear.<\/p>"
+          }
+        },
+        "ec5ced78-e6b6-4ee6-b615-86d49200fcad": {
+          "type": "feature",
+          "settings": {
+            "title": "Corozo",
+            "image": "shopify:\/\/shop_images\/Sustainability_Mobile1_Corozo_938x_5614071c-ef8f-4bf1-b3ce-10fcb372899a.jpg",
+            "description": "<p>Our corozo buttons are made from the seed of the Ivory Palm, a tropical tree native to South America.<\/p>"
+          }
+        },
+        "5f3e0699-f3bc-47bf-83c9-809a789b5511": {
+          "type": "feature",
+          "disabled": true,
+          "settings": {
+            "title": "Raw Leather",
+            "image": "shopify:\/\/shop_images\/Sustainability_Mobile1_Leather_938x_7f5cb4e0-a169-48c8-ba8b-b38c56a8b934.jpg",
+            "description": "<p>Our leather comes from animal hides processed without chemicals in Leon, Mexico.<\/p>"
+          }
+        },
+        "785268b7-15d4-465b-bb20-dc79411b2c73": {
+          "type": "feature",
+          "settings": {
+            "title": "Natural Rubber",
+            "image": "shopify:\/\/shop_images\/Sustainability_Mobile1_Rubber_938x_5959214d-fd35-4392-b951-f1ef2122f7cf.jpg",
+            "description": "<p>Our elastic is made from natural rubber, tapped from the Rubber Tree in Kerala, India. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "5e749e5c-8031-4f16-8b20-0404370ff718",
+        "63ff6b2b-952f-4883-8b4d-aa61577b9401",
+        "e95ca0bc-c57e-468d-9c28-f11336709218",
+        "d1537ab6-21df-46dd-a1f0-fe55261cbab1",
+        "ec5ced78-e6b6-4ee6-b615-86d49200fcad",
+        "5f3e0699-f3bc-47bf-83c9-809a789b5511",
+        "785268b7-15d4-465b-bb20-dc79411b2c73"
+      ],
+      "settings": {
+        "variation": "all",
+        "title": "",
+        "subtitle": "",
+        "cell_count": 4,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "padding_top_m": 0,
+        "padding_bottom_m": 36,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "padding_top_d": 0,
+        "padding_bottom_d": 48,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "15c8f3e73166431921": {
+      "type": "lp-banner-split",
+      "blocks": {
+        "76c196f0-bbaf-4b00-a115-ba9c8293ddb9": {
+          "type": "svg",
+          "settings": {
+            "visibility": "desktop",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/collection-lockup-cham-pants.svg?v=1664322124",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "c0399bc5-c60f-4194-a664-3959a85a450b": {
+          "type": "button",
+          "settings": {
+            "visibility": "desktop",
+            "button_text": "Shop Cham Pants",
+            "button_url": "shopify:\/\/collections\/cham-pants",
+            "button_style": "button--primary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "acc78319-d1ba-49f1-8406-2e118e7db674": {
+          "type": "svg",
+          "settings": {
+            "visibility": "mobile",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/collection-lockup-cham-pants-m.svg?v=1664322382",
+            "width_m": "90%",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "bb7b6ff1-db82-4f37-b847-54f454acc998": {
+          "type": "button",
+          "settings": {
+            "visibility": "mobile",
+            "button_text": "Shop Cham Pants",
+            "button_url": "shopify:\/\/collections\/cham-pants",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 40,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        }
+      },
+      "block_order": [
+        "76c196f0-bbaf-4b00-a115-ba9c8293ddb9",
+        "c0399bc5-c60f-4194-a664-3959a85a450b",
+        "acc78319-d1ba-49f1-8406-2e118e7db674",
+        "bb7b6ff1-db82-4f37-b847-54f454acc998"
+      ],
+      "settings": {
+        "title": "The Cham Pants",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "marquee": false,
+        "marquee_padding": 40,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/lines_champants_02.jpg",
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#f6f5f1",
+        "image_desktop": "shopify:\/\/shop_images\/lines_champants_02.jpg",
+        "video_desktop_url": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "16643257307f866920": {
+      "type": "lp-banner-split",
+      "disabled": true,
+      "blocks": {
+        "141f6b29-aa0e-4d19-bc2e-19ff7982f19c": {
+          "type": "svg",
+          "settings": {
+            "visibility": "desktop",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/collection-lockup-kite-jackets.svg?v=1664322124",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "3aa0453d-ec71-4ba9-a14c-fbd4a5037a04": {
+          "type": "button",
+          "settings": {
+            "visibility": "desktop",
+            "button_text": "Shop Kite Jackets",
+            "button_url": "shopify:\/\/collections\/kite-jackets",
+            "button_style": "button--primary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 48,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "4746bf07-2569-42e6-b336-6d231ff7fb36": {
+          "type": "svg",
+          "settings": {
+            "visibility": "mobile",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/collection-lockup-kite-jackets-m.svg?v=1664322382",
+            "width_m": "90%",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        },
+        "645aac0e-7dc1-4915-a5e0-4e6c9a078b63": {
+          "type": "button",
+          "settings": {
+            "visibility": "mobile",
+            "button_text": "Shop Kite Jackets",
+            "button_url": "shopify:\/\/collections\/kite-jackets",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 40,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0
+          }
+        }
+      },
+      "block_order": [
+        "141f6b29-aa0e-4d19-bc2e-19ff7982f19c",
+        "3aa0453d-ec71-4ba9-a14c-fbd4a5037a04",
+        "4746bf07-2569-42e6-b336-6d231ff7fb36",
+        "645aac0e-7dc1-4915-a5e0-4e6c9a078b63"
+      ],
+      "settings": {
+        "title": "The Kite Jacket",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "marquee": false,
+        "marquee_padding": 40,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/kite-m2_226bcdc9-52e4-4276-9dcb-66f9490fac54.jpg",
+        "background_color_mobile": "#f6f5f1",
+        "video_mobile_url": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#f6f5f1",
+        "image_desktop": "shopify:\/\/shop_images\/kite-d2.jpg",
+        "video_desktop_url": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "16639619747de36fa1": {
+      "type": "lp-instagram",
+      "disabled": true,
+      "settings": {
+        "variation": "all",
+        "title": "#feelbreezy",
+        "subtitle": "@alexcrane",
+        "cell_count": 4,
+        "image": "shopify:\/\/shop_images\/ig-header.jpg",
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "padding_top_m": 36,
+        "padding_bottom_m": 24,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "padding_top_d": 48,
+        "padding_bottom_d": 36,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "1662761727814846b2": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "544838ad-dd83-42c8-9180-0501e45f02e7": {
+          "type": "text",
+          "settings": {
+            "visibility": "both",
+            "title": "<p>#feelbreezy<\/p>",
+            "text_style": "h1",
+            "alignment": "center",
+            "color": "#ffffff",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "4706f7d3-bf87-4eb5-97e2-d1acbb1c0c56": {
+          "type": "button",
+          "settings": {
+            "visibility": "both",
+            "button_text": "Shop Our Bestsellers",
+            "button_url": "#shopify-section-template--14930659377241__166276277352896d08",
+            "button_style": "button--secondary",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 24,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 24,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "544838ad-dd83-42c8-9180-0501e45f02e7",
+        "4706f7d3-bf87-4eb5-97e2-d1acbb1c0c56"
+      ],
+      "settings": {
+        "title": "feelbreezy",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/footer-m1.jpg",
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "flex-start",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify:\/\/shop_images\/footer-d1.jpg",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 64,
+        "inner_padding_right_d": 64
+      }
+    },
+    "166275157920ac6fab": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "627f752c-3113-4760-9ef0-198f77ea7927": {
+          "type": "svg",
+          "settings": {
+            "visibility": "both",
+            "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/1892\/3609\/files\/lp-footer-01.svg?v=1662751539",
+            "width_m": "300px",
+            "min_width_m": "",
+            "max_width_m": "100%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "350px",
+            "min_width_d": "",
+            "max_width_d": "100%",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 36,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "f0009189-f92b-4102-be83-88aba60fd13e": {
+          "type": "text",
+          "settings": {
+            "visibility": "both",
+            "title": "<p>© 2023 ALEX CRANE. All Rights Reserved.<\/p><p><a href=\"\/pages\/policies\" target=\"_blank\" title=\"Policies\">Privacy Policy<\/a><\/p>",
+            "text_style": "p",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "627f752c-3113-4760-9ef0-198f77ea7927",
+        "f0009189-f92b-4102-be83-88aba60fd13e"
+      ],
+      "settings": {
+        "title": "Footer",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 48,
+        "inner_padding_bottom_m": 36,
+        "inner_padding_left_m": 24,
+        "inner_padding_right_m": 24,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 60,
+        "inner_padding_bottom_d": 48,
+        "inner_padding_left_d": 24,
+        "inner_padding_right_d": 24
+      }
+    }
+  },
+  "order": [
+    "settings",
+    "166266950988187d24",
+    "166266523192c5ec88",
+    "cd721014-94a1-40d8-832c-0e581fb6dadf",
+    "166276277352896d08",
+    "16637120489d09ede0",
+    "16643192115c8f3e73",
+    "16638656271a5c6690",
+    "1664325721604fef48",
+    "15882af7-6889-4859-ae0f-4fa09dd43c07",
+    "166395597459e74b46",
+    "15c8f3e73166431921",
+    "16643257307f866920",
+    "16639619747de36fa1",
+    "1662761727814846b2",
+    "166275157920ac6fab"
+  ]
+}

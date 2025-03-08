@@ -1,0 +1,231 @@
+// Klaviyo Popup
+body>div>.klaviyo-form {
+    z-index: 9999999999999999999999 !important;
+}
+
+.kl_embed_signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 24px 0 24px;
+  font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+  
+  // Footer
+  .klaviyo-form-VuCrcC {
+    display: block;
+    position: relative;
+    //top: 50%;
+    //transform: translateY(-50%);
+    &.klaviyo-form {
+    	border-bottom: 1px solid #fff;
+    }
+    .lnviXl.lnviXl {
+        padding: 0 0 !important;
+    }
+    [data-testid="form-row"] {
+      [data-testid="form-component"]:last-child {
+        width: 80px !important;
+        color: #fff !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+        padding-bottom: 0 !important;
+        button[type=button] {
+          color: #fff !important;
+          position: relative;
+          top: unset;
+          right: unset;
+        }
+      }
+    }
+    input[type="email"] {
+      font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      color: #fff !important;
+      padding-left: 0 !important;
+      line-height: 1 !important;
+      text-transform: none !important;
+      font-size: 17.5px !important;
+      @media (max-width: 699px) {
+        font-size: 17.5px !important;
+      }
+    }
+    button[type="button"] {
+      outline: 0;
+      position: absolute;
+      top: 0;
+      display: inline-block;
+      right: 0;
+      padding: 0 0 10px !important;
+      text-align: right;
+      color: transparent  !important;
+      font-weight: 500;
+      background: transparent;
+      //background-image: url("//cdn.shopify.com/s/files/1/1892/3609/files/klaviyo-arrow.svg?v=16643784158") !important;
+      background-repeat: no-repeat !important;
+      background-size: contain !important;
+      border: none;
+      cursor: pointer;
+      opacity: 1;
+      text-align: right !important;
+      transition: opacity 0.35s ease-in-out;
+      font-size: 17.5px !important;
+      font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      letter-spacing:3.5px !important;
+      width: 80px  !important;
+      @media (max-width: 699px) {
+        width: 40px  !important;
+        padding: 3px !important;
+      }
+     }  
+    .FormComponent__StyledFormComponentWrapper-e0xun6-0 {
+      padding: 0 !important;
+    }
+    input[type="email"]::-webkit-input-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        text-transform: none !important;
+        @media (max-width: 699px) {
+            font-size: 17.5px !important;
+          }
+    }
+    input[type="email"]::-moz-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        text-transform: none !important;
+        @media (max-width: 699px) {
+            font-size: 17.5px !important;
+          }
+    }
+    input[type="email"]:-ms-input-placeholder { 
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        text-transform: none !important;
+        @media (max-width: 699px) {
+            font-size: 17.5px !important;
+          }
+    }
+    input[type="email"]:-moz-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        text-transform: none !important;
+        @media (max-width: 699px) {
+            font-size: 17.5px !important;
+          }
+    }
+    .FormComponent__StyledFormComponentWrapper-e0xun6-0.cdkokr {
+      em, p {
+        font-size: 18px;
+        line-height: 1.5;
+      	font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      	font-weight: 500;
+        color: #fff !important;
+      }
+    }
+  }
+  
+  // Popup
+  .klaviyo-form-J8cpqr {
+    display: block;
+    position: relative;
+    
+    form {
+    	margin: 20px auto 0 !important;
+    }
+    input[type="email"] {
+      font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      color: #000 !important;
+      padding-left: 0 !important;
+      line-height: 1 !important;
+      border-bottom: 1px solid #000 !important;
+	  padding-bottom: 10px;
+    }
+    button[type="button"] {
+      outline: 0;
+      position: absolute;
+      top: 0;
+      display: inline-block;
+      right: 0;
+      padding: 0 0 10px 10px !important;
+      text-align: right;
+      color: #000 !important;
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity 0.35s ease-in-out;
+      font-size: 1.25rem;
+      font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      letter-spacing:3.5px !important;
+      border-bottom: 1px solid #000 !important;
+     }  
+    .FormComponent__StyledFormComponentWrapper-e0xun6-0 {
+      padding: 0 !important;
+    }
+    input[type="email"]::-webkit-input-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        color: #000 !important;
+    }
+    input[type="email"]::-moz-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        color: #000 !important;
+    }
+    input[type="email"]:-ms-input-placeholder { 
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        color: #000 !important;
+    }
+    input[type="email"]:-moz-placeholder {
+        font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+        color: #000 !important;
+    }
+    .FormComponent__StyledFormComponentWrapper-e0xun6-0.cdkokr {
+      em, p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      	font-family: "CircularStd", "Helvetica Neue", Helvetica, Arial, sans-serif, sans-serif!important;
+      	font-weight: 500;
+      }
+    }
+  }  
+}
+
+#sms-signup .klaviyo-form-XwzMeM {
+    display: block !important;
+}
+
+.klaviyo-form-XwzMeM {
+    display: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    position: fixed !important;
+    z-index: 99999 !important;
+    height: 100vh !important;
+    width: 100%;
+}
+
+.klaviyo-form-XwzMeM .klaviyo-form {
+    height: 100vh !important;
+}
+
+.klaviyo-form-XwzMeM .klaviyo-form>div {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.klaviyo-form-XwzMeM {
+    top: 0 !important;
+    left: 0 !important;
+    position: fixed !important;
+    z-index: 99999 !important;
+    height: 100vh !important;
+    width: 100%;
+}
+
+.klaviyo-form-XwzMeM .klaviyo-form {
+    height: 100vh !important;
+    justify-content: center;
+}
+
+.klaviyo-form-XwzMeM .klaviyo-form>div {
+    max-width: 800px;
+    margin: 0 auto;
+}

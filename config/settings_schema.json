@@ -1,0 +1,185 @@
+[
+  {
+    "name": "GrapheneHC Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "graphenehc_enabled",
+        "label": "Enable GrapheneHC?",
+        "info": "Enable/disable the GrapheneHC integration.",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "graphenehc_js_url",
+        "label": "GrapheneHC JS Library URL",
+        "default": "https://domainkey-1.store.advancedcommerce.services/graphenehc.js"
+      },
+      {
+        "type": "checkbox",
+        "id": "graphenehc_autocomplete_enabled",
+        "label": "Autocomplete",
+        "info": "Enable/disable GrapheneHC autocomplete. This will replace the shopify suggest.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "graphenehc_search_enabled",
+        "label": "Search",
+        "info": "Enable/disable GrapheneHC search. This will replace shopify search.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "graphenehc_collections_enabled",
+        "label": "Collections",
+        "info": "When enabled, collection pages will be delivered and merchandised by GrapheneHC",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "graphenehc_product_enabled",
+        "label": "Product",
+        "info": "Merchandise the product detail page",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "graphenehc_home_enabled",
+        "label": "Home Page",
+        "info": "Merchandise the home page",
+        "default": true
+      }
+    ]
+  },  
+  {
+    "name": "theme_info",
+    "theme_name": "Alex Crane",
+    "theme_version": "1.5.1",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https:\/\/github.com\/lukeragno\/AlexCrane",
+    "theme_support_email": "theme-support@shopify.com"
+  },
+  {
+    "name": "Preview Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "social_preview_image",
+        "label": "Preview Image",
+        "info": "This image will be the default image to show up for shared links"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Enable sharing for blog articles",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_gift_wrapping",
+        "label": "Enable Gift Wrapping",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_page_enable",
+        "label": "Enable cart page",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

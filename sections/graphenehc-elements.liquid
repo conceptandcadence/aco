@@ -1,0 +1,81 @@
+{% comment %}
+  GrapheneHC setup for product recommendation for Shopify
+  This setup can be used anywhere on the website by setting it up on the Shopify theme customization.
+{% endcomment %}
+{% if settings.graphenehc_enabled  %}
+  {% if settings.graphenehc_home_enabled == false and template contains 'index'%}
+  {% elsif settings.graphenehc_product_enabled == false and template contains 'product' %}
+  {% else %}
+    <section id="shopify-section-template--{{ section.id }}" class="shopify-section section">
+        {{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+        {{ 'component-card.css' | asset_url | stylesheet_tag }}
+        {{ 'component-price.css' | asset_url | stylesheet_tag }}
+      
+        {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+        {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+        <style data-shopify="">
+            .section-template--{{ section.id }}-padding {
+              padding-top: 27px;
+              padding-bottom: 21px;
+            }
+        
+            @media screen and (min-width: 750px) {
+              .section-template--{{ section.id }}-padding {
+                padding-top: 36px;
+                padding-bottom: 28px;
+              }
+            }
+        </style>
+  
+        <div class="color-background-1 gradient no-js-hidden">
+            <product-recommendations class="related-products page-width section-template--{{ section.id }}-padding isolate scroll-trigger animate--slide-in product-recommendations--loaded">
+        
+              <div class="acs_{{ section.settings.recs_type }}"></div>
+              
+              <script>
+                graphenehc.load({
+                    elements        : [{id: "{{ section.settings.recs_type }}", target: ".acs_{{ section.settings.recs_type }}" }],
+                    page_context    : { currency_id: window.Shopify.currency.active },
+                    success         : function (response) {
+                      document.querySelectorAll(".acs_color_palette span").forEach((item) => {
+                          if (!item.hasAttribute("data-init")) {
+                            item.addEventListener("click", (e) => {
+                                let prod    = item.dataset.product;
+                                let media   = item.dataset.media;
+                                if (media) {
+                                    document.querySelector(`img.media-${prod}`).src = media;
+                                    document.querySelector(`img.media-${prod}`).srcset = "";
+                                }
+                            });
+                            item.setAttribute("data-init", true);
+                          }
+                      });
+                    }
+                });
+              </script>
+        
+            </product-recommendations>
+        </div>
+    </section>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+    "name": "GrapheneHC Elements",
+    "settings": [
+        {
+            "type": "text",
+            "id": "recs_type",
+            "label": "Graphene Element ID",
+            "info": "Enter graphene element template id. Ex: 'you_may_also_like'",
+            "default": "you_may_also_like"
+        }
+    ], 
+    "presets": [
+        {
+            "name": "GrapheneHC Elements"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,229 @@
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+  <div class="lp-headline" style="background-color: {{ section.settings.background }}"> 
+    {% if section.settings.subtitle != blank %}
+      <h4 class="lp-headline-subtitle">{{ section.settings.subtitle }}</h2>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="lp-headline-title">{{ section.settings.title }}</h2>
+    {% endif %}
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} .lp-headline__title, #shopify-section-{{ section.id }} .lp-headline__price, #shopify-section-{{ section.id }} .lp-headline__variant-title {
+        color: {{ section.settings.text_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .lp-headline__features {
+        background-color: {{ section.settings.background }} !important;
+    }
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+    }
+  </style>
+</section> 
+
+<style>
+.lp-headline {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.lp-headline .lp-headline-subtitle {
+	font-size: 14px;
+	font-weight: 500;
+	margin: 0 auto;
+	padding-bottom: 16px;
+}
+
+@media (min-width: 700px) {
+	.lp-headline .lp-headline-subtitle {
+		font-size: 20px;
+		padding-bottom: 24px;
+	}
+}
+
+.lp-headline .lp-headline-title {
+	font-size: 32px;
+	font-weight: 500;
+	margin: 0 auto;
+	text-align: center;
+}
+
+@media (min-width: 700px) {
+	.lp-headline .lp-headline-title {
+		font-size: 36px;
+	}
+}
+</style>
+
+
+{% schema %}
+{
+  "name": "LP Headline",
+  "class": "c-lp-headline lp-section",      
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed above the features."
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed above the features."
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Desktop Spacing"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [],
+  "presets": [
+  {
+    "name": "LP Headline",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

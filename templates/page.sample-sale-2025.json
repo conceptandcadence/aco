@@ -1,0 +1,666 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.welcome",
+  "wrapper": "div.welcome-page",
+  "sections": {
+    "settings": {
+      "type": "lp-settings",
+      "disabled": true,
+      "settings": {
+        "variation": "3",
+        "display": true
+      }
+    },
+    "166266523192c5ec88": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "ffa347e1-32d3-467b-9cdb-fdaca52ec16f": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify://shop_images/samplesale.caps.white.svg",
+            "link": "",
+            "width_m": "80%",
+            "min_width_m": "",
+            "max_width_m": "150px",
+            "height_m": "auto",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 16,
+            "padding_bottom_m": 16,
+            "padding_left_m": 12,
+            "padding_right_m": 0,
+            "width_d": "80%",
+            "min_width_d": "",
+            "max_width_d": "200px",
+            "height_d": "auto",
+            "min_height_d": "",
+            "max_height_d": "100px",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "ffa347e1-32d3-467b-9cdb-fdaca52ec16f"
+      ],
+      "settings": {
+        "title": "Sample Sale",
+        "variation": "0",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "image_mobile": "shopify://shop_images/h.m.3.jpg",
+        "background_color_mobile": "#ffffff",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 20,
+        "inner_padding_right_m": 20,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify://shop_images/h.w.3.jpg",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 64,
+        "inner_padding_bottom_d": 64,
+        "inner_padding_left_d": 20,
+        "inner_padding_right_d": 20
+      }
+    },
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957": {
+      "type": "plp-navigation",
+      "settings": {
+        "fabric_title": "",
+        "size_title": "",
+        "color_title": ""
+      }
+    },
+    "44f21b42-4aca-47b6-8497-1db3280fdc71": {
+      "type": "welcome-products",
+      "blocks": {
+        "look_p6EHYR": {
+          "type": "look",
+          "settings": {
+            "title": "AlexsPicks",
+            "product_1": "sample-canvas-cham-pants-moss",
+            "product_2": "sample-campo-sweater-tank",
+            "product_3": "sample-park-shirt-jacket-tank",
+            "product_4": "bo-shorts-icehouse-bone",
+            "product_5": "sample-bo-shorts-pine",
+            "product_6": "sample-canvas-kite-jacket-ink"
+          }
+        },
+        "look_4C7jLE": {
+          "type": "look",
+          "settings": {
+            "title": "TeamPicks",
+            "product_1": "sample-canvas-cham-pants-ink",
+            "product_2": "sample-canvas-kite-jacket-ink",
+            "product_3": "sample-bo-shorts-pine",
+            "product_4": "bo-shorts-icehouse",
+            "product_5": "campo-sweater-storm",
+            "product_6": "campo-sweater-chai"
+          }
+        },
+        "look_iPqqPF": {
+          "type": "look",
+          "settings": {
+            "title": "ShopLink_SampleSale",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_X9qAwH": {
+          "type": "look",
+          "settings": {
+            "title": "BFCM Email Sets",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_EtJCeG": {
+          "type": "look",
+          "settings": {
+            "title": "VIP_EARLYBIRD_1115",
+            "hero_mobile": "shopify://shop_images/BFCM_2024_Header_Mobile.jpg",
+            "hero_desktop": "shopify://shop_images/BFCM_2024_Header_Web.jpg",
+            "title_graphic": "shopify://shop_images/BFCM_2024_Header_Copy.svg",
+            "product_1": "campo-sweater-pine",
+            "product_2": "campo-sweater-waterfall",
+            "product_3": "anchor-polo-bone",
+            "product_4": "cloud-flannel-honey-lines",
+            "product_5": "knit-kite-jacket-bone",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_Hajeca": {
+          "type": "look",
+          "settings": {
+            "title": "INACTIVE",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_4jCTdx": {
+          "type": "look",
+          "settings": {
+            "title": "dont-use",
+            "hero_mobile": "shopify://shop_images/BO2-MOBILE.jpg",
+            "hero_desktop": "shopify://shop_images/BO1-WEB.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_3BLACK_FRIDAY2.svg",
+            "product_1": "cloud-flannel-indigo-lines",
+            "product_2": "bay-sweater-ink",
+            "product_3": "park-shirt-jacket-ink",
+            "product_4": "cloud-flannel-honey-lines",
+            "product_5": "cham-pants-onyx",
+            "product_6": "sun-tee-bone"
+          }
+        },
+        "look_7eJX9g": {
+          "type": "look",
+          "settings": {
+            "title": "anchor-polo-pine",
+            "hero_mobile": "shopify://shop_images/Anchor-Polo-Pine-Mobile.jpg",
+            "hero_desktop": "shopify://shop_images/Anchor-Polo-Pine-Desktop.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "anchor-polo-pine",
+            "product_2": "anchor-polo-bone",
+            "product_3": "cham-pants-onyx",
+            "product_4": "cotton-knit-kite-jacket",
+            "product_5": "bay-sweater-ink",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_ddCUQL": {
+          "type": "look",
+          "settings": {
+            "title": "campo-sweater-indigo-lines",
+            "hero_mobile": "shopify://shop_images/campo-sweater-indigo-lines-16x9.jpg",
+            "hero_desktop": "shopify://shop_images/campo-sweater-indigo-lines-wide.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-sweater-indigo-lines",
+            "product_2": "anchor-polo-bone",
+            "product_3": "cham-pants-onyx",
+            "product_4": "bay-sweater-pine",
+            "product_5": "bay-sweater-ink",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_VbdGfQ": {
+          "type": "look",
+          "settings": {
+            "title": "layering-tips",
+            "hero_mobile": "shopify://shop_images/caza-hoodie-cream.jpg",
+            "hero_desktop": "shopify://shop_images/caza-hoodie-cream.jpg",
+            "product_1": "caza-hoodie-cream",
+            "product_2": "denim-kite-jacket-indigo-lines",
+            "product_3": "campo-sweater-indigo",
+            "product_4": "denim-cham-pants-indigo-lines",
+            "product_5": "sun-tee-bone",
+            "product_6": "bay-sweater-pine"
+          }
+        },
+        "look_Abp3we": {
+          "type": "look",
+          "settings": {
+            "title": "mixed-denim",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "denim-kite-jacket",
+            "product_2": "denim-cham-pants-ocean",
+            "product_3": "bay-sweater-pine",
+            "product_4": "denim-kite-jacket-indigo-lines",
+            "product_5": "denim-kite-jacket-ocean",
+            "product_6": "denim-cham-pants-indigo-lines"
+          }
+        },
+        "look_JfLKXW": {
+          "type": "look",
+          "settings": {
+            "title": "park-shirt-jacket-ink",
+            "hero_mobile": "shopify://shop_images/park-shirt-jacket-ink.jpg",
+            "hero_desktop": "shopify://shop_images/park-shirt-jacket-ink.jpg",
+            "product_1": "park-shirt-jacket-ink",
+            "product_2": "park-shirt-jacket-tank",
+            "product_3": "cham-pants-onyx",
+            "product_4": "bay-sweater-pine",
+            "product_5": "caza-crewneck-indigo",
+            "product_6": "knit-kite-jacket-lines"
+          }
+        },
+        "look_3fiBQ3": {
+          "type": "look",
+          "settings": {
+            "title": "anchor-polo-waterfall",
+            "hero_mobile": "shopify://shop_images/Anchor-Polo-Waterfall-Mobile.jpg",
+            "hero_desktop": "shopify://shop_images/Anchor-Polo-Waterfall-Desktop.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "anchor-polo-waterfall",
+            "product_2": "cotton-knit-kite-jacket",
+            "product_3": "cham-pants-onyx",
+            "product_4": "bay-sweater-pine",
+            "product_5": "bay-sweater-ink",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_yANfLD": {
+          "type": "look",
+          "settings": {
+            "title": "bay-sweater-bone",
+            "hero_mobile": "shopify://shop_images/homepagemobile_0f447c49-6c0d-48b8-9574-b108172385b0.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "bay-sweater-bone",
+            "product_2": "denim-kite-jacket-indigo-lines",
+            "product_3": "long-tee-night",
+            "product_4": "bay-sweater-pine",
+            "product_5": "caza-crewneck-cream",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_RdQg6x": {
+          "type": "look",
+          "settings": {
+            "title": "campo-sweater-bone",
+            "hero_mobile": "shopify://shop_images/CampoSweater_Bone1.jpg",
+            "hero_desktop": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-sweater-bone",
+            "product_2": "anchor-polo-bone",
+            "product_3": "cham-pants-onyx",
+            "product_4": "bay-sweater-pine",
+            "product_5": "bay-sweater-ink",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_EiCAX3": {
+          "type": "look",
+          "settings": {
+            "title": "campo-sweater-waterfall",
+            "hero_mobile": "shopify://shop_images/campo-sweater-waterfall-16x9.jpg",
+            "hero_desktop": "shopify://shop_images/campo-sweater-waterfall-wide.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-sweater-waterfall",
+            "product_2": "knit-kite-jacket-indigo",
+            "product_3": "knit-porto-shirt-wave",
+            "product_4": "denim-cham-pants",
+            "product_5": "campo-sweater-indigo-lines",
+            "product_6": "campo-sweater-bone"
+          }
+        },
+        "look_N7XJQT": {
+          "type": "look",
+          "settings": {
+            "title": "campo-hoodie-bone",
+            "hero_mobile": "shopify://shop_images/campo-hoodie-bone-16x9.jpg",
+            "hero_desktop": "shopify://shop_images/campo-hoodie-bone-wide.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-hoodie-bone",
+            "product_2": "campo-hoodie-indigo-lines",
+            "product_3": "caza-hoodie-indigo",
+            "product_4": "campo-sweater-waterfall",
+            "product_5": "knit-kite-jacket-lines",
+            "product_6": "campo-hoodie-waterfall"
+          }
+        },
+        "look_qrYHqr": {
+          "type": "look",
+          "settings": {
+            "title": "campo-hoodie-ink",
+            "hero_mobile": "shopify://shop_images/Campo-Hoodie-Ink-Mobile.jpg",
+            "hero_desktop": "shopify://shop_images/Campo-Hoodie-Ink-Mobile.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-hoodie-ink",
+            "product_2": "caza-crewneck-clay",
+            "product_3": "cham-pants-onyx",
+            "product_4": "bay-sweater-pine",
+            "product_5": "bay-sweater-ink",
+            "product_6": "denim-cham-pants"
+          }
+        },
+        "look_f94AeT": {
+          "type": "look",
+          "settings": {
+            "title": "campo-hoodie-pine",
+            "hero_mobile": "shopify://shop_images/campo-hoodie-pine-16x9.jpg",
+            "hero_desktop": "shopify://shop_images/campo-hoodie-pine-wide.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "campo-hoodie-pine",
+            "product_2": "campo-hoodie-indigo-lines",
+            "product_3": "caza-hoodie-cream",
+            "product_4": "campo-sweater-waterfall",
+            "product_5": "knit-kite-jacket-lines",
+            "product_6": "campo-hoodie-waterfall"
+          }
+        },
+        "look_xccTtB": {
+          "type": "look",
+          "settings": {
+            "title": "caza-hoodie-wave",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "caza-hoodie-wave",
+            "product_2": "caza-crewneck-indigo",
+            "product_3": "sun-tee-bone",
+            "product_4": "bay-sweater-pine",
+            "product_5": "bay-sweater-indigo",
+            "product_6": "caza-hoodie-cream"
+          }
+        },
+        "look_hHDRz7": {
+          "type": "look",
+          "settings": {
+            "title": "ls-sun-tee-night",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "long-tee-night",
+            "product_2": "long-sleeve-sun-tee-dusk",
+            "product_3": "caza-hoodie-wave",
+            "product_4": "bay-sweater-ink",
+            "product_5": "bay-sweater-pine",
+            "product_6": "denim-kite-jacket-ocean"
+          }
+        },
+        "look_YLj7t8": {
+          "type": "look",
+          "settings": {
+            "title": "ls-sun-tee-dusk",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "long-sleeve-sun-tee-dusk",
+            "product_2": "long-tee-night",
+            "product_3": "caza-hoodie-wave",
+            "product_4": "bay-sweater-ink",
+            "product_5": "bay-sweater-pine",
+            "product_6": "denim-kite-jacket-ocean"
+          }
+        },
+        "look_QfG8R7": {
+          "type": "look",
+          "settings": {
+            "title": "denim-kite",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "denim-kite-jacket",
+            "product_2": "denim-kite-jacket-indigo-lines",
+            "product_3": "bay-sweater-pine",
+            "product_4": "long-tee-night",
+            "product_5": "denim-kite-jacket-ocean",
+            "product_6": "caza-crewneck-wave"
+          }
+        },
+        "look_t4XKye": {
+          "type": "look",
+          "settings": {
+            "title": "denim-cham",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "denim-cham-pants",
+            "product_2": "denim-kite-jacket-indigo-lines",
+            "product_3": "bay-sweater-pine",
+            "product_4": "denim-cham-pants-indigo-lines",
+            "product_5": "denim-cham-pants-ocean",
+            "product_6": "caza-crewneck-wave"
+          }
+        },
+        "look_PLdhj6": {
+          "type": "look",
+          "settings": {
+            "title": "caza-hoodie-cream",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "caza-hoodie-cream",
+            "product_2": "caza-crewneck-indigo",
+            "product_3": "bay-sweater-pine",
+            "product_4": "sun-tee-bone",
+            "product_5": "bay-sweater-ink",
+            "product_6": "caza-hoodie-wave"
+          }
+        },
+        "look_FgfCQx": {
+          "type": "look",
+          "settings": {
+            "title": "caza-hoodie-indigo",
+            "hero_mobile": "shopify://shop_images/homepagemobile_dc71a7bd-1e6d-45ca-9e0a-63b478e58633.png",
+            "hero_desktop": "shopify://shop_images/homepageweb_9af2a73d-f1f9-4938-ab1d-f3d25b1e95f5.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_9newaugust_c36e705a-6418-4d9a-a46d-6debb8ee0f0a.svg",
+            "product_1": "caza-hoodie-indigo",
+            "product_2": "bay-sweater-bone",
+            "product_3": "long-tee-night",
+            "product_4": "caza-hoodie-wave",
+            "product_5": "caza-crewneck-indigo",
+            "product_6": "caza-hoodie-cream"
+          }
+        },
+        "look_8jYhNJ": {
+          "type": "look",
+          "settings": {
+            "title": "ls-sun-tee-lines",
+            "hero_mobile": "shopify://shop_images/homepagemobile_668d708c-6a92-4a4a-b7e5-21ed5249a327.jpg",
+            "hero_desktop": "shopify://shop_images/homepageweb_49871347-8c0a-4752-99a0-5cbdff4476f0.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_12NUEVO.svg",
+            "product_1": "long-tee-lines",
+            "product_2": "bo-pants-overdye-chai",
+            "product_3": "long-tee-bone",
+            "product_4": "bo-pants-lines",
+            "product_5": "long-tee-night",
+            "product_6": "cham-pants-chalk"
+          }
+        },
+        "look_K4xEPw": {
+          "type": "look",
+          "settings": {
+            "title": "ss2401",
+            "hero_mobile": "shopify://shop_images/welcome-header-mobile2.jpg",
+            "hero_desktop": "shopify://shop_images/welcome-header-desktop2.jpg",
+            "title_graphic": "shopify://shop_images/new_negroRecurso_20bestsellers.svg",
+            "product_1": "bo-pants-overdye-chai",
+            "product_2": "bo-pants-dusk",
+            "product_3": "sun-tee-moss",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_WmPpFY": {
+          "type": "look",
+          "settings": {
+            "title": "ss2402",
+            "product_1": "sun-tee-dusk",
+            "product_2": "sun-tee-lines",
+            "product_3": "knit-polo-bone",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "look_p6EHYR",
+        "look_4C7jLE",
+        "look_iPqqPF",
+        "look_X9qAwH",
+        "look_EtJCeG",
+        "look_Hajeca",
+        "look_4jCTdx",
+        "look_7eJX9g",
+        "look_ddCUQL",
+        "look_VbdGfQ",
+        "look_Abp3we",
+        "look_JfLKXW",
+        "look_3fiBQ3",
+        "look_yANfLD",
+        "look_RdQg6x",
+        "look_EiCAX3",
+        "look_N7XJQT",
+        "look_qrYHqr",
+        "look_f94AeT",
+        "look_xccTtB",
+        "look_hHDRz7",
+        "look_YLj7t8",
+        "look_QfG8R7",
+        "look_t4XKye",
+        "look_PLdhj6",
+        "look_FgfCQx",
+        "look_8jYhNJ",
+        "look_K4xEPw",
+        "look_WmPpFY"
+      ],
+      "settings": {
+        "product_count": 24,
+        "collection": "sample-sale",
+        "title": ""
+      }
+    },
+    "884105fb-1649-482f-be1b-eaacb3e9997b": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "549d2946-43e1-4c92-bb94-777f4f6066c9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "<p>Cannot be combined with other discounts.</p>",
+            "text_style": "h3",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": -12,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": -20,
+            "padding_bottom_d": -8,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "639db84d-6fd8-42de-a4ed-d31607448137": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify://shop_images/back-to-top.svg",
+            "link": "#shopify-section-template--14842026655833__16384769-bc5b-41ea-aa75-a2bbf64cf816",
+            "width_m": "90%",
+            "min_width_m": "",
+            "max_width_m": "450px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 28,
+            "padding_bottom_m": 28,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 24,
+            "padding_bottom_d": 24,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "549d2946-43e1-4c92-bb94-777f4f6066c9",
+        "639db84d-6fd8-42de-a4ed-d31607448137"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "padding_top_m": 36,
+        "padding_bottom_m": 48,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "padding_top_d": 36,
+        "padding_bottom_d": 48,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 16,
+        "inner_padding_bottom_d": 16,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    }
+  },
+  "order": [
+    "settings",
+    "166266523192c5ec88",
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957",
+    "44f21b42-4aca-47b6-8497-1db3280fdc71",
+    "884105fb-1649-482f-be1b-eaacb3e9997b"
+  ]
+}

@@ -1,0 +1,313 @@
+<section class="plp-products welcome-products" id="shop-container" data-collection-title="{{ section.settings.title }}" data-collection-index="{{ section.index0 }}">
+
+  {% if section.settings.title != blank %}
+  <div class="featured-products-banner">
+    <span class="featured-products-banner__text h3">
+      {{ section.settings.title }}
+    </span>
+  </div>
+{% endif %}
+  {% assign collection = collections[section.settings.collection] %}
+  
+      {% if collection.products.size > 0 %}
+        
+        {% assign prioritized_products = '' %}
+        {% for block in section.blocks %}
+          <section class="adset plp-products" data-id="{{ block.settings.title }}" {% if block.settings.hero_mobile != blank %}data-adset_hero_m="{{ block.settings.hero_mobile | img_url: 'x900' }}"{% endif %} {% if block.settings.hero_desktop != blank %}data-adset_hero_d="{{ block.settings.hero_desktop | img_url: 'x1200' }}"{% endif %} {% if block.settings.title_graphic != blank %}data-adset_title="{{ block.settings.title_graphic | img_url }}"{% endif %}>
+
+          {% if block.settings.product_1 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_1 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_1] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+
+          {% if block.settings.product_2 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_2 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_2] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+
+          {% if block.settings.product_3 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_3 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_3] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+
+          {% if block.settings.product_4 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_4 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_4] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+
+          {% if block.settings.product_5 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_5 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_5] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+
+          {% if block.settings.product_6 != blank %}
+            {% assign in_collection = false %}
+            {% for product in collection.products %}
+              {% if product.handle == block.settings.product_6 %}
+                {% include 'plp-item', product: product %}
+                {% assign in_collection = true %}
+              {% endif %}
+            {% endfor %}
+            {% if in_collection == false %}
+              {% assign product = all_products[block.settings.product_6] %}
+              {% include 'plp-item', product: product %}
+            {% endif %}
+            {% assign prioritized_products = prioritized_products | append: product.id | append: ', ' %}
+          {% endif %}
+          </section>
+        {% endfor %}
+        {% paginate collection.products by section.settings.product_count %} 
+          {% for product in collection.products %}
+            {% unless prioritized_products contains product.id %}
+              {% include 'plp-item' %}
+            {% endunless %}
+          {% endfor %}
+
+          {%- if paginate.pages > 1 -%}
+            <div class="plp-products__pagination">
+              {{ paginate | default_pagination: next: 'Next', previous: 'Previous' }}
+            </div>
+          {%- endif -%}
+          
+        {% endpaginate %}
+        
+      {% else %}
+        <div class="plp-products__no-matches">
+            <h2>Sorry</h2>
+            <p>{{ 'collections.general.no_matches' | t }}{% if current_tags != blank %} Please remove some filters and try again.{% endif %}</p>
+            {% assign gender = 'men' %}
+            {% for tag in current_tags %}
+                {% if tag contains 'women' %}
+                    {% assign gender = 'women' %}
+                {% endif %}
+            {% endfor %} 
+            <a href="/collections/{{ gender }}" class="button button--primary shop-all" style="font-size: 14px; margin-top: 12px; display: inline-block;">Shop All</a>
+        </div>
+        <style>
+            .plp-products { display: flex !important; flex-direction: column; justify-content: center; align-items: center; }
+            .shop-all.button.button--primary:before {
+                background-color: var(--color-blue-dark) !important;
+            }
+        </style>
+      {% endif %}
+
+
+
+  
+</section>
+
+{%- if shoppable_looks -%}
+<link rel="stylesheet" href="{{ 'plp-shoppable-look.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-shoppable-look.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-shoppable-look.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.0.2/rivets-cart.min.js" defer="defer"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.0.2/cart.min.js" defer="defer"></script>
+<script src="{{ 'infinite-scroll.pkgd.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'welcome-products.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .adset:not(.active) {
+    display: none !important;
+  }
+  .adset.active {
+    grid-column-end: span 2;
+    border-bottom: 0 !important;
+    margin: -1px !important;
+  }  
+  @media (min-width: 700px) {
+    .adset.active {
+      grid-column-end: span 3;
+    }
+  }
+
+@media (min-width: 700px) {
+    #shopify-section-template--16004355981401__166266523192c5ec88 .lp-banner-full__foreground {
+        padding-top: 0;
+    }
+}
+  
+</style>
+
+<script>
+  if (window?.location?.search) {
+    let params = new URLSearchParams(window.location.search);
+    let entries = params.entries();
+    params = Object.fromEntries(entries);
+    console.log(params);
+    if (params?.adset) {
+      let adset = document.querySelector(`.adset[data-id="${params?.adset}"]`);
+      adset.classList.add('active');
+      console.log(`Adset ${params?.adset} has been activated`);
+
+      adset.querySelectorAll(`.plp-item`).forEach((adsetProduct => {
+        document.querySelectorAll(`.welcome-products > .plp-item`).forEach((product => {
+          if (product.dataset.id === adsetProduct.dataset.id) {
+            product.remove();
+          }
+        }));
+      }));
+      console.log('adset', adset)
+
+      if (adset?.dataset?.adset_hero_m) {
+        console.log('adset_hero_m',document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.mobile'));
+        document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.mobile').srcset = '';
+        document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.mobile').src = adset?.dataset?.adset_hero_m;
+      }
+      if (adset?.dataset?.adset_hero_d) {
+        console.log('adset_hero_d',document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.desktop'));
+        document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.desktop').srcset = '';
+        document.querySelector('.c-lp-banner-full .lp-banner-full__background .banner-background.desktop').src = adset?.dataset?.adset_hero_d;
+      }
+      if (adset?.dataset?.adset_title) {
+        console.log('adset_title',document.querySelector('.c-lp-banner-full .lp-banner-full__foreground .banner-item.image'));
+        document.querySelector('.c-lp-banner-full .lp-banner-full__foreground .banner-item.image').src = adset?.dataset?.adset_title;
+      }
+    }
+  }
+</script>
+<style id="welcome-product-styles"></style>
+{% schema %}
+  {
+    "name": "Ad Sets",
+    "class": "product-listing featured-products",
+    "settings": [
+        {
+            "type": "range",
+            "id": "product_count",
+            "label": "Product Count",
+            "min": 6,
+            "max": 48,
+            "step": 1,
+            "unit": "cel",
+            "default": 18,
+            "info": "The number of products that will be initially loaded."
+        },
+        {
+            "type":"collection",
+            "id":"collection",
+            "label":"Collection"
+        },
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+        }
+    ],
+    "blocks":[
+        {
+        "type":"look",
+        "name":"Ad Set",
+        "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Handle"
+            },
+            {
+                    "type": "image_picker",
+                    "id": "hero_mobile",
+                    "label": "Hero Image Mobile"
+            },
+            {
+                    "type": "image_picker",
+                    "id": "hero_desktop",
+                    "label": "Hero Image Desktop"
+            },
+            {
+                    "type": "image_picker",
+                    "id": "title_graphic",
+                    "label": "Title Graphic"
+            },
+            {
+                "type":"product",
+                "id":"product_1",
+                "label":"Product 1"
+            },  
+            {
+                "type":"product",
+                "id":"product_2",
+                "label":"Product 2"
+            },  
+            {
+                "type":"product",
+                "id":"product_3",
+                "label":"Product 3"
+            },  
+            {
+                "type":"product",
+                "id":"product_4",
+                "label":"Product 4"
+            },  
+            {
+                "type":"product",
+                "id":"product_5",
+                "label":"Product 5"
+            },  
+            {
+                "type":"product",
+                "id":"product_6",
+                "label":"Product 6"
+            }, 
+          ]
+        }
+    ],
+      "presets": [
+      {
+        "name": "Ad Sets",
+        "category": "Collections"
+      }]
+  }
+{% endschema %}

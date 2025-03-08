@@ -1,0 +1,14 @@
+<script>
+  document.addEventListener('rebuy:smartcart.ready', function (event) {
+    Rebuy.libraries.$('.cart-link').click(function () {
+      Rebuy.SmartCart.show();
+    });
+  });
+</script>
+{% if localization.country.iso_code == 'CA' %}
+<style>
+  .rebuy-money:after {
+    content: ' {{ localization.country.currency.iso_code }}'
+  }
+</style>
+{% endif %}

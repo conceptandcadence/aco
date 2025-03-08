@@ -1,0 +1,463 @@
+{% capture reviews_blocks %}
+  {% for block in section.blocks %}
+    {% if block.settings.review != blank %}
+      <div class="lp-reviews-carousel__review" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+        <div class="lp-reviews-carousel__review-container">
+          <div class="lp-reviews-carousel__review-wrapper">
+
+            <div class="lp-reviews-review__info">
+              <div class="lp-reviews-review__rating">
+                {% assign count = 0 %}
+                {% for i in (1..block.settings.rating) %}<span>★</span>{% endfor %}
+              </div>
+              <h3 class="lp-reviews-carousel__headline"> 
+                &ldquo;{{ block.settings.review }}&rdquo;
+              </h3>
+            </div>
+
+            <div class="lp-reviews-carousel__details">
+              {% if block.settings.name %}
+                <div class="lp-reviews-carousel__detail detail-name">
+                  <svg viewBox="0 0 286 285">
+                    <title>Verified Purchase</title>
+                    <path
+                      d="M142 0C142.67 0 143.33 0 144 0C147.81 3.42 151.69 6.76 155.42 10.27C160.95 15.47 163.41 15.93 170.06 12.65C172.74 11.33 175.4 9.94 178.1 8.64C184.21 5.69 186.6 6.41 189.91 12.2C191.48 14.94 192.94 17.74 194.49 20.49C197.86 26.47 199.82 27.46 206.53 26.48C209.81 26 213.09 25.47 216.35 24.87C222.18 23.8 225.27 25.74 226.49 31.44C227.25 35.01 227.95 38.59 228.6 42.18C229.53 47.28 232.46 50.01 237.7 50.46C241.66 50.8 245.6 51.37 249.52 51.99C253.81 52.67 255.9 55.31 255.62 59.66C255.33 64.13 254.92 68.59 254.57 73.06C254.23 77.43 256.25 80.37 260.14 82.15C263.31 83.6 266.49 85.03 269.69 86.44C276.11 89.28 277.34 92.21 274.7 98.6C273.43 101.67 272.19 104.76 270.81 107.77C268.64 112.48 269.56 116.23 273.4 119.82C277.84 123.96 281.82 128.6 286 133.02V134.02C282.4 138.56 278.85 143.14 275.18 147.62C272.16 151.31 271.81 155.02 274.41 159.08C276.57 162.44 278.63 165.87 280.65 169.31C283.08 173.44 282.38 176.96 278.36 179.66C275.05 181.89 271.71 184.09 268.33 186.22C264.1 188.88 262.74 192.57 263.99 197.35C264.96 201.05 265.87 204.76 266.74 208.48C267.94 213.57 266.48 216.34 261.5 218C257.72 219.26 253.87 220.35 250.01 221.33C245.05 222.59 242.9 225.95 242.65 230.76C242.48 234.08 242.69 237.43 242.49 240.75C242.09 247.34 239.61 249.61 233.07 249.62C229.57 249.62 226.06 249.78 222.58 249.56C217.27 249.21 214.12 251.66 212.44 256.53C211.15 260.3 209.87 264.1 208.27 267.75C206.5 271.79 203.46 273.53 198.97 271.91C195.68 270.73 192.34 269.7 189.02 268.63C182.08 266.4 179.83 267.12 175.31 272.99C173.28 275.63 171.35 278.35 169.24 280.92C165.71 285.2 163.08 285.62 158.5 282.59C155.31 280.48 152.25 278.17 149.16 275.91C145.03 272.91 140.97 272.72 136.79 275.91C133.75 278.24 130.61 280.43 127.44 282.59C123.11 285.54 120.47 285.24 117.07 281.21C114.5 278.16 112.11 274.94 109.76 271.71C106.79 267.65 102.91 266.71 98.3 268.16C94.65 269.31 91.05 270.61 87.4 271.75C82.31 273.34 79.5 272.13 77.47 267.25C75.94 263.57 74.69 259.77 73.32 256.02C71.71 251.61 68.79 249.27 63.87 249.54C59.88 249.76 55.87 249.47 51.88 249.65C47.19 249.86 44.56 247.56 43.94 243.17C43.45 239.73 43.52 236.21 43.43 232.73C43.23 225.19 41.38 222.79 34.04 220.73C30.84 219.83 27.6 219.05 24.46 217.99C19.46 216.3 18.04 213.6 19.24 208.48C19.96 205.41 20.71 202.34 21.47 199.27C23.43 191.39 22.65 189.44 15.96 185.2C13.01 183.33 10.08 181.41 7.24 179.37C3.74 176.86 2.93 173.58 5.09 169.78C6.82 166.74 8.63 163.75 10.49 160.8C14.56 154.32 14.43 152.2 9.56 146.1C6.36 142.11 3.19 138.06 0 134.03C0 133.36 0 132.7 0 132.03C4.26 127.88 8.39 123.6 12.8 119.62C16.57 116.22 17.27 112.49 15.27 107.97C13.73 104.47 12.23 100.95 10.88 97.38C8.99 92.38 10.11 89.57 14.87 87.25C18.3 85.57 21.77 83.93 25.29 82.45C29.68 80.6 31.73 77.38 31.41 72.68C31.11 68.21 30.69 63.74 30.35 59.28C30.06 55.53 31.9 53.14 35.44 52.39C39.48 51.54 43.6 50.97 47.71 50.51C53.84 49.81 56.15 47.84 57.42 41.75C58.16 38.17 58.78 34.57 59.59 31.01C60.76 25.87 63.97 23.77 69.11 24.66C72.87 25.31 76.66 25.85 80.36 26.72C85.19 27.85 88.43 25.85 90.76 21.89C92.7 18.59 94.43 15.18 96.35 11.87C99.25 6.86 102.76 5.87 108.02 8.55C110.69 9.91 113.28 11.42 115.95 12.76C122.39 15.99 125.06 15.51 130.2 10.67C134.05 7.04 138.06 3.57 142 0.02V0ZM134.74 163.77C122.31 152.66 110.55 142.11 98.75 131.61C92.66 126.2 85.27 126.21 80.61 131.53C75.87 136.95 76.67 144.15 82.73 149.61C99.32 164.53 116.01 179.32 132.49 194.35C135.35 196.96 136.92 196.56 139.35 193.98C150.52 182.09 161.87 170.37 173.14 158.57C187.51 143.52 201.86 128.45 216.23 113.4C219.33 110.16 221.63 106.62 220.88 101.86C220.11 96.98 217.38 93.53 212.7 92.07C207.65 90.5 203.19 91.98 199.54 95.81C187.71 108.22 175.88 120.64 164.05 133.05C154.42 143.15 144.78 153.24 134.73 163.77H134.74Z"
+                      fill="#1B3448" />
+                  </svg>
+                  <span>{{ block.settings.name }}</span>
+                </div>
+              {% endif %}
+              {% if block.settings.size_usual %}
+                <div class="lp-reviews-carousel__detail detail-usual-size">
+                  <span class="detail-label">Usual Size: &nbsp;</span>
+                  <span class="detail-value">{{ block.settings.size_usual }}</span>
+                </div>
+              {% endif %}
+              {% if block.settings.size_purchased %}
+                <div class="lp-reviews-carousel__detail detail-size-purchased">
+                  <span class="detail-label">Purchased Size: &nbsp;</span>
+                  <span class="detail-value">{{ block.settings.size_purchased }}</span>
+                </div>
+              {% endif %}
+              {% if block.settings.height %}
+                <div class="lp-reviews-carousel__detail detail-height">
+                  <span class="detail-label">Height: &nbsp;</span>
+                  <span class="detail-value">{{ block.settings.height }}</span>
+                </div>
+              {% endif %}
+              {% if all_products[block.settings.product].title %}
+                <a class="lp-reviews-carousel__detail detail-product"
+                  href="{{ all_products[block.settings.product].url }}">
+                  {%- assign img_url  = all_products[block.settings.product].featured_image | img_url: '64x64' -%}
+                  <span class="detail-label">
+                    <img class="detail-product-image lazyload-img " loading="lazy"
+                      src="{{ img_url }}" data-src="{{ img_url }}">
+                    <noscript>
+                      <img class="detail-product-image"
+                        src="{{ block.settings.product.featured_image | img_url: '64x64' }}"
+                        alt="{{ block.settings.title | escape }}">
+                    </noscript>
+                  </span>
+                  <span class="detail-value">{{ all_products[block.settings.product].title }}</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+  <div class="lp-reviews-carousel" style="background-color: {{ section.settings.background }}"> 
+    {% if section.settings.subtitle != blank %}
+      <h4 class="lp-reviews-carousel__section-subtitle">{{ section.settings.subtitle }}</h2>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="lp-reviews-carousel__section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    <div class="lp-reviews-carousel__reviews{% if section.blocks.size <= section.settings.cell_count %} disabled-on-desktop{% endif %}{% if section.settings.show_images %} show-images{% endif %}" data-cell-count="{{ section.settings.cell_count }}">
+      {{ reviews_blocks }}
+      {{ reviews_blocks }}
+    </div>
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} .lp-reviews-carousel__reviews { border-top: solid 1px var(--color-blue-dark) }
+    #shopify-section-{{ section.id }} .lp-reviews-carousel__headline p { font-size: {{ section.settings.font_m }}px; }
+    #shopify-section-{{ section.id }} .lp-reviews-carousel__title, #shopify-section-{{ section.id }} .lp-reviews-carousel__price, #shopify-section-{{ section.id }} .lp-reviews-carousel__variant-title {
+        color: {{ section.settings.text_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .lp-reviews-carousel__reviews {
+        background-color: {{ section.settings.background }} !important;
+    }
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-reviews-carousel__reviews {
+            padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} .lp-reviews-carousel__headline p { font-size: {{ section.settings.font_d }}px; }
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-reviews-carousel__reviews {
+            padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+        }
+    }
+  </style>
+</section> 
+
+<script src="{{ 'lp-reviews-carousel.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'lp-reviews-carousel.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'lp-reviews-carousel.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+{% schema %}
+{
+  "name": "LP Reviews",
+  "class": "c-lp-reviews-carousel lp-section",      
+  "max_blocks": 6,
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed above the reviews."
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed above the reviews."
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+
+    },
+    {
+        "type": "checkbox",
+        "id": "show_images",
+        "label": "Use images next to the reviews",
+        "default": false
+    },      
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+        {
+        "type": "range",
+        "id": "font_m",
+        "label": "Mobile Font Size",
+        "min": 12,
+        "max": 36,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+        },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+        {
+        "type": "range",
+        "id": "font_d",
+        "label": "Desktop Font Size",
+        "min": 12,
+        "max": 36,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+        },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "unit": "★",
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "review",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name"
+        },
+        {
+          "type": "text",
+          "id": "size_usual",
+          "label": "Usual Size"
+        },
+        {
+          "type": "text",
+          "id": "size_purchased",
+          "label": "Purchased Size"
+        },
+        {
+          "type": "text",
+          "id": "height",
+          "label": "Height"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Reviews",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

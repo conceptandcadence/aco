@@ -1,0 +1,89 @@
+.c-lp-instagram-carousel {
+  .lp-instagram-carousel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .lp-instagram-carousel__section-titles {
+          padding-bottom: 16px;
+          text-align: center;
+          @media (min-width: 700px) {
+          padding-bottom: 24px;
+          }
+      }
+      .lp-instagram-carousel__section-image {
+        width: 100%;
+        max-width: 160px;
+        margin-bottom: 24px;
+      }
+      .lp-instagram-carousel__section-subtitle {
+          font-size: 14px;
+          font-weight: 500;
+          margin: 0 auto;
+          @media (min-width: 700px) {
+              font-size: 20px;
+          }
+      }
+      .lp-instagram-carousel__section-title {
+          font-size: 32px;
+          font-weight: 500;
+          margin: 0 auto;
+          text-align: center;
+          padding-bottom: 16px;
+          @media (min-width: 700px) {
+              font-size: 36px;
+              padding-bottom: 24px;
+          }
+      }
+    #instagram-viewport {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      margin: 0;
+      outline: 0;
+      #instafeed { 
+        position: relative;
+        padding: 0;
+        margin: 0;
+        top: 0px;
+        display: block;
+        width: 100%;
+        outline: 0
+      }
+    #insta-feed {
+      position: relative;
+      display: block;
+      width: 100%;
+      text-align: center;
+      transition: opacity 0.25s ease-in-out;
+      margin: 0 auto 0;
+      a {
+          display: inline-flex;
+          flex-direction: column;
+          position: relative;
+          align-items: center;
+          justify-content: center;
+          padding: 0 18px;
+          @media (max-width: 699px) {
+              width: 80% !important;
+          }
+          @media (min-width: 700px) and (max-width: 899px) {
+              width: 50% !important;
+          }
+          .instafeed-container {
+            width: 100% !important;
+            padding-bottom: 100% !important;
+            img {
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

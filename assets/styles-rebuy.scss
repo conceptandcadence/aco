@@ -1,0 +1,569 @@
+.rebuy-cart__flyout-promo-bar-message {
+        span {
+            display: block;
+            &:first-child {
+                font-weight: 500;
+            }
+        }
+}
+.rebuy-cart__flyout {
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+@media (max-width: 560px) {
+  .rebuy-cart__flyout {
+      max-width: calc(100% - 64px) !important;
+      left: unset !important;
+      right: -100% !important;
+      top: 0 !important;
+      transition: right 0.25s ease-in-out;
+  }
+  .is-visible .rebuy-cart__flyout {
+      right: 0 !important;
+      left: unset !important;
+      top: 0 !important;
+  }
+}
+button.rebuy-button {
+    background-color: #1b3448 !important;
+}
+.rebuy-cart__flyout-item-variant-title {
+    color: #000;
+    margin-top: 4px;
+}
+.rebuy-cart__flyout-empty-cart a {
+  background-color: #1b3448 !important;
+  text-decoration: none;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.rebuy-cart__flyout-item-product-title {
+  text-decoration: none !important;
+}
+.rebuy-cart__flyout-item-discount-message, .rebuy-cart__flyout-item-price {
+    font-size: 14px !important;
+}
+.rebuy-cart__flyout-item.product-holiday-gift-bag {
+    .rebuy-cart__flyout-item-quantity-widget {
+        display: none !important;
+    }
+    .rebuy-cart__flyout-item-price:after {
+        content: 'For your entire order';
+        font-size: 12px;
+        display: inline-block;
+        transform: translateY(5px);
+    }
+}
+.rebuy-cart__flyout-giftwrapping {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    &.active {
+        display: flex;
+    }
+    .rebuy-cart__flyout-giftwrapping-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: solid 2px var(--color-blue-bright);
+        border-radius: 0;
+        padding: 10px;
+        color: var(--color-blue-bright);
+        text-decoration: none;
+        width: 100%;
+        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+        &:hover {
+            @media not all and (hover: none) {
+                background-color: var(--color-blue-bright);
+                color: #fff;
+            }
+        }
+        img {
+          overflow: hidden;
+          border-radius: 40px;
+        }
+        .giftwrapping-title {
+          display: flex;
+          align-items: center;
+          span {
+            padding-left: 8px;
+          }
+        }
+    }
+}
+.rebuy-widget-content .description {
+    margin-bottom: -6px !important;
+}
+.rebuy-widget-content .primary-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 18px;
+    margin: 0 !important;
+    border: solid 1px var(--color-blue-dark);
+    border-top: 0;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('https://cdn.shopify.com/s/files/1/1892/3609/files/Paper_04b.jpg?v=1674957278');  
+}
+.rebuy-cart__flyout {
+    .rebuy-cart__flyout-shipping-bar {
+        padding: 12px 18px;
+        transition: background-color 0.25s ease-in-out;
+        background-color: #fff;
+        border-top: solid 1px var(--color-blue-dark);
+        .rebuy-cart__flyout-shipping-bar-meter-fill {
+            background-color: #006aff;
+        }
+        &.has-free-shipping {
+            background-color: var(--color-blue-bright);
+    
+            .rebuy-cart__flyout-shipping-bar-message {
+                color: #fff;
+            }
+    
+            .rebuy-cart__flyout-shipping-bar-meter {
+                display: none;
+            }
+        }
+        .rebuy-cart__flyout-shipping-bar-message {
+            font-size: 12px;
+            @media (max-width: 699px) {
+                text-align: left;
+            }
+            @media (min-width: 700px) {
+                font-size: 14px;
+            }
+        }
+    }
+    .rebuy-cart__flyout-promo-bar + .rebuy-cart__flyout-shipping-bar {
+        display: none !important;
+    }
+    .rebuy-cart__flyout-promo-bar {
+        margin: 0;
+        padding: 12px;
+        transition: background-color 0.25s ease-in-out;
+        background-color: #fafafa;
+        .rebuy-cart__flyout-promo-bar-message {
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            line-height: 20px;
+            text-align: center;
+            p {
+                margin: 0;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+        .rebuy-cart__flyout-promo-bar-meter {
+            position: relative;
+            margin: 10px 0 0 0;
+            padding: 0;
+            width: 100%;
+            height: 10px;
+            border-radius: 10px;
+            background-color: rgba(0,0,0,0.125);
+            background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.125) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.125) 50%, rgba(0, 0, 0, 0.125) 75%, transparent 75%, transparent);
+            background-size: 40px 40px;
+            -webkit-animation: progress-bar-stripes 2s linear infinite;
+            -moz-animation: progress-bar-stripes 2s linear infinite;
+            animation: progress-bar-stripes 2s linear infinite;
+            .rebuy-cart__flyout-promo-bar-meter-fill {
+                color: #ffffff;
+                background-color: #1b3448;
+                height: 100%;
+                width: 10px;
+                border-radius: 12px;
+                transition: color 0.35s ease-in-out, width 0.35s ease-in-out;
+            }
+        }
+    }
+    .rebuy-cart__flyout-items {
+        border: solid 1px var(--color-blue-dark);
+        .rebuy-cart__flyout-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: nowrap;
+            padding: 0;
+            margin: 0;
+            &:not(:last-child) {
+                border-bottom: solid 1px var(--color-blue-dark);
+            }
+            .rebuy-cart__flyout-item-media {
+                width: 70px;
+                border-right: solid 1px var(--color-blue-dark);
+                @media (min-width: 700px) {
+                    width: 90px;
+                }
+            }
+            .rebuy-cart__flyout-item-info {
+                padding: 12px;
+                @media (min-width: 700px) {
+                    padding: 16px;
+                }
+                .rebuy-cart__flyout-item-product-title {
+                    font-size: 12px;
+                    font-weight: 500;
+                    @media (min-width: 700px) {
+                        font-size: 14px;
+                    }
+                }
+                .rebuy-cart__flyout-item-price {
+                    text-align: left;
+                    font-size: 12px;
+                    @media (min-width: 700px) {
+                        font-size: 14px;
+                    }
+                    .rebuy-money {
+                        color: var(--color-black);
+                        font-size: 12px;
+                        @media (min-width: 700px) {
+                            font-size: 14px;
+                        }
+                    }
+                }
+                .rebuy-cart__flyout-item-remove {
+                    top: unset;
+                    bottom: 10px;
+                    right: 12px;
+                    color: var(--color-grey-medium);
+                }
+            }
+            .rebuy-cart__flyout-item-quantity {
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                width: auto;
+                margin: 0;
+                border: 0;
+                border-left: solid 1px var(--color-blue-dark);
+                .rebuy-cart__flyout-item-quantity-widget-button, .rebuy-cart__flyout-item-quantity-widget-label {
+                    flex-grow: 1;
+                    font-weight: 400;  
+                    @media (max-width: 699px) {
+                        font-size: 10px;
+                    }
+                }
+                .rebuy-cart__flyout-item-quantity-widget-button, .rebuy-cart__flyout-item-quantity-widget-label {
+                    border-bottom: solid 1px var(--color-blue-dark);
+                }
+                .rebuy-cart__flyout-item-quantity-widget-label {
+                    @media (max-width: 699px) {
+                        font-size: 12px;
+                    }
+                }
+                .rebuy-cart__flyout-item-quantity-widget-button:first-child {
+                    order: 2;
+                    border-bottom: 0;
+                }
+                .rebuy-cart__flyout-item-quantity-widget {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0;
+                    border: 0;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 40px 0;
+    }
+}
+
+
+.rebuy-recommended-products.pdp {
+  margin: 0;
+}
+.rebuy-recommended-products.pdp {
+    margin: 0 auto;
+    padding: 0;
+    .rebuy-product-grid {
+        padding: 0 !important;
+        padding: 0 !important;
+        border-bottom: solid 1px var(--color-blue-dark);
+        .rebuy-product-block {
+            position: relative;
+            width: 50% !important;
+            height: auto !important; 
+            padding: 0 !important;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                background-color: var(--color-blue-dark);
+            }
+        }
+        .rebuy-product-media {
+            width: 100% !important;
+            height: calc(50vw * 1.2) !important; 
+            a.rebuy-product-image {
+                width: 100% !important;
+                height: auto !important; 
+                img {
+                    width: 100% !important;
+                }
+            }
+        }
+        .rebuy-product-info {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 0 !important;
+            width: calc(100% - 36px) !important; 
+            font-weight: 500;
+            @media (min-width: 700px) {
+                top: 36px;
+                left: 36px;
+                width: calc(100% - 72px) !important; 
+            }
+            .rebuy-product-title, .rebuy-product-price {
+                font-weight: 500;
+                color: var(--color-black);
+                @media (max-width: 699px) {
+                    font-size: 12px;
+                    margin: 0 0 3px;
+                }
+            }
+        }
+        .rebuy-product-review {
+            display: none !important;
+        }
+    }
+    .primary-title {
+        display: none !important;
+    }
+    .rebuy-widget {
+        margin: 0;
+        padding: 0;
+    }
+    .flickity-button {
+        background: none !important;
+    }
+    .flickity-button .flickity-button-icon {
+        //top: 50% !important;
+        //left: 50% !important;
+        top: 18px !important;
+        left: 18px !important;
+        transform: translate(-50%,-50%);
+        @media (max-width: 699px) {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    .flickity-button.previous {
+        left: 18px !important;
+        @media (max-width: 699px) {
+            left: 0 !important;
+        }
+    }
+    .flickity-button.next {
+        right: 18px !important;
+        @media (max-width: 699px) {
+            right: 0 !important; 
+        }
+    } 
+}
+
+.rebuy-recommended-products .rebuy-product-info, .rebuy-recommended-products .rebuy-product-price, .rebuy-recommended-products .rebuy-product-title {
+    text-align: left !important;
+}
+.rebuy-recommended-products .rebuy-button {
+    border-radius: 0 !important;
+}
+.rebuy-recommended-products .powered-by-rebuy, .rebuy-recommended-products .flickity-page-dots {
+    display: none !important;
+}
+
+.rebuy-cart__flyout-recommendations {
+    padding: 0;
+}
+
+.rebuy-cart__flyout-recommendations .rebuy-product-block {
+  border: 0 !important;
+  padding: 20px 10px !important;
+}
+.rebuy-cart__flyout-recommendations .rebuy-button {
+  margin-top: 8px !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+
+.rebuy-cart__flyout-recommendations .rebuy-product-block {
+  flex-direction: column !important;
+}
+.rebuy-cart__flyout-recommendations .flickity-button.previous {
+    left: 0 !important;
+    background: transparent !important;
+}
+.rebuy-cart__flyout-recommendations .flickity-button.next {
+    right: 0 !important;
+    background: transparent !important;
+}  
+.rebuy-cart__flyout-recommendations .flickity-button .flickity-button-icon {
+    width: 12px;
+    height: 12px;
+}
+.rebuy-cart__flyout-recommendations .rebuy-product-review .rebuy-review-count {
+    display: none !important;
+}
+.rebuy-cart__flyout-recommendations .rebuy-product-title, .rebuy-cart__flyout-recommendations .rebuy-product-price, .rebuy-cart__flyout-recommendations .rebuy-money {
+  color: #000 !important;
+}
+.rebuy-cart__flyout-recommendations .rebuy-product-title {
+    font-weight: 500 !important;
+}
+.rebuy-cart__flyout-recommendations .primary-title, .rebuy-cart__flyout-title {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+}
+.rebuy-cart__flyout-recommendations .rebuy-select {
+    padding: 6px 12px !important;
+}  
+.rebuy-cart__flyout-recommendations .rebuy-product-actions {
+    margin-top: 10px !important;
+}
+form#ShoppingCartForm > p:not(.afterpay-paragraph) {
+  display: none;
+}
+h4.product-upsell-description-text span {
+  font-size: 10px;
+  display: block;
+  margin-top: 6px;
+}
+
+.rebuy-recommended-products {
+    width: 100%;
+    float: none;
+    position: relative;
+    .rebuy-product-options, .rebuy-product-actions {
+        display: none !important;
+    }   
+}
+
+.rebuy-widget .flickity-button,
+.rebuy-recommended-products .flickity-button {
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    color: #000;
+    background: #none;
+    border-radius: 50%;
+}
+
+.rebuy-button.outline {
+    border-color: #1b3448 !important;
+    color: #fff !important;
+}
+
+.rebuy-cart__flyout-empty-cart {
+    padding: 0 60px 20px 60px;
+}
+.rebuy-cart__flyout-giftwrapping {
+    //display: none !important;
+}
+
+.rebuy-cart__flyout {
+    .rebuy-cart__flyout-subtotal-label, .rebuy-cart__flyout-subtotal-amount {
+        font-weight: 500;
+    }
+    .rebuy-product-grid {
+        border-bottom: solid 1px var(--color-blue-dark);
+        .flickity-page-dots {
+            display: none;
+            position: relative;
+            padding: 10px 14px 10px;
+            bottom: unset;
+            right: unset;
+            border-top: solid 1px var(--color-blue-dark);
+            border-left: solid 1px var(--color-blue-dark);
+            border-right: solid 1px var(--color-blue-dark);
+            .dot {
+                margin: 0 6px 0 0;
+                height: 8px;
+                width: 8px;
+            }
+        }
+    }
+    .rebuy-cart__flyout-footer {
+        border-top: solid 1px var(--color-blue-dark);
+        padding: 12px 14px 18px;
+    }
+    .rebuy-product-block {
+        padding: 0 !important;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background-color: var(--color-blue-dark);
+        }
+        .rebuy-product-media {
+            border-bottom: solid 1px var(--color-blue-dark);
+        }
+        .rebuy-product-info {
+            text-align: left;
+            padding: 12px;
+            .rebuy-product-title, .rebuy-product-review, .rebuy-product-price {
+                margin: 0 0 3px;
+            }
+        }
+        .rebuy-product-options {
+            margin: 0;
+            padding: 0 12px 0;
+        }
+        .rebuy-product-actions {
+            margin: 0 0 12px !important; 
+            padding: 0 12px;
+            .rebuy-button {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.rebuy-cart__flyout-recommendations .rebuy-widget .primary-title {
+    background: #fff;
+    z-index: 1;
+    position: relative;
+} 
+
+.rebuy-cart__flyout-item-quantity-widget-label {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.rebuy-cart__flyout-empty-cart {
+    border-color: transparent !important;
+}
+
+.rebuy-cart__flyout-content {
+  overflow-y: auto !important;
+} 
+
+.rebuy-widget .rebuy-product-grid.large-columns-3 .rebuy-product-block {
+	flex-grow: 1 !important;
+}

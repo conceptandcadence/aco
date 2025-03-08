@@ -1,0 +1,32 @@
+{%- comment -%}
+<script>
+  const belowSubtotalSelector = ".rebuy-cart__flyout-footer div[data-app-target='below_subtotal']"
+  document.addEventListener("rebuy:smartcart.show", function (event) {
+    const belowSubtotalElement = document.querySelector(belowSubtotalSelector);
+    const totalPrice = event ? .detail ? .smartcart ? .cart ? .total_price;
+
+    // Don't add catch-callout if it already exists.
+    if (totalPrice && belowSubtotalElement && !belowSubtotalElement.querySelector("catch-callout")) {
+      const catchCalloutElement = document.createElement("catch-callout");
+
+      catchCalloutElement.setAttribute("price", String(totalPrice));
+      catchCalloutElement.setAttribute("border-style", "none-no-padding");
+      catchCalloutElement.setAttribute("page-type", "mini-cart");
+      catchCalloutElement.setAttribute("style", "justify-content: center; margin: 8px 0; font-family: inherit;");
+
+      belowSubtotalElement.appendChild(catchCalloutElement);
+    }
+  });
+  document.addEventListener('rebuy:cart.change', function (event) {
+    const belowSubtotalElement = document.querySelector(belowSubtotalSelector);
+    const catchCalloutElement = belowSubtotalElement ? belowSubtotalElement.querySelector("catch-callout") :
+      undefined;
+    const totalPrice = window ? .Rebuy ? .Cart ? .cart ? .total_price;
+
+    // Check if price exists and catch-callout exists.
+    if (totalPrice && catchCalloutElement) {
+      catchCalloutElement.setAttribute("price", String(totalPrice));
+    }
+  });
+</script>
+{%- endcomment -%}

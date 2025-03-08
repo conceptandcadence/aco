@@ -1,0 +1,544 @@
+{% include 'product-tags' %} 
+
+
+
+{% if product.tags contains 'gift-card' %}
+	{% assign giftcard_product = true %}
+{% else %}
+	{% assign giftcard_product = false %}
+{% endif %}
+
+{% assign novariants = false %} 
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+
+<div id="single-product" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
+    <section class="product-images">
+      <div class="images">
+        {% for media in product.media %}
+          {% if forloop.index == 2 %}
+            {%- comment -%}
+            <div class="grid-spacer"></div>
+            {%- endcomment -%}
+          {% endif%}
+          {% if media.media_type == 'video' %}
+						{% capture video_url %}{{- media | video_tag: image_size: '1024x', loop: true, autoplay: true, controls: false -}}{% endcapture %}
+						{% assign video_url = video_url | split: '<source src="' | last | split: '" type' | first | strip %}
+            <a href="{{ media | img_url: '3000x' }}" rel="prefetch" as="image" class="main-image-wrapper main-video-wrapper swipebox {% if forloop.first == true %} active{% endif%}" data-image-id="{{ media.id }}" data-zoom="{{ media | img_url: '3000x' }}" title="{{ product.metafields.custom_fields["details_model"] | replace: '&nbsp;', ' ' | strip_html | replace: '&nbsp;', ' ' | escape | replace: '&nbsp;', ' ' }}" tabindex="-1" data-index="{{ forloop.index }}" swipeboxvideo=1>
+              {{- media | video_tag: image_size: '1024x', loop: true, autoplay: true, controls: false -}}
+            </a>
+          {% else %}
+            {% unless media.alt contains 'Swatch' or media.alt contains 'swatch' %}
+              {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: media -%}
+              {%- assign image_url = media | image_url: '4x5' -%}
+              <a href="{{ media | img_url: '3000x' }}" rel="prefetch" as="image" class="main-image-wrapper swipebox {% if forloop.first == true %} active{% endif%}" data-image-id="{{ media.id }}" data-zoom="{{ media | image_url: '3000x', scale: 1.5 }}" title="{{ product.metafields.custom_fields["details_model"] | replace: '&nbsp;', ' ' | strip_html | replace: '&nbsp;', ' ' | escape | replace: '&nbsp;', ' ' }}" tabindex="-1" data-index="{{ forloop.index }}">
+                <img class="main-image lazyload-img image-zoom" {% if forloop.index <= 2 %}loading="eager"{% else %}loading="lazy"{% endif %}
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAFCAQAAADIpIVQAAAADklEQVR42mNkgAJGIhgAALQABsHyMOcAAAAASUVORK5CYII="
+                    data-src="{{ image_url }}"
+                    data-widths="[{{ supported_sizes }}]"
+                    sizes="(max-width: 700px) 100vw,50vw"
+                    srcset="{{ image_srcset }}"
+                    data-image-id="{{ media.id }}"
+                    alt="{% if media.alt != blank %}{{ media.alt | escape | append: ' ' | append: forloop.index }}{% else %}{{ product.title | escape | append: ' ' | append: forloop.index }}{% endif %}">
+                <noscript>
+                    <img class="main-image{% if forloop.first == true %} active{% endif%}" src="{{ media | image_url: '1024x' }}" alt="{% if media.alt != blank %}{{ media.alt | escape | append: ' ' | append: forloop.index }}{% else %}{{ product.title | escape | append: ' ' | append: forloop.index }}{% endif %}">
+                </noscript>
+                <div class="img-zoom-wrapper"></div>
+              </a>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+        {% assign image_count = product.media.size %}
+        {% assign image_count_modulo = image_count | modulo: 5 %}
+        {% if image_count_modulo > 0 %}
+            <div class="grid-spacer"></div>
+        {% endif%}
+        {% if image_count > 5 %}
+            <button class="button button--secondary toggle-expand-images">View all images</button>
+        {% endif%}
+      </div>
+    </section>
+    <section class="product-info">
+      <div class="product-info__wrapper">
+        <div class="product-info__container">
+          <div class="header">
+            {% render 'breadcrumbs' %}
+            <h1>
+              <span class="product-title">{{ product.title }}</span>
+              <div class="product-price"> 
+							{% if product.compare_at_price > product.price %}
+								{% assign price_difference = product.compare_at_price | minus: product.price %}
+								{% assign percentage_difference = product.price | times: 1.00 | divided_by: product.compare_at_price %}
+								{% assign percentage_difference = 1 | minus: percentage_difference | times: 100 | round | append: '% Off' %}
+								<span class="discount-percentage-pdp">{{ percentage_difference }}</span>
+							{% endif %}
+                {% if product.tags contains 'gift-card'%}
+                  {{ product.price_min | money_without_trailing_zeros | remove: '.00' }}&ndash;{{ product.price_max | money_without_trailing_zeros | remove: '.00' }}
+                {% else %}
+                {% if product.compare_at_price and product.compare_at_price < product.price  %} 
+                    {% assign compare_price = product.compare_at_price | money_without_trailing_zeros | remove: '.00' %}
+                    {% if product.compare_at_price %} 
+                      <span class="compare-to-price">{{ product.compare_at_price | money_without_trailing_zeros | remove: '.00' }}</span>
+                    {% endif %} 
+                      <span class="sale-price">{{ product.price | money_without_trailing_zeros | remove: '.00' }}</span>
+                    {% elsif sold_out %} 
+                      <span class="sold-out-price">Sold Out</span> 
+                    {% else %} 
+                      {{ product.price_max | money_without_trailing_zeros | remove: '.00' }}
+                    {% endif %}
+                {% endif %}
+                {% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}
+              </div>
+            </h1>
+            <div class="product-rating yotpo bottomLine" data-product-id="{{ product.id }}"></div>
+          </div>
+        <div class="purchase" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+          <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+          <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+          <form id="ProductSubmitForm" class="ProductSubmitForm pdp-form" action="/cart/add" method="post" enctype="multipart/form-data"> 
+
+            {% include 'product-material-headline' %}
+
+            <div class="product-description rte">
+              {% if product.metafields.custom_fields["description"] != blank %}  
+                {{ product.metafields.custom_fields["description"] | remove: '<p>&nbsp;</p>' }}
+              {% else %}
+                {{ product.description | remove: '<p>&nbsp;</p>' }}
+              {% endif %}
+            </div> 
+
+            {% if colorset %}                 
+                <div class="colors-heading">
+                 <div class="colors-heading__label">Color: <span data-selected-color></span></div><span class="colorset-instructions">Swipe for more</span>
+                </div> 
+                <div id="colorset-wrapper"{% if product.tags contains 'no-sizing' %} style="margin-bottom: 24px;"{% endif %}>
+                    <ul id="colorset" class="init" data-color="{{ color }}" data-colorset="{{ colorset }}"></ul>
+                </div> 
+            {% endif %} 
+
+            {% unless product.tags contains 'gift-card' or product.tags contains 'no-sizing' %}
+              <div class="sizes-heading">
+                <div class="sizes-heading__label">Size: <span data-selected-size>Select a size</span></div>
+                <div class="product-size-chart">
+                  <a class="display-size-chart" href="#"><span>Size Chart</span></a> 
+                </div> 
+              </div> 
+            {% endunless %}
+
+            <div class="product-sizes">
+              {% if product.variants.size > 1 %}
+                {% if product.tags contains 'gift-card'%}
+                  <label id="gift-cart-select" class="gift-cart-select" for="gift-cart-select">Value: </label>
+                    <select name="id" class="gift-cart-select" data-product-select>
+                        {% for variant in product.variants %}
+                            {% assign is_default = empty %}
+                            <option value="{{ variant.id }}">
+                                {{ variant.title | strip }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                  {% assign includes_preorder = false %}
+                  {% for variant in product.variants %}
+                      {% include 'variant-availability' %} 
+                      {%- if variant_availability == 'preorder' -%}
+                      {% assign includes_preorder = true %}
+                      {% break %} 
+                      {%- endif -%}
+                  {% endfor %}          
+                  
+                  {% assign lengthTitles = 'Length,Inseam'%}
+
+                  {%- if product.options.size > 1 -%}
+                    {% assign sizes = nil %}
+                    {% assign size_option_position = nil %}
+                    {% assign lengths = nil %}
+                    {% assign length_option_position = nil %}
+                    {% for option in product.options_with_values %}
+                        {%- if option.name == "Size" and option.values != blank -%}
+                          {% assign sizes = option.values %}
+                          {% assign size_option_position = option.position %}
+                          {% capture size_variant_option %}option{{- option.position -}}{% endcapture %}
+                        {%- endif -%}
+                        {%- if lengthTitles contains option.name and option.values != blank -%}
+                          {% assign lengths = option.values %}
+                          {% assign length_option_position = option.position %}
+                          {% capture length_variant_option %}option{{- option.position -}}{% endcapture %}
+                        {%- endif -%}
+                    {% endfor %}   
+                    <ul class="variant-selector init size{% if includes_preorder == true %} preorder{% endif %}"> 
+                        {% assign used_options = 'size_' %}
+                        {% for variant in product.variants %}
+                          {% assign formatted_size = 'size_' | append: variant[size_variant_option] %}
+                          {%- unless used_options contains formatted_size -%}
+                            <li class="variant-size soldout" tabindex="0" {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                              <input type="radio" name="size" value="{{variant[size_variant_option] | remove: '"' }}" data-value="" id="size_{{variant[size_variant_option] | remove: '"' }}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                              <label for="size_{{ variant[size_variant_option] | remove: '"' }}" tabindex="-1">{{ variant[size_variant_option] }}</label>
+                            </li> 
+                            {% assign used_options = used_options | append: formatted_size | append: ', ' %}
+                          {%- endunless -%}
+                        {% endfor %}
+                    </ul>
+
+                    <div class="length-selector">
+                      <div class="sizes-heading" style="margin-bottom: 12px;">
+                        <div class="sizes-heading__label">{% if product.options.size > 1 and product.tags contains 'size-boshorts' %}Inseam{% else %}{{ product.options[1] }}{% endif %}: <span data-selected-length style="font-weight: 400;margin-left: 6px;">{{ lengths[0] }}</span></div>
+                      </div> 
+                      <ul class="variant-selector init length{% if includes_preorder == true %} preorder{% endif %}"> 
+                          {% assign used_options = '' %}
+                          {% for length in lengths %}
+                            <li class="variant-length {% if forloop.first %}selected{% endif %}" tabindex="0" 
+                              {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                              <input type="radio" name="id" value="{{ length | remove: '"'  | escape }}" id="length_{{length | remove: '"'  | escape}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                              <label class="" for="length_{{ length | remove: '"'  | escape }}" tabindex="-1">{{ length | escape }}</label>
+                            </li> 
+                          {% endfor %}
+                      </ul>
+                    </div>
+                    <style>
+                      .variant-selector.length li {
+                        width: auto !important;
+                      }
+                      .variant-selector.length li label {
+                        position: relative !important;
+                        padding-left: 10px !important;
+                        padding-right: 10px !important;
+                        width: auto !important;
+                      }
+                    </style>
+
+                  {%- else -%}
+                    <ul class="variant-selector size init{% if includes_preorder == true %} preorder{% endif %}"> 
+                        {% assign sizes = nil %}
+                        {% assign size_option_position = nil %}
+                        {% for option in product.options_with_values %}
+                            {%- if option.name == "Size" and option.values != blank -%}
+                              {% assign sizes = option.values %}
+                              {% assign size_option_position = option.position %}
+                              {% capture size_variant_option %}option{{- option.position -}}{% endcapture %}
+                            {%- endif -%}
+                        {% endfor %}   
+
+                        {% assign used_options = '|' %}
+                        {% assign formatted_size = variant[size_variant_option] | prepend: '|' | append: '|' %}
+                        {% for variant in product.variants %}
+                          {%- unless used_options contains formatted_size -%}
+                            <li class="variant-size soldout" tabindex="0" {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                              <input type="radio" name="size" value="{{variant[size_variant_option]}}" id="size_{{variant[size_variant_option]}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                              <label for="size_{{ variant[size_variant_option] }}" tabindex="-1">{{ variant[size_variant_option] }}</label>
+                            </li> 
+                            {% assign used_options = used_options | append: variant[size_variant_option] | append: '|' %}
+                          {%- endunless -%}
+                        {% endfor %}
+                    </ul>
+                  {%- endif -%}
+                {% endif %}
+
+                {% if product.tags contains 'size-boshorts' or product.tags contains 'primobelt' %}
+                    <div class="sizing-helper">
+                        <span class="sizing-helper-text"></span> 
+                    </div>
+                {% endif %}
+              {% else %} 
+                <input type="hidden" class="product-id" name="id" value="{{ product.variants.first.id }}"/> 
+                {% assign novariants = true %} 
+              {% endif %}
+            </div> 
+      
+              {% if product.tags contains 'no-sizing' %}
+                {% assign must_select_size = 'false' %}  
+              {% else %}
+                {% assign must_select_size = 'true' %}  
+              {% endif %}
+              <div class="product-purchase-wrapper" data-must-select-size="{{ must_select_size }}">
+                <input type="hidden" id="Quantity" name="quantity" value="1" min="1"> 
+
+              {% unless product.tags contains 'no-sizing' %}
+                {% assign must_select_size_class = 'must-select-size' %}  
+              {% endunless %}
+              
+                <input type="hidden" name="id" value="{{product.selected_or_first_available_variant.id}}" id="variant" /> 
+
+                <div class="product-purchase-cta">
+                    {% if novariants == true %} 
+                    {% if product.available %} 
+                        <button id="AddToCart" class="add-to-cart purchase-container {{ must_select_size_class }}" type="submit" name="add" data-add-to-cart> 
+                    {% else %} 
+                        <button id="AddToCart" class="add-to-cart purchase-container {{ must_select_size_class }} soldout" type="submit" name="add" data-add-to-cart disabled="disabled"> 
+                    {% endif %} 
+                    {% else %} 
+                    {% if current_variant.available %} 
+                        <button id="AddToCart" class="add-to-cart purchase-container {{ must_select_size_class }}" type="submit" name="add" data-add-to-cart> 
+                    {% else %} 
+                        <button id="AddToCart" class="add-to-cart purchase-container {{ must_select_size_class }} soldout" type="submit" name="add" data-add-to-cart disabled="disabled"> 
+                    {% endif %} 
+                    {% endif %} 
+                        <span data-add-to-cart-text class="available">{{ 'products.product.add_to_cart' | t }}</span> 
+                        <span data-add-to-cart-text class="unavailable">{{ 'products.product.sold_out' | t }}</span>
+                        <span data-add-to-cart-text class="preorder">{{ 'products.product.preorder_title' | t }}</span>
+                        {% if giftcard_product %} 
+                            <span data-add-to-cart-text class="select-size">Please select a value</span>
+                        {% else %} 
+                            <span data-add-to-cart-text class="select-size">Please select a size</span>
+                        {% endif %} 
+                    </button>
+                </div>
+            </div>
+        </form> 
+
+				<div class="stock-ship">
+						<span class="stock-ship__stock available">In Stock</span>
+						<span class="stock-ship__stock unavailable">Out of Stock</span>
+						{% comment %}<span class="stock-ship__shipping available">{{ product.metafields.custom_fields["shipping_time"] | default: 'Ships in 1-2 business days' }}</span>{% endcomment %}
+						<span class="stock-ship__shipping available">Ships in 2-4 business days</span>
+                        <span class="stock-ship__shipping unavailable">Sign up for the wait list.</span>
+				</div>
+
+        <div class="product-details">
+          {% if product.metafields.custom_fields["details_model"] != blank %}
+            <div class="product-detail model">
+              <h3 class="product-detail-label"><span>Model</span></h3> 
+              <div class="product-detail-content">
+                {{ product.metafields.custom_fields["details_model"] }}
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_materials"] != blank %}
+            <div class="product-detail materials">
+              <h3 class="product-detail-label"><span>Materials</span></h3>
+              <div class="product-detail-content" style="margin-left: 0;">
+                {% if material_cotton %}
+                    <div class="product-detail-material cotton">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-cotton.png' | file_img_url: '50x' }}" alt="Organic Cotton" />
+                            <span>Organic Cotton</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with organic cotton and washed in an enzyme bath so the fabric is soft from first wear.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_linen %}
+                    <div class="product-detail-material linen">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-linen.png' | file_img_url: '50x' }}" alt="European Linen" />
+                            <span>European Linen</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with 100% sustainably-grown French linen and dyed with organic, GOTS-certified pigments.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_wool %}
+                    <div class="product-detail-material wool">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-wool.png' | file_img_url: '50x' }}" alt="Merino Wool" />
+                            <span>Merino Wool</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with 100% Italian Merino wool.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_naturaldyes %}
+                    <div class="product-detail-material natural-dyes">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-naturaldyes.png' | file_img_url: '50x' }}" alt="Corozo" />
+                            <span>Natural Dyes</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Natural dyes are pigments made from plants and minerals. We use natural dyes derived from rocks and soil.  
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_rubber %}
+                    <div class="product-detail-material rubber">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-rubber.png' | file_img_url: '50x' }}" alt="Natural Rubber" />
+                            <span>Natural Rubber</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            We use 100% natural rubber for the elastic waistband on all our Bo Shorts.  
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_corozo %}
+                    <div class="product-detail-material corozo">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-corozo.png' | file_img_url: '50x' }}" alt="Corozo" />
+                            <span>Corozo</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            The buttons are made with corozo, a Brazilian nut known as "plant ivory."
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_alpaca %}
+                    <div class="product-detail-material alpaca">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-wool.png' | file_img_url: '50x' }}" alt="Merino Wool" />
+                            <span>Alpaca Wool</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with 100% royal baby Peruvian alpaca wool.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_leather %}
+                  {% if product.handle contains 'cactus' %}
+                    <div class="product-detail-material leather">
+                        <div class="product-detail-material-title">
+                            <span style="margin-left: 0;">Cactus</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with hand-painted cactus leather from León, Mexico.
+                        </div>
+                    </div>
+                  {% else %} 
+                      <div class="product-detail-material leather">
+                          <div class="product-detail-material-title">
+                              <img src="{{ 'icon-leather.png' | file_img_url: '50x' }}" alt="Raw Leather" />
+                              <span>Raw Leather</span>
+                          </div>
+                          <div class="product-detail-material-description below-fold">
+                              Made with hand-painted leather from León, Mexico.
+                          </div>
+                      </div>
+                  {% endif %} 
+                {% endif %} 
+                {% if material_cactus' %}
+                    <div class="product-detail-material leather">
+                        <div class="product-detail-material-title">
+                            <span style="margin-left: 0;">Cactus</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with hand-painted cactus leather from León, Mexico.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_cactus' %}
+                    <div class="product-detail-material leather">
+                        <div class="product-detail-material-title">
+                            <span style="margin-left: 0;">Cactus</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Made with hand-painted cactus leather from León, Mexico.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_banana %}
+                    <div class="product-detail-material banana">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-banana.png' | file_img_url: '50x' }}" alt="Banana Leaves" />
+                            <span>Banana Leaves</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Banana tree leaves, sustainably harvested in the Philippines.
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if material_softener %}
+                    <div class="product-detail-material natural-dyes">
+                        <div class="product-detail-material-title">
+                            <img src="{{ 'icon-naturaldyes.png' | file_img_url: '50x' }}" alt="Corozo" />
+                            <span>Natural Dyes</span>
+                        </div>
+                        <div class="product-detail-material-description below-fold">
+                            Natural dyes are pigments made from plants and minerals. We use natural dyes derived from rocks and soil.  
+                        </div>
+                    </div>
+                {% endif %} 
+                
+                <div class="product-detail-learnmore below-fold" style="margin-left: 32px;display: inherit;">
+                    Learn more about <a href="/pages/sustainability">our materials and process</a>.
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_fit"] != blank %}
+            <div class="product-detail fit">
+              <h3 class="product-detail-label"><span>Fit</span></h3>
+              <div class="product-detail-content">
+                {{ product.metafields.custom_fields["details_fit"] }}
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_care"] != blank %}
+            <div class="product-detail care below-fold">
+              <h3 class="product-detail-label"><span>Care</span></h3> 
+              <div class="product-detail-content">
+                {{ product.metafields.custom_fields["details_care"] }}
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_origin"] != blank %}
+            <div class="product-detail origin below-fold">
+              <h3 class="product-detail-label"><span>Origin</span></h3> 
+              <div class="product-detail-content">
+                {{ product.metafields.custom_fields["details_origin"] }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="product-detail-questions below-fold">
+              <a href="mailto:hey@alexcrane.co">Questions? Write us at hey@alexcrane.co</a>
+          </div>
+          <div class="expand-details-toggle">
+              <a href="#">
+              <span>More Details</span> <svg viewBox="0 0 18 18" fill="none"><rect width="18" height="18" fill="white"/><path d="M17 5L9 13L1 5" stroke="black"/></svg>
+              </a>
+          </div>
+          {% if product.metafields.shopthelook.products != blank %}
+            <div class="shop-the-look-pdp">
+              <div class="stl__header">
+                {% if product.title.contains 'Alta' %}
+                  <h3>Complete the look</h3>
+                {% else %}
+                  <h3>Shop the look</h3>
+                {% endif %}
+              </div>
+              <div class="stl__products">
+                {% for product in product.metafields.shopthelook.products.value %}
+                  {% include 'plp-item' %}
+                {% endfor %}
+              </div>
+            </div>
+            <style>
+              .shop-the-look-pdp .plp-item { width: 50%; }
+              .shop-the-look-pdp .plp-item img { opacity: 0; }
+            </style>
+          {% endif %}
+        </div>
+            
+
+        </div>
+        </div>
+	    </div>
+    </section>
+</div>
+
+{% if giftcard_product %} 
+    <style> .dropdown-butt, .dropdown-text, .related-products { display: none;}</style>
+{% endif %}
+
+<style>
+  #preview-bar-iframe { display: none !important; }
+  .main-video-wrapper video { width: 100%; max-width: 100%; }
+@media (max-width: 699px) {
+  .main-image-wrapper {
+    Width: 50%;
+    float: left;
+  }
+  .main-image-wrapper:nth-child(n+3) {
+    display:none;
+  }
+}
+.video-slide video {
+	width: 100%;
+	max-width: 100%;
+}
+</style>
+<script>
+  window.product = {{ product | json }};
+</script>

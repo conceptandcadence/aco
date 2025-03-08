@@ -1,0 +1,83 @@
+.c-Press {
+	margin: 0;
+}
+
+.c-Press__header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: solid 1px var(--color-blue-dark);
+	padding: 48px 18px;
+	text-align: center;
+	@media (min-width: 700px) {
+			padding: 64px 48px;
+	}
+	h2 {
+			font-size: 28px;
+			margin: 0;
+
+			@media (min-width: 700px) {
+					font-size: 36px;
+			}
+	}
+}
+
+.c-Press__Headline {
+	text-align: center;
+	margin-bottom: 155px;
+	@media (min-width: 700px) {
+		margin-bottom: 64px;
+	} 
+}
+
+.c-Press__SnippetListWrapper {
+	position: relative;
+	margin: 0 -1px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-column-gap: 1px;
+	grid-row-gap: 1px;
+	border-color: #1b3448;
+	border-top: solid 1px;
+	border-bottom: solid 1px;
+	background-color: #1b3448;
+	@media (min-width: 700px) {
+		grid-template-columns: 1fr 1fr 1fr;
+	}    
+}
+
+.c-Press__SnippetWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vw;
+	background-color: #fff;
+	text-decoration: none;
+	padding: 24px;
+	@media (min-width: 700px) {
+		min-height: 33.33vw;
+	}
+}
+
+.c-Press__SnippetLogo {
+	max-width: 50%;
+	object-fit: scale-down;
+	max-height: 100%;
+}
+
+.c-Press__SnippetCopy {
+	text-align: center;
+	margin-top: 36px;
+	margin-bottom: 36px;
+	color: var(--color-black);
+	@media (min-width: 700px) {
+		margin-top: 48px;
+		margin-bottom: 48px;
+	}
+}
+
+.c-Press__SnippetDate {
+	text-align: center;
+	color: var(--color-black);
+}

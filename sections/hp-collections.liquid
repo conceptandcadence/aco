@@ -1,0 +1,407 @@
+<section id="section-{{ section.id }}" class="hp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+  <div class="hp-collections"> 
+    <div class="hp-collections__features{% if section.settings.use_carousel %} carousel{% endif %}">
+        {% for block in section.blocks %}
+            <div class="hp-collections__feature">
+                <div class="hp-collections__feature-wrapper">
+                    {% if block.settings.image != blank %}
+                        <div class="hp-collections-feature__image">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image -%}
+                            {%- assign image_url = block.settings.image | img_url: '4x5' -%}
+
+                            {% if section.settings.use_carousel %}
+                                <img class="hp-collections-feature__image-img" 
+                                    src="{{ block.settings.image | img_url: '600x' }}"
+                                    data-flickity-lazyload="{{ block.settings.image | img_url: '600x' }}" 
+                                    data-widths="[{{ supported_sizes }}]" 
+                                    sizes="(max-width: 700px) 50vw,33.33vw"
+                                    data-flickity-lazyload-srcset="{{ image_srcset }}"
+                                    alt="{{ block.settings.image.alt | default: block.settings.title | escape }}">
+                            {% else %}
+                                <img class="hp-collections-feature__image-img lazyload-img " loading="lazy" 
+                                    src="{{ image_url }}" 
+                                    data-src="{{ image_url }}"
+                                    data-widths="[{{ supported_sizes }}]"
+                                    sizes="(max-width: 700px) 50vw,33.33vw"
+                                    srcset="{{ image_srcset }}"
+                                    alt="{{ block.settings.image.alt | default: block.settings.title | escape }}">
+                            {% endif %}
+
+                            <noscript>
+                            <img class="hp-collections-feature__image-img" src="{{ section.settings.image_desktop | img_url: '400x500' }}"
+                                alt="{{ block.settings.image.alt | default: block.settings.title | escape }}">
+                            </noscript>
+                        </div>
+                    {% endif %}
+                    {% if block.settings.title != blank or block.settings.title_image != blank %}
+                        <div class="hp-collections__link">
+                            
+                            {% if block.settings.custom_link != blank %}
+                                {% assign link = block.settings.custom_link %}
+                            {% else %}
+                                {% assign link = collections[block.settings.collection].url %}
+                            {% endif %}
+
+                            {% if block.settings.title_image != blank %}
+                                <a class="hp-collections__title-image" href="{{ link }}">
+                                    <img src="{{ block.settings.title_image }}" alt="{{ block.settings.title | default: collections[block.settings.collection].title | escape }}" />
+                                </a>
+                            {% else %}
+                                <a class="hp-collections__title" href="{{ link }}">
+                                    {{ block.settings.title }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+        #shopify-section-{{ section.id }} .hp-collections__features {
+            padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+        #shopify-section-{{ section.id }} .hp-collections__features {
+            padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+        }
+    }
+  </style>
+
+  {% if section.settings.use_solid_button %}
+    <style>
+      #shopify-section-{{ section.id }} .hp-collections__title {
+          color: {{ section.settings.text_color }};
+          border-color: {{ section.settings.background }};
+          background-color: {{ section.settings.background }} !important;
+      }
+      #shopify-section-{{ section.id }} .hp-collections__title:hover {
+          color: {{ section.settings.text_color }};
+          border-color: {{ section.settings.background }};
+          background-color: {{ section.settings.background }} !important;
+      }    
+      #shopify-section-{{ section.id }} .hp-collections__features {
+          background-color: {{ section.settings.background }} !important;
+      }
+    </style>
+  {% else %}
+    <style>
+      #shopify-section-{{ section.id }} .hp-collections__title {
+          color: {{ section.settings.text_color }};
+          border-color: {{ section.settings.text_color }};
+      }
+      #shopify-section-{{ section.id }} .hp-collections__title:hover {
+          color: {{ section.settings.background }};
+          border-color: {{ section.settings.text_color }};
+          background-color: {{ section.settings.text_color }} !important;
+      }    
+      #shopify-section-{{ section.id }} .hp-collections__features {
+          background-color: {{ section.settings.background }} !important;
+      }
+    </style>
+  {% endif %}
+</section>
+
+{% if section.settings.use_carousel != blank %} 
+    <script src="{{ 'hp-collections.min.js' | asset_url }}" defer="defer"></script>
+{% endif %}
+<link rel="stylesheet" href="{{ 'hp-collections.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'hp-collections.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+{% schema %}
+{
+  "name": "HP Collections",
+  "class": "c-hp-collections hp-section",      
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "checkbox",
+        "id": "use_carousel",
+        "label": "Display as a carousel",
+        "default": false
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#1B3448"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "checkbox",
+        "id": "use_solid_button",
+        "label": "Use Solid Buttons",
+        "default": false
+    },    
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+  {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "Custom Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "title_image",
+          "label": "Title Graphic",
+          "info": "Link to an SVG from the files section."
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "HP Collections",
+    "category": "Home Page"
+  }
+]
+}
+{% endschema %}

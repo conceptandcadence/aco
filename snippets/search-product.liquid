@@ -1,0 +1,117 @@
+{%- include 'product-tags' -%}
+
+<div class="product" data-material="{{ material_tag | downcase }}" {% for variant in product.variants %} {% if
+  variant.available %} data-size-{{- variant.title -}} {% endif %} {% endfor %} {% for tag in product.tags %} {% if tag
+  contains 'colorway--' %} data-colorway-{{- tag | remove: 'colorway--' -}} {% endif %} {% if tag contains 'Colorway--'
+  %} data-colorway-{{- tag | remove: 'Colorway--' -}} {% endif %} {% endfor %}>
+
+  {% comment %}try adding a wrapper to the flat image{% endcomment %}
+  <div class="images">
+    <a class="product-item_image-link" tabindex="-1" href="{{ product.url | within: collection }}"><span
+        class="visually-hidden">View {{ product.title }}</span>
+      {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.images[1] -%}
+      {%- assign image_url = product.images[1] | img_url: '1x1' -%}
+      <img class="lazyload-img lifestyle " loading="lazy" src="{{ image_url }}" data-src="{{ image_url }}"
+        data-widths="[{{ supported_sizes }}]" sizes="(max-width: 700px) 100vw,33vw" srcset="{{ image_srcset }}"
+        alt="{{ product.images[1].alt | escape }}">
+      <noscript>
+        <img class="lifestyle" src="{{ product.images[1] | img_url: '400x' }}"
+          alt="{{ product.images[1].alt | escape }}">
+      </noscript>
+
+      <div class="image-flat-wrapper">
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product.featured_image -%}
+        {%- assign image_url = product.featured_image | img_url: '1x1' -%}
+        <img class="lazyload-img placeholder flat " loading="lazy" src="{{ image_url }}" data-src="{{ image_url }}"
+          data-widths="[{{ supported_sizes }}]" sizes="(max-width: 700px) 100vw,33vw" srcset="{{ image_srcset }}"
+          alt="{{ product.featured_image.alt | escape }}">
+        <noscript>
+          <img class="placeholder flat" src="{{ product.featured_image | img_url: '400x' }}"
+            alt="{{ product.featured_image.alt | escape }}">
+        </noscript>
+      </div>
+    </a>
+    <button type="submit" name="add" class="add-to-cart" data-add-to-cart tabindex="-1" {% unless product.available
+      %}disabled="disabled" {% endunless %}>
+      <span data-add-to-cart-text>
+        {% if product.template_suffix == "preorder" %}
+        Pre-Order
+        {% elsif product.available %}
+        + Cart
+        {% else %}
+        {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+    </button>
+  </div>
+
+  <p class="product-list--title">
+    <a href="{{ product.url | within: collection }}" tabindex="0">{{ product.title }}</a>
+    <span class="product-list--price">
+      {% if product.tags contains 'gift-card'%}
+      {{ product.price_min | money | remove: '.00' }}&ndash;{{ product.price_max | money | remove: '.00' }}
+      {% else %}
+      {% if product.price_varies %}
+      {{ product.price_max | money | remove: '.00' }}
+      {% else %}
+      <s>{{ product.compare_at_price | money | remove: '.00' }}</s>
+      {{ product.price | money | remove: '.00' }}
+      {% endif %}
+      {% endif %}
+    </span>
+  </p>
+
+  <p class="product-list--material">
+    {{ material_title }}
+  </p>
+
+  <div>
+    <form>
+      <input type="hidden" tabindex="-1" id="Quantity-{{- forloop.index -}}" name="quantity" value="1" min="1">
+
+      <div class="selector-wrapper">
+        <label>{{ product.title }}</label>
+
+        {% if product.template_suffix == "preorder" %}
+        <div class="ship-date">
+          Estimated Ship Date October 15th, 2017
+        </div>
+        {% endif %}
+
+        <div class="ship-date out-of-stock-order" style="display:none;">
+          {{ 'products.product.out_of_stock_ship' | t }}
+        </div>
+
+        {% if product.variants.size > 1 %}
+        <div class="error-msg">Select a size!</div>
+        <label for="select-id-{{ product.title | handleize | append: '-' | append: forloop.index }}"
+          style="font-size: 10px;margin-bottom: 4px;">Select a size</label>
+        <select tabindex="-1" id="select-id-{{ product.title | handleize | append: '-' | append: forloop.index }}"
+          name="size-select-{{ product.title | handleize | append: '-' | append: forloop.index }}" class="size"
+          data-single-option-selector>
+          {% for variant in product.variants %}
+          <option {% unless variant.available %}disabled="disabled" {% endunless %} {% if forloop.first %}selected{%
+            endif %} value="{{ variant.id }}">
+            {{ variant.title }} {% unless variant.available %}(out of stock){% endunless %}
+          </option>
+          {% endfor %}
+        </select>
+        {% else %}
+        <input tabindex="-1" type="hidden" class="product-id" name="id"
+          value="{{ product.selected_or_first_available_variant.id }}" />
+        {% endif %}
+        <div class="msg"></div>
+        <div class="action-container">
+          <button id="AddToCart" tabindex="-1" class="cancel-add">Cancel</button>
+          <button id="AddToCart" tabindex="-1" class="submit-add">
+            {% if product.template_suffix == "preorder" %}
+            Pre-Order
+            {% else %}
+            Add to Cart
+            {% endif %}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

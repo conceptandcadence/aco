@@ -1,0 +1,311 @@
+{% assign has_megamenu = false %}
+{% for block in section.blocks %}
+    {% assign link_title = link.title | downcase %}
+    {% assign block_title = block.settings.title | downcase %}
+    {% if link_title == block_title %}
+        {% assign has_megamenu = true %}
+        {% assign megamenu_link = link_title %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% if alignment == 'right' %}
+    {% assign alignment_style = 'style="float:right;"' %}
+{% else %}
+    {% assign alignment_style = 'style="float:left;"' %}
+{% endif %}
+
+<li class="site-nav__item{% if has_megamenu %} hasMegaMenu{% endif %}{% if link.active %} site-nav--active{% endif %}" data-title="{{ link.title }}" {{ alignment_style }}> 
+    <a href="{{ link.url }}" class="site-nav__link" {% if link.links != blank %}data-subnav="closed"{% endif %} tabindex="0">
+        <span class="site-nav__linktext">{{ link.title }}</span>
+    </a>
+    {% if link.links != blank %}
+        {% if has_megamenu %}            
+            <ul class="site-subnav shop-categories">
+                <li class="site-subnav__wrapper">
+                    <div class="site-subnav__links-wrapper">
+                        {% for category_group in link.links %}  
+                            <ul class="site-subnav-categories">
+                                <li class="site-subnav__item site-subnav__title">
+                                    <a class="site-subnav__link{% if link.current %} current{% endif %}" href= "{{ category_group.url }}" tabindex="0">
+                                          <span class="site-subnav__linktext">{{ category_group.title | remove: ' - 40% OFF' }}</span>
+                                          {% if category_group.title contains '40% OFF' %}<span class="site-subnav__linktext" style="color: var(--color-blue-bright);padding: 2px 5px; border: solid 1px #006aff82; border-radius: 5px; font-size: 13px; margin-left: 4px;">40% OFF</span>{% endif %}
+                                    </a>
+                                </li>
+                                {% for subcategories in category_group.links %}  
+                                    <li class="site-subnav__item">
+                                        <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subcategories.url }}" tabindex="0">
+                                          <span class="site-subnav__linktext">{{ subcategories.title | remove: ' - 40% OFF' }}</span>
+                                          {% if subcategories.title contains '40% OFF' %}<span class="site-subnav__linktext" style="color: var(--color-blue-bright);padding: 2px 5px; border: solid 1px #006aff82; border-radius: 5px; font-size: 13px; margin-left: 4px;">40% OFF</span>{% endif %}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul> 
+                        {% endfor %}
+                    </div> 
+                    <div class="site-subnav__features-wrapper">
+                        {% for block in section.blocks %}
+                            {% assign has_megamenu = false %}
+                            {% assign block_title = block.settings.title | downcase %}
+                            {% if megamenu_link == block_title %}
+                                {% assign has_megamenu = true %}
+                                {% if block.settings.product_1 != blank %}
+                                    <div class="menuProdBox menuProdBox1" data-y>
+
+                                        {% assign product_1 = nil %}
+                                        {% assign product_2 = nil %}
+                                        {% for product in collections['shop'].products %}
+                                          {% if product.handle == block.settings.product_1 %}
+                                            {% assign product_1 = product %}
+                                          {% endif %}
+                                          {% if product.handle == block.settings.product_2 %}
+                                            {% assign product_2 = product %}
+                                          {% endif %}
+                                        {% endfor %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['bo-shorts'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['tees'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['shirts'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['pants'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['jackets'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['accessories'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['men'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                      
+                                        {% if product_1 == blank or  product_2 == blank %}
+                                            {% for product in collections['women'].products %}
+                                            {% if product.handle == block.settings.product_1 %}
+                                                {% assign product_1 = product %}
+                                            {% endif %}
+                                            {% if product.handle == block.settings.product_2 %}
+                                                {% assign product_2 = product %}
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                      
+                                        {% if product_1 == blank %}
+                                          {% assign product_1 = product_1 %}
+                                        {% endif %}
+                                        {% if product_2 == blank %}
+                                          {% assign product_2 = all_products[block.settings.product_2] %}
+                                        {% endif %}
+                                  
+                                        <a href="{{ product_1.url }}">
+                                            {% if block.settings.product_1_index == blank %}
+                                                {% assign image_1_primary   = product_1.images[0] %}
+                                                {% assign image_1_secondary = product_1.images[1] %}
+                                            {% elsif block.settings.product_1_index == 1 %}
+                                                {% assign image_1_primary   = product_1.images[1] %}
+                                                {% assign image_1_secondary = product_1.images[0] %}
+                                            {% else %}
+                                                {% assign image_1_primary   = product_1.images[block.settings.product_1_index] %}
+                                                {% assign image_1_secondary = product_1.images[1] %}
+                                            {% endif %}
+                                            
+                                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_secondary -%}
+                                            {%- assign image_url = image_1_secondary | img_url: '4x5' -%}
+                                            <img class="secondary lazyload-img flat " loading="lazy"
+                                                src="{{ image_url }}"
+                                                data-src="{{ image_url }}"
+                                                data-widths="[{{ supported_sizes }}]"
+                                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                                srcset="{{ image_srcset }}"
+                                                alt="{{ image_1_secondary.alt | escape }}">
+                                            <noscript>
+                                                <img class="plp-item__images-image placeholder flat" src="{{ image_1_secondary | img_url: '400x' }}" alt="{{ image_1_secondary.alt | escape }}">
+                                            </noscript>
+
+                                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_primary -%}
+                                            {%- assign image_url = image_1_primary | img_url: '4x5' -%}
+                                            <img class="primary lazyload-img flat " loading="lazy"
+                                                src="{{ image_url }}"
+                                                data-src="{{ image_url }}"
+                                                data-widths="[{{ supported_sizes }}]"
+                                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                                srcset="{{ image_srcset }}"
+                                                alt="{{ image_1_primary.alt | default: block.settings.feature_1_title | escape }}">
+                                            <noscript>
+                                                <img class="plp-item__images-image placeholder flat" src="{{ image_1_primary | img_url: '400x' }}" alt="{{ image_1_primary.alt | default: block.settings.feature_1_title | escape }}">
+                                            </noscript>
+                                        </a>
+                                        <div class="product-info">
+                                            <a href="{{ product_1.url }}" class="product-title">{{ product_1.title | escape }}</a>
+                                            <span class="product-price" style="display:flex;">
+                                            {% if product_1.tags contains 'gift-card'%}
+                                                {{ product_1.price_min | money | remove: '.00' }}&ndash;{{ product.price_max | money | remove: '.00' }}
+                                            {% else %}
+                                                {% if product_1.price_varies %}
+                                                    {{ product_1.price_max | money | remove: '.00' }}
+                                                {% else %}
+                                                    <span class="sale-price x">{{ product_1.price | money | remove: '.00' }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                                                    {% if product_1.compare_at_price > product_1.price %}
+                                                        <s>{{ product_1.compare_at_price | money | remove: '.00' }}</s>
+                                                        {% assign price_difference = product_1.compare_at_price | minus: product_1.price %}
+                                                        {% assign percentage_difference = product_1.price | times: 1.00 | divided_by: product_1.compare_at_price %}
+                                                        {% assign percentage_difference = 1 | minus: percentage_difference | times: 100 | round | append: '% Off' %}
+                                                        <span class="discount-percentage">{{ percentage_difference }} {% if localization.country.iso_code == 'CA' %}{{ localization.country.currency.iso_code }}{% endif %}</span>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if block.settings.product_2 != blank %}
+                                    <div class="menuProdBox menuProdBox2 yyy">
+                                        <a href="{{ product_2.url }}">
+                                            {% if block.settings.product_2_index == blank %}
+                                                {% assign image_2_primary   = product_2.images[0] %}
+                                                {% assign image_2_secondary = product_2.images[1] %}
+                                            {% elsif block.settings.product_2_index == 1 %}
+                                                {% assign image_2_primary   = product_2.images[1] %}
+                                                {% assign image_2_secondary = product_2.images[0] %}
+                                            {% else %}
+                                                {% assign image_2_primary   = product_2.images[block.settings.product_2_index] %}
+                                                {% assign image_2_secondary = product_2.images[1] %}
+                                            {% endif %}
+                                            
+                                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_secondary -%}
+                                            {%- assign image_url = image_2_secondary | img_url: '4x5' -%}
+                                            <img class="secondary lazyload-img flat " loading="lazy"
+                                                src="{{ image_url }}"
+                                                data-src="{{ image_url }}"
+                                                data-widths="[{{ supported_sizes }}]"
+                                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                                srcset="{{ image_srcset }}"
+                                                alt="{{ image_2_secondary.alt | default: block.settings.feature_2_title | escape }}">
+                                            <noscript>
+                                                <img class="plp-item__images-image placeholder flat" src="{{ image_2_secondary | img_url: '400x' }}" alt="{{ image_2_secondary.alt | escape }}">
+                                            </noscript>
+
+                                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_primary -%}
+                                            {%- assign image_url = image_2_primary | img_url: '4x5' -%}
+                                            <img class="primary lazyload-img flat " loading="lazy"
+                                                src="{{ image_url }}"
+                                                data-src="{{ image_url }}"
+                                                data-widths="[{{ supported_sizes }}]"
+                                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                                srcset="{{ image_srcset }}"
+                                                alt="{{ image_2_primary.alt | default: block.settings.feature_2_title | escape }}">
+                                            <noscript>
+                                                <img class="plp-item__images-image placeholder flat" src="{{ image_2_primary | img_url: '400x' }}" alt="{{ image_2_primary.alt | escape }}">
+                                            </noscript>
+                                        </a>
+                                        <div class="product-info">
+                                            <a href="{{ product_2.url }}" class="product-title">{{ product_2.title | escape }}</a>
+                                            <span class="product-price" style="display:flex;">
+                                              {% if product_2.tags contains 'gift-card'%}
+                                                  {{ product_2.price_min | money | remove: '.00' }}&ndash;{{ product.price_max | money | remove: '.00' }}
+                                              {% else %}
+                                                  {% if product_2.price_varies %}
+                                                      {{ product_2.price_max | money | remove: '.00' }}
+                                                  {% else %}
+                                                      <span class="sale-price x">{{ product_2.price | money | remove: '.00' }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                                                      {% if product_2.compare_at_price > product_2.price %}
+                                                          <s>{{ product_2.compare_at_price | money | remove: '.00' }}</s>
+                                                          {% assign price_difference = product_2.compare_at_price | minus: product_2.price %}
+                                                          {% assign percentage_difference = product_2.price | times: 1.00 | divided_by: product_2.compare_at_price %}
+                                                          {% assign percentage_difference = 1 | minus: percentage_difference | times: 100 | round | append: '% Off' %}
+                                                          <span class="discount-percentage">{{ percentage_difference }} {% if localization.country.iso_code == 'CA' %}{{ localization.country.currency.iso_code }}{% endif %}</span>
+                                                      {% endif %}
+                                                  {% endif %}
+                                              {% endif %}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div> 
+                </li>
+            </ul> 
+        {% else %} 
+            <ul class="site-subnav" data-group="{{ link.title | downcase }}">
+                {% for subnavigation in link.links %}  
+                    <li class="site-subnav__item">
+                        <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href="{{ subnavigation.url }}" tabindex="0" data-anchor="{{ subnavigation.title | downcase }}">
+                            <span class="site-subnav__linktext">{{ subnavigation.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul> 
+        {% endif %} 
+    {% endif %}  
+    <style>
+    .menuProdBox > a {  
+        position: relative;
+        padding-bottom: 120% !important;
+        display: block;
+    } 
+    .menuProdBox .primary { position: absolute !important; }
+    </style>
+</li> 

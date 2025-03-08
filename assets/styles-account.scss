@@ -1,0 +1,1226 @@
+
+#CustomerAccount {
+    width: 100vw;
+    max-width: 600px;
+    margin: 0 auto
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount {
+        width: 90vw !important
+    }
+}
+
+#CustomerAccount header {
+    margin-bottom: 35px;
+    text-align: right
+}
+
+#CustomerAccount header button {
+    padding: 5px 15px;
+    color: #000000;
+    font-size: 1em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.05)
+}
+
+#CustomerAccount #AddressNewForm {
+    margin-bottom: 50px
+} 
+
+#CustomerAccount h2 {
+    font-size: 1.125em;
+    text-transform: uppercase
+}
+
+#CustomerAccount form {
+    text-align: center
+}
+
+#CustomerAccount form input[type=text],
+#CustomerAccount form input[type=tel] {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    font-size: 1em
+}
+
+#CustomerAccount form input[type=text].input-error,
+#CustomerAccount form input[type=tel].input-error {
+    background: rgba(239, 115, 143, 0.25)
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount form input[type=text],
+    #CustomerAccount form input[type=tel] {
+        width: 100%
+    }
+}
+
+#CustomerAccount form #AddressCountryContainer,
+#CustomerAccount form .AddressProvinceContainer,
+#CustomerAccount form #AddressCountryNewContainer,
+#CustomerAccount form #AddressProvinceContainerNew {
+    width: 80%;
+    margin: 15px auto;
+    text-align: left
+}
+
+#CustomerAccount form #AddressCountryContainer select,
+#CustomerAccount form .AddressProvinceContainer select,
+#CustomerAccount form #AddressCountryNewContainer select,
+#CustomerAccount form #AddressProvinceContainerNew select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount form #AddressCountryContainer,
+    #CustomerAccount form .AddressProvinceContainer,
+    #CustomerAccount form #AddressCountryNewContainer,
+    #CustomerAccount form #AddressProvinceContainerNew {
+        width: 100%
+    }
+}
+
+#CustomerAccount form input[type=checkbox] {
+    margin: 20px auto 10px
+}
+
+#CustomerAccount form .form-actions {
+    width: 80%;
+    margin: 10px auto;
+    text-align: center
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount form .form-actions {
+        width: 100%
+    }
+}
+
+#CustomerAccount form .form-actions input[type=submit],
+#CustomerAccount form .form-actions button {
+    display: inline;
+    width: 45%;
+    font-size: 0.875em;
+    line-height: 30px;
+    text-transform: uppercase;
+    border: none
+}
+
+#CustomerAccount form .form-actions button {
+    color: #000000;
+    background: rgba(0, 0, 0, 0.05)
+}
+
+#CustomerAccount form .form-actions input[type=submit] {
+    color: #ffffff;
+    background: #1b3448
+}
+
+#CustomerOrders .row div {
+    margin: 7px 0
+}
+
+@media (max-width: 699px) {
+    #CustomerOrders .row div {
+        font-size: 0.875em
+    }
+}
+
+#CustomerOrders .row div a {
+    color: #000000;
+    font-weight: bold
+}
+
+#CustomerOrders .row div span.date {
+    float: right
+}
+
+#CustomerInfo,
+#CustomerOrders {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #000
+}
+
+@media (max-width: 699px) {
+    #CustomerInfo,
+    #CustomerOrders {
+        width: 90vw !important
+    }
+}
+
+#CustomerInfo #EditCustomerInfoButton,
+#CustomerOrders #EditCustomerInfoButton {
+    position: absolute;
+    right: 15px;
+    color: #000000;
+    font-size: 0.875em;
+    line-height: 39px;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+#CustomerInfo h1,
+#CustomerInfo h2,
+#CustomerOrders h1,
+#CustomerOrders h2 {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000
+}
+
+#CustomerInfo .row,
+#CustomerOrders .row {
+    padding: 10px 15px;
+    font-size: 1em;
+    text-transform: uppercase
+}
+
+#CustomerInfo .row:first-of-type,
+#CustomerOrders .row:first-of-type {
+    padding-top: 20px
+}
+
+#CustomerInfo .row:last-of-type,
+#CustomerOrders .row:last-of-type {
+    padding-bottom: 20px
+}
+
+#CustomerAccount.address .address-new-toggle {
+    margin-right: 15px;
+    padding: 5px 25px;
+    color: #fff;
+    font-weight: normal;
+    text-transform: uppercase;
+    background: #1b3448
+}
+
+#CustomerAccount.address h2 a {
+    float: right;
+    color: #000;
+    font-weight: normal;
+    font-size: 0.75em;
+    text-decoration: none
+}
+
+#CustomerAccount.address p {
+    padding-left: 15px
+}
+
+#CustomerAccount.address form,
+#CustomerAccount.address #address_form_new {
+    max-width: 600px;
+    margin: 40px auto
+}
+
+#CustomerAccount.address form h2,
+#CustomerAccount.address #address_form_new h2 {
+    text-align: left
+}
+
+#CustomerAccount.address form h2 a,
+#CustomerAccount.address #address_form_new h2 a {
+    float: right;
+    color: #000;
+    font-size: 0.875em;
+    text-decoration: none
+}
+
+#CustomerAccount.address form .AddressProvinceContainer,
+#CustomerAccount.address form #AddressCountryContainer,
+#CustomerAccount.address form #AddressProvinceContainerNew,
+#CustomerAccount.address form #AddressCountryNewContainer,
+#CustomerAccount.address #address_form_new .AddressProvinceContainer,
+#CustomerAccount.address #address_form_new #AddressCountryContainer,
+#CustomerAccount.address #address_form_new #AddressProvinceContainerNew,
+#CustomerAccount.address #address_form_new #AddressCountryNewContainer {
+    display: inline-block;
+    width: 49% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount.address form .AddressProvinceContainer,
+    #CustomerAccount.address form #AddressCountryContainer,
+    #CustomerAccount.address form #AddressProvinceContainerNew,
+    #CustomerAccount.address form #AddressCountryNewContainer,
+    #CustomerAccount.address #address_form_new .AddressProvinceContainer,
+    #CustomerAccount.address #address_form_new #AddressCountryContainer,
+    #CustomerAccount.address #address_form_new #AddressProvinceContainerNew,
+    #CustomerAccount.address #address_form_new #AddressCountryNewContainer {
+        width: 48% !important
+    }
+}
+
+#CustomerAccount.address form input[type=text],
+#CustomerAccount.address #address_form_new input[type=text] {
+    width: 100% !important
+}
+
+#CustomerAccount.address form input[type=text].half,
+#CustomerAccount.address #address_form_new input[type=text].half {
+    display: inline-block;
+    width: 49% !important
+}
+
+@media (max-width: 699px) {
+    #CustomerAccount.address form input[type=text].half,
+    #CustomerAccount.address #address_form_new input[type=text].half {
+        width: 48% !important
+    }
+}
+
+#CustomerLoginForm,
+#RecoverPasswordForm,
+#CustomerRegisterForm {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    max-width: 900px;
+    min-height: 35vh;
+    margin: 0 auto
+}
+
+#CustomerLoginForm div.column,
+#RecoverPasswordForm div.column,
+#CustomerRegisterForm div.column {
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%
+}
+
+#CustomerLoginForm div.column:first-of-type,
+#RecoverPasswordForm div.column:first-of-type,
+#CustomerRegisterForm div.column:first-of-type {
+    margin-right: 5%
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column:first-of-type,
+    #RecoverPasswordForm div.column:first-of-type,
+    #CustomerRegisterForm div.column:first-of-type {
+        margin-right: 0%;
+        margin-bottom: 40px
+    }
+}
+
+#CustomerLoginForm div.column:last-of-type,
+#RecoverPasswordForm div.column:last-of-type,
+#CustomerRegisterForm div.column:last-of-type {
+    margin-left: 5%
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column:last-of-type,
+    #RecoverPasswordForm div.column:last-of-type,
+    #CustomerRegisterForm div.column:last-of-type {
+        margin-left: 0%
+    }
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column,
+    #RecoverPasswordForm div.column,
+    #CustomerRegisterForm div.column {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%
+    }
+}
+
+#CustomerLoginForm div.column p a,
+#RecoverPasswordForm div.column p a,
+#CustomerRegisterForm div.column p a {
+    color: #000;
+    text-decoration: none
+}
+
+#CustomerLoginForm div.column .prompt,
+#RecoverPasswordForm div.column .prompt,
+#CustomerRegisterForm div.column .prompt {
+    position: relative;
+    top: -10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 0.75em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column .prompt,
+    #RecoverPasswordForm div.column .prompt,
+    #CustomerRegisterForm div.column .prompt {
+        margin: 50px 0
+    }
+}
+
+#CustomerLoginForm div.column .prompt:before,
+#RecoverPasswordForm div.column .prompt:before,
+#CustomerRegisterForm div.column .prompt:before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column .prompt:before,
+    #RecoverPasswordForm div.column .prompt:before,
+    #CustomerRegisterForm div.column .prompt:before {
+        left: 40px
+    }
+}
+
+#CustomerLoginForm div.column .prompt:after,
+#RecoverPasswordForm div.column .prompt:after,
+#CustomerRegisterForm div.column .prompt:after {
+    content: '';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm div.column .prompt:after,
+    #RecoverPasswordForm div.column .prompt:after,
+    #CustomerRegisterForm div.column .prompt:after {
+        right: 40px
+    }
+}
+
+#CustomerLoginForm div.column .contact-row,
+#RecoverPasswordForm div.column .contact-row,
+#CustomerRegisterForm div.column .contact-row {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000
+}
+
+#CustomerLoginForm div.column .contact-row h1,
+#RecoverPasswordForm div.column .contact-row h1,
+#CustomerRegisterForm div.column .contact-row h1 {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    border-bottom: none
+}
+
+#CustomerLoginForm div.column .contact-row a,
+#RecoverPasswordForm div.column .contact-row a,
+#CustomerRegisterForm div.column .contact-row a {
+    float: right;
+    color: #000000;
+    font-size: 1em;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm h1,
+#RecoverPasswordForm h1,
+#CustomerRegisterForm h1 {
+    display: block;
+    width: 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    margin: 0 0 40px;
+    padding: 20px 0;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm h1,
+    #RecoverPasswordForm h1,
+    #CustomerRegisterForm h1 {
+        margin-bottom: 10px
+    }
+}
+
+#CustomerLoginForm h2,
+#RecoverPasswordForm h2,
+#CustomerRegisterForm h2 {
+    max-width: 400px;
+    margin: 20px auto 15px;
+    font-weight: 500;
+    font-size: 1.25em;
+    text-align: left;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm p,
+#RecoverPasswordForm p,
+#CustomerRegisterForm p {
+    margin: 0 auto 5px;
+    line-height: 1.45
+}
+
+#CustomerLoginForm p.dropdown,
+#RecoverPasswordForm p.dropdown,
+#CustomerRegisterForm p.dropdown {
+    position: relative;
+    cursor: pointer
+}
+
+#CustomerLoginForm p.dropdown:after,
+#RecoverPasswordForm p.dropdown:after,
+#CustomerRegisterForm p.dropdown:after {
+    content: '>';
+    position: absolute;
+    top: -3px;
+    right: 35%;
+    font-size: 1.25em;
+    font-weight: bold
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm p.dropdown:after,
+    #RecoverPasswordForm p.dropdown:after,
+    #CustomerRegisterForm p.dropdown:after {
+        right: 20px
+    }
+}
+
+#CustomerLoginForm p.dropdown.active:after,
+#RecoverPasswordForm p.dropdown.active:after,
+#CustomerRegisterForm p.dropdown.active:after {
+    transform: rotate(90deg)
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm p,
+    #RecoverPasswordForm p,
+    #CustomerRegisterForm p {
+        width: 100%;
+        margin: 0 0 5px 0;
+        font-size: 0.875em
+    }
+}
+
+#CustomerLoginForm .dropdown-text,
+#RecoverPasswordForm .dropdown-text,
+#CustomerRegisterForm .dropdown-text {
+    display: none;
+    width: 95%;
+    padding: 5%;
+    margin-top: 30px;
+    border: 1px solid #000
+}
+
+#CustomerLoginForm .dropdown-text.active,
+#RecoverPasswordForm .dropdown-text.active,
+#CustomerRegisterForm .dropdown-text.active {
+    display: block
+}
+
+#CustomerLoginForm .dropdown-text h3,
+#RecoverPasswordForm .dropdown-text h3,
+#CustomerRegisterForm .dropdown-text h3 {
+    width: 260px;
+    margin: 0 auto 30px;
+    padding-bottom: 5px;
+    font-size: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000
+}
+
+#CustomerLoginForm .dropdown-text p,
+#RecoverPasswordForm .dropdown-text p,
+#CustomerRegisterForm .dropdown-text p {
+    margin-bottom: 30px;
+    font-size: 0.875em;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm .dropdown-text p:last-of-type,
+#RecoverPasswordForm .dropdown-text p:last-of-type,
+#CustomerRegisterForm .dropdown-text p:last-of-type {
+    margin-bottom: 0
+}
+
+#CustomerLoginForm .dropdown-text p a,
+#RecoverPasswordForm .dropdown-text p a,
+#CustomerRegisterForm .dropdown-text p a {
+    color: #3ECBEC !important;
+    text-decoration: underline !important
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm .dropdown-text,
+    #RecoverPasswordForm .dropdown-text,
+    #CustomerRegisterForm .dropdown-text {
+        width: 100%;
+        margin-top: 15px
+    }
+}
+
+#CustomerLoginForm form,
+#RecoverPasswordForm form,
+#CustomerRegisterForm form {
+    margin: 0 0 0 auto
+}
+
+#CustomerLoginForm form input[type=tel],
+#CustomerLoginForm form input[type=text],
+#CustomerLoginForm form input[type=email],
+#CustomerLoginForm form input[type=password],
+#RecoverPasswordForm form input[type=tel],
+#RecoverPasswordForm form input[type=text],
+#RecoverPasswordForm form input[type=email],
+#RecoverPasswordForm form input[type=password],
+#CustomerRegisterForm form input[type=tel],
+#CustomerRegisterForm form input[type=text],
+#CustomerRegisterForm form input[type=email],
+#CustomerRegisterForm form input[type=password] {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px auto;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid #000000;
+    font-size: 1em
+}
+
+#CustomerLoginForm form input[type=tel].input-error,
+#CustomerLoginForm form input[type=text].input-error,
+#CustomerLoginForm form input[type=email].input-error,
+#CustomerLoginForm form input[type=password].input-error,
+#RecoverPasswordForm form input[type=tel].input-error,
+#RecoverPasswordForm form input[type=text].input-error,
+#RecoverPasswordForm form input[type=email].input-error,
+#RecoverPasswordForm form input[type=password].input-error,
+#CustomerRegisterForm form input[type=tel].input-error,
+#CustomerRegisterForm form input[type=text].input-error,
+#CustomerRegisterForm form input[type=email].input-error,
+#CustomerRegisterForm form input[type=password].input-error {
+    background: rgba(239, 115, 143, 0.25)
+}
+
+#CustomerLoginForm form input[type=tel]::-webkit-input-placeholder,
+#CustomerLoginForm form input[type=text]::-webkit-input-placeholder,
+#CustomerLoginForm form input[type=email]::-webkit-input-placeholder,
+#CustomerLoginForm form input[type=password]::-webkit-input-placeholder,
+#RecoverPasswordForm form input[type=tel]::-webkit-input-placeholder,
+#RecoverPasswordForm form input[type=text]::-webkit-input-placeholder,
+#RecoverPasswordForm form input[type=email]::-webkit-input-placeholder,
+#RecoverPasswordForm form input[type=password]::-webkit-input-placeholder,
+#CustomerRegisterForm form input[type=tel]::-webkit-input-placeholder,
+#CustomerRegisterForm form input[type=text]::-webkit-input-placeholder,
+#CustomerRegisterForm form input[type=email]::-webkit-input-placeholder,
+#CustomerRegisterForm form input[type=password]::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form input[type=tel]::-moz-placeholder,
+#CustomerLoginForm form input[type=text]::-moz-placeholder,
+#CustomerLoginForm form input[type=email]::-moz-placeholder,
+#CustomerLoginForm form input[type=password]::-moz-placeholder,
+#RecoverPasswordForm form input[type=tel]::-moz-placeholder,
+#RecoverPasswordForm form input[type=text]::-moz-placeholder,
+#RecoverPasswordForm form input[type=email]::-moz-placeholder,
+#RecoverPasswordForm form input[type=password]::-moz-placeholder,
+#CustomerRegisterForm form input[type=tel]::-moz-placeholder,
+#CustomerRegisterForm form input[type=text]::-moz-placeholder,
+#CustomerRegisterForm form input[type=email]::-moz-placeholder,
+#CustomerRegisterForm form input[type=password]::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form input[type=tel]:-ms-input-placeholder,
+#CustomerLoginForm form input[type=text]:-ms-input-placeholder,
+#CustomerLoginForm form input[type=email]:-ms-input-placeholder,
+#CustomerLoginForm form input[type=password]:-ms-input-placeholder,
+#RecoverPasswordForm form input[type=tel]:-ms-input-placeholder,
+#RecoverPasswordForm form input[type=text]:-ms-input-placeholder,
+#RecoverPasswordForm form input[type=email]:-ms-input-placeholder,
+#RecoverPasswordForm form input[type=password]:-ms-input-placeholder,
+#CustomerRegisterForm form input[type=tel]:-ms-input-placeholder,
+#CustomerRegisterForm form input[type=text]:-ms-input-placeholder,
+#CustomerRegisterForm form input[type=email]:-ms-input-placeholder,
+#CustomerRegisterForm form input[type=password]:-ms-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form input[type=tel]::placeholder,
+#CustomerLoginForm form input[type=text]::placeholder,
+#CustomerLoginForm form input[type=email]::placeholder,
+#CustomerLoginForm form input[type=password]::placeholder,
+#RecoverPasswordForm form input[type=tel]::placeholder,
+#RecoverPasswordForm form input[type=text]::placeholder,
+#RecoverPasswordForm form input[type=email]::placeholder,
+#RecoverPasswordForm form input[type=password]::placeholder,
+#CustomerRegisterForm form input[type=tel]::placeholder,
+#CustomerRegisterForm form input[type=text]::placeholder,
+#CustomerRegisterForm form input[type=email]::placeholder,
+#CustomerRegisterForm form input[type=password]::placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form input[type=submit],
+#RecoverPasswordForm form input[type=submit],
+#CustomerRegisterForm form input[type=submit] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0 0 auto;
+    color: #ffffff;
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    background: #1b3448
+}
+
+#CustomerLoginForm form textarea,
+#RecoverPasswordForm form textarea,
+#CustomerRegisterForm form textarea {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    font-size: 1em;
+    resize: none
+}
+
+#CustomerLoginForm form textarea::-webkit-input-placeholder,
+#RecoverPasswordForm form textarea::-webkit-input-placeholder,
+#CustomerRegisterForm form textarea::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form textarea::-moz-placeholder,
+#RecoverPasswordForm form textarea::-moz-placeholder,
+#CustomerRegisterForm form textarea::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form textarea:-ms-input-placeholder,
+#RecoverPasswordForm form textarea:-ms-input-placeholder,
+#CustomerRegisterForm form textarea:-ms-input-placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form textarea::placeholder,
+#RecoverPasswordForm form textarea::placeholder,
+#CustomerRegisterForm form textarea::placeholder {
+    text-transform: uppercase;
+    font-size: 0.875em;
+    letter-spacing: 0.2em
+}
+
+#CustomerLoginForm form p,
+#RecoverPasswordForm form p,
+#CustomerRegisterForm form p {
+    width: 100%;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    margin-left: auto !important;
+    margin-right: 0
+}
+
+#CustomerLoginForm form .errors,
+#RecoverPasswordForm form .errors,
+#CustomerRegisterForm form .errors {
+    width: 100%;
+    min-height: 40px;
+    margin: 10px auto;
+    padding: 5px 0;
+    color: #ffffff;
+    font-size: 0.875em;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    background: #ef738f
+}
+
+#CustomerLoginForm form .errors ul,
+#RecoverPasswordForm form .errors ul,
+#CustomerRegisterForm form .errors ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+#CustomerLoginForm form .errors ul li a,
+#RecoverPasswordForm form .errors ul li a,
+#CustomerRegisterForm form .errors ul li a {
+    color: #FFFFFF;
+    font-weight: bold
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm,
+    #RecoverPasswordForm,
+    #CustomerRegisterForm {
+        width: 90vw
+    }
+    #CustomerLoginForm form,
+    #RecoverPasswordForm form,
+    #CustomerRegisterForm form {
+        width: 100%
+    }
+    #CustomerLoginForm form input[type=text],
+    #CustomerLoginForm form input[type=email],
+    #CustomerLoginForm form input[type=password],
+    #CustomerLoginForm form textarea,
+    #RecoverPasswordForm form input[type=text],
+    #RecoverPasswordForm form input[type=email],
+    #RecoverPasswordForm form input[type=password],
+    #RecoverPasswordForm form textarea,
+    #CustomerRegisterForm form input[type=text],
+    #CustomerRegisterForm form input[type=email],
+    #CustomerRegisterForm form input[type=password],
+    #CustomerRegisterForm form textarea {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px
+    }
+    #CustomerLoginForm form input[type=submit],
+    #RecoverPasswordForm form input[type=submit],
+    #CustomerRegisterForm form input[type=submit] {
+        position: fixed;
+        bottom: 50px;
+        left: 0;
+        width: 100vw;
+        margin: 0;
+        border-top: 1px solid #888;
+        border-bottom: 1px solid #888;
+        z-index: 9999
+    }
+}
+
+#CustomerRegisterForm {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap
+}
+
+#CustomerRegisterForm .prompt {
+    position: relative;
+    top: 0px !important;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 0.75em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media (max-width: 699px) {
+    #CustomerRegisterForm .prompt {
+        margin: 50px 0
+    }
+}
+
+#CustomerRegisterForm .prompt:before {
+    content: '';
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media (max-width: 699px) {
+    #CustomerRegisterForm .prompt:before {
+        left: 40px
+    }
+}
+
+#CustomerRegisterForm .prompt:after {
+    content: '';
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media (max-width: 699px) {
+    #CustomerRegisterForm .prompt:after {
+        right: 40px
+    }
+}
+
+#CustomerRegisterForm form p {
+    width: 100%;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    margin-left: auto !important;
+    margin-right: 0
+}
+
+#RecoverPasswordForm {
+    display: block;
+    max-width: 600px
+}
+
+#RecoverPasswordForm h2 {
+    margin: 120px auto 10px;
+    font-size: 1.25em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+#RecoverPasswordForm p {
+    margin: 0 auto 40px;
+    font-size: 1em;
+    text-align: center
+}
+
+@media (max-width: 699px) {
+    #RecoverPasswordForm p {
+        width: 80vw;
+        text-align: center
+    }
+}
+
+#RecoverPasswordForm form button {
+    display: inline-block;
+    width: 40%;
+    height: 40px;
+    margin: 10px 0 10px 9%;
+    color: #000000;
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    background: rgba(0, 0, 0, 0.05)
+}
+
+#RecoverPasswordForm form input[type=submit] {
+    display: inline-block;
+    width: 40%;
+    margin: 10px 9% 10px 0
+}
+
+@media (max-width: 699px) {
+    #RecoverPasswordForm form button {
+        position: fixed;
+        left: 0;
+        bottom: 50px;
+        width: 100vw;
+        margin: 0;
+        background: #F3F3F3;
+        border-top: none;
+        border-bottom: 1px solid #888;
+        z-index: 9999
+    }
+    #RecoverPasswordForm form input[type=submit] {
+        right: 0;
+        left: auto;
+        bottom: 90px;
+        width: 100vw;
+        margin: 0;
+        border-top: 1px solid #888;
+        border-bottom: 1px solid #888
+    }
+}
+
+#CustomerLoginForm form h1 {
+    max-width: 400px;
+    margin: 60px auto 10px;
+    font-size: 1.25em;
+    font-weight: normal;
+    text-align: left;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm form h2 {
+    max-width: 400px;
+    margin: 100px auto 0;
+    font-size: 1.25em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media (max-width: 699px) {
+    #CustomerLoginForm form h1,
+    #CustomerLoginForm form h2 {
+        width: 80vw
+    }
+}
+
+#RecoverPassword,
+#LoginToAccount,
+#ReturnToStore,
+#CreateAccount {
+    display: block;
+    width: 100%;
+    margin: 20px 0 40px auto;
+    color: #000000;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-align: right;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+#RecoverPassword:hover,
+#LoginToAccount:hover,
+#ReturnToStore:hover,
+#CreateAccount:hover {
+    text-decoration: underline
+}
+
+@media (max-width: 699px) {
+    #RecoverPassword,
+    #LoginToAccount,
+    #ReturnToStore,
+    #CreateAccount {
+        width: 80vw
+    }
+}
+
+#RecoverPassword {
+    text-align: right;
+    margin-bottom: 10px
+}
+
+#LoginToAccount {
+    text-align: left
+}
+
+#page-content.order {
+    max-width: 800px
+}
+
+#page-content.order h1 {
+    width: 100%;
+    margin: 0;
+    padding-left: 10px;
+    padding-bottom: 15px;
+    color: #000;
+    font-size: 1em;
+    border-bottom: 2px solid #000
+}
+
+#page-content.order h1 span {
+    float: right;
+    margin-right: 10px
+}
+
+#page-content.order h1 span a {
+    color: #000000;
+    font-size: 0.875em;
+    text-decoration: none
+}
+
+#page-content.order .content {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap
+}
+
+#page-content.order .content .top {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%
+}
+
+#page-content.order .content .top p {
+    padding: 25px 10px 15px
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .top p {
+        font-size: 0.875em
+    }
+}
+
+#page-content.order .content .col {
+    -ms-flex: 0 0 calc(30% - 25px);
+    flex: 0 0 calc(30% - 25px);
+    margin-left: 25px
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .col {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        margin-left: 0
+    }
+    #page-content.order .content .col div {
+        display: inline-block;
+        width: 48%;
+        font-size: 0.875em;
+        vertical-align: top
+    }
+}
+
+#page-content.order .content .order-table {
+    border-collapse: collapse;
+    -ms-flex: 0 0 70%;
+    flex: 0 0 70%;
+    margin: 20px 0 40px
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%
+    }
+}
+
+#page-content.order .content .order-table .order-table-row {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 4px 0
+}
+
+#page-content.order .content .order-table .order-table-row div {
+    padding: 0 0 5px 5px;
+    text-align: left;
+    text-transform: uppercase
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-row div {
+        font-size: 0.875em
+    }
+}
+
+#page-content.order .content .order-table .order-table-row div:nth-of-type(1) {
+    -ms-flex: 0 0 42.5%;
+    flex: 0 0 42.5%
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-row div:nth-of-type(1) {
+        -ms-flex: 0 0 35%;
+        flex: 0 0 35%
+    }
+}
+
+#page-content.order .content .order-table .order-table-row div:nth-of-type(2) {
+    -ms-flex: 0 0 17.5%;
+    flex: 0 0 17.5%
+}
+
+#page-content.order .content .order-table .order-table-row div:nth-of-type(3) {
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    text-align: right
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-row div:nth-of-type(3) {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%
+    }
+}
+
+#page-content.order .content .order-table .order-table-row div:nth-of-type(4) {
+    -ms-flex: 0 0 10%;
+    flex: 0 0 10%;
+    text-align: right
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-row div:nth-of-type(4) {
+        -ms-flex: 0 0 7.5%;
+        flex: 0 0 7.5%
+    }
+}
+
+#page-content.order .content .order-table .order-table-row div:nth-of-type(5) {
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    text-align: right
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-row div:nth-of-type(5) {
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%
+    }
+}
+
+#page-content.order .content .order-table .order-table-head {
+    border-bottom: 1px solid #000
+}
+
+#page-content.order .content .order-table .order-table-head .order-table-row div {
+    font-weight: bold
+}
+
+#page-content.order .content .order-table .order-table-footer .order-table-row div:nth-of-type(1) {
+    font-weight: bold
+}
+
+#page-content.order .content .order-table .order-table-footer .order-table-row div:nth-of-type(2) {
+    -ms-flex: 0 0 57.5%;
+    flex: 0 0 57.5%;
+    text-align: right
+}
+
+@media (max-width: 699px) {
+    #page-content.order .content .order-table .order-table-footer .order-table-row div:nth-of-type(2) {
+        -ms-flex: 0 0 65%;
+        flex: 0 0 65%
+    }
+}
+
+.blank-container {
+    max-width: 300px;
+    min-height: 50vh;
+    margin: 0 auto;
+    padding: 100px 0;
+    text-align: center
+}
+
+.blank-container p:first-of-type {
+    margin: 15px 0;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000
+}
+#CustomerLoginForm form input[type=submit] {
+    margin-bottom: 5px
+}

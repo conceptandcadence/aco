@@ -1,0 +1,154 @@
+<section class="plp-collections" id="shop-container" data-infinite-scroll='{ "path": ".plp-collections__pagination .next a", "append": ".plp-item", "history": false }'>
+    {% for block in section.blocks %}
+        {% if block.settings.collection != blank %}
+            <div class="plp-item collection-hero" tabindex="0">
+
+                  {% assign image = nil %}
+                  {% if current_tags contains 'women' %}
+                    {% if collections[block.settings.collection].metafields["custom_fields"]["womens_tile_image"] != blank %}
+                        {% assign image = collections[block.settings.collection].metafields.custom_fields["womens_tile_image"] | split: '?' %}
+                        {% if image.first contains 'products/' %}
+                          {% assign image = image | first | split: 'products/' %}
+                        {% else %}
+                          {% assign image = image | first | split: 'files/' %}
+                        {% endif %}
+                        {% assign image = images[image.last] %}
+                        {% assign active_tag = 'women' %}
+                    {% endif %}
+                    {% if collections[block.settings.collection].metafields["custom_fields"]["womens_header_image_desktop"] != blank %}
+                        {% assign mobile_image = collections[block.settings.collection].metafields.custom_fields["womens_header_image_desktop"] | split: '?' %}
+                        {% assign mobile_image = mobile_image | first | split: 'files/' %}
+                        {% assign mobile_image = images[mobile_image.last] %}
+                        {% assign active_tag = 'women' %}
+                    {% endif %}
+                  {% else %}
+                    {% if collections[block.settings.collection].metafields["custom_fields"]["tile_image"] != blank %}
+                        {% assign image = collections[block.settings.collection].metafields.custom_fields["tile_image"] | split: '?' %}
+                        {% if image.first contains 'products/' %}
+                          {% assign image = image | first | split: 'products/' %}
+                        {% else %}
+                          {% assign image = image | first | split: 'files/' %}
+                        {% endif %}
+                        {% assign image = images[image.last] %}
+                        {% assign active_tag = 'men' %}
+                    {% endif %}
+                    {% if collections[block.settings.collection].metafields["custom_fields"]["plp_header_image_desktop"] != blank %}
+                        {% assign mobile_image = collections[block.settings.collection].metafields.custom_fields["plp_header_image_desktop"] | split: '?' %}
+                        {% assign mobile_image = mobile_image | first | split: 'files/' %}
+                        {% assign mobile_image = images[mobile_image.last] %}
+                        {% assign active_tag = 'men' %}
+                    {% endif %}
+                  {% endif %}
+
+                {% if image != blank or mobile_image != blank %}
+
+
+                    {% if collections[block.settings.collection].metafields["custom_fields"]["tile_image"] != blank %}
+                        {% assign imagez1 = collections[block.settings.collection].metafields.custom_fields["tile_image"] | split: '?' %}
+                        {% assign imagez2 = imagez1 | first | split: 'files/' %}
+                        {% assign imagez3 = images[imagez2.last] %}
+                    {% endif %}
+
+                    <div class="plp-item__images">
+                        {% if image != blank %}
+                            
+                                {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image -%}
+                                {%- assign image_url = image | img_url: '4x5' -%}
+                                <img class="plp-item__images-image desktop lazyload-img " loading="lazy"
+                                    src="{{ image_url }}"
+                                    data-src="{{ image_url }}"
+                                    data-widths="[{{ supported_sizes }}]"
+                                    sizes="(max-width: 700px) 50vw,33.33vw"
+                                    srcset="{{ image_srcset }}"
+                                    alt="{{ collections[block.settings.collection].title | escape }}">
+                                <noscript>
+                                    <img class="plp-item__images-image desktop" src="{{ image | img_url: '400x' }}" alt="{{ collections[block.settings.collection].title | escape }}">
+                                </noscript>
+                        {% endif %}
+                        {% if mobile_image != blank %}
+                                {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: mobile_image -%}
+                                {%- assign image_url = image | img_url: '4x5' -%}
+                                <img class="plp-item__images-image mobile lazyload-img " loading="lazy"
+                                    src="{{ image_url }}"
+                                    data-src="{{ image_url }}"
+                                    data-widths="[{{ supported_sizes }}]"
+                                    sizes="(max-width: 700px) 50vw,33.33vw"
+                                    srcset="{{ image_srcset }}"
+                                    alt="{{ collections[block.settings.collection].title | escape }}">
+                                <noscript>
+                                    <img class="plp-item__images-image mobile" src="{{ mobile_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection].title | escape }}">
+                                </noscript>
+                            
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="plp-item__images" style="background-color: var(--color-blue-dark);"></div>
+                {% endif %}
+
+                <a href="{{ collections[block.settings.collection].url }}{% if active_tag != blank %}/{{ active_tag }}{% endif %}" class="plp-item__info">
+                    <h2 class="plp-item__title">
+                        {{ collections[block.settings.collection].title }}
+                    </h2>
+                    <div class="plp-item__button button button--primary">Shop All</div>
+                </a>
+            </div>
+
+            <div class="plp-item__collection-products{% if section.settings.product_limit > 2 %} carousel-enabled{% endif %}">
+                {% assign product_count = 0 %}
+                {% for product in collections[block.settings.collection].products %} 
+                    {% if product_count < section.settings.product_limit %}
+                        {% if product.tags contains active_tag %}
+                            {% include 'plp-item' %}
+                            {% assign product_count = product_count | plus: 1 %}
+                        {% endif %}
+                    {% else %}
+                        {% break %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        {% endif %}
+    {% endfor %}
+
+</section>
+
+<link rel="stylesheet" href="{{ 'plp-collections.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-collections.min.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-collections.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "PLP Collections",
+    "class": "product-collections",
+    "settings": [
+        {
+            "type": "range",
+            "id": "product_limit",
+            "label": "Product Limit",
+            "min": 2,
+            "max": 48,
+            "step": 1,
+            "unit": "cel",
+            "default": 2,
+            "info": "The number of products that will be shown for each collection."
+
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "Collection",
+            "settings": [
+                {
+                   "type": "collection",
+                   "id": "collection",
+                   "label": "Collection"
+                }
+            ]
+        }
+    ]  
+  }
+{% endschema %}

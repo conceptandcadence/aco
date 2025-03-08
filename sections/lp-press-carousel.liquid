@@ -1,0 +1,392 @@
+{% capture press_blocks %}
+  {% for block in section.blocks %}
+    {% if block.settings.quote != blank %}
+    <div class="lp-press-carousel__quote" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+
+      <div class="lp-press-carousel__quote-wrapper">
+
+        <div class="lp-press-quote__info">
+          <h3 class="lp-press-carousel__headline">
+            &ldquo;{{ block.settings.quote }}&rdquo;
+          </h3>
+        </div>
+
+        <{% if block.settings.url != blank %}a href="{{ block.settings.url }}" {% else %}div{% endif %}
+          class="lp-press-carousel__logo">{{ section.settings.button_text }}
+          {% if block.settings.logo %}
+          {%- assign logo_url  = block.settings.logo | img_url: '200x200' -%}
+          <img class="lp-press-carousel__logo-image lazyload-img " loading="lazy" src="{{ logo_url }}" data-src="{{ logo_url }}"
+            width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}">
+          <noscript>
+            <img class="lp-press-carousel__logo-image" src="{{ block.settings.logo | img_url: '200x' }}"
+              alt="{{ block.settings.title | escape }}">
+          </noscript>
+          {% endif %}
+        </{% if block.settings.url != blank %}a{% else %}div{% endif %}>
+
+      </div>
+
+    </div>
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+  <div class="lp-press-carousel" style="background-color: {{ section.settings.background }}"> 
+    {% if section.settings.subtitle != blank %}
+      <h4 class="lp-press-carousel__section-subtitle">{{ section.settings.subtitle }}</h2>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="lp-press-carousel__section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    <div class="lp-press-carousel__quotes{% if section.blocks.size <= section.settings.cell_count %} disabled-on-desktop{% endif %}" data-cell-count="{{ section.settings.cell_count }}">
+      {{ press_blocks }}
+      {{ press_blocks }}
+    </div>
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} .lp-press-carousel__headline p { font-size: {{ section.settings.font_m }}px; }
+    #shopify-section-{{ section.id }} .lp-press-carousel__title, #shopify-section-{{ section.id }} .lp-press-carousel__price, #shopify-section-{{ section.id }} .lp-press-carousel__variant-title {
+        color: {{ section.settings.text_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .lp-press-carousel__press {
+        color: {{ section.settings.background }} !important;
+    }
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-press-carousel__press {
+            padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} .lp-press-carousel__headline p { font-size: {{ section.settings.font_d }}px; }
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-press-carousel__press {
+            padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+        }
+    }
+  </style>
+</section> 
+
+<script src="{{ 'lp-press-carousel.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'lp-press-carousel.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'lp-press-carousel.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+{% schema %}
+{
+  "name": "LP Press",
+  "class": "c-lp-press-carousel lp-section",      
+  "max_blocks": 6,
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed above the press."
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed above the press."
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+        {
+        "type": "range",
+        "id": "font_m",
+        "label": "Mobile Font Size",
+        "min": 12,
+        "max": 36,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+        },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+        {
+        "type": "range",
+        "id": "font_d",
+        "label": "Desktop Font Size",
+        "min": 12,
+        "max": 36,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+        },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Publication"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Press",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

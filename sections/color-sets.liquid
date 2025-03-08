@@ -1,0 +1,1454 @@
+{% include 'product-tags' %} 
+{%- capture selected_colorset -%}{{ colorset | escape }}{% endcapture %}
+
+{% for block in section.blocks %}
+    {%- capture colorset_title -%}{{ block.settings.title | escape }}{% endcapture %}
+    {% if selected_colorset == colorset_title %}
+        {%- capture product_handle_1  -%}{{ block.settings.product_handle_1  }}{%- endcapture -%}
+        {%- capture product_handle_2  -%}{{ block.settings.product_handle_2  }}{%- endcapture -%}
+        {%- capture product_handle_3  -%}{{ block.settings.product_handle_3  }}{%- endcapture -%}
+        {%- capture product_handle_4  -%}{{ block.settings.product_handle_4  }}{%- endcapture -%}
+        {%- capture product_handle_5  -%}{{ block.settings.product_handle_5  }}{%- endcapture -%}
+        {%- capture product_handle_6  -%}{{ block.settings.product_handle_6  }}{%- endcapture -%}
+        {%- capture product_handle_7  -%}{{ block.settings.product_handle_7  }}{%- endcapture -%}
+        {%- capture product_handle_8  -%}{{ block.settings.product_handle_8  }}{%- endcapture -%}
+        {%- capture product_handle_9  -%}{{ block.settings.product_handle_9  }}{%- endcapture -%}
+        {%- capture product_handle_10 -%}{{ block.settings.product_handle_10 }}{%- endcapture -%}
+        {%- capture product_handle_11 -%}{{ block.settings.product_handle_11 }}{%- endcapture -%}
+        {%- capture product_handle_12 -%}{{ block.settings.product_handle_12 }}{%- endcapture -%}
+        {%- capture product_handle_13 -%}{{ block.settings.product_handle_13 }}{%- endcapture -%}
+        {%- capture product_handle_14 -%}{{ block.settings.product_handle_14 }}{%- endcapture -%}
+        {%- capture product_handle_15 -%}{{ block.settings.product_handle_15 }}{%- endcapture -%}
+        {%- capture product_handle_16 -%}{{ block.settings.product_handle_16 }}{%- endcapture -%}
+        {%- capture product_handle_17 -%}{{ block.settings.product_handle_17 }}{%- endcapture -%}
+        {%- capture product_handle_18 -%}{{ block.settings.product_handle_18 }}{%- endcapture -%}
+        {%- capture product_handle_19 -%}{{ block.settings.product_handle_19 }}{%- endcapture -%}
+        {%- capture product_handle_20 -%}{{ block.settings.product_handle_20 }}{%- endcapture -%}
+        {%- capture product_handle_21 -%}{{ block.settings.product_handle_21 }}{%- endcapture -%}
+        {%- capture product_handle_22 -%}{{ block.settings.product_handle_22 }}{%- endcapture -%}
+        {%- capture product_handle_23 -%}{{ block.settings.product_handle_23 }}{%- endcapture -%}
+        {%- capture product_handle_24 -%}{{ block.settings.product_handle_24 }}{%- endcapture -%}
+        {%- capture product_handle_25 -%}{{ block.settings.product_handle_25 }}{%- endcapture -%}
+        {%- capture product_handle_26 -%}{{ block.settings.product_handle_26 }}{%- endcapture -%}
+        {%- capture product_handle_27 -%}{{ block.settings.product_handle_27 }}{%- endcapture -%}
+        {%- capture product_handle_28 -%}{{ block.settings.product_handle_28 }}{%- endcapture -%}
+        {%- capture product_handle_29 -%}{{ block.settings.product_handle_29 }}{%- endcapture -%}
+        {%- capture product_handle_30 -%}{{ block.settings.product_handle_30 }}{%- endcapture -%}
+        {%- capture product_handle_31 -%}{{ block.settings.product_handle_31 }}{%- endcapture -%}
+        {%- capture product_handle_32 -%}{{ block.settings.product_handle_32 }}{%- endcapture -%}
+        {%- capture product_handle_33 -%}{{ block.settings.product_handle_33 }}{%- endcapture -%}
+        {%- capture product_handle_34 -%}{{ block.settings.product_handle_34 }}{%- endcapture -%}
+      
+        {% assign ref_collection = collections[block.settings.collection] %}
+        {% if ref_collection != blank and ref_collection.products.size > 0 %}
+            <script data-colorset>
+                window.colorSets = {
+                    "{{ block.settings.title | escape }}": [
+                        {
+                                "title": "placeholder",
+                                "url": "",
+                                "image": "",
+                                "available": "false",
+                                "order": ""
+                        }
+                        {% for product in ref_collection.products %}
+                            {% if product_handle_1 != blank and product.handle == product_handle_1 %}
+                            ,{
+                                "title": "{{ block.settings.title_1 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_1 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_1 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_2 != blank and product.handle == product_handle_2 %}
+                            ,{
+                                "title": "{{ block.settings.title_2 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_2 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_2 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_3 != blank and product.handle == product_handle_3 %}
+                            ,{
+                                "title": "{{ block.settings.title_3 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_3 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_3 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_4 != blank and product.handle == product_handle_4 %}
+                            ,{
+                                "title": "{{ block.settings.title_4 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_4 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_4 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_5 != blank and product.handle == product_handle_5 %}
+                            ,{
+                                "title": "{{ block.settings.title_5 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_5 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_5 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_6 != blank and product.handle == product_handle_6 %}
+                            ,{
+                                "title": "{{ block.settings.title_6 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_6 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_6 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_7 != blank and product.handle == product_handle_7 %}
+                            ,{
+                                "title": "{{ block.settings.title_7 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_7 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_7 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_8 != blank and product.handle == product_handle_8 %}
+                            ,{
+                                "title": "{{ block.settings.title_8 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_8 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_8 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_9 != blank and product.handle == product_handle_9 %}
+                            ,{
+                                "title": "{{ block.settings.title_9 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_9 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_9 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_10 != blank and product.handle == product_handle_10 %}
+                            ,{
+                                "title": "{{ block.settings.title_10 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_10 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_10 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_11 != blank and product.handle == product_handle_11 %}
+                            ,{
+                                "title": "{{ block.settings.title_11 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_11 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_11 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_12 != blank and product.handle == product_handle_12 %}
+                            ,{
+                                "title": "{{ block.settings.title_12 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_12 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_12 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_13 != blank and product.handle == product_handle_13 %}
+                            ,{
+                                "title": "{{ block.settings.title_13 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_13 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_13 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_14 != blank and product.handle == product_handle_14 %}
+                            ,{
+                                "title": "{{ block.settings.title_14 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_14 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_14 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_15 != blank and product.handle == product_handle_15 %}
+                            ,{
+                                "title": "{{ block.settings.title_15 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_15 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_15 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_16 != blank and product.handle == product_handle_16 %}
+                            ,{
+                                "title": "{{ block.settings.title_16 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_16 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_16 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_17 != blank and product.handle == product_handle_17 %}
+                            ,{
+                                "title": "{{ block.settings.title_17 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_17 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_17 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_18 != blank and product.handle == product_handle_18 %}
+                            ,{
+                                "title": "{{ block.settings.title_18 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_18 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_18 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_19 != blank and product.handle == product_handle_19 %}
+                            ,{
+                                "title": "{{ block.settings.title_19 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_19 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_19 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_20 != blank and product.handle == product_handle_20 %}
+                            ,{
+                                "title": "{{ block.settings.title_20 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_20 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_20 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_21 != blank and product.handle == product_handle_21 %}
+                            ,{
+                                "title": "{{ block.settings.title_21 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_21 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_21 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_22 != blank and product.handle == product_handle_22 %}
+                            ,{
+                                "title": "{{ block.settings.title_22 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_22 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_22 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_23 != blank and product.handle == product_handle_23 %}
+                            ,{
+                                "title": "{{ block.settings.title_23 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_23 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_23 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_24 != blank and product.handle == product_handle_24 %}
+                            ,{
+                                "title": "{{ block.settings.title_24 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_24 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_24 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_25 != blank and product.handle == product_handle_25 %}
+                            ,{
+                                "title": "{{ block.settings.title_25 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_25 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_25 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_26 != blank and product.handle == product_handle_26 %}
+                            ,{
+                                "title": "{{ block.settings.title_26 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_26 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_26 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_27 != blank and product.handle == product_handle_27 %}
+                            ,{
+                                "title": "{{ block.settings.title_27 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_27 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_27 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_28 != blank and product.handle == product_handle_28 %}
+                            ,{
+                                "title": "{{ block.settings.title_28 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_28 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_28 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_29 != blank and product.handle == product_handle_29 %}
+                            ,{
+                                "title": "{{ block.settings.title_29 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_29 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_29 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_30 != blank and product.handle == product_handle_30 %}
+                            ,{
+                                "title": "{{ block.settings.title_30 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_30 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_30 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_31 != blank and product.handle == product_handle_31 %}
+                            ,{
+                                "title": "{{ block.settings.title_31 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_31 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_31 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_32 != blank and product.handle == product_handle_32 %}
+                            ,{
+                                "title": "{{ block.settings.title_32 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_32 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_32 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_33 != blank and product.handle == product_handle_33 %}
+                            ,{
+                                "title": "{{ block.settings.title_33 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_33 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_33 }}"
+                            }
+                            {% endif %}
+                            {% if product_handle_34 != blank and product.handle == product_handle_34 %}
+                            ,{
+                                "title": "{{ block.settings.title_34 | escape }}",
+                                "url": "{{ product.url }}",
+                                "image": "{{ block.settings.image_34 | img_url: '100x100' }}",
+                                "available": "{{ product.available }}",
+                                "collections": {{ product.collections | json }},
+                                "order": "{{ block.settings.order_34 }}"
+                            }
+                            {% endif %}
+                        {% endfor %}
+                    ]
+                };
+            </script> 
+        {% else %}
+            <script data-colorset>
+                window.colorSets = {
+                    "{{ block.settings.title | escape }}": [
+                        {% if product_handle_1 != blank %}
+                        {
+                            "title": "{{ block.settings.title_1 | escape }}",
+                            "url": "{{ all_products[product_handle_1].url }}",
+                            "image": "{{ block.settings.image_1 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_1].available }}",
+                            "collections": {{ all_products[product_handle_1].collections | json }},
+                            "order": "{{ block.settings.order_1 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_2 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_2 | escape }}",
+                            "url": "{{ all_products[product_handle_2].url }}",
+                            "image": "{{ block.settings.image_2 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_2].available }}",
+                            "collections": {{ all_products[product_handle_2].collections | json }},
+                            "order": "{{ block.settings.order_2 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_3 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_3 | escape }}",
+                            "url": "{{ all_products[product_handle_3].url }}",
+                            "image": "{{ block.settings.image_3 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_3].available }}",
+                            "collections": {{ all_products[product_handle_3].collections | json }},
+                            "order": "{{ block.settings.order_3 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_4 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_4 | escape }}",
+                            "url": "{{ all_products[product_handle_4].url }}",
+                            "image": "{{ block.settings.image_4 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_4].available }}",
+                            "collections": {{ all_products[product_handle_4].collections | json }},
+                            "order": "{{ block.settings.order_4 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_5 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_5 | escape }}",
+                            "url": "{{ all_products[product_handle_5].url }}",
+                            "image": "{{ block.settings.image_5 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_5].available }}",
+                            "collections": {{ all_products[product_handle_5].collections | json }},
+                            "order": "{{ block.settings.order_5 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_6 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_6 | escape }}",
+                            "url": "{{ all_products[product_handle_6].url }}",
+                            "image": "{{ block.settings.image_6 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_6].available }}",
+                            "collections": {{ all_products[product_handle_6].collections | json }},
+                            "order": "{{ block.settings.order_6 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_7 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_7 | escape }}",
+                            "url": "{{ all_products[product_handle_7].url }}",
+                            "image": "{{ block.settings.image_7 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_7].available }}",
+                            "collections": {{ all_products[product_handle_7].collections | json }},
+                            "order": "{{ block.settings.order_7 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_8 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_8 | escape }}",
+                            "url": "{{ all_products[product_handle_8].url }}",
+                            "image": "{{ block.settings.image_8 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_8].available }}",
+                            "collections": {{ all_products[product_handle_8].collections | json }},
+                            "order": "{{ block.settings.order_8 }}"
+                        },
+                        {% endif %}
+                        {% if product_handle_9 != blank %}
+                        {
+                            "title": "{{ block.settings.title_9 | escape }}",
+                            "url": "{{ all_products[product_handle_9].url }}",
+                            "image": "{{ block.settings.image_9 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_9].available }}",
+                            "collections": {{ all_products[product_handle_9].collections | json }},
+                            "order": "{{ block.settings.order_9 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_10 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_10 | escape }}",
+                            "url": "{{ all_products[product_handle_10].url }}",
+                            "image": "{{ block.settings.image_10 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_10].available }}",
+                            "collections": {{ all_products[product_handle_10].collections | json }},
+                            "order": "{{ block.settings.order_10 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_11 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_11 | escape }}",
+                            "url": "{{ all_products[product_handle_11].url }}",
+                            "image": "{{ block.settings.image_11 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_11].available }}",
+                            "collections": {{ all_products[product_handle_11].collections | json }},
+                            "order": "{{ block.settings.order_11 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_12 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_12 | escape }}",
+                            "url": "{{ all_products[product_handle_12].url }}",
+                            "image": "{{ block.settings.image_12 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_12].available }}",
+                            "collections": {{ all_products[product_handle_12].collections | json }},
+                            "order": "{{ block.settings.order_12 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_13 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_13 | escape }}",
+                            "url": "{{ all_products[product_handle_13].url }}",
+                            "image": "{{ block.settings.image_13 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_13].available }}",
+                            "collections": {{ all_products[product_handle_13].collections | json }},
+                            "order": "{{ block.settings.order_13 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_14 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_14 | escape }}",
+                            "url": "{{ all_products[product_handle_14].url }}",
+                            "image": "{{ block.settings.image_14 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_14].available }}",
+                            "collections": {{ all_products[product_handle_14].collections | json }},
+                            "order": "{{ block.settings.order_14 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_15 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_15 | escape }}",
+                            "url": "{{ all_products[product_handle_15].url }}",
+                            "image": "{{ block.settings.image_15 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_15].available }}",
+                            "collections": {{ all_products[product_handle_15].collections | json }},
+                            "order": "{{ block.settings.order_15 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_16 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_16 | escape }}",
+                            "url": "{{ all_products[product_handle_16].url }}",
+                            "image": "{{ block.settings.image_16 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_16].available }}",
+                            "collections": {{ all_products[product_handle_16].collections | json }},
+                            "order": "{{ block.settings.order_16 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_17 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_17 | escape }}",
+                            "url": "{{ all_products[product_handle_17].url }}",
+                            "image": "{{ block.settings.image_17 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_17].available }}",
+                            "order": "{{ block.settings.order_17 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_18 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_18 | escape }}",
+                            "url": "{{ all_products[product_handle_18].url }}",
+                            "image": "{{ block.settings.image_18 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_18].available }}",
+                            "order": "{{ block.settings.order_18 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_19 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_19 | escape }}",
+                            "url": "{{ all_products[product_handle_19].url }}",
+                            "image": "{{ block.settings.image_19 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_19].available }}",
+                            "order": "{{ block.settings.order_19 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_20 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_20 | escape }}",
+                            "url": "{{ all_products[product_handle_20].url }}",
+                            "image": "{{ block.settings.image_20 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_20].available }}",
+                            "order": "{{ block.settings.order_20 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_21 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_21 | escape }}",
+                            "url": "{{ all_products[product_handle_21].url }}",
+                            "image": "{{ block.settings.image_21 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_21].available }}",
+                            "order": "{{ block.settings.order_21 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_22 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_22 | escape }}",
+                            "url": "{{ all_products[product_handle_22].url }}",
+                            "image": "{{ block.settings.image_22 | img_url: '100x100' }}",
+                            "available": "{{ all_products[image_22].available }}",
+                            "order": "{{ block.settings.order_22 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_23 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_23 | escape }}",
+                            "url": "{{ all_products[product_handle_23].url }}",
+                            "image": "{{ block.settings.image_23 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_23].available }}",
+                            "order": "{{ block.settings.order_23 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_24 != blank %}
+                        ,{
+                            "title": "{{ block.settings.title_24 | escape }}",
+                            "url": "{{ all_products[product_handle_24].url }}",
+                            "image": "{{ block.settings.image_24 | img_url: '100x100' }}",
+                            "available": "{{ all_products[product_handle_24].available }}",
+                            "order": "{{ block.settings.order_24 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_25 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_25 | escape }}",
+                        		"url": "{{ all_products[product_handle_25].url }}",
+                        		"image": "{{ block.settings.image_25 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_25].available }}",
+                        		"order": "{{ block.settings.order_25 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_26 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_26 | escape }}",
+                        		"url": "{{ all_products[product_handle_26].url }}",
+                        		"image": "{{ block.settings.image_26 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_26].available }}",
+                        		"order": "{{ block.settings.order_26 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_27 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_27 | escape }}",
+                        		"url": "{{ all_products[product_handle_27].url }}",
+                        		"image": "{{ block.settings.image_27 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_27].available }}",
+                        		"order": "{{ block.settings.order_27 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_28 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_28 | escape }}",
+                        		"url": "{{ all_products[product_handle_28].url }}",
+                        		"image": "{{ block.settings.image_28 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_28].available }}",
+                        		"order": "{{ block.settings.order_28 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_29 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_29 | escape }}",
+                        		"url": "{{ all_products[product_handle_29].url }}",
+                        		"image": "{{ block.settings.image_29 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_29].available }}",
+                        		"order": "{{ block.settings.order_29 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_30 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_30 | escape }}",
+                        		"url": "{{ all_products[product_handle_30].url }}",
+                        		"image": "{{ block.settings.image_30 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_30].available }}",
+                        		"order": "{{ block.settings.order_30 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_31 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_31 | escape }}",
+                        		"url": "{{ all_products[product_handle_31].url }}",
+                        		"image": "{{ block.settings.image_31 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_31].available }}",
+                        		"order": "{{ block.settings.order_31 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_32 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_32 | escape }}",
+                        		"url": "{{ all_products[product_handle_32].url }}",
+                        		"image": "{{ block.settings.image_32 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[image_32].available }}",
+                        		"order": "{{ block.settings.order_32 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_33 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_33 | escape }}",
+                        		"url": "{{ all_products[product_handle_33].url }}",
+                        		"image": "{{ block.settings.image_33 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_33].available }}",
+                        		"order": "{{ block.settings.order_33 }}"
+                        }
+                        {% endif %}
+                        {% if product_handle_34 != blank %}
+                        ,{
+                        		"title": "{{ block.settings.title_34 | escape }}",
+                        		"url": "{{ all_products[product_handle_34].url }}",
+                        		"image": "{{ block.settings.image_34 | img_url: '100x100' }}",
+                        		"available": "{{ all_products[product_handle_34].available }}",
+                        		"order": "{{ block.settings.order_34 }}"
+                        }
+                        {% endif %}
+                    ]
+                };
+            </script> 
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% schema %} 
+
+{
+   "name":"Color Sets",
+   "settings":[
+
+   ],
+   "blocks":[
+      {
+         "type":"colorset",
+         "name":"Color Set",
+         "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Set Handle"
+            },
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"Reference Collection"
+            },
+            {
+               "type":"header",
+               "content":"Colors"
+            },
+            {
+               "type":"image_picker",
+               "id":"image_1",
+               "label":"Color 1 Swatch"
+            },
+            {
+               "type":"text",
+               "id":"title_1",
+               "label":"Color 1 Name"
+            },
+            {
+                "type":"number",
+                "id":"order_1",
+                "label":"Color 1 Order"
+            },
+            {
+               "type":"product",
+               "id":"product_handle_1",
+               "label":"Color 1 Product"
+            },
+            {
+                "type":"image_picker",
+                "id":"image_2",
+                "label":"Color 2 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_2",
+                "label":"Color 2 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_2",
+                 "label":"Color 2 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_2",
+                "label":"Color 2 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_3",
+                "label":"Color 3 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_3",
+                "label":"Color 3 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_3",
+                 "label":"Color 3 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_3",
+                "label":"Color 3 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_4",
+                "label":"Color 4 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_4",
+                "label":"Color 4 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_4",
+                 "label":"Color 4 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_4",
+                "label":"Color 4 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_5",
+                "label":"Color 5 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_5",
+                "label":"Color 5 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_5",
+                 "label":"Color 5 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_5",
+                "label":"Color 5 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_6",
+                "label":"Color 6 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_6",
+                "label":"Color 6 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_6",
+                 "label":"Color 6 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_6",
+                "label":"Color 6 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_7",
+                "label":"Color 7 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_7",
+                "label":"Color 7 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_7",
+                 "label":"Color 7 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_7",
+                "label":"Color 7 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_8",
+                "label":"Color 8 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_8",
+                "label":"Color 8 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_8",
+                 "label":"Color 8 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_8",
+                "label":"Color 8 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_9",
+                "label":"Color 9 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_9",
+                "label":"Color 9 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_9",
+                 "label":"Color 9 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_9",
+                "label":"Color 9 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_10",
+                "label":"Color 10 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_10",
+                "label":"Color 10 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_10",
+                 "label":"Color 10 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_10",
+                "label":"Color 10 Product"
+             },
+             {
+                "type":"image_picker",
+                "id":"image_11",
+                "label":"Color 11 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_11",
+                "label":"Color 11 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_11",
+                 "label":"Color 11 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_11",
+                "label":"Color 11 Product"
+             },
+             {
+                 "type":"image_picker",
+                 "id":"image_12",
+                 "label":"Color 12 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_12",
+                 "label":"Color 12 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_12",
+                  "label":"Color 12 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_12",
+                 "label":"Color 12 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_13",
+                 "label":"Color 13 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_13",
+                 "label":"Color 13 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_13",
+                  "label":"Color 13 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_13",
+                 "label":"Color 13 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_14",
+                 "label":"Color 14 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_14",
+                 "label":"Color 14 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_14",
+                  "label":"Color 14 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_14",
+                 "label":"Color 14 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_15",
+                 "label":"Color 15 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_15",
+                 "label":"Color 15 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_15",
+                  "label":"Color 15 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_15",
+                 "label":"Color 15 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_16",
+                 "label":"Color 16 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_16",
+                 "label":"Color 16 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_16",
+                  "label":"Color 16 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_16",
+                 "label":"Color 16 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_17",
+                 "label":"Color 17 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_17",
+                 "label":"Color 17 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_17",
+                  "label":"Color 17 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_17",
+                 "label":"Color 17 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_18",
+                 "label":"Color 18 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_18",
+                 "label":"Color 18 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_18",
+                  "label":"Color 18 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_18",
+                 "label":"Color 18 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_19",
+                 "label":"Color 19 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_19",
+                 "label":"Color 19 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_19",
+                  "label":"Color 19 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_19",
+                 "label":"Color 19 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_20",
+                 "label":"Color 20 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_20",
+                 "label":"Color 20 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_20",
+                  "label":"Color 20 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_20",
+                 "label":"Color 20 Product"
+              },
+              {
+                "type":"image_picker",
+                "id":"image_21",
+                "label":"Color 21 Swatch"
+             },
+             {
+                "type":"text",
+                "id":"title_21",
+                "label":"Color 21 Name"
+             },
+             {
+                 "type":"number",
+                 "id":"order_21",
+                 "label":"Color 21 Order"
+             },
+             {
+                "type":"product",
+                "id":"product_handle_21",
+                "label":"Color 21 Product"
+             },
+             {
+                 "type":"image_picker",
+                 "id":"image_22",
+                 "label":"Color 22 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_22",
+                 "label":"Color 22 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_22",
+                  "label":"Color 22 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_22",
+                 "label":"Color 22 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_23",
+                 "label":"Color 23 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_23",
+                 "label":"Color 23 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_23",
+                  "label":"Color 23 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_23",
+                 "label":"Color 23 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_24",
+                 "label":"Color 24 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_24",
+                 "label":"Color 24 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_24",
+                  "label":"Color 24 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_24",
+                 "label":"Color 24 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_25",
+                 "label":"Color 25 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_25",
+                 "label":"Color 25 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_25",
+                  "label":"Color 25 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_25",
+                 "label":"Color 25 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_26",
+                 "label":"Color 26 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_26",
+                 "label":"Color 26 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_26",
+                  "label":"Color 26 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_26",
+                 "label":"Color 26 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_27",
+                 "label":"Color 27 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_27",
+                 "label":"Color 27 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_27",
+                  "label":"Color 27 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_27",
+                 "label":"Color 27 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_28",
+                 "label":"Color 28 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_28",
+                 "label":"Color 28 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_28",
+                  "label":"Color 28 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_28",
+                 "label":"Color 28 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_29",
+                 "label":"Color 29 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_29",
+                 "label":"Color 29 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_29",
+                  "label":"Color 29 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_29",
+                 "label":"Color 29 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_30",
+                 "label":"Color 30 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_30",
+                 "label":"Color 30 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_30",
+                  "label":"Color 30 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_30",
+                 "label":"Color 30 Product"
+              },
+              {
+                "type":"image_picker",
+                "id":"image_31",
+                "label":"Color 31 Swatch"
+              },
+              {
+                "type":"text",
+                "id":"title_31",
+                "label":"Color 31 Name"
+              },
+              {
+                 "type":"number",
+                 "id":"order_31",
+                 "label":"Color 31 Order"
+              },
+              {
+                "type":"product",
+                "id":"product_handle_31",
+                "label":"Color 31 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_32",
+                 "label":"Color 32 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_32",
+                 "label":"Color 32 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_32",
+                  "label":"Color 32 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_32",
+                 "label":"Color 32 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_33",
+                 "label":"Color 33 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_33",
+                 "label":"Color 33 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_33",
+                  "label":"Color 33 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_33",
+                 "label":"Color 33 Product"
+              },
+              {
+                 "type":"image_picker",
+                 "id":"image_34",
+                 "label":"Color 34 Swatch"
+              },
+              {
+                 "type":"text",
+                 "id":"title_34",
+                 "label":"Color 34 Name"
+              },
+              {
+                  "type":"number",
+                  "id":"order_34",
+                  "label":"Color 34 Order"
+              },
+              {
+                 "type":"product",
+                 "id":"product_handle_34",
+                 "label":"Color 34 Product"
+              }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Color Sets",
+         "category":"Custom Content",
+         "blocks":[
+            {
+               "type":"colorset"
+            }
+         ]
+      }
+   ]
+}
+
+{% endschema %}

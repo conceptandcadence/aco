@@ -1,0 +1,286 @@
+{
+  "wrapper": "main.suiting",
+  "sections": {
+    "166266523192c5ec8s8": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "text_zeKQJx": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "<p>The Alta Suit<\/p>",
+            "text_style": "h2",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 40,
+            "padding_bottom_m": -24,
+            "padding_left_m": 104,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 40,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "image_NwAFeR": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify:\/\/shop_images\/alta-suit-dark.svg",
+            "link": "",
+            "width_m": "50%",
+            "min_width_m": "",
+            "max_width_m": "200px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "100%",
+            "min_width_d": "",
+            "max_width_d": "260px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zeKQJx",
+        "image_NwAFeR"
+      ],
+      "custom_css": [
+        ".lp-banner-full {border-top: solid 1px #000; border-bottom: solid 1px #000;}"
+      ],
+      "settings": {
+        "title": "Easy Layers",
+        "variation": "0",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "space-evenly",
+        "alignment_vertical_m": "flex-end",
+        "wrap_contents": false,
+        "defer": true,
+        "image_mobile": "shopify:\/\/shop_images\/suiting_header_mobile_f92a6585-1958-4777-b17c-ab0cc2c8537f.jpg",
+        "background_color_mobile": "#1b3448",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 32,
+        "inner_padding_right_m": 48,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "space-evenly",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#1b3448",
+        "image_desktop": "shopify:\/\/shop_images\/suiting_header_desktop.jpg",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 64,
+        "inner_padding_right_d": 64
+      }
+    },
+    "lp_banner_full_y79BTh": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "text_ERLKzX": {
+          "type": "text",
+          "settings": {
+            "visibility": "both",
+            "title": "<h3>LET'S MAKE IT A PARTY<\/h3><p>Want to outfit a crew for a wedding or special event? We got you covered. Just fill out the form below and we'll get the party started. <\/p>",
+            "text_style": "p",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "500px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_ERLKzX"
+      ],
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 36,
+        "inner_padding_bottom_m": 48,
+        "inner_padding_left_m": 20,
+        "inner_padding_right_m": 20,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 56,
+        "inner_padding_bottom_d": 64,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "suiting_collection_VUrnzt": {
+      "type": "suiting-collection",
+      "blocks": {
+        "feature_hmDfFM": {
+          "type": "feature",
+          "settings": {
+            "product": "alta-blazer-night",
+            "image_position": 2,
+            "hover_image_position": 3,
+            "colors": ""
+          }
+        },
+        "feature_NrNn8H": {
+          "type": "feature",
+          "settings": {
+            "product": "alta-blazer-dusk",
+            "image_position": 2,
+            "hover_image_position": -1,
+            "colors": ""
+          }
+        },
+        "feature_Mn9rLC": {
+          "type": "feature",
+          "settings": {
+            "product": "alta-blazer-bone",
+            "image_position": 2,
+            "hover_image_position": 3,
+            "colors": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_hmDfFM",
+        "feature_NrNn8H",
+        "feature_Mn9rLC"
+      ],
+      "settings": {
+        "transition_speed": 1500,
+        "background": "#ffffff",
+        "text_color": "#000000",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 20,
+        "inner_padding_bottom_m": 20,
+        "inner_padding_left_m": 20,
+        "inner_padding_right_m": 20,
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "suiting_form_8xRnk7": {
+      "type": "suiting-form",
+      "blocks": {
+        "form_jznbX9": {
+          "type": "form",
+          "settings": {
+            "title": "The Form",
+            "description": "<p>A few questions to get us going<\/p>",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "photo_RG8iMb": {
+          "type": "photo",
+          "settings": {
+            "image_1": "shopify:\/\/shop_images\/IMG_7718.jpg",
+            "image_2": "shopify:\/\/shop_images\/SGN_C_A_BODA-575.jpg",
+            "image_3": "shopify:\/\/shop_images\/fishers1_9a1306ef-ef0d-45ea-a92a-09e2a31a88a1.jpg",
+            "image_4": "shopify:\/\/shop_images\/Sabah_05122023__244_1_152f3cd1-5fd2-4946-87eb-e110a52d0ef7.jpg",
+            "image_5": "shopify:\/\/shop_images\/noah1.jpg",
+            "image_6": "shopify:\/\/shop_images\/guy1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "form_jznbX9",
+        "photo_RG8iMb"
+      ],
+      "settings": {
+        "title": "Section Title",
+        "description": "<p>Section Description<\/p>"
+      }
+    }
+  },
+  "order": [
+    "166266523192c5ec8s8",
+    "lp_banner_full_y79BTh",
+    "suiting_collection_VUrnzt",
+    "suiting_form_8xRnk7"
+  ]
+}

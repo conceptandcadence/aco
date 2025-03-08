@@ -1,0 +1,290 @@
+<section class="plp-products" id="shop-container" data-collection-root="{{ collection.url | escape }}" data-id="{{ section.id }}">
+  {% paginate collection.products by 48 %}
+      {% if collection.products.size > 0 %}
+
+        <div id="Results">
+					<section class="plp-products">
+						{% for product in collection.products %}
+							{% assign non_sale_product = true %}
+							{% if collection.handle != 'sale' %}
+								{% for tag in product.tags %}
+									{% if tag == 'sale' %}
+										{% assign non_sale_product = false %}
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+		
+							{% if forloop.index == 5 %}
+								{% if collection.metafields.media.feature != blank %}
+									{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: collection.metafields.media.feature.value -%}
+									{%- assign image_url = collection.metafields.media.feature.value | img_url: '4x5' -%}
+									 <div class="lp-collection-lifestyle visibility__desktop-only">
+		
+											{% if collection.products.size > 0 %}
+												<a class="plp-item__button button button--secondary" href="{{ collection.url }}">View More</a> 
+											{% endif %}
+										 
+											<img class="plp-item__images-image lazyload-img lifestyle" loading="lazy"
+													src="{{ image_url }}"
+													data-src="{{ image_url }}"
+													data-widths="[{{ supported_sizes }}]"
+													sizes="(max-width: 700px) 50vw,33.33vw"
+													srcset="{{ image_srcset }}"
+													width="200"
+													height="300"
+													alt="{{ collection.title }}">
+											<noscript>
+													<img class="plp-item__images-image lifestyle" src="{{ collection.metafields.media.feature.value | img_url: '400x' }}" alt="{{ collection.title | escape }}">
+											</noscript>
+										 
+									 </div>
+								{% endif %}
+							{% endif %}
+
+							{% if non_sale_product %}
+								{% include 'plp-item' %}
+							{% endif %}
+
+						{% endfor %}
+					</section>
+				</div>
+        <script>
+          $g.load({
+              page_context        : {                
+                currency_id:  window.theme.country_code
+              },
+              template: {
+                  id              : "category",
+                  target          : "#Results",
+                  sub_templates   : [
+                      {
+                              id          : "sort_and_filters_html", // the id given to the capture in the graphene templates
+                              target      : ".shop-filters" // the target selector to push the HTML into
+                      }
+                  ]
+              }
+          });
+        </script>
+      {% else %}
+        <div class="plp-products__no-matches">
+            <h2>Sorry</h2>
+            <p>{{ 'collections.general.no_matches' | t }}{% if current_tags != blank %} Please remove some filters and try again.{% endif %}</p>
+            {% assign gender = 'men' %}
+            {% for tag in current_tags %}
+                {% if tag contains 'women' %}
+                    {% assign gender = 'women' %}
+                {% endif %}
+            {% endfor %} 
+            <a href="/collections/{{ gender }}" class="button button--primary shop-all" style="font-size: 14px; margin-top: 12px; display: inline-block;">Shop All</a>
+        </div>
+        <style>
+            .plp-products { display: flex !important; flex-direction: column; justify-content: center; align-items: center; }
+            .shop-all.button.button--primary:before {
+                background-color: var(--color-blue-dark) !important;
+            }
+        </style>
+      {% endif %}
+			{% comment %}
+				{%- if paginate.pages > 1 -%}
+					<div class="plp-products__pagination">
+						{{ paginate | default_pagination: next: 'Next', previous: 'Previous' }}
+					</div>
+				{%- endif -%}
+			{% endcomment %}
+  {% endpaginate %}
+</section>
+
+
+
+
+
+{%- if shoppable_looks -%}
+<link rel="stylesheet" href="{{ 'plp-shoppable-look.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-shoppable-look.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-shoppable-look.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% comment %}
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+{% endcomment %}
+
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'infinite-scroll.pkgd.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "PLP Products",
+    "class": "product-listing",
+    "settings": [
+        {
+            "type": "range",
+            "id": "product_count",
+            "label": "Product Count",
+            "min": 6,
+            "max": 48,
+            "step": 1,
+            "unit": "cel",
+            "default": 18,
+            "info": "The number of products that will be initially loaded."
+        }
+    ],
+    "blocks":[
+        {
+        "type":"look",
+        "name":"Shoppable Look",
+        "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Admin Label"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }, 
+            {
+                "type":"collection",
+                "id":"collection",
+                "label":"Collection"
+            },
+            {
+                "type": "range",
+                "id": "placement",
+                "label": "Collection Placement",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "unit": "prd",
+                "default": 12,
+                "info": "This will be displayed in the Nth slot in the collection. To avoid white spaces, this should be a multiple of 6, plus one. Ex: 7, 13"
+            },
+            {
+               "type":"header",
+               "content":"Product 1"
+            },
+            {
+                "type":"product",
+                "id":"product_1",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_1_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_1_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 2"
+            },
+            {
+                "type":"product",
+                "id":"product_2",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_2_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_2_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 3"
+            },
+            {
+                "type":"product",
+                "id":"product_3",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_3_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_3_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 4"
+            },
+            {
+                "type":"product",
+                "id":"product_4",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_4_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_4_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            }
+          ]
+        }
+    ],
+      "presets": [
+      {
+        "name": "PLP Products",
+        "category": "Collections"
+      }]
+  }
+{% endschema %}

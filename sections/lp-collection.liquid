@@ -1,0 +1,205 @@
+{% assign collection = collections[section.settings.collection] %}
+{% assign title = section.settings.title %}
+{% assign product_display_limit = 6 %}
+{% if title != blank %}
+  <div class="lp-collection-banner">
+    {{ title }}
+  </div>
+{% endif %}
+
+<section class="plp-products" id="shop-container" data-collection-root="{{ collection.url | escape }}">
+      {% if collection.products.size > 0 %}
+        {% assign shoppable_looks = false %}
+        {% for product in collection.products limit:product_display_limit %}
+
+          {% assign non_sale_product = true %}
+          {% if collection.handle != 'sale' %}
+            {% for tag in product.tags %}
+              {% if tag == 'sale' %}
+                {% assign non_sale_product = false %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% assign item_classes = '' %}
+          {% if forloop.index == 5 %}
+            {% if section.settings.image %}
+              {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: section.settings.image -%}
+              {%- assign image_url = section.settings.image | img_url: '4x5' -%}
+               <div class="lp-collection-lifestyle visibility__desktop-only">
+
+                  {% if collection.products.size > 0 %}
+                    <a class="plp-item__button button button--secondary" href="{{ collection.url }}">View More</a> 
+                  {% endif %}
+                 
+                  <img class="plp-item__images-image lazyload-img lifestyle" loading="lazy"
+                      src="{{ image_url }}"
+                      data-src="{{ image_url }}"
+                      data-widths="[{{ supported_sizes }}]"
+                      sizes="(max-width: 700px) 50vw,33.33vw"
+                      srcset="{{ image_srcset }}"
+                      width="200"
+                      height="300"
+                      alt="{{ collection.title }}">
+                  <noscript>
+                      <img class="plp-item__images-image lifestyle" src="{{ section.settings.image | img_url: '400x' }}" alt="{{ collection.title | escape }}">
+                  </noscript>
+                 
+               </div>
+            {% endif %}
+          {% endif %}
+          
+          {% if forloop.index == 6 %}
+            {% assign item_classes = 'visibility__mobile-only' %}
+          {% endif %}
+          
+          {% if non_sale_product %}
+            {% include 'plp-item', classes: item_classes %}
+          {% endif %}
+          
+        {% endfor %}
+
+        {% if section.settings.image %}
+          {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: section.settings.image -%}
+          {%- assign image_url = section.settings.image | img_url: '4x5' -%}
+           <div class="lp-collection-lifestyle visibility__mobile-only">
+              <img class="plp-item__images-image lazyload-img" loading="lazy"
+                  src="{{ image_url }}"
+                  data-src="{{ image_url }}"
+                  data-widths="[{{ supported_sizes }}]"
+                  sizes="(max-width: 700px) 50vw,33.33vw"
+                  srcset="{{ image_srcset }}"
+                  width="200"
+                  height="300"
+                  alt="{{ collection.title }}">
+              <noscript>
+                  <img class="plp-item__images-image lifestyle" src="{{ section.settings.image | img_url: '400x' }}" alt="{{ collection.title | escape }}">
+              </noscript>
+
+              {% if collection.products.size > 0 %}
+                <a class="plp-item__button button button--primary" href="{{ collection.url }}">View More</a>
+              {% endif %}
+             
+           </div>
+        {% endif %}
+        
+      {% else %}
+        <div class="plp-products__no-matches">
+            <h2>Sorry</h2>
+            <p>{{ 'collections.general.no_matches' | t }}{% if current_tags != blank %} Please remove some filters and try again.{% endif %}</p>
+            {% assign gender = 'men' %}
+            {% for tag in current_tags %}
+                {% if tag contains 'women' %}
+                    {% assign gender = 'women' %}
+                {% endif %}
+            {% endfor %} 
+            <a href="/collections/{{ gender }}" class="button button--primary shop-all" style="font-size: 14px; margin-top: 12px; display: inline-block;">Shop All</a>
+        </div>
+        <style>
+            .plp-products { display: flex !important; flex-direction: column; justify-content: center; align-items: center; }
+            .shop-all.button.button--primary:before {
+              background-color: var(--color-blue-dark) !important;
+            }
+        </style>
+      {% endif %}
+</section>
+
+{% assign collection = nil %}
+
+{%- if shoppable_looks -%}
+<link rel="stylesheet" href="{{ 'plp-shoppable-look.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-shoppable-look.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-shoppable-look.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<style>
+  .lp-collection-banner {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--color-blue-dark);
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-white);
+  }
+  .lp-collection-lifestyle {
+    position: relative;
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .lp-collection-lifestyle img {
+    width: 100%;
+    height: auto;
+  }  
+  @media (max-width: 699px) {
+    .visibility__desktop-only {
+      display: none !important;
+    }
+   .lp-collection-lifestyle .button.button--primary, 
+   .lp-collection-lifestyle .button.button--secondary {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   }
+   .lp-collection-lifestyle .button.button--primary:before, 
+   .lp-collection-lifestyle .button.button--secondary:before {
+        /* background-color: var(--color-blue-bright); */
+   }
+  }  
+  @media (min-width: 700px) {
+    .visibility__mobile-only {
+      display: none !important;
+    }
+    .lp-collection-lifestyle .button.button--primary,
+    .lp-collection-lifestyle .button.button--secondary {
+      bottom: 40px !important;
+      left: 40px !important;
+      position: absolute !important;
+      width: 220px;
+      max-width: 90%;
+    }
+  }
+	html body #collection-nav {
+		padding: 10px !important;
+		border: 0 !important;
+		bottom: unset;
+	}
+</style>
+
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "LP Collection",
+    "class": "product-listing",
+    "settings": [
+      {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Lifestyle Image"
+        }, 
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Banner Text"
+        }, 
+    ],
+      "presets": [
+      {
+        "name": "LP Collection",
+        "category": "Collections"
+      }]
+  }
+{% endschema %}

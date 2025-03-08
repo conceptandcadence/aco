@@ -1,0 +1,111 @@
+{% if section.blocks.size > 0 %}
+
+    <div class="shop-filters">
+        <div class="shop-filters__toggle_wrapper">
+            <a href="#" class="shop-filters__clear" tabindex="0">Clear Filter</span>
+            <a class="shop-filters__toggle" href= "#" tabindex="0">
+                Filter <span class="shop-filters__toggle-icon">&gt;</span>
+            </a>
+        </div>
+        <div class="shop-filters__wrapper">
+            {% if section.settings.fabric_title != blank %}<a href="#" class="shop-filter-title fabrics">{{ section.settings.fabric_title }}<span class="shop-filters__toggle-icon">&times;</span></a>{% endif %}
+            <ul class="shop-filter-group fabrics">
+                {% for block in section.blocks %}
+                    {% if block.type == 'fabric' %}
+                        <li class="shop-filter-item">
+                            <a class="shop-filter-toggle" href="#" data-filter="[data-material='{{ block.settings.tag | downcase | remove: 'material--' }}']">{{ block.settings.label }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if section.settings.size_title != blank %}<a href="#" class="shop-filter-title fabrics">{{ section.settings.size_title }}<span class="shop-filters__toggle-icon">&times;</span></a>{% endif %}
+            <ul class="shop-filter-group sizes">
+                {% for block in section.blocks %}
+                    {% if block.type == 'size' %}
+                        <li class="shop-filter-item">
+                            <a class="shop-filter-toggle" href="#" data-filter="[data-size-{{ block.settings.label | downcase }}]">{{ block.settings.label }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if section.settings.color_title != blank %}<a href="#" class="shop-filter-title fabrics">{{ section.settings.color_title }}<span class="shop-filters__toggle-icon">&times;</span></a>{% endif %}
+            <ul class="shop-filter-group colors">
+                {% for block in section.blocks %}
+                    {% if block.type == 'color' %}
+                        <li class="shop-filter-item">
+                            <a class="shop-filter-toggle" href="#" data-filter="[data-colorway-{{- block.settings.tag | remove: 'colorway--' | remove: 'Colorway--' -}}]">{{ block.settings.label }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Shop Filters",
+    "settings": [
+        {
+            "type":"text",
+            "id":"fabric_title",
+            "label":"Fabric Filters Heading"
+        },
+        {
+            "type":"text",
+            "id":"size_title",
+            "label":"Sizes Filters Heading"
+        },
+        {
+            "type":"text",
+            "id":"color_title",
+            "label":"Colors Filters Heading"
+        }
+    ],
+    "blocks":[
+        {
+        "type":"fabric",
+        "name":"Fabric",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            },
+            {
+                "type":"text",
+                "id":"tag",
+                "label":"Product Tag",
+                "info":"The product tag that will be used to filter this option"
+            }
+          ]
+        }, {
+        "type":"size",
+        "name":"Size",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            }
+            ]
+        }, {
+        "type":"color",
+        "name":"Color",
+        "settings":[
+            {
+                "type":"text",
+                "id":"label",
+                "label":"Filter Label"
+            },
+            {
+                "type":"text",
+                "id":"tag",
+                "label":"Product Tag",
+                "info":"The product tag that will be used to filter this option"
+            }
+            ]
+        }
+    ]
+  }
+{% endschema %}

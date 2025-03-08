@@ -1,0 +1,40 @@
+<div id="CustomerRegisterForm">
+    <div class="column" style="margin:40px auto;">
+        <div class="contact-row">
+            <h1>CONTACT</h1> <a href="mailto:hey@alexcrane.co">hey@alexcrane.co</a>
+        </div> {% form 'contact' %} {% if form.posted_successfully? %}<p class="form-success"> {{ 'contact.form.post_success' | t }}</p> {% endif %} {{ form.errors | default_errors }} <input type="text" name="contact[name]" id="ContactFormName" placeholder="{{ 'contact.form.name' | t }}" value> <input type="email" name="contact[email]" id="ContactFormEmail" placeholder="{{ 'contact.form.email' | t }}" value spellcheck="false" autocomplete="off" autocapitalize="off"><textarea rows="6" name="contact[body]" id="ContactFormMessage" placeholder="Message..."></textarea> <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}"> {% endform %}
+        {{ section.settings.press | replace: '<p>','<div class="wholesale">' | replace: '</p>','</div>' }}
+        {{ section.settings.wholesale | replace: '<p>','<div class="wholesale">' | replace: '</p>','</div>' }}
+        {{ section.settings.address | replace: '<p>','<div class="wholesale">' | replace: '</p>','</div>' }}
+        {{ section.settings.phone | replace: '<p>','<div class="wholesale">' | replace: '</p>','</div>' }}
+    </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Contact Page",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "press",
+        "label": "Press"
+      },   
+            {
+        "type": "richtext",
+        "id": "wholesale",
+        "label": "Wholesale"
+      }, 
+            {
+        "type": "richtext",
+        "id": "address",
+        "label": "Address"
+      }, 
+            {
+        "type": "richtext",
+        "id": "phone",
+        "label": "Phone"
+      }
+    ]
+  }
+{% endschema %}

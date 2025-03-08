@@ -1,0 +1,458 @@
+{% section 'contact-main' %}
+
+<style>
+.wholesale {
+    padding: 3rem 0 0;
+    text-align: center;
+}	
+.wholesale a {
+    color: #233d61;
+}	
+  #CustomerLoginForm,#RecoverPasswordForm,#CustomerRegisterForm {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 900px;
+    min-height: 35vh;
+    margin: 0 auto
+}
+
+#CustomerLoginForm div.column,#RecoverPasswordForm div.column,#CustomerRegisterForm div.column {
+    flex: 0 0 45%
+}
+
+#CustomerLoginForm div.column:first-of-type,#RecoverPasswordForm div.column:first-of-type,#CustomerRegisterForm div.column:first-of-type {
+    margin-right: 5%
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column:first-of-type,#RecoverPasswordForm div.column:first-of-type,#CustomerRegisterForm div.column:first-of-type {
+        margin-right:0%;
+        margin-bottom: 40px
+    }
+}
+
+#CustomerLoginForm div.column:last-of-type,#RecoverPasswordForm div.column:last-of-type,#CustomerRegisterForm div.column:last-of-type {
+    margin-left: 5%
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column:last-of-type,#RecoverPasswordForm div.column:last-of-type,#CustomerRegisterForm div.column:last-of-type {
+        margin-left:0%
+    }
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column,#RecoverPasswordForm div.column,#CustomerRegisterForm div.column {
+        flex:0 0 100%
+    }
+}
+
+#CustomerLoginForm div.column p a,#RecoverPasswordForm div.column p a,#CustomerRegisterForm div.column p a {
+    color: #000;
+    text-decoration: none
+}
+
+#CustomerLoginForm div.column .prompt,#RecoverPasswordForm div.column .prompt,#CustomerRegisterForm div.column .prompt {
+    position: relative;
+    top: -10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: .75em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column .prompt,#RecoverPasswordForm div.column .prompt,#CustomerRegisterForm div.column .prompt {
+        margin:50px 0
+    }
+}
+
+#CustomerLoginForm div.column .prompt:before,#RecoverPasswordForm div.column .prompt:before,#CustomerRegisterForm div.column .prompt:before {
+    content: "";
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column .prompt:before,#RecoverPasswordForm div.column .prompt:before,#CustomerRegisterForm div.column .prompt:before {
+        left:40px
+    }
+}
+
+#CustomerLoginForm div.column .prompt:after,#RecoverPasswordForm div.column .prompt:after,#CustomerRegisterForm div.column .prompt:after {
+    content: "";
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm div.column .prompt:after,#RecoverPasswordForm div.column .prompt:after,#CustomerRegisterForm div.column .prompt:after {
+        right:40px
+    }
+}
+
+#CustomerLoginForm div.column .contact-row,#RecoverPasswordForm div.column .contact-row,#CustomerRegisterForm div.column .contact-row {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000
+}
+
+#CustomerLoginForm div.column .contact-row h1,#RecoverPasswordForm div.column .contact-row h1,#CustomerRegisterForm div.column .contact-row h1 {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+    border-bottom: none
+}
+
+#CustomerLoginForm div.column .contact-row a,#RecoverPasswordForm div.column .contact-row a,#CustomerRegisterForm div.column .contact-row a {
+    float: right;
+    color: #000;
+    font-size: 1em;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm h1,#RecoverPasswordForm h1,#CustomerRegisterForm h1 {
+    display: block;
+    width: 100%;
+    flex: 0 0 100%;
+    margin: 0 0 40px;
+    padding: 20px 0;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm h1,#RecoverPasswordForm h1,#CustomerRegisterForm h1 {
+        margin-bottom:10px
+    }
+}
+
+#CustomerLoginForm h2,#RecoverPasswordForm h2,#CustomerRegisterForm h2 {
+    max-width: 400px;
+    margin: 20px auto 15px;
+    font-weight: 500;
+    font-size: 1.25em;
+    text-align: left;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm p,#RecoverPasswordForm p,#CustomerRegisterForm p {
+    margin: 0 auto 5px;
+    line-height: 1.45
+}
+
+#CustomerLoginForm p.dropdown,#RecoverPasswordForm p.dropdown,#CustomerRegisterForm p.dropdown {
+    position: relative;
+    cursor: pointer
+}
+
+#CustomerLoginForm p.dropdown:after,#RecoverPasswordForm p.dropdown:after,#CustomerRegisterForm p.dropdown:after {
+    content: ">";
+    position: absolute;
+    top: -3px;
+    right: 35%;
+    font-size: 1.25em;
+    font-weight: bold
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm p.dropdown:after,#RecoverPasswordForm p.dropdown:after,#CustomerRegisterForm p.dropdown:after {
+        right:20px
+    }
+}
+
+#CustomerLoginForm p.dropdown.active:after,#RecoverPasswordForm p.dropdown.active:after,#CustomerRegisterForm p.dropdown.active:after {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm p,#RecoverPasswordForm p,#CustomerRegisterForm p {
+        width:100%;
+        margin: 0 0 5px 0;
+        font-size: .875em
+    }
+}
+
+#CustomerLoginForm .dropdown-text,#RecoverPasswordForm .dropdown-text,#CustomerRegisterForm .dropdown-text {
+    display: none;
+    width: 95%;
+    padding: 5%;
+    margin-top: 30px;
+    border: 1px solid #000
+}
+
+#CustomerLoginForm .dropdown-text.active,#RecoverPasswordForm .dropdown-text.active,#CustomerRegisterForm .dropdown-text.active {
+    display: block
+}
+
+#CustomerLoginForm .dropdown-text h3,#RecoverPasswordForm .dropdown-text h3,#CustomerRegisterForm .dropdown-text h3 {
+    width: 260px;
+    margin: 0 auto 30px;
+    padding-bottom: 5px;
+    font-size: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000
+}
+
+#CustomerLoginForm .dropdown-text p,#RecoverPasswordForm .dropdown-text p,#CustomerRegisterForm .dropdown-text p {
+    margin-bottom: 30px;
+    font-size: .875em;
+    text-transform: uppercase
+}
+
+#CustomerLoginForm .dropdown-text p:last-of-type,#RecoverPasswordForm .dropdown-text p:last-of-type,#CustomerRegisterForm .dropdown-text p:last-of-type {
+    margin-bottom: 0
+}
+
+#CustomerLoginForm .dropdown-text p a,#RecoverPasswordForm .dropdown-text p a,#CustomerRegisterForm .dropdown-text p a {
+    color: #3ecbec !important;
+    text-decoration: underline !important
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm .dropdown-text,#RecoverPasswordForm .dropdown-text,#CustomerRegisterForm .dropdown-text {
+        width:100%;
+        margin-top: 15px
+    }
+}
+
+#CustomerLoginForm form,#RecoverPasswordForm form,#CustomerRegisterForm form {
+    margin: 0 0 0 auto
+}
+
+#CustomerLoginForm form input[type=tel],#CustomerLoginForm form input[type=text],#CustomerLoginForm form input[type=email],#CustomerLoginForm form input[type=password],#RecoverPasswordForm form input[type=tel],#RecoverPasswordForm form input[type=text],#RecoverPasswordForm form input[type=email],#RecoverPasswordForm form input[type=password],#CustomerRegisterForm form input[type=tel],#CustomerRegisterForm form input[type=text],#CustomerRegisterForm form input[type=email],#CustomerRegisterForm form input[type=password] {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px auto;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid #000;
+    font-size: 1em
+}
+
+#CustomerLoginForm form input[type=tel].input-error,#CustomerLoginForm form input[type=text].input-error,#CustomerLoginForm form input[type=email].input-error,#CustomerLoginForm form input[type=password].input-error,#RecoverPasswordForm form input[type=tel].input-error,#RecoverPasswordForm form input[type=text].input-error,#RecoverPasswordForm form input[type=email].input-error,#RecoverPasswordForm form input[type=password].input-error,#CustomerRegisterForm form input[type=tel].input-error,#CustomerRegisterForm form input[type=text].input-error,#CustomerRegisterForm form input[type=email].input-error,#CustomerRegisterForm form input[type=password].input-error {
+    background: rgba(239,115,143,.25)
+}
+
+#CustomerLoginForm form input[type=tel]::-webkit-input-placeholder,#CustomerLoginForm form input[type=text]::-webkit-input-placeholder,#CustomerLoginForm form input[type=email]::-webkit-input-placeholder,#CustomerLoginForm form input[type=password]::-webkit-input-placeholder,#RecoverPasswordForm form input[type=tel]::-webkit-input-placeholder,#RecoverPasswordForm form input[type=text]::-webkit-input-placeholder,#RecoverPasswordForm form input[type=email]::-webkit-input-placeholder,#RecoverPasswordForm form input[type=password]::-webkit-input-placeholder,#CustomerRegisterForm form input[type=tel]::-webkit-input-placeholder,#CustomerRegisterForm form input[type=text]::-webkit-input-placeholder,#CustomerRegisterForm form input[type=email]::-webkit-input-placeholder,#CustomerRegisterForm form input[type=password]::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form input[type=tel]::-moz-placeholder,#CustomerLoginForm form input[type=text]::-moz-placeholder,#CustomerLoginForm form input[type=email]::-moz-placeholder,#CustomerLoginForm form input[type=password]::-moz-placeholder,#RecoverPasswordForm form input[type=tel]::-moz-placeholder,#RecoverPasswordForm form input[type=text]::-moz-placeholder,#RecoverPasswordForm form input[type=email]::-moz-placeholder,#RecoverPasswordForm form input[type=password]::-moz-placeholder,#CustomerRegisterForm form input[type=tel]::-moz-placeholder,#CustomerRegisterForm form input[type=text]::-moz-placeholder,#CustomerRegisterForm form input[type=email]::-moz-placeholder,#CustomerRegisterForm form input[type=password]::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form input[type=tel]::-webkit-input-placeholder, #CustomerLoginForm form input[type=text]::-webkit-input-placeholder, #CustomerLoginForm form input[type=email]::-webkit-input-placeholder, #CustomerLoginForm form input[type=password]::-webkit-input-placeholder, #RecoverPasswordForm form input[type=tel]::-webkit-input-placeholder, #RecoverPasswordForm form input[type=text]::-webkit-input-placeholder, #RecoverPasswordForm form input[type=email]::-webkit-input-placeholder, #RecoverPasswordForm form input[type=password]::-webkit-input-placeholder, #CustomerRegisterForm form input[type=tel]::-webkit-input-placeholder, #CustomerRegisterForm form input[type=text]::-webkit-input-placeholder, #CustomerRegisterForm form input[type=email]::-webkit-input-placeholder, #CustomerRegisterForm form input[type=password]::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form input[type=tel]::-moz-placeholder, #CustomerLoginForm form input[type=text]::-moz-placeholder, #CustomerLoginForm form input[type=email]::-moz-placeholder, #CustomerLoginForm form input[type=password]::-moz-placeholder, #RecoverPasswordForm form input[type=tel]::-moz-placeholder, #RecoverPasswordForm form input[type=text]::-moz-placeholder, #RecoverPasswordForm form input[type=email]::-moz-placeholder, #RecoverPasswordForm form input[type=password]::-moz-placeholder, #CustomerRegisterForm form input[type=tel]::-moz-placeholder, #CustomerRegisterForm form input[type=text]::-moz-placeholder, #CustomerRegisterForm form input[type=email]::-moz-placeholder, #CustomerRegisterForm form input[type=password]::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form input[type=tel]::placeholder,#CustomerLoginForm form input[type=text]::placeholder,#CustomerLoginForm form input[type=email]::placeholder,#CustomerLoginForm form input[type=password]::placeholder,#RecoverPasswordForm form input[type=tel]::placeholder,#RecoverPasswordForm form input[type=text]::placeholder,#RecoverPasswordForm form input[type=email]::placeholder,#RecoverPasswordForm form input[type=password]::placeholder,#CustomerRegisterForm form input[type=tel]::placeholder,#CustomerRegisterForm form input[type=text]::placeholder,#CustomerRegisterForm form input[type=email]::placeholder,#CustomerRegisterForm form input[type=password]::placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form input[type=submit],#RecoverPasswordForm form input[type=submit],#CustomerRegisterForm form input[type=submit] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0 0 auto;
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    border: none;
+    background: #1b3448
+}
+
+#CustomerLoginForm form textarea,#RecoverPasswordForm form textarea,#CustomerRegisterForm form textarea {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    border: none;
+    border: 1px solid #000;
+    font-size: 1em;
+    resize: none
+}
+
+#CustomerLoginForm form textarea::-webkit-input-placeholder,#RecoverPasswordForm form textarea::-webkit-input-placeholder,#CustomerRegisterForm form textarea::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form textarea::-moz-placeholder,#RecoverPasswordForm form textarea::-moz-placeholder,#CustomerRegisterForm form textarea::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form textarea::-webkit-input-placeholder, #RecoverPasswordForm form textarea::-webkit-input-placeholder, #CustomerRegisterForm form textarea::-webkit-input-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form textarea::-moz-placeholder, #RecoverPasswordForm form textarea::-moz-placeholder, #CustomerRegisterForm form textarea::-moz-placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form textarea::placeholder,#RecoverPasswordForm form textarea::placeholder,#CustomerRegisterForm form textarea::placeholder {
+    text-transform: uppercase;
+    font-size: .875em;
+    letter-spacing: .2em
+}
+
+#CustomerLoginForm form p,#RecoverPasswordForm form p,#CustomerRegisterForm form p {
+    width: 100%;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    margin-left: auto !important;
+    margin-right: 0
+}
+
+#CustomerLoginForm form .errors,#RecoverPasswordForm form .errors,#CustomerRegisterForm form .errors {
+    width: 100%;
+    min-height: 40px;
+    margin: 10px auto;
+    padding: 5px 0;
+    color: #fff;
+    font-size: .875em;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    background: #ef738f
+}
+
+#CustomerLoginForm form .errors ul,#RecoverPasswordForm form .errors ul,#CustomerRegisterForm form .errors ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+#CustomerLoginForm form .errors ul li a,#RecoverPasswordForm form .errors ul li a,#CustomerRegisterForm form .errors ul li a {
+    color: #fff;
+    font-weight: bold
+}
+
+@media(max-width: 699px) {
+    #CustomerLoginForm,#RecoverPasswordForm,#CustomerRegisterForm {
+        width:90vw
+    }
+
+    #CustomerLoginForm form,#RecoverPasswordForm form,#CustomerRegisterForm form {
+        width: 100%
+    }
+
+    #CustomerLoginForm form input[type=text],#CustomerLoginForm form input[type=email],#CustomerLoginForm form input[type=password],#CustomerLoginForm form textarea,#RecoverPasswordForm form input[type=text],#RecoverPasswordForm form input[type=email],#RecoverPasswordForm form input[type=password],#RecoverPasswordForm form textarea,#CustomerRegisterForm form input[type=text],#CustomerRegisterForm form input[type=email],#CustomerRegisterForm form input[type=password],#CustomerRegisterForm form textarea {
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px
+    }
+
+    #CustomerLoginForm form input[type=submit],#RecoverPasswordForm form input[type=submit],#CustomerRegisterForm form input[type=submit] {
+        position: fixed;
+        bottom: 50px;
+        left: 0;
+        width: 100vw;
+        margin: 0;
+        border-top: 1px solid #888;
+        border-bottom: 1px solid #888;
+        z-index: 9999
+    }
+}
+
+#CustomerRegisterForm {
+    display: flex;
+    flex-flow: row wrap
+}
+
+#CustomerRegisterForm .prompt {
+    position: relative;
+    top: 0px !important;
+    width: 100%;
+    margin: 30px 0;
+    font-size: .75em;
+    text-align: center;
+    text-transform: uppercase
+}
+
+@media(max-width: 699px) {
+    #CustomerRegisterForm .prompt {
+        margin:50px 0
+    }
+}
+
+#CustomerRegisterForm .prompt:before {
+    content: "";
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media(max-width: 699px) {
+    #CustomerRegisterForm .prompt:before {
+        left:40px
+    }
+}
+
+#CustomerRegisterForm .prompt:after {
+    content: "";
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    width: 30px;
+    height: 1px;
+    background: #000
+}
+
+@media(max-width: 699px) {
+    #CustomerRegisterForm .prompt:after {
+        right:40px
+    }
+}
+
+#CustomerRegisterForm form p {
+    width: 100%;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    margin-left: auto !important;
+    margin-right: 0
+}
+
+</style>

@@ -1,0 +1,120 @@
+{% assign featured_review_count = 0 %}
+{% capture featured_reviews %}
+    {% for block in section.blocks %}
+        {% if product.tags contains block.settings.tag %}
+            {% assign featured_review_count = featured_review_count | plus: 1 %}
+            <div class="featured-review">
+                <div class="featured-review__wrapper">
+                    <ul class="featured-review__stars">
+                        {% for i in (1..block.settings.rating) %}
+                            <li class="featured-review__star">★</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="featured-review__content">{{ block.settings.title }}</div>
+                    <div class="featured-review__meta">
+                        <div class="featured-review__reviewer">{{ block.settings.reviewer }}</div>
+                        <div class="featured-review__product">{{ all_products[block.settings.product].title }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endcapture %}
+
+<section class="product-reviews{% if featured_review_count == 0 %} no-featured-reviews{% endif%} no-yotpo-reviews">
+    <div class="yotpo-review-container">
+        <div class="reviews-overview">
+            <h3 class="reviews-overview__score">
+                <span class="reviews-overview__average">5</span>
+                <ul class="reviews-overview__stars">
+                    <li class="reviews-overview__star"><div class="reviews-overview__star-icon">★</div></li>
+                    <li class="reviews-overview__star"><div class="reviews-overview__star-icon">★</div></li>
+                    <li class="reviews-overview__star"><div class="reviews-overview__star-icon">★</div></li>
+                    <li class="reviews-overview__star"><div class="reviews-overview__star-icon">★</div></li>
+                    <li class="reviews-overview__star"><div class="reviews-overview__star-icon">★</div></li>
+                </ul>
+            </h3>
+            <div class="reviews-overview__description">
+                An average rating of <span class="reviews-overview__average">5</span> out of 5 stars, based on <span class="reviews-overview__count">100</span> reviews.
+            </div>
+            <button class="reviews-overview__toggle button button--secondary">Read All Reviews</button>
+        </div>
+        <div class="no-reviews-yet">
+            <h3 class="reviews-heading">
+                <span class="reviews-title">Be the first to leave a review.</span>
+            </h3>
+            <button class="reviews-write__toggle button button--secondary">Write a Review</button>
+        </div>
+        <div class="yotpo yotpo-main-widget" data-product-id="{{ product.id }}" data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+            data-price="{{ variant.price | money_without_currency }}" data-currency="{{ shop.currency }}"
+            data-description="{{ product.description | escape }}">
+        </div>
+    </div>
+    <div class="featured-reviews">
+        {{ featured_reviews }}
+        {% if featured_review_count > 1 %}
+            {{ featured_reviews }}
+        {% endif %}
+    </div>
+</section>
+
+
+<link rel="stylesheet" href="{{ 'styles-yotpo.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'product-reviews.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'styles-yotpo.min.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'product-reviews.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'product-reviews.min.js' | asset_url }}" defer="defer"></script>
+{% schema %} 
+{
+	"name": "Product Reviews",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Section Title"
+        }
+    ],
+    "blocks":[
+    {
+       "type":"review",
+       "name":"Featured Review",
+       "settings":[
+        {
+            "type": "range",
+            "id": "rating",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "unit": "★",
+            "label": "Rating",
+            "default": 5
+        },
+        {
+            "type":"richtext",
+            "id":"title",
+            "label":"Review"
+        },
+        {
+            "type": "text",
+            "id": "reviewer",
+            "label": "Reviewer Name"
+        },
+        {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+        },
+        {
+            "type": "text",
+            "id": "tag",
+            "label": "Tag",
+            "info": "This review will show for all products that have this tag."
+        }
+       ]  
+    }
+ ]
+}
+{% endschema %}

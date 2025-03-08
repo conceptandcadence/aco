@@ -1,0 +1,120 @@
+{% if section.settings.title != blank %}
+
+    <section id="section-{{ section.id }}-{{ section.settings.variation }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+        <div class="lp-announcement" style="background-color: {{ section.settings.background }}">
+          {% assign country_specific_message = nil %}
+          {% for block in section.blocks %}
+            {% if localization.country.iso_code == block.settings.country %}
+              {% assign country_specific_message = block.settings.message %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if country_specific_message %}
+            {{ country_specific_message }}
+          {% else %}
+            {{ section.settings.title }}
+          {% endif %}
+        </div>
+        <style>
+            #section-{{ section.id }}-{{ section.settings.variation }}, #section-{{ section.id }}-{{ section.settings.variation }} * {
+                color: {{ section.settings.text_color }};
+                text-decoration: none;
+                font-size: 16px;
+            }
+        </style>
+    </section> 
+
+    <link rel="stylesheet" href="{{ 'lp-announcement.min.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'lp-announcement.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "LP Header",
+  "class": "c-lp-announcement lp-section",
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "richtext",
+        "id": "title",
+        "label": "Default Message",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "<p>Get 10% OFF Your First Order</p>"
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#1b3448"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#ffffff" 
+    }
+  ],
+  "blocks":[
+    {
+    "type":"message",
+    "name":"Localized Message",
+    "settings":[
+        {
+          "type": "text",
+          "id": "country",
+          "label": "Country",
+          "info": "The ISO code of the country this message should be displayed for in IETF language tag format."
+        },
+        {
+          "type": "richtext",
+          "id": "message",
+          "label": "Default Message",
+          "info": "The message that will be dispayed in the banner."
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Header",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

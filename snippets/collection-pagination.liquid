@@ -1,0 +1,19 @@
+{%- if paginate.pages > 1 -%}
+  <div class="Pagination">
+    <div class="Pagination__Nav">
+    <span class="view-more">View More </span>
+      {%- for part in paginate.parts -%}
+        {%- if part.is_link -%}
+            <a href="{{ part.url | remove: 'view=ajax' }}{{ hash }}"
+               class="Pagination__NavItem Link Link--primary">
+                {{ part.title }}
+            </a>
+        {%- else -%}
+          <span class="Pagination__NavItem {% if part.title == paginate.current_page %}is-active{% endif %}">
+              {{ part.title }}
+          </span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

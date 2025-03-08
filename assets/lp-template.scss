@@ -1,0 +1,39 @@
+.template-modular {
+  margin-top: 0 !important;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    main.c-landing-page {
+      background-color: #fff;
+      max-width: 1800px; 
+      width: 100%;
+      margin: 0 auto;
+    }
+    .lp-section-variant {
+        display: none;
+    }
+    .flickity-button-icon {
+        position: absolute;
+        width: 14px;  
+    }
+}
+
+// Display sections that correspond to that variant
+body[data-variation="0"] .lp-section [data-variation="0"],
+body[data-variation="1"] .lp-section [data-variation="1"],
+body[data-variation="2"] .lp-section [data-variation="2"],
+body[data-variation="3"] .lp-section [data-variation="3"],
+body[data-variation="4"] .lp-section [data-variation="4"],
+body[data-variation="5"] .lp-section [data-variation="5"] {
+    display: block;
+}
+
+// Display any sections with the "all" setting regardless of the variant the page is set to display.
+body[data-variation="0"] .lp-section [data-variation="all"],
+body[data-variation="1"] .lp-section [data-variation="all"],
+body[data-variation="2"] .lp-section [data-variation="all"],
+body[data-variation="3"] .lp-section [data-variation="all"],
+body[data-variation="4"] .lp-section [data-variation="all"],
+body[data-variation="5"] .lp-section [data-variation="all"] {
+    display: block;
+}

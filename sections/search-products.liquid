@@ -1,0 +1,254 @@
+<section class="plp-products" id="shop-container" data-collection-root="{{ collection.url | escape }}" data-id="{{ section.id }}">
+  <div id="Results"></div>
+  <style>
+    .badge.shorts-length {
+            display: block;
+            position: absolute;
+            bottom: 20px;
+            left: 12px;
+            width: auto;
+            border-radius: 20px;
+            background-color: var(--color-blue-bright);
+            padding: 3px 10px;
+            font-size: 12px;
+            color: #fff;
+    }
+    @media (min-width: 700px) {
+    .badge.shorts-length {
+                    left: 20px;
+                    bottom: 24px;
+            }
+    }
+    section.plp-products {
+        border-color: var(--color-grey-soft) !important;
+    }
+    .plp-products .plp-item .plp-item__info {
+        text-shadow: 0px 0px 4px rgba(255,255,255,0);
+        transition: text-shadow 0.25s ease-in-out;
+    }
+    .plp-products .plp-item:hover .plp-item__info {
+        color: var(--color-black) !important;
+        text-shadow: 1px 1px 1.5px rgb(255, 255, 255, 0.5);
+    }
+    html body #collection-nav {
+        padding: 20px;
+    }
+    html body #collection-nav ul li {
+        margin: 0 6px 0 0 !important;
+    }
+  .shop-filters .plp-products-category {
+    display: none !important;
+    }
+    header .site-subnav-categories {
+      display: flex !important;
+    }
+    #shopify-section-header ul.site-nav > li.hasMegaMenu > ul.site-subnav {
+      top: 47px!important;
+      left: -23px!important;
+    }
+    .site-subnav-categories { display:none !important; }
+    #collection-nav, .collection-nav-container, .shop-filters { width: 100% !important; }
+    .shop-filters{ justify-content: space-between !important; }
+  </style>
+  <script>          
+    $g.load({
+        page_context        : {                
+          currency_id:  window.theme.country_code
+        },
+        template: {
+            id						: "search", 
+            target					: "#Results",
+            sub_templates   : [
+                {
+                    id          : "sort_and_filters_html", // the id given to the capture in the graphene templates
+                    target      : ".shop-filters" // the target selector to push the HTML into
+                }
+            ]
+        }
+    });
+  </script>
+</section>
+
+
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+{{ 'component-facets.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'infinite-scroll.pkgd.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "PLP Products",
+    "class": "product-listing",
+    "settings": [
+        {
+            "type": "range",
+            "id": "product_count",
+            "label": "Product Count",
+            "min": 6,
+            "max": 48,
+            "step": 1,
+            "unit": "cel",
+            "default": 18,
+            "info": "The number of products that will be initially loaded."
+        }
+    ],
+    "blocks":[
+        {
+        "type":"look",
+        "name":"Shoppable Look",
+        "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Admin Label"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }, 
+            {
+                "type":"collection",
+                "id":"collection",
+                "label":"Collection"
+            },
+            {
+                "type": "range",
+                "id": "placement",
+                "label": "Collection Placement",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "unit": "prd",
+                "default": 12,
+                "info": "This will be displayed in the Nth slot in the collection. To avoid white spaces, this should be a multiple of 6, plus one. Ex: 7, 13"
+            },
+            {
+               "type":"header",
+               "content":"Product 1"
+            },
+            {
+                "type":"product",
+                "id":"product_1",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_1_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_1_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 2"
+            },
+            {
+                "type":"product",
+                "id":"product_2",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_2_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_2_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 3"
+            },
+            {
+                "type":"product",
+                "id":"product_3",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_3_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_3_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 4"
+            },
+            {
+                "type":"product",
+                "id":"product_4",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_4_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_4_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            }
+          ]
+        }
+    ],
+      "presets": [
+      {
+        "name": "PLP Products",
+        "category": "Collections"
+      }]
+  }
+{% endschema %}

@@ -1,0 +1,9 @@
+{% if variant.inventory_quantity <= 0 %}
+  {% if variant.inventory_policy == 'continue' %}
+      {% assign variant_availability = 'preorder' %}
+  {% else %}
+    {% assign variant_availability = false %}
+  {% endif %}
+{% else %}
+  {% assign variant_availability = true %}
+{% endif %}

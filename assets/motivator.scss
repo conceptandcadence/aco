@@ -1,0 +1,165 @@
+// Motivator
+
+body.motivator--active {
+  .rebuy-cart__motivator {
+    display: flex;
+    flex-direction: column;
+  }
+  .rebuy-cart__flyout-shipping-bar {
+    display: none !important;
+  }
+}
+body:not(.motivator--active) {
+  .rebuy-cart__motivator {
+    display: none !important;
+  } 
+}
+
+.rebuy-cart__motivator--widget {
+  padding: 0;
+}
+
+.rebuy-cart__motivator .rebuy-cart__flyout-recommendations {
+  .primary-title {
+    display: none;
+  }
+}
+
+.cart-motivator__goal-message {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+  display: none;
+  padding: 16px;
+  &.active {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.cart-motivator__progress-message {
+  font-size: 12px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 700px) {
+  .cart-motivator__progress-message {
+    font-size: 13px;
+  }
+}
+
+.cart-motivator__progress-wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px 24px 32px;
+}
+
+.cart-motivator__progress-marker {
+  position: relative;
+  text-align: right;
+  height: 14px;
+  &.complete {
+    .cart-motivator__progress-marker-text {
+      font-weight: 500;
+    }
+    .cart-motivator__progress-marker-completed {
+      opacity: 1;
+    }
+  }
+}
+
+.cart-motivator__progress-marker-completed {
+  opacity: 0;
+  font-weight: 700;
+}
+
+.cart-motivator__progress-marker:not(:last-child):after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-right: solid 1px #000;
+  transform: translateY(-100%);
+  height: 14px;
+}
+
+.cart-motivator__progress-marker-label {
+  transform: translateY(8px);
+  font-size: 12px;
+  height: 14px;
+  white-space: nowrap;
+  text-align: center; 
+
+}
+
+.cart-motivator__progress-meter {
+  position: relative;
+  margin: 10px 0 0;
+  border-radius: 10px;
+  background: #eee;
+  padding: 0;
+  width: 100%;
+  height: 14px;
+  border: solid 1px #000;
+  overflow: hidden;
+  &.completed {
+      animation: meter-pulse 2s infinite;
+  }
+  &.has-progress {
+    .cart-motivator__progress-meter-fill {
+      animation: meter-wiggle 1s infinite;
+    }
+  }
+}
+
+.cart-motivator__progress-meter-fill {
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  margin: 0;
+  border-radius: 0;
+  background: #2491c4;
+  padding: 0;
+  width: auto;
+  height: 12px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+}
+
+@keyframes meter-pulse {
+  0% { transform: scale3D(1.0125, 1.15, 1); }
+  70% { transform: scale3D(1, 1, 1); }
+  100% { transform: scale3D(1.0125, 1.15, 1); }
+}
+
+@keyframes meter-fade {
+  0% { opacity: 0.85; }
+  70% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+@keyframes meter-wiggle {
+  0% { transform: scale3D(1.015, 1, 1); }
+  70% { transform: scale3D(1, 1, 1); }
+  100% { transform: scale3D(1.015, 1, 1); }
+}

@@ -1,0 +1,171 @@
+.c-lp-press-carousel {
+    .lp-press-carousel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .lp-press-carousel__section-subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 auto;
+            padding-bottom: 16px;
+            @media (min-width: 700px) {
+                font-size: 20px;
+                padding-bottom: 24px;
+            }
+        }
+        .lp-press-carousel__section-title {
+            font-size: 32px;
+            font-weight: 500;
+            margin: 0 auto;
+            padding-bottom: 36px;
+            text-align: center;
+            @media (min-width: 700px) {
+                font-size: 36px;
+                padding-bottom: 48px;
+            }
+        }
+        .lp-press-carousel__quotes {
+            position: relative;
+            display: block;
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.25s ease-in-out;
+            &.disabled-on-desktop {
+              .flickity-button {
+                @media (min-width: 700px) {
+                  //opacity: 0;
+                  //pointer-events: none;
+                }
+              }
+            }
+            .lp-press-carousel__quote {
+                display: inline-flex;
+                flex-direction: column;
+                position: relative;
+                    align-items: center;
+                justify-content: center;
+                @media (max-width: 699px) {
+                    width: 100% !important;
+                }
+                @media (min-width: 700px) and (max-width: 899px) {
+                    width: 50% !important;
+                }
+                .lp-press-carousel__quote-wrapper {
+                  display: flex;
+                  flex-direction: column;
+                  text-align: center;
+                  justify-content: center;
+                  position: relative;
+                }
+                .lp-press-quote__info {
+                  margin-bottom: 24px;
+                  padding: 0 5%;
+                  .lp-press-carousel__headline {
+                    text-align: center;
+                    max-width: 350px;
+                    font-weight: 500;
+                    @media (max-width: 699px) {
+                      max-width: calc(100% - 96px);
+                    }
+                    margin: 0 auto;
+                    p {
+                      display: contents;
+                    }
+                  }
+                }
+                .lp-press-carousel__logo {
+                  position: relative;
+                  .lp-press-carousel__logo-image {
+                    width: auto;
+                    height: 40px;
+                  }
+                }
+            }
+            &:not(.flickity-enabled) {
+                opacity: 0;
+            }
+            &.flickity-enabled {
+              .lp-press-carousel__quote {
+                  min-height: 100%;
+              }
+            }
+            .flickity-slider {
+              height: 100%;
+              position: relative;
+            }
+            .flickity-viewport {
+                overflow: hidden;
+                &:before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  background: linear-gradient(90deg, rgba(255,255,255,1) 25%, rgba(255,255,255,0) 100%);
+                  left: 0;
+                  top: 0;
+                  width: 48px;
+                  height: 100%;
+                  z-index: 1;
+                  @media (min-width: 700px) {
+                    width: 100px;
+                  }
+                }
+                &:after {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  background: linear-gradient(270deg, rgba(255,255,255,1) 25%, rgba(255,255,255,0) 100%);
+                  right: 0;
+                  top: 0;
+                  width: 48px;
+                  height: 100%;
+                  z-index: 1;
+                  @media (min-width: 700px) {
+                    width: 100px;
+                  }
+                }
+            }
+            .flickity-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                border: solid 1px #1b3448;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px;
+                transition: opacity 0.25s ease-in-out;
+                z-index: 1;
+                &:disabled {
+                    //opacity: 0;
+                    pointer-events: none;
+                }
+                @media (min-width: 700px) {
+                    width: 36px;
+                    height: 36px;
+                    padding: 10px;
+                }
+                &.previous {
+                    left: 18px;
+                    @media (min-width: 700px) {
+                        left: 24px;
+                    }
+                }
+                &.next {
+                    right: 18px;
+                    @media (min-width: 700px) {
+                        right: 24px;
+                    }
+                }
+                .flickity-button-icon {
+                    position: absolute;
+                    width: 14px;
+                }
+            }
+        }
+    }
+}

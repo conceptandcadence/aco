@@ -1,0 +1,9 @@
+<ul class="site-nav mobile" data-section-type="menu-section"> 
+    {% for link in linklists[section.settings.main_mobile_linklist].links %}
+        <li {% if link.active %}class="site-nav--active" {% endif %}> 
+            <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
+        </li> 
+    {% endfor %}
+</ul> 
+
+{% schema %} { "name": "Bottom Mobile Menu", "settings": [ { "type": "link_list", "id": "main_mobile_linklist", "label": "Bottom Mobile Menu", "default": "main-menu" } ] } {% endschema %}

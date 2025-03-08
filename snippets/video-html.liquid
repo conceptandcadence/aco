@@ -1,0 +1,14 @@
+<div class="{{ classes }}" data-aspect="{{ video.aspect_ratio }}" style="padding-bottom: {{ 1.00 | divided_by: video.aspect_ratio | times: 100 }}%">
+	<video id="video-html-{{ video.id }}" class="hero-layer-background__video-html{% if defer %} lazy-video{% endif %}" {% if defer %}preload="none"{% endif %} {% if autoplay == true and defer != true %}preload="none"{% endif %} muted="" loop="" playsinline="" title="{{ title | default: video.alt | escape }}" poster="{{  video.preview_image | img_url: '600x' }}">
+		{% for video_source in video.sources %}
+			<source type="{{ video_source.mime_type }}" src="{{ video_source.url }}">
+		{% endfor %}		
+		Your browser does not support the video tag.
+	</video>
+</div>
+
+{% assign video = nil %}
+{% assign classes = nil %}
+{% assign defer = nil %}
+{% assign title = nil %}
+{% assign autoplay = nil %}

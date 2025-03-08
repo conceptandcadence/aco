@@ -1,0 +1,385 @@
+{% for block in section.blocks %}
+  {% if block.type == 'campaign' and block.settings.countries contains localization.country.iso_code %}
+    {% assign color_bg = block.settings.color_background %}
+    {%- capture campaign_json -%}
+      "settings": {
+        "template": "{{ block.settings.progress_message_template | remove: '"' }}",
+        "complete": "{{ block.settings.complete_message_template | remove: '"' }}",
+        "countries": "{{ block.settings.countries | remove: '"' }}",
+        "use_banner": {{ block.settings.use_banner }},
+        "color_text": "{{ block.settings.color_text | remove: '"' }}",                                                                                     
+        "color_background": "{{ block.settings.color_background | remove: '"' }}",
+        "color_progress": "{{ block.settings.color_progress | remove: '"' }}"
+      }
+      {%- if block.settings.goal1_active -%}      
+        ,"goal1": {
+          "value": {{ block.settings.goal1_value | times: 100 }},                                                                                     
+          "title": "{{ block.settings.goal1_title | remove: '"' }}",
+          "message": "{{ block.settings.goal1_message | remove: '"' }}"
+        }
+      {%- endif -%}
+      {%- if block.settings.goal2_active -%}          
+        ,"goal2": {
+          "value": {{ block.settings.goal2_value | times: 100 }},                                                                                     
+          "title": "{{ block.settings.goal2_title | remove: '"' }}",
+          "message": "{{ block.settings.goal2_message | remove: '"' }}"
+        }
+      {%- endif -%}
+      {%- if block.settings.goal3_active -%}      
+        ,"goal3": {
+          "value": {{ block.settings.goal3_value | times: 100 }},                                                                                     
+          "title": "{{ block.settings.goal3_title | remove: '"' }}",
+          "message": "{{ block.settings.goal3_message | remove: '"' }}"
+        }
+      {%- endif -%}
+    {%- endcapture -%}
+
+    {% assign goals_active = 0 %}
+    {%- if block.settings.goal1_active -%} 
+      {% assign goals_active = goals_active | plus: 1 %}
+    {%- endif -%}
+    {%- if block.settings.goal2_active -%} 
+      {% assign goals_active = goals_active | plus: 1 %}
+    {%- endif -%}
+    {%- if block.settings.goal3_active -%} 
+      {% assign goals_active = goals_active | plus: 1 %}
+    {%- endif -%}
+    
+    {%- capture campaign_html -%}
+      <div class="cart-motivator">
+        <div class="cart-motivator__progress-wrapper">
+          <div class="cart-motivator__progress-message"></div> 
+          <div class="cart-motivator__progress-meter has-progress">
+            <div class="cart-motivator__progress-meter-fill">
+              <span class="cart-motivator__progress-meter-fill-text visually-hidden"></span>
+            </div>
+          </div>
+          {%- if block.settings.goal1_active -%}    
+            <div class="cart-motivator__progress-marker marker--goal1" style="width: 33.33%;{% unless goals_active > 1 %}display:none;{% endunless %}">
+              <div class="cart-motivator__progress-marker-label">
+                <span class="cart-motivator__progress-marker-text">{{ block.settings.goal1_title }}</span>
+                <span class="cart-motivator__progress-marker-completed">✓</span>
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.goal2_active -%}      
+            <div class="cart-motivator__progress-marker marker--goal2" style="width: 33.33%;{% unless goals_active > 1 %}display:none;{% endunless %}">
+              <div class="cart-motivator__progress-marker-label">
+                <span class="cart-motivator__progress-marker-text">{{ block.settings.goal2_title }}</span>
+                <span class="cart-motivator__progress-marker-completed">✓</span>
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if block.settings.goal3_active -%}      
+            <div class="cart-motivator__progress-marker marker--goal3" style="width: 33.33%;{% unless goals_active > 1 %}display:none;{% endunless %}">
+              <div class="cart-motivator__progress-marker-label">
+                <span class="cart-motivator__progress-marker-text">{{ block.settings.goal3_title }}</span>
+                <span class="cart-motivator__progress-marker-completed">✓</span>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="cart-motivator__goal-message"></div> 
+      </div>
+    {%- endcapture -%}
+  {% endif %}
+{% endfor %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'banner' and block.settings.countries == blank %}
+        {%- capture banner_html -%}
+          <div class="site-banner" role="complementary" data-localization="default">
+            {{ block.settings.title }}
+          </div>
+        {%- endcapture -%}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'banner' and block.settings.countries contains localization.country.iso_code %}
+        {%- capture banner_html -%}
+          <div class="site-banner" role="complementary" data-localization="{{ localization.country.iso_code }}">
+            {{ block.settings.title }}
+          </div>
+        {%- endcapture -%}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+{% if campaign_json %}
+  <script type="application/ld+json" data-motivator-campaign>
+  {
+    {{ campaign_json | strip | strip_newlines }}
+  }
+  </script>
+{% endif %}
+
+{% if campaign_html %}
+  <div class="motivator-templates" style="display: none;">
+    {{ campaign_html }}
+    {{ banner_html }}
+  </div>
+{% endif %}
+
+{% if banner_html %}
+<style>
+    :root {
+      --announcement-color: {{ settings.banner_color }};
+      --announcement-background: {{ settings.banner_background }};
+      --announcement-color-highlight: {{ settings.banner_color_highlight }};
+      --announcement-background-highlight: {{ settings.banner_background_highlight }};
+    }    
+    .site-banner {
+    {% if settings.banner_color %}
+        color: var(--announcement-color) !important;
+    {% endif %}
+    {% if settings.banner_background %}
+        background-color: var(--announcement-background);
+    {% endif %}
+    }
+    {% if settings.banner_color %}
+    .site-banner p, .site-banner a {
+      color: var(--announcement-color) !important;
+    }
+    {% endif %}  
+</style>
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'motivator.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'motivator.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'motivator.js' | asset_url }}" defer="defer"></script>
+
+
+
+
+
+
+{% schema %} 
+{
+  "name": "Motivator",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "banner_active",
+      "label": "Enable Banner",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "freeShippingMotivator_active",
+      "label": "Enable Free Shipping Motivator",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "freeShippingMotivatorStretch_active",
+      "label": "Enable Free Shipping Motivator Stretch Goal",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "banner_fixed",
+      "label": "Banner stays visibile when scrolling"
+    },
+    {
+      "type": "checkbox",
+      "id": "banner_marquee",
+      "label": "Banner Marquee effect",
+      "default": false
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text",
+      "label": "Standard Banner Message"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text_ca",
+      "label": "CA Banner Message"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_text_uk",
+      "label": "UK Banner Message"
+    },
+    {
+      "type": "color",
+      "id": "banner_color",
+      "label": "Banner Text Color"
+    },
+    {
+      "type": "color",
+      "id": "banner_background",
+      "label": "Banner Background Color"
+    },
+    {
+      "type": "color",
+      "id": "banner_color_highlight",
+      "label": "Banner Highlight Text Color"
+    },
+    {
+      "type": "color",
+      "id": "banner_background_highlight",
+      "label": "Banner Highlight Background Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "campaign",
+      "name": "Campaign",
+      "settings": [
+        {
+            "type": "header",
+            "content": "Goal 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "goal1_active",
+          "label": "Enable Goal",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "goal1_value",
+          "label": "Minimum Cart Value",
+          "default": 200
+        },
+        {
+          "type": "text",
+          "id": "goal1_title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "goal1_message",
+          "label": "Goal Completed message",
+          "default": "You got free shipping!"
+        },
+        {
+            "type": "header",
+            "content": "Goal 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "goal2_active",
+          "label": "Enable Goal",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "goal2_value",
+          "label": "Minimum Cart Value",
+          "default": 250
+        },
+        {
+          "type": "text",
+          "id": "goal2_title",
+          "label": "Title",
+          "default": "Free Gift #1"
+        },
+        {
+          "type": "text",
+          "id": "goal2_message",
+          "label": "Goal Completed message",
+          "default": "You unlocked your first free gift!"
+        },
+        {
+            "type": "header",
+            "content": "Goal 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "goal3_active",
+          "label": "Enable Goal",
+          "default": false
+        },
+        {
+          "type": "number",
+          "id": "goal3_value",
+          "label": "Minimum Cart Value",
+          "default": 350
+        },
+        {
+          "type": "text",
+          "id": "goal3_title",
+          "label": "Title",
+          "default": "Free Gift #2"
+        },
+        {
+          "type": "text",
+          "id": "goal3_message",
+          "label": "Goal Completed message",
+          "default": "You unlocked your second free gift!"
+        },
+        {
+            "type": "header",
+            "content": "Settings"
+        },
+        {
+          "type": "text",
+          "id": "progress_message_template",
+          "label": "Progress Message",
+          "default": "You're [MONEY] away from unlocking your [GOAL]",
+          "info": "The template to be used for the progress message. Must contain [MONEY] and [GOAL], which will be replaced dynamically."
+        },
+        {
+          "type": "text",
+          "id": "complete_message_template",
+          "label": "Complete Message",
+          "default": "Nice Job! You've unlocked all the offers!",
+          "info": "This message will be displayed when all offers are complete"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_banner",
+          "label": "Display messaging in the site banner in addition to the cart",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "countries",
+          "label": "Eligible Countries",
+          "info": "A comma seperated list of country codes that this campaign is eligible to display. https:\/\/www.nationsonline.org\/oneworld\/country_code_list.htm"
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "color_background",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "color_progress",
+          "label": "Progress Bar Color",
+          "default": "#006aff"
+        }
+      ]
+    }, 
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "countries",
+          "label": "Eligible Countries",
+          "info": "A comma seperated list of country codes that this mesage will display in. Leave blank to cover all that are not specified elsewhere. https:\/\/www.nationsonline.org\/oneworld\/country_code_list.htm"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

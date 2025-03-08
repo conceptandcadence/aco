@@ -1,0 +1,128 @@
+<ul class="site-nav mobile{% if section.settings.video != blank %} invert{% endif %}"> 
+    {% for link in linklists[section.settings.side_mobile_linklist].links %}
+        <li class="site-nav__item{% if link.active %} site-nav--active{% endif %}" data-title="{{ link.title }}"> 
+            <a href="{{ link.url }}" class="site-nav__link" {% if link.links != blank %}data-subnav="closed"{% endif %} tabindex="0">
+                <span class="site-nav__linktext">{{ link.title }}</span><span class="site-nav__toggle">&gt;</span>
+            </a>
+            {% if link.title == 'Shop' %}
+                {% if link.links != blank %}
+                    <div class="site-subnav shop-categories">
+                        {% for category_group in link.links %}  
+                            {% if category_group.title == 'Primary' %}
+                                <ul class="site-subnav-categories primary">
+                                    {% for subcategories in category_group.links %}  
+                                        <li class="site-subnav__item">
+                                            <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subcategories.url }}" tabindex="0">
+                                                <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul> 
+                            {% endif %} 
+                            {% if category_group.title == 'Secondary' %}
+                            <ul class="site-subnav-categories secondary">
+                                {% for subcategories in category_group.links %}  
+                                        <li class="site-subnav__item">
+                                            <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subcategories.url }}" tabindex="0">
+                                                <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul> 
+                            {% endif %} 
+                        {% endfor %}
+                    </div> 
+                {% endif %} 
+            {% elsif link.title == 'Learn' %}
+                {% if link.links != blank %}
+                    <ul class="site-subnav" data-group="{{ link.title | downcase }}">
+                        {% for subnavigation in link.links %}  
+                            <li class="site-subnav__item">
+                                <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href="{{ subnavigation.url }}" tabindex="0" data-anchor="{{ subnavigation.title | downcase }}">
+                                    <span class="site-subnav__linktext">{{ subnavigation.title }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul> 
+                {% endif %} 
+            {% else %} 
+                {% if link.links != blank %}
+                    <ul class="site-subnav" data-group="{{ link.title | downcase }}">
+                        {% for subnavigation in link.links %}  
+                            <li class="site-subnav__item">
+                                <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subnavigation.url }}" tabindex="0">
+                                    <span class="site-subnav__linktext">{{ subnavigation.title }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul> 
+                {% endif %} 
+            {% endif %} 
+        </li> 
+    {% endfor %} 
+</ul>
+
+{% if section.settings.video != blank %}
+    <div id="menu-video">
+        <iframe src="{{- section.settings.video -}}?autoplay=1&amp;loop=1&amp;background=1&amp;mute=0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="0" allow="autoplay; fullscreen" data-ready="true"></iframe>
+    </div>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+{% endif %}
+
+<style>
+    #shopify-section-side-mobile-menu {
+
+    }
+    #menu-video {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+    #menu-video iframe {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: none;
+        max-height: none;
+        transform: translate(-50%,-50%);
+    }
+    .site-nav.mobile.invert a {
+        /* color: #fff !important; */
+    }
+</style>
+
+{% schema %} 
+{
+    "name":"Mobile Side Menu",
+    "settings":[
+       {
+          "type":"url",
+          "id":"video",
+          "label":"Background Vimeo video",
+          "info":"Format: https://player.vimeo.com/video/XXXXXXXX"
+       },
+       {
+          "type":"link_list",
+          "id":"side_mobile_linklist",
+          "label":"Side Mobile Menu",
+          "default":"main-menu"
+       },
+       {
+          "type":"checkbox",
+          "id":"active",
+          "label":"Side Menu Active",
+          "default":true
+       }
+    ]
+ }
+ {% endschema %}

@@ -1,0 +1,75 @@
+<div class="shoppable-look{% if visibility %} visibility__{{visibility}}-only{% endif %}" id="shoppable-look-{{ block.id }}" data-id="{{ block.id }}">
+  {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image -%}
+  {%- assign image_url = block.settings.image | img_url: '4x5' -%}
+  <img class="shoppable-look__image lazyload-img" loading="lazy" src="{{ image_url }}" data-src="{{ image_url }}"
+    data-widths="[{{ supported_sizes }}]" sizes="(max-width: 700px) 100vw,50vw" srcset="{{ image_srcset }}" alt="{{ block.settings.image.alt | escape }}">
+  <noscript>
+    <img class="shoppable-look__image lazyload-img" src="{{ block.settings.image | img_url: '400x' }}"
+      alt="{{ block.settings.image.alt | escape }}">
+  </noscript>
+  <div class="shoppable-look__pins">
+      {% assign index = 0 %}
+      {% if block.settings.product_1 != blank %}
+        <button class="shoppable-look__pin" id="shoppable-look-pin-{{ block.id }}_1" data-index="{{ index }}">
+          <style>#shoppable-look-pin-{{ block.id }}_1 { top: {{ block.settings.position_1_v }}%; left: {{ block.settings.position_1_h }}%; }</style>
+        </button>
+        {% assign index = index | plus: 1 %}
+      {% endif %}
+      {% if block.settings.product_2 != blank %}
+        <button class="shoppable-look__pin" id="shoppable-look-pin-{{ block.id }}_2" data-index="{{ index }}">
+          <style>#shoppable-look-pin-{{ block.id }}_2 { top: {{ block.settings.position_2_v }}%; left: {{ block.settings.position_2_h }}%; }</style>
+        </button>
+        {% assign index = index | plus: 1 %}
+      {% endif %}
+      {% if block.settings.product_3 != blank %}
+        <button class="shoppable-look__pin" id="shoppable-look-pin-{{ block.id }}_3" data-index="{{ index }}">
+          <style>#shoppable-look-pin-{{ block.id }}_3 { top: {{ block.settings.position_3_v }}%; left: {{ block.settings.position_3_h }}%; }</style>
+        </button>
+        {% assign index = index | plus: 1 %}
+      {% endif %}
+      {% if block.settings.product_4 != blank %}
+        <button class="shoppable-look__pin" id="shoppable-look-pin-{{ block.id }}_4" data-index="{{ index }}">
+          <style>#shoppable-look-pin-{{ block.id }}_4 { top: {{ block.settings.position_4_v }}%; left: {{ block.settings.position_4_h }}%; }</style>
+        </button>
+        {% assign index = index | plus: 1 %}
+      {% endif %}
+  </div>
+  <button class="shoppable-look__button button button--secondary">Shop the look</button>
+  <div class="shoppable-look__modal">
+    <div class="shoppable-look__modal-background"></div>
+    <div class="shoppable-look__modal-content">
+      <div class="shoppable-look__modal-header">
+        <span class="shoppable-look__modal-title">Shop the look</span>
+        <button class="shoppable-look__modal-close">{% include 'icon-close' %}</button>
+      </div>
+      <div class="shoppable-look__modal-products">
+        {% if block.settings.product_1 != blank %}
+          {% include 'plp-item', product: all_products[block.settings.product_1] %} 
+        {% endif %}
+        {% if block.settings.product_2 != blank %}
+          {% include 'plp-item', product: all_products[block.settings.product_2] %}
+        {% endif %}
+        {% if block.settings.product_3 != blank %}
+          {% include 'plp-item', product: all_products[block.settings.product_3] %}
+        {% endif %}
+        {% if block.settings.product_4 != blank %}
+          {% include 'plp-item', product: all_products[block.settings.product_4] %}
+        {% endif %}
+        {% if index <= 2 %}
+          {% if block.settings.product_1 != blank %}
+            {% include 'plp-item', product: all_products[block.settings.product_1] %}
+          {% endif %}
+          {% if block.settings.product_2 != blank %}
+            {% include 'plp-item', product: all_products[block.settings.product_2] %}
+          {% endif %}
+          {% if block.settings.product_3 != blank %}
+            {% include 'plp-item', product: all_products[block.settings.product_3] %}
+          {% endif %}
+          {% if block.settings.product_4 != blank %}
+            {% include 'plp-item', product: all_products[block.settings.product_4] %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,540 @@
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+    <div class="lp-product-carousel{% if section.settings.group_cells %} group-cells{% endif %}{% if section.settings.wrap_around %} wrap-around{% endif %}" style="background-color: {{ section.settings.background }}">
+        {% if section.settings.subtitle != blank %}
+            <h4 class="lp-product-carousel__section-subtitle">{{ section.settings.subtitle }}</h2>
+        {% endif %}
+        {% if section.settings.title != blank %}
+            <h2 class="lp-product-carousel__section-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+            <div class="lp-product-carousel__section-description">
+                {{ section.settings.description }}
+                {% if section.settings.display_link %}
+                    <a class="lp-collection-carousel__link" href="{{ collections[block.settings.collection].url }}">View Collection</a>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div id="{{ section.id | remove: 'template--' }}" class="{% unless section.settings.disable_carousel %}carousel-enabled {% endunless %}lp-product-carousel__products" data-cell-count="{{ section.settings.cell_count }}">
+            {% for block in section.blocks %}
+                {% assign collection = collections[block.settings.collection] %}
+                {% for product in collection.products limit: section.settings.product_limit %}
+
+                    {% assign product_titles = product.title | split: ' / ' %}
+                    {% if product_titles.size != 2 %}
+                        {% assign product_titles = product.title | split: ' | ' %}
+                    {% endif %}
+                    {% if product_titles.size != 2 %}
+                        {% assign product_title_primary = product.title %}
+                        {% assign product_title_secondary = '' %}
+                    {% else %}
+                        {% assign product_title_primary = product_titles | first %}
+                        {% assign product_title_secondary = product_titles | last %}
+                    {% endif %}
+
+                    {% assign product_image = product.images[block.settings.image_number] %}
+                    {% assign product_hover_image = product.images[1] %}
+                    {% if block.settings.image_number == 1 %}
+                        {% assign product_hover_image = product.images[0] %}
+                    {% endif %}
+                    
+                    <div class="lp-product-carousel__product" data-active-handle="{{ product.handle }}" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+                        {% if product != blank %}
+                            <div class="lp-product-carousel__colorway" data-product="{{ product.handle }}">
+                                <div class="lp-product-carousel__image{% if product_hover_image != blank %} hover-enabled{% endif %}" data-aspect="{{ product_image.aspect_ratio }}" style="padding-bottom: {{ 1 | divided_by: product_image.aspect_ratio | times: 100 }}%;">
+                                    <a class="lp-product-carousel__imagelink" href="{{ product.url }}"><span class="visually-hidden">{{ section.settings.button_text }}</span></a>
+                                    {% if product_hover_image != blank %}
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_hover_image -%}
+                                        {%- assign image_url_desktop  = product_hover_image | img_url: '4x5' -%}
+                                        <img class="lazyload-img lp-product-carousel__image-secondary " loading="lazy"
+                                            src="{{ image_url_desktop }}" 
+                                            data-src="{{ image_url_desktop }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="100vw"
+                                            srcset="{{ image_srcset }}"
+                                            style="opacity:0;"
+                                            alt="{{ product_hover_image.alt | default: product.title | escape }}">
+                                        <noscript>
+                                            <img class="desktop" src="{{ product_hover_image | img_url: '1024x1024' }}" alt="{{ product_hover_image.alt | default: product.title | escape }}">
+                                        </noscript>
+                                    {% endif %}
+                                    {% if product_image != blank %}
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_image -%}
+                                        {%- assign image_url_desktop  = product_image | img_url: '4x5' -%}
+                                        <img class="lazyload-img lp-product-carousel__image-primary " loading="lazy"
+                                            src="{{ image_url_desktop }}" 
+                                            data-src="{{ image_url_desktop }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="(max-width: 700px) 50vw,33.33vw"
+                                            srcset="{{ image_srcset }}"
+                                            alt="{{ product_image.alt | default: product.title | escape }}">
+                                        <noscript>
+                                            <img class="desktop" src="{{ product_image | img_url: '1024x1024' }}" alt="{{ product_image.alt | default: product.title | escape }}">
+                                        </noscript>
+                                    {% endif %}
+                                </div>
+                                <div class="lp-product-carousel__info">
+                                    <h3 class="lp-product-carousel__headline">
+                                        <a class="lp-product-carousel__title" href="{{ product.url }}">{{ product_title_primary }}</a>
+                                        <a class="lp-product-carousel__price" href="{{ product.url }}">
+                                            {% if product.compare_at_price_min > product.price %} 
+                                                <s>{{ product.compare_at_price_min | money | remove: '.00' }}</s> 
+                                            {% endif %} 
+                                            {{ product.price | money | remove: '.00' }}
+                                        </a>
+                                    </h3>
+                                    <span class="lp-product-carousel__variant-title">{{ product_title_secondary }}</span>
+                                </div>
+                                <div class="lp-product-carousel__purchase" style="margin-top: 16px;">
+                                    <button class="lp-product-carousel__button_addtocart">{{ section.settings.button_text }}</button>
+                                    <div class="lp-product-carousel__form">
+                                        <form>
+                                            <input type="hidden" tabindex="-1" id="Quantity-{{- forloop.index -}}" name="quantity" value="1" min="1">
+
+                                            <div class="selector-wrapper">
+                                                <label>{{ product.title }}</label>
+
+                                                {% if product.template_suffix == "preorder" %}
+                                                <div class="ship-date">
+                                                    Estimated Ship Date October 15th, 2017
+                                                </div>
+                                                {% endif %}
+
+                                                <div class="ship-date out-of-stock-order" style="display:none;">
+                                                    {{ 'products.product.out_of_stock_ship' | t }}
+                                                </div>
+
+                                                {% if product.variants.size > 1 %}
+                                                <div class="error-msg">Select a size!</div>
+                                                <label for="select-id-{{ product.title | handleize | append: '-' | append: forloop.index }}" style="font-size: 10px;margin-bottom: 4px;">Select a size</label>
+                                                <select tabindex="-1" id="select-id-{{ product.title | handleize | append: '-' | append: forloop.index }}" name="size-select-{{ product.title | handleize | append: '-' | append: forloop.index }}" class="size" data-single-option-selector>
+                                                    {% for variant in product.variants %}
+                                                        <option {% unless variant.available %}disabled="disabled" {% endunless %} {% if forloop.first %}selected{% endif %} value="{{ variant.id }}">
+                                                            {{ variant.title }} {% unless variant.available %}(out of stock){% endunless %}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                                {% else %}
+                                                <input tabindex="-1" type="hidden" class="product-id" name="id" value="{{ product.selected_or_first_available_variant.id }}" />
+                                                {% endif %}
+                                                <div class="msg"></div>
+                                                <div class="action-container">
+                                                <button id="AddToCart" tabindex="-1" class="cancel-add">Cancel</button>
+                                                <button id="AddToCart" tabindex="-1" class="submit-add">
+                                                    {% if product.template_suffix == "preorder" %}
+                                                    Pre-Order
+                                                    {% else %}
+                                                    Add to Cart
+                                                    {% endif %}
+                                                </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <style>
+                                    [data-active-handle="{{ product.handle }}"] [data-handle="{{ product.handle }}"]:before { opacity: 1 }
+                                </style>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <style>
+        #shopify-section-{{ section.id }} .lp-product-carousel__title, #shopify-section-{{ section.id }} .lp-product-carousel__price, #shopify-section-{{ section.id }} .lp-product-carousel__variant-title {
+            color: {{ section.settings.text_color }} !important;
+        }
+        #shopify-section-{{ section.id }} .lp-product-carousel__product {
+            color: {{ section.settings.background }} !important;
+        }
+        #shopify-section-{{ section.id }} .lp-product-carousel__variant {
+            border-color: {{ section.settings.text_color }} !important;
+        }
+        @media (max-width: 699px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+            }
+            #shopify-section-{{ section.id }} .lp-product-carousel__product {
+                padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+            }
+        }
+        @media (min-width: 700px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+            }
+            #shopify-section-{{ section.id }} .lp-product-carousel__product {
+                padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+            }
+        }
+        .template-page.bfcm .site-banner { transform: translateY(0) !important; } 
+        @media (min-width: 700px) {
+            .c-lp-product-carousel .lp-product-carousel .lp-product-carousel__section-title {
+                padding-bottom: 0 !important;
+                text-align: left;
+                align-self: flex-start;
+                margin: 0 0 0 24px !important;
+            }
+            .c-lp-product-carousel .lp-product-carousel .lp-product-carousel__section-description {
+                text-align: left;
+                align-self: flex-start;
+                margin: 0 0 0 24px !important;
+            }
+                .lp-collection-carousel__link {
+                font-weight: 500;
+                text-decoration: none;
+                color: var(--color-blue-bright);
+                display: block;
+                text-align: left;
+                margin-left: 12px;
+                padding: 8px;
+                border: solid 1px #eee;
+                border-radius: 6px;
+            }
+        }
+        .lp-product-carousel__section-description {
+            display: flex;
+            align-items: baseline;
+        }
+    </style>
+</section> 
+
+<script src="{{ 'lp-collection-carousel.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'lp-product-carousel.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'lp-product-carousel.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.0.2/rivets-cart.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.0.2/cart.min.js"></script>
+
+{% schema %}
+{
+  "name": "LP Collection Carousel",
+  "class": "c-lp-product-carousel lp-section",      
+  "max_blocks": 1,
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Shop Bestsellers"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Get 10% OFF Your First Order"
+    },
+    {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "info": "Longer text dispayed below the title."
+    },
+    {
+        "type": "checkbox",
+        "id": "display_link",
+        "label": "Display collection link",
+        "default": true
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "info": "The text that will be dispayed in the buttons.",
+        "default": "Shop This Look"
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+    },
+    {
+        "type": "checkbox",
+        "id": "group_cells",
+        "label": "Group cells on desktop",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "wrap_around",
+        "label": "Wrap cells around on desktop",
+        "default": false
+    },  
+    {
+        "type": "range", 
+        "id": "product_limit",
+        "label": "Limit Product Count",
+        "min": 3,
+        "max": 48,
+        "step": 3,
+        "unit": "ct",
+        "default": 6,
+        "info": "Set to 0 to load all products in the collection."
+    },
+    {
+        "type": "checkbox",
+        "id": "disable_carousel",
+        "label": "Disable Carousel",
+        "info": "For use when implementing the module only via A/B Testing",
+        "default": false
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Collection"
+            },
+            {
+                "type": "number",
+                "id": "image_number",
+                "label": "Image Index",
+                "default": 0,
+                "info": "The image should be used for the product in this collection, based on the order of images shown on the product page."
+            }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Collection Carousel",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

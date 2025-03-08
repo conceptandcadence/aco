@@ -1,0 +1,93 @@
+{% if section.blocks.size > 0 %}
+    {% if section.settings.title != blank %}
+        <div class="sustainable-features__header">
+            <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+    <section class="sustainable-features">
+        {% for block in section.blocks %}
+            <div class="sustainable-feature">
+                {% assign current_image = block.settings.image %}
+                {% if current_image != blank %}
+                    <div class="sustainable-features__media">
+                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                        {%- assign image_url = current_image | img_url: '1x1' -%}
+                        <img class="lazyload-img " loading="lazy"
+                            src="{{ image_url }}"
+                            data-src="{{ image_url }}"
+                            data-widths="[{{ supported_sizes }}]"
+                            sizes="(max-width: 700px) 50vw,33.33vw"
+                            srcset="{{ image_srcset }}"
+                            data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                            data-image-id="{{ current_image.id }}"
+                            alt="{{ block.settings.feature_title_3 | escape }}">
+                        <noscript>
+                            <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.feature_title_3 | escape }}">
+                        </noscript>
+                        {% if block.settings.video != blank %}
+                            <div class="sustainable-features__video-container">
+                                <video autoplay="" muted="" loop="" playsinline=""{% if section.settings.title != blank %} title="block.settings.title"{% endif %}{% if block.settings.image != blank %} poster="{{ block.settings.image | img_url: '800x' }}"{% endif %} class="sustainable-features__video">
+                                    <source type="video/mp4" src="{{ block.settings.video }}">
+                                </video>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="sustainable-features__text">
+
+                        <h3>{{ block.settings.title }}</h3>
+                        <div class="sustainable-features__description">
+                            {{ block.settings.description }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}    
+    </section> 
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'sustainable-features.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'sustainable-features.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+{% schema %} 
+{
+	"name": "Problems",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Section Title"
+        }
+    ],
+    "max_blocks": 3,
+    "blocks":[
+    {
+       "type":"feature",
+       "name":"Feature",
+       "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "video",
+            "label": "Video",
+            "info": "When using a video, you must also add an image for when the video is loading."
+        }
+       ]
+    }
+ ]
+}
+{% endschema %}

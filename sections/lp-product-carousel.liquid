@@ -1,0 +1,632 @@
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+    <div class="lp-product-carousel{% if section.settings.group_cells %} group-cells{% endif %}{% if section.settings.wrap_around %} wrap-around{% endif %}" style="background-color: {{ section.settings.background }}">
+        {% if section.settings.subtitle != blank %}
+            <h4 class="lp-product-carousel__section-subtitle">{{ section.settings.subtitle }}</h2>
+        {% endif %}
+        {% if section.settings.title != blank %}
+            <h2 class="lp-product-carousel__section-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div id="{{ section.id | remove: 'template--' }}" class="{% unless section.settings.disable_carousel %}carousel-enabled {% endunless %}lp-product-carousel__products" data-cell-count="{{ section.settings.cell_count }}">
+            {% for block in section.blocks %}
+                {% assign product_1 = all_products[block.settings.product_1] %}
+                {% assign product_2 = all_products[block.settings.product_2] %}
+                {% assign product_3 = all_products[block.settings.product_3] %}
+                {% assign product_1_image = product_1.images[block.settings.image_number_1] %}
+                {% assign product_2_image = product_2.images[block.settings.image_number_2] %}
+                {% assign product_3_image = product_3.images[block.settings.image_number_3] %}
+
+                {% assign product_1_titles = product_1.title | split: ' / ' %}
+                {% if product_1_titles.size != 2 %}
+                    {% assign product_1_titles = product_1.title | split: ' | ' %}
+                {% endif %}
+                {% if product_1_titles.size != 2 %}
+                    {% assign product_1_title_primary = product_1.title %}
+                    {% assign product_1_title_secondary = '' %}
+                {% else %}
+                    {% assign product_1_title_primary = product_1_titles | first %}
+                    {% assign product_1_title_secondary = product_1_titles | last %}
+                {% endif %}
+
+                {% assign product_2_titles = product_2.title | split: ' / ' %}
+                {% if product_2_titles.size != 2 %}
+                    {% assign product_2_titles = product_2.title | split: ' | ' %}
+                {% endif %}
+                {% if product_2_titles.size != 2 %}
+                    {% assign product_2_title_primary = product_2.title %}
+                    {% assign product_2_title_secondary = '' %}
+                {% else %}
+                    {% assign product_2_title_primary = product_2_titles | first %}
+                    {% assign product_2_title_secondary = product_2_titles | last %}
+                {% endif %}
+
+                {% assign product_3_titles = product_3.title | split: ' / ' %}
+                {% if product_3_titles.size != 2 %}
+                    {% assign product_3_titles = product_3.title | split: ' | ' %}
+                {% endif %}
+                {% if product_3_titles.size != 2 %}
+                    {% assign product_3_title_primary = product_3.title %}
+                    {% assign product_3_title_secondary = '' %}
+                {% else %}
+                    {% assign product_3_title_primary = product_3_titles | first %}
+                    {% assign product_3_title_secondary = product_3_titles | last %}
+                {% endif %}
+                
+                <div class="lp-product-carousel__product" data-active-handle="{{ product_1.handle }}" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+                    {% if product_1 != blank %}
+                        <div class="lp-product-carousel__colorway" data-product="{{ product_1.handle }}">
+                            <div class="lp-product-carousel__image" data-aspect="{{ product_1_image.aspect_ratio }}" style="padding-bottom: {{ 1 | divided_by: product_1_image.aspect_ratio | times: 100 }}%;">
+                                <a class="lp-product-carousel__imagelink" href="{{ product_1.url }}"><span class="visually-hidden">{{ section.settings.button_text }}</span></a>
+                                {% if product_1_image != blank %}
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_1_image -%}
+                                    {%- assign image_url_desktop  = product_1_image | img_url: '4x5' -%}
+                                    <img class="lazyload-img banner-background mobile " loading="lazy"
+                                        src="{{ image_url_desktop }}" 
+                                        data-src="{{ image_url_desktop }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ product_1_image.alt | default: product_1.title | escape }}">
+                                    <noscript>
+                                        <img class="desktop" src="{{ product_1_image | img_url: '1024x1024' }}" alt="{{ product_1_image.alt | default: product_1.title | escape }}">
+                                    </noscript>
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__info">
+                                <h3 class="lp-product-carousel__headline">
+                                    <a class="lp-product-carousel__title" href="{{ product_1.url }}">{{ product_1_title_primary }}</a>
+                                    <a class="lp-product-carousel__price" href="{{ product_1.url }}">
+                                        {% if product_1.compare_at_price_min > product_1.price %} 
+                                            <s>{{ product_1.compare_at_price_min | money | remove: '.00' }}</s> 
+                                        {% endif %} 
+                                        {{ product_1.price | money | remove: '.00' }}
+                                    </a>
+                                </h3>
+                                <span class="lp-product-carousel__variant-title">{{ product_1_title_secondary }}</span>
+                            </div>
+                            <div class="lp-product-carousel__variants">
+                                {% if product_1 != blank %}
+                                    {% if product_1.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_1.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_1.handle }}" style="background-image: url({{ product_1.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_1_title_secondary }}</span>
+                                        </button>
+                                        <style>[data-active-handle="{{ product_1.handle }}"] [data-handle="{{ product_1.handle }}"]:before { opacity: 1 !important; }</style>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_2 != blank %}
+                                    {% if product_2.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_2.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_2.handle }}" style="background-image: url({{ product_2.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_2_title_secondary }}</span>
+                                        </button>
+                                        <style>[data-active-handle="{{ product_2.handle }}"] [data-handle="{{ product_2.handle }}"]:before { opacity: 1 !important; }</style>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_3 != blank %}
+                                    {% if product_3.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_3.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_3.handle }}" style="background-image: url({{ product_3.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_3_title_secondary }}</span>
+                                        </button>
+                                        <style>[data-active-handle="{{ product_3.handle }}"] [data-handle="{{ product_3.handle }}"]:before { opacity: 1 !important; }</style>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__purchase">
+                                <a class="lp-product-carousel__button" href="{{ product_1.url }}">{{ section.settings.button_text }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if product_2 != blank %}
+                        <div class="lp-product-carousel__colorway" data-product="{{ product_2.handle }}">
+                            <div class="lp-product-carousel__image" style="padding-bottom: {{ 1 | divided_by: product_2_image.aspect_ratio | times: 100 }}%;">
+                                <a class="lp-product-carousel__imagelink" href="{{ product_1.url }}"><span class="visually-hidden">{{ section.settings.button_text }}</span></a>
+                                {% if product_2_image != blank %}
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_2_image -%}
+                                    {%- assign image_url_desktop  = product_2_image | img_url: '4x5' -%}
+                                    <img class="lazyload-img banner-background mobile " loading="lazy"
+                                        src="{{ image_url_desktop }}" 
+                                        data-src="{{ image_url_desktop }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                       sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ product_2_image.alt | default: product_2.title | escape }}">
+                                    <noscript>
+                                        <img class="desktop" src="{{ product_2_image | img_url: '1024x1024' }}" alt="{{ product_2_image.alt | default: product_2.title | escape }}">
+                                    </noscript>
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__info">
+                                <h3 class="lp-product-carousel__headline">
+                                    <a class="lp-product-carousel__title" href="{{ product_2.url }}">{{ product_2_title_primary }}</a>
+                                    <a class="lp-product-carousel__price" href="{{ product_2.url }}">
+                                        {% if product_2.compare_at_price_min > product_2.price %} 
+                                            <s>{{ product_2.compare_at_price_min | money | remove: '.00' }}</s> 
+                                        {% endif %} 
+                                        {{ product_2.price | money | remove: '.00' }}
+                                    </a>
+                                </h3>
+                                <span class="lp-product-carousel__variant-title">{{ product_2_title_secondary }}</span>
+                            </div>
+                            <div class="lp-product-carousel__variants">
+                                {% if product_1 != blank %}
+                                    {% if product_1.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_1.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_1.handle }}" style="background-image: url({{ product_1.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_1_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_2 != blank %}
+                                    {% if product_2.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_2.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_2.handle }}" style="background-image: url({{ product_2.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_2_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_3 != blank %}
+                                    {% if product_3.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_3.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_3.handle }}" style="background-image: url({{ product_3.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_3_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__purchase">
+                                <a class="lp-product-carousel__button" href="{{ product_2.url }}">{{ section.settings.button_text }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if product_3 != blank %}
+                        <div class="lp-product-carousel__colorway" data-product="{{ product_3.handle }}">
+                            <div class="lp-product-carousel__image" style="padding-bottom: {{ 1 | divided_by: product_3_image.aspect_ratio | times: 100 }}%;">
+                                <a class="lp-product-carousel__imagelink" href="{{ product_1.url }}"><span class="visually-hidden">{{ section.settings.button_text }}</span></a>
+                                {% if product_3_image != blank %}
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: product_3_image -%}
+                                    {%- assign image_url_desktop  = product_3_image | img_url: '4x5' -%}
+                                    <img class="lazyload-img banner-background mobile " loading="lazy"
+                                        src="{{ image_url_desktop }}" 
+                                        data-src="{{ image_url_desktop }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ product_3_image.alt | default: product_3.title | escape }}">
+                                    <noscript>
+                                        <img class="desktop" src="{{ product_3_image | img_url: '1024x1024' }}" alt="{{ product_3_image.alt | default: product_3.title | escape }}">
+                                    </noscript>
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__info">
+                                <h3 class="lp-product-carousel__headline">
+                                    <a class="lp-product-carousel__title" href="{{ product_3.url }}">{{ product_3_title_primary }}</a>
+                                    <a class="lp-product-carousel__price" href="{{ product_3.url }}">
+                                        {% if product_3.compare_at_price_min > product_3.price %} 
+                                            <s>{{ product_3.compare_at_price_min | money | remove: '.00' }}</s> 
+                                        {% endif %} 
+                                        {{ product_3.price | money | remove: '.00' }}
+                                    </a>
+                                </h3>
+                                <span class="lp-product-carousel__variant-title">{{ product_3_title_secondary }}</span>
+                            </div>
+                            <div class="lp-product-carousel__variants">
+                                {% if product_1 != blank %}
+                                    {% if product_1.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_1.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_1.handle }}" style="background-image: url({{ product_1.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_1_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_2 != blank %}
+                                    {% if product_2.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_2.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_2.handle }}" style="background-image: url({{ product_2.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_2_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                                {% if product_3 != blank %}
+                                    {% if product_3.metafields["custom_fields"]["swatch"] != blank %}
+                                        {% assign type = product_3.metafields["custom_fields"]["swatch"].value.media_type %}
+                                        <button class="lp-product-carousel__variant" data-handle="{{ product_3.handle }}" style="background-image: url({{ product_3.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                                            <span class="visually-hidden">{{ product_3_title_secondary }}</span>
+                                        </button>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="lp-product-carousel__purchase">
+                                <a class="lp-product-carousel__button" href="{{ product_3.url }}">{{ section.settings.button_text }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <style>
+                    [data-active-handle="{{ product_1.handle }}"] [data-handle="{{ product_1.handle }}"]:before { opacity: 1 }
+                    [data-active-handle="{{ product_2.handle }}"] [data-handle="{{ product_2.handle }}"]:before { opacity: 1 }
+                    [data-active-handle="{{ product_3.handle }}"] [data-handle="{{ product_3.handle }}"]:before { opacity: 1 }
+                </style>
+            {% endfor %}
+        </div>
+    </div>
+    <style>
+        #shopify-section-{{ section.id }} .lp-product-carousel__title, #shopify-section-{{ section.id }} .lp-product-carousel__price, #shopify-section-{{ section.id }} .lp-product-carousel__variant-title {
+            color: {{ section.settings.text_color }} !important;
+        }
+        #shopify-section-{{ section.id }} .lp-product-carousel__product {
+            color: {{ section.settings.background }} !important;
+        }
+        #shopify-section-{{ section.id }} .lp-product-carousel__variant {
+            border-color: {{ section.settings.text_color }} !important;
+        }
+        @media (max-width: 699px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+            }
+            #shopify-section-{{ section.id }} .lp-product-carousel__product {
+                padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+            }
+        }
+        @media (min-width: 700px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+            }
+            #shopify-section-{{ section.id }} .lp-product-carousel__product {
+                padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+            }
+        }
+    </style>
+</section> 
+
+<script src="{{ 'lp-product-carousel.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'lp-product-carousel.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'lp-product-carousel.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+{% schema %}
+{
+  "name": "LP Products",
+  "class": "c-lp-product-carousel lp-section",      
+  "max_blocks": 6,
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Shop Bestsellers"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Get 10% OFF Your First Order"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "info": "The text that will be dispayed in the buttons.",
+        "default": "Shop This Look"
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+    },
+    {
+        "type": "checkbox",
+        "id": "group_cells",
+        "label": "Group cells on desktop",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "wrap_around",
+        "label": "Wrap cells around on desktop",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "disable_carousel",
+        "label": "Disable Carousel",
+        "info": "For use when implementing the module only via A/B Testing",
+        "default": false
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+            {
+                "type": "header",
+                "content": "Product 1"
+            },
+            {
+                "type": "product",
+                "id": "product_1",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_1",
+                "label": "Image Index",
+                "default": 0,
+                "info": "The image should be used for this product based on the order of images shown on the product page."
+            },
+            {
+                "type": "header",
+                "content": "Product 2"
+            },
+            {
+                "type": "product",
+                "id": "product_2",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_2",
+                "label": "Image Index",
+                "default": 0,
+                "info": "The image should be used for this product based on the order of images shown on the product page."
+            },
+            {
+                "type": "header",
+                "content": "Product 3"
+            },
+            {
+                "type": "product",
+                "id": "product_3",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_3",
+                "label": "Image Index",
+                "default": 0,
+                "info": "The image should be used for this product based on the order of images shown on the product page."
+            }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Products",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

@@ -1,0 +1,17 @@
+<nav class="product-breadcrumbs" role="navigation" aria-label="breadcrumbs">
+  <ol>
+    <li class="breadcrumb__root">
+      <a href="/collections/shop/">Shop</a>    
+    </li>
+    {% if collection.url != blank and collection.url != '/collections/shop' %}
+        <li class="breadcrumb__collection">
+            {{ collection.title | link_to: collection.url }}
+        </li>
+    {% endif %}
+    {% comment %}
+        <li class="breadcrumb__product">
+            <a href="{{ product.url | within: collection }}" aria-current="page">{{ product.title }}</a>
+        </li>
+    {% endcomment %}
+  </ol>
+</nav>

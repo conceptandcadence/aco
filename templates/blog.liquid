@@ -1,0 +1,57 @@
+{% paginate blog.articles by 15 %} 
+    {%- assign blog_title = blog.title -%} 
+    <h1 class="visually-hidden">{{ blog_title }}</h1>
+    <div id="blogContainer"> 
+        {% for article in blog.articles limit:1 %}
+            <article class="blog-article hero">
+                {% if article.image %}
+                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: article.image -%}
+                    {%- assign image_url = article.image | img_url: '1x1' -%}
+                    <img class="lazyload-img placeholder image " loading="lazy"
+                        src="{{ image_url }}"
+                        data-src="{{ image_url }}"
+                        data-widths="[{{ supported_sizes }}]"
+                        sizes="100vw"
+                        srcset="{{ image_srcset }}"
+                        alt="{% if article.image.alt != blank %}{{ article.image.alt | escape }}{% else %}{{ article.title | escape }}{% endif %}">
+                    <noscript>
+                        <img class="placeholder image" src="{{ article.image| img_url: '400x' }}" alt="{% if article.image.alt != blank %}{{ article.image.alt | escape }}{% else %}{{ article.title | escape }}{% endif %}">
+                    </noscript>
+
+                    <div class="info">
+                        <h2 class="article-title">{{ article.title }}</h2>
+                        <h2 class="article-date">{{ article.published_at | time_tag: '%-m.%-d.%y' }}</h2>
+                    </div> 
+                {% endif %}
+                <a class="link" href="{{ article.url }}"><span class="visually-hidden">{{ article.title }}</span></a> 
+            </article> 
+        {% endfor %}
+            {% for article in blog.articles offset:1 %}
+                <article class="blog-article"> 
+                    {% if article.image %}
+                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: article.image -%}
+                        {%- assign image_url = article.image | img_url: '1x1' -%}
+                        <img class="lazyload-img placeholder image " loading="lazy"
+                            src="{{ image_url }}"
+                            data-src="{{ image_url }}"
+                            data-widths="[{{ supported_sizes }}]"
+                            sizes="100vw"
+                            srcset="{{ image_srcset }}"
+                            alt="{% if article.image.alt != blank %}{{ article.image.alt | escape }}{% else %}{{ article.title | escape }}{% endif %}">
+                            <noscript>
+                            <img class="placeholder image" src="{{ article.image| img_url: '400x' }}" alt="{% if article.image.alt != blank %}{{ article.image.alt | escape }}{% else %}{{ article.title | escape }}{% endif %}">
+                        </noscript>
+
+                        <div class="info">
+                            <h3 class="article-title">{{ article.title }}</h3>
+                            <h3 class="article-date">{{ article.published_at | time_tag: '%-m.%-d.%y' }}</h3>
+                        </div> 
+                    {% endif %}
+                    <a class="link" href="{{ article.url }}"><span class="visually-hidden">{{ article.title }}</span></a> 
+                </article> 
+            {% endfor %}
+        {% if paginate.pages > 1 %} 
+            {% include 'pagination' %} 
+        {% endif %}
+    </div> 
+{% endpaginate %}

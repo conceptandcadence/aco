@@ -1,0 +1,373 @@
+<header section-id="{{ section.id }}" data-localization="{{ localization.country.iso_code }}" class="{% if template.suffix contains 'landing' and section.settings.white_landing == true %}white{% endif %} {% if template.name == 'index' and section.settings.white_home == true %}white{% endif %} {% if template.name contains 'collection' and section.settings.white_shop == true %}white{% endif %}{% if section.settings.invert_colors %} inverted{% endif %}" data-section-type="header-section" role="banner" style="display:none">
+    <div class="top">
+        <div class="block">
+            <div id="mobile-hamburger"> 
+                <a href="#" class="mobile-menu-button">
+                    <span class="visually-hidden">Menu</span> 
+                    <span class="open">{% include 'icon-menu' %}</span> 
+                    <span class="close">{% include 'icon-close' %}</span>
+                </a>
+            </div>
+        </div>  
+
+        {% if template.name == 'index' %}
+            <h1 class="h1" itemscope itemtype="http://schema.org/Organization"> 
+        {% else %}
+            <div class="h1" itemscope itemtype="http://schema.org/Organization"> 
+        {% endif %} 
+          <a href="{{ routes.root_url }}" itemprop="url" class="site-logo site-header__logo-image">
+            {% render 'logo', width: section.settings.logo_max_width %}
+          </a>   
+        {% if template.name == 'index' %}
+            </h1> 
+        {% else %}
+            </div> 
+        {% endif %}
+
+        <nav role="navigation" {% if template.name=='product' %}class="opaque"{% endif %}>
+            <ul class="site-nav desktop"> 
+                {% assign primary_menu = linklists[section.settings.main_linklist].links %}
+                {% assign secondary_menu = linklists[section.settings.secondary_linklist].links | reverse %}
+                {% for link in primary_menu %}
+                    {% include 'navigation-links', alignment: 'left' %}
+                {% endfor %} 
+                {% for link in secondary_menu %}
+                    {% include 'navigation-links', alignment: 'right' %}
+                {% endfor %} 
+                <li class="site-nav__item" data-title="Search" style="float:right;"> 
+                    <a href="#" class="site-nav__link search-toggle desktop" tabindex="0">
+                        <svg class="Icon Icon--search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="17px" viewBox="0 0 17 17" version="1.1">
+                            <g id="Prestige" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Home-M-—-04" transform="translate(-256.000000, -16.000000)">
+                                    <g id="Group-6" transform="translate(257.000000, 17.000000)" stroke="#000000" stroke-width="1.5">
+                                        <circle id="Oval" cx="6" cy="6" r="6"></circle>
+                                        <path d="M10.4166667,10.4166667 L14.6677284,14.6677284" id="Line-3" stroke-linecap="square"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="site-nav__linktext">Search</span>
+                    </a>
+                    {% include 'advc-search' %}
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="block cart-bar"> 
+            {% comment %} {% if shop.customer_accounts_enabled %} {% if customer %} <a href="/account" class="account-link"><span id="account-greeting">Hey, {{ customer.first_name }}!</span></a> {% else %} <a href="/account/register" class="account-link"><img class="black" src="{{ 'icon-login.png' | asset_url }}" alt="Account Login"/> <img class="white" src="{{ 'icon-login-white.png' | asset_url }}" alt="Account Login"/></a> {% endif %} {% endif %} {% endcomment %} 
+            <a href="#" class="site-nav__link search-toggle mobile" tabindex="0">
+                <svg class="Icon Icon--search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17px" height="17px" viewBox="0 0 17 17" version="1.1">
+                    <g id="Prestige" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Home-M-—-04" transform="translate(-256.000000, -16.000000)">
+                            <g id="Group-6" transform="translate(257.000000, 17.000000)" stroke="#000000" stroke-width="1.5">
+                                <circle id="Oval" cx="6" cy="6" r="6"></circle>
+                                <path d="M10.4166667,10.4166667 L14.6677284,14.6677284" id="Line-3" stroke-linecap="square"></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span class="site-nav__linktext visually-hidden">Search</span>
+            </a>
+            <a href="{{ routes.cart_url }}" class="cart-link">
+                <span class="cart-count"{% if cart.item_count==0 %} style="display:none"{% endif %}>
+                    {% if cart.item_count > 0 %}{{ cart.item_count }}{% endif %}
+                </span> 
+                <img class="black" src="{{ 'icon-cart.png' | asset_url }}" alt="View Cart"/> 
+                <img class="white" src="{{ 'icon-cart-white.png' | asset_url }}" alt="View Cart"/>
+            </a>
+        </div>
+    </div>
+</header>
+
+{% assign secondary_menu = linklists[section.settings.secondary_linklist].links %}
+<div id="shopify-section-side-mobile-menu" class="newMobNav">
+    <div id="unid-0-0" data-parent-id="" class="mobNavULWrap firstLevelUL">
+        <ul class="firstLevelFirstUL">
+            <li class="firstLevelTopMenu">
+            <ul class="firstLevelListWrapper">
+                {% assign link_count = 0 %}
+                {% for link in primary_menu %}
+                    {% if link.links != blank %}
+                        <li data-unid="unid-{{- link_count -}}-0-{{- link_count -}}" class="liHasSubMenu">
+                            <span>{{ link.title }}</span>
+                        </li>
+                    {% else %}
+                        <li data-unid="unid-{{- link_count -}}-0-{{- link_count -}}">
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                    {% endif %}
+                    {% assign link_count = link_count | plus: 1 %}
+                {% endfor %}
+                {% for link in secondary_menu %}
+                    {% if link.links != blank %}
+                        <li data-unid="unid-{{- link_count -}}-0-{{- link_count -}}" class="liHasSubMenu">
+                            <span>{{ link.title }}</span>
+                        </li>
+                    {% else %}
+                        <li data-unid="unid-{{- link_count -}}-0-{{- link_count -}}">
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                    {% endif %}
+                    {% assign link_count = link_count | plus: 1 %}
+                {% endfor %}
+            </ul>
+            </li>
+            <li class="firstLevelBottomMenu">
+							{% for block in section.blocks %}
+								{% assign has_megamenu = false %}
+								{% assign block_title = block.settings.title | downcase %}
+								{% if megamenu_link == block_title %}
+										{% assign has_megamenu = true %}
+										{% if block.settings.product_1 != blank %}
+						
+												{% for product in collections[block.settings.collection].products %}
+														{% if product.handle == block.settings.product_1 %}
+														{% assign product_1 = product %}
+														{% break %}
+														{% endif %}
+												{% endfor %}
+						
+												<div class="menuProdBox menuProdBox1">
+														<a href="{{ product_1.url }}">
+																{% if block.settings.product_1_index == blank %}
+																		{% assign image_1_primary   = product_1.images[0] %}
+																		{% assign image_1_secondary = product_1.images[1] %}
+																{% elsif block.settings.product_1_index == 1 %}
+																		{% assign image_1_primary   = product_1.images[1] %}
+																		{% assign image_1_secondary = product_1.images[0] %}
+																{% else %}
+																		{% assign image_1_primary   = product_1.images[block.settings.product_1_index] %}
+																		{% assign image_1_secondary = product_1.images[1] %}
+																{% endif %}
+																
+																{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_secondary -%}
+																{%- assign image_url = image_1_secondary | img_url: '4x5' -%}
+																<img class="secondary lazyload-img flat " loading="lazy"
+																		src="{{ image_url }}"
+																		data-src="{{ image_url }}"
+																		data-widths="[{{ supported_sizes }}]"
+																		sizes="(max-width: 700px) 50vw,33.33vw"
+																		srcset="{{ image_srcset }}"
+																		alt="{{ image_1_secondary.alt | default: block.settings.feature_2_title | escape }}">
+																<noscript>
+																		<img class="plp-item__images-image placeholder flat" src="{{ image_1_secondary | img_url: '400x' }}" alt="{{ image_1_secondary.alt | escape }}">
+																</noscript>
+						
+																{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_primary -%}
+																{%- assign image_url = image_1_primary | img_url: '4x5' -%}
+																<img class="primary lazyload-img flat " loading="lazy"
+																		src="{{ image_url }}"
+																		data-src="{{ image_url }}"
+																		data-widths="[{{ supported_sizes }}]"
+																		sizes="(max-width: 700px) 50vw,33.33vw"
+																		srcset="{{ image_srcset }}"
+																		alt="{{ image_1_primary.alt | default: block.settings.feature_2_title | escape }}">
+																<noscript>
+																		<img class="plp-item__images-image placeholder flat" src="{{ image_1_primary | img_url: '400x' }}" alt="{{ image_1_primary.alt | escape }}">
+																</noscript>
+														</a>
+														<div class="product-info">
+																<a href="{{ product_1.url }}" class="product-title">{{ product_1.title | escape }}</a>
+																<span class="product-price">{{ product_1.price | money_without_trailing_zeros }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+														</div>
+												</div>
+										{% endif %}
+										{% if block.settings.product_2 != blank %}
+						
+												{% for product in collections[block.settings.collection].products %}
+														{% if product.handle == block.settings.product_2 %}
+														{% assign product_2 = product %}
+														{% break %}
+														{% endif %}
+												{% endfor %}
+						
+												<div class="menuProdBox menuProdBox2 xxx">
+														<a href="{{ product_2.url }}">
+																{% if block.settings.product_2_index == blank %}
+																		{% assign image_2_primary   = product_2.images[0] %}
+																		{% assign image_2_secondary = product_2.images[1] %}
+																{% elsif block.settings.product_2_index == 1 %}
+																		{% assign image_2_primary   = product_2.images[1] %}
+																		{% assign image_2_secondary = product_2.images[0] %}
+																{% else %}
+																		{% assign image_2_primary   = product_2.images[block.settings.product_2_index] %}
+																		{% assign image_2_secondary = product_2.images[1] %}
+																{% endif %}
+																
+																{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_secondary -%}
+																{%- assign image_url = image_2_secondary | img_url: '4x5' -%}
+																<img class="secondary lazyload-img flat " loading="lazy"
+																		src="{{ image_url }}"
+																		data-src="{{ image_url }}"
+																		data-widths="[{{ supported_sizes }}]"
+																		sizes="(max-width: 700px) 50vw,33.33vw"
+																		srcset="{{ image_srcset }}"
+																		alt="{{ image_2_secondary.alt | default: block.settings.feature_2_title | escape }}">
+																<noscript>
+																		<img class="plp-item__images-image placeholder flat" src="{{ image_2_secondary | img_url: '400x' }}" alt="{{ image_2_secondary.alt | escape }}">
+																</noscript>
+						
+																{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_primary -%}
+																{%- assign image_url = image_2_primary | img_url: '4x5' -%}
+																<img class="primary lazyload-img flat " loading="lazy"
+																		src="{{ image_url }}"
+																		data-src="{{ image_url }}"
+																		data-widths="[{{ supported_sizes }}]"
+																		sizes="(max-width: 700px) 50vw,33.33vw"
+																		srcset="{{ image_srcset }}"
+																		alt="{{ image_2_primary.alt | default: block.settings.feature_2_title | escape }}">
+																<noscript>
+																		<img class="plp-item__images-image placeholder flat" src="{{ image_2_primary | img_url: '400x' }}" alt="{{ image_2_primary.alt | escape }}">
+																</noscript>
+														</a>
+														<div class="product-info">
+																<a href="{{ product_2.url }}" class="product-title">{{ product_2.title | escape }}</a>
+																<span class="product-price">{{ product_2.price | money_without_trailing_zeros }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+														</div>
+												</div>
+										{% endif %}
+								{% endif %}
+							{% endfor %}
+            </li>
+        </ul>
+    </div>
+    {% assign link_count = 0 %}
+    {% include 'mobile-menu-subnav', menu: primary_menu %}
+    {% include 'mobile-menu-subnav', menu: secondary_menu %}
+</div>
+<div class="mobMenuOverlay"></div>
+    
+<style>
+    {% if section.settings.logo !=blank %}
+    .site-header__logo-image {
+        width: {{ section.settings.logo_max_width }}px;
+    }
+
+    @media (max-width:699px) {
+        .site-header__logo-image {
+            width: {{ section.settings.logo_max_width_mobile }}px;
+        }
+    }
+    @media (min-width:100px) and (max-width:1200px) {
+        .site-header__logo-image {
+            width: 70px;
+        }
+    }
+    {% endif %}
+
+    {% if section.settings.align_logo=='left' %}
+    .site-header__logo-image {
+        margin: 0;
+    }
+    {% endif %}
+</style> 
+
+{% schema %} 
+{ 
+    "name": "Header", 
+    "max_blocks": 2,
+    "settings": [ 
+        { 
+            "type": "image_picker", 
+            "id": "logo", 
+            "label": "Logo image" 
+        }, { 
+            "type": "text", 
+            "id": "logo_max_width", 
+            "label": "Desktop logo width (in pixels)", 
+            "default": "150" 
+        }, { 
+            "type": "text", 
+            "id": "logo_max_width_mobile", 
+            "label": "Mobile logo width (in pixels)", 
+            "default": "100" 
+        }, { 
+            "type": "checkbox", 
+            "id": "invert_colors", 
+            "label": "Invert Header Colors", 
+            "default": true 
+        }, { 
+            "type": "checkbox", 
+            "id": "white_home", 
+            "label": "Use Light Logo / Text on Home Header", 
+            "default": true 
+        }, { 
+            "type": "checkbox", 
+            "id": "white_shop", 
+            "label": "Use Light Logo / Text on Shop Header", 
+            "default": true 
+        }, { 
+            "type": "checkbox", 
+            "id": "white_landing", 
+            "label": "Use Light Logo / Text on Landing Page Headers", 
+            "default": true 
+        }, { 
+            "type": "link_list", 
+            "id": "main_linklist", 
+            "label": "Primary Menu", 
+            "default": "main-menu" 
+        }, { 
+            "type": "link_list", 
+            "id": "secondary_linklist", 
+            "label": "Secondary Menu"
+        }, { 
+            "type": "checkbox", 
+            "id": "banner_active", 
+            "label": "Banner Active", 
+            "default": true 
+        }, { 
+            "type": "text", 
+            "id": "desktop_text", 
+            "label": "Banner text to be show on desktop.", 
+            "default": "To get 15% off your first order, sign up for our mailing list." 
+        }, { 
+            "type": "text", 
+            "id": "mobile_text", 
+            "label": "Banner text to be show on phones.", 
+            "default": "Text to be show on phones." 
+        } 
+    ],
+    "blocks": [
+        {
+            "type": "megamenu",
+            "name": "Megamenu",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Target Title",
+                    "info": "Enter the title of the link that the megamenu should applied to."
+                },    
+                {
+                    "type": "collection",
+                    "id": "collection",
+                    "label": "Base Collection",
+                     "info": "A collection these products can be found within (must be one of the first 50 products)"
+                },
+                {
+                    "type": "product",
+                    "id": "product_1",
+                    "label": "Product 1"
+                },
+                {
+                    "type": "number",
+                    "id": "product_1_index",
+                    "label": "Product 1 Image Index",
+                    "info": "The order where the image appears on the product page, starting with 0"
+                },
+                {
+                    "type": "product",
+                    "id": "product_2",
+                    "label": "Product 2",
+                    "label": "Product 2 Image"
+                },
+                {
+                    "type": "number",
+                    "id": "product_2_index",
+                    "label": "Product 2 Image Index",
+                    "info": "The order where the image appears on the product page, starting with 0"
+                }
+            ]
+        }
+    ] 
+} {% endschema %}

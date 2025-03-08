@@ -1,0 +1,449 @@
+{% assign max_blocks = section.settings.material_count %}
+{% assign current_blocks = 0 %}
+
+{% if template.name contains 'product' %}
+    <section class="sustainable-materials">
+        {% for block in section.blocks %}
+            {% for tag in product.tags %}
+                {% if tag == block.settings.material_tag and block.type == 'material' %}
+                    <div class="sustainable-materials__material" data-handle="{{ block.settings.title | handleize }}">
+                        {% assign current_image = block.settings.image %}
+                        {% if current_image != blank %}
+                            <div class="sustainable-materials__media">
+                                {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                {%- assign image_url = current_image | img_url: '1x1' -%}
+                                <img class="lazyload-img " loading="lazy"
+                                    src="{{ image_url }}"
+                                    data-src="{{ image_url }}"
+                                    data-widths="[{{ supported_sizes }}]"
+                                    sizes="(max-width: 700px) 50vw,33.33vw"
+                                    srcset="{{ image_srcset }}"
+                                    data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                    data-image-id="{{ current_image.id }}"
+                                    alt="{{ block.settings.feature_title_3 | escape }}">
+                                <noscript>
+                                    <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.title | escape }}">
+                                </noscript>
+                                {% if block.settings.video != blank %}
+                                    <div class="sustainable-materials__video-container">
+                                        <video autoplay="" muted="" loop="" playsinline=""{% if section.settings.title != blank %} title="block.settings.title"{% endif %}{% if block.settings.image != blank %} poster="{{ block.settings.image | img_url: '800x' }}"{% endif %} class="sustainable-materials__video">
+                                            <source type="video/mp4" src="{{ block.settings.video }}">
+                                        </video>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="sustainable-materials__text">
+                                <div class="sustainable-materials__description">
+                                    <h3>{{ block.settings.title }}</h3>
+                                    {{ block.settings.description }}
+                                </div>
+                                <div class="sustainable-materials__why">
+                                    <h3>{{ section.settings.why_title }}</h3>
+                                    {{ block.settings.why }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% assign current_blocks = current_blocks | plus: 1 %}
+                {% endif %}
+                {% if current_blocks == max_blocks %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        {% for block in section.blocks %}
+            {% for tag in product.tags %}
+                {% if tag == block.settings.manufacturer_tag and block.type == 'factory' %}
+                    <div class="sustainable-materials__material">
+                        {% assign current_image = block.settings.image %}
+                        {% if current_image != blank %}
+                            <div class="sustainable-materials__media">
+                                {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                {%- assign image_url = current_image | img_url: '1x1' -%}
+                                <img class="lazyload-img " loading="lazy"
+                                    src="{{ image_url }}"
+                                    data-src="{{ image_url }}"
+                                    data-widths="[{{ supported_sizes }}]"
+                                    sizes="100vw"
+                                    srcset="{{ image_srcset }}"
+                                    data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                    data-image-id="{{ current_image.id }}"
+                                    alt="{{ block.settings.feature_title_3 | escape }}">
+                                <noscript>
+                                    <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.title | escape }}">
+                                </noscript>
+                                {% if block.settings.video != blank %}
+                                    <div class="sustainable-materials__video-container">
+                                        <video autoplay="" muted="" loop="" playsinline=""{% if section.settings.title != blank %} title="block.settings.title"{% endif %}{% if block.settings.image != blank %} poster="{{ block.settings.image | img_url: '800x' }}"{% endif %} class="sustainable-materials__video">
+                                            <source type="video/mp4" src="{{ block.settings.video }}">
+                                        </video>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="sustainable-materials__text">
+                                <div class="sustainable-materials__description" style="margin-bottom: 0;">
+                                    <h3>{{ block.settings.title }}</h3>
+                                    {{ block.settings.description }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}        
+    </section> 
+{% endif %}
+
+{% if template.suffix contains 'sustainability' %}
+    {% if section.settings.title != blank %}
+        <div class="sustainable-materials__header">
+            <h2>{{ section.settings.title }}</h2>
+        </div>
+    {% endif %}
+    <section class="sustainable-materials">
+        {% for block in section.blocks %}
+            {% if block.type == 'material' %}
+                    <div class="sustainable-materials__material" data-handle="{{ block.settings.title | handleize }}">
+                    {% assign current_image = block.settings.image %}
+                    {% if current_image != blank %}
+                        <div class="sustainable-materials__media">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ block.settings.feature_title_3 | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.title | escape }}">
+                            </noscript>
+                            {% if block.settings.video != blank %}
+                                <div class="sustainable-materials__video-container">
+                                    <video autoplay="" muted="" loop="" playsinline=""{% if section.settings.title != blank %} title="block.settings.title"{% endif %}{% if block.settings.image != blank %} poster="{{ block.settings.image | img_url: '800x' }}"{% endif %} class="sustainable-materials__video">
+                                        <source type="video/mp4" src="{{ block.settings.video }}">
+                                    </video>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="sustainable-materials__text">
+                            <div class="sustainable-materials__description">
+                                <h3>
+                                  <span>{{ block.settings.title }}</span>
+                                  {% if block.settings.icon != blank %}
+                                      {%- include 'image-size', sizes: '100,200', image: block.settings.icon -%}
+                                      {%- assign image_url = block.settings.icon | img_url: '100x' -%}
+                                      <img class="sizes="100vw"" loading="lazy"
+                                          src="{{ image_url }}"
+                                          data-src="{{ image_url }}"
+                                          data-widths="[{{ supported_sizes }}]"
+                                          sizes="10vw"
+                                          srcset="{{ image_srcset }}"
+                                          alt="{{ block.settings.title | escape }}">
+                                      <noscript>
+                                          <img src="{{ block.settings.icon | img_url: '100x' }}" alt="{{ block.settings.title | escape }}">
+                                      </noscript>
+                                  {% endif %}
+                                </h3>
+                                {{ block.settings.description }}
+                            </div>
+                            <div class="sustainable-materials__why">
+                                <h3>{{ section.settings.why_title }}</h3>
+                                {{ block.settings.why }}
+                            </div>
+                        </div>
+                        <div class="sustainable-materials__featuredin">
+                            {% assign collection_count = 0 %}
+                            {% capture featured_collections %}
+                               {% if block.settings.collection_1 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_1].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_1].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_1].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_1].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_1].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_1].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_1].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                                {% if block.settings.collection_2 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_2].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_2].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_2].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_2].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_2].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_2].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_2].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                                {% if block.settings.collection_3 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_3].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_3].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_3].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_3].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_3].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_3].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_3].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                                {% if block.settings.collection_4 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_4].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_4].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_4].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_4].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_4].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_4].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_4].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                               {% if block.settings.collection_5 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_5].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_5].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_5].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_5].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_5].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_5].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_5].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                                {% if block.settings.collection_6 != blank %}
+                                    <div class="sustainable-materials__featuredin-collection">
+                                        {% assign current_image = collections[block.settings.collection_6].featured_image %}
+                                        {% if current_image != blank %}
+                                            <div class="sustainable-materials__featuredin-collection-image">
+                                                <img src="{{ current_image | img_url: '400x' }}" alt="{{ collections[block.settings.collection_6].title }}" />
+                                            </div>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_6].title != blank %}
+                                            <h3 class="sustainable-materials__featuredin-collection-title">{{ collections[block.settings.collection_6].title }}</h3>
+                                        {% endif %}
+                                        {% if collections[block.settings.collection_6].url != blank %}
+                                            <a class="sustainable-materials__featuredin-collection-link" href="{{ collections[block.settings.collection_6].url | append: '/men' }}"><span class="visually-hidden">{{ collections[block.settings.collection_6].title }}</a>
+                                        {% endif %}
+                                    </div>
+                                    {% assign collection_count = collection_count | plus: 1 %}
+                                {% endif %}
+                            {% endcapture %}
+                            <div class="sustainable-materials__featuredin-collections{% if collection_count > 2 %} carousel-enabled{% endif %}">
+                                {{ featured_collections }}
+                                {% if collection_count > 2 %}
+                                    {{ featured_collections }}
+                                {% endif %}
+                            </div>
+                            <div class="sustainable-materials__featuredin-text">
+                                <div class="sustainable-materials__featuredin-text-wrapper">
+                                    <h3>{{ section.settings.featuredin_title }}</h3>
+                                    {{ block.settings.featuredin }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section> 
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'sustainable-materials.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'sustainable-materials.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'sustainable-materials.min.js' | asset_url }}" defer="defer"></script>
+
+{% if product.handle contains 'cactus' %}
+<style>
+.sustainable-materials__material[data-handle="raw-leather"] { display: none !important; }
+</style>
+{% endif %}
+
+
+{% schema %} 
+{
+	"name": "Materials and Process",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Our Materials"
+        },
+        {
+            "type": "text",
+            "id": "why_title",
+            "label": "Rationale Title",
+            "default": "Why we use it"
+        },
+        {
+            "type": "text",
+            "id": "featuredin_title",
+            "label": "Featured In Title"
+        },
+        {
+            "type": "range",
+            "id": "material_count",
+            "label": "Max Material Count",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "unit": "cel",
+            "default": 2,
+            "info": "The number materials to display at the bottom of the PDP."
+
+        }
+    ],
+    "blocks":[
+    {
+       "type":"material",
+       "name":"Material",
+       "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Display Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "richtext",
+            "id": "why",
+            "label": "Why we use it"
+        },
+        {
+            "type":"text",
+            "id":"material_tag",
+            "label":"Material Tag",
+            "info":"The material tag that corresponds to this material, such as material--organic-cotton"
+        }, 
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "video",
+            "label": "Video",
+            "info": "When using a video, you must also add an image for when the video is loading."
+        },
+        {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon"
+        },
+        {
+            "type": "header",
+            "content": "Collections"
+        },
+        {
+            "type": "richtext",
+            "id": "featuredin",
+            "label": "Featured In"
+        },
+        {
+            "type": "collection",
+            "id": "collection_1",
+            "label": "Collection 1"
+        },
+        {
+            "type": "collection",
+            "id": "collection_2",
+            "label": "Collection 2"
+        },      
+        {
+            "type": "collection",
+            "id": "collection_3",
+            "label": "Collection 3"
+        },
+        {
+            "type": "collection",
+            "id": "collection_4",
+            "label": "Collection 4"
+        },      
+                {
+            "type": "collection",
+            "id": "collection_5",
+            "label": "Collection 5"
+        },  
+                {
+            "type": "collection",
+            "id": "collection_6",
+            "label": "Collection 6"
+        }   
+       ]
+    },
+    {
+       "type":"factory",
+       "name":"Factory",
+       "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Display Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type":"text",
+            "id":"manufacturer_tag",
+            "label":"Manufacturer Tag",
+            "info":"The factory tag that corresponds to this material, such as madein--chennai"
+        }, 
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "video",
+            "label": "Video",
+            "info": "When using a video, you must also add an image for when the video is loading."
+        }
+       ]
+    }
+ ]
+}
+{% endschema %}

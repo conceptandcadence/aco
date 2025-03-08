@@ -1,0 +1,361 @@
+{% capture features_blocks %}
+  {% for block in section.blocks %}
+    <div class="lp-features-carousel__feature" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+      <div class="lp-features-carousel__feature-wrapper">
+        {% if block.settings.image != blank %}
+          <div class="lp-features-feature__image">
+            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image -%}
+            {%- assign image_url_mobile = block.settings.image | img_url: '4x5' -%}
+            <img class="lp-features-feature__image-img" src="{{ image_url_mobile }}"
+              data-flickity-lazyload="{{ image_url_mobile }}" data-widths="[{{ supported_sizes }}]" sizes="100vw"
+              data-flickity-lazyload-srcset="{{ image_srcset }}"
+              alt="{{ block.settings.image.alt | default: block.settings.title | escape }}">
+            <noscript>
+              <img class="lp-features-feature__image-img" src="{{ section.settings.image_desktop | img_url: '400x500' }}"
+                alt="{{ block.settings.image.alt | default: block.settings.title | escape }}">
+            </noscript>
+          </div>
+        {% endif %}
+        {% if block.settings.description != blank %}
+          <div class="lp-features-carousel__description">
+            {{ block.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+  <div class="lp-features-carousel" style="background-color: {{ section.settings.background }}"> 
+    {% if section.settings.subtitle != blank %}
+      <h4 class="lp-features-carousel__section-subtitle">{{ section.settings.subtitle }}</h2>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="lp-features-carousel__section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    <div class="lp-features-carousel__features{% if section.blocks.size <= section.settings.cell_count %} disabled-on-desktop{% endif %}" data-cell-count="{{ section.settings.cell_count }}">
+      {{ features_blocks }}
+      {% if section.blocks.size < 5 %}
+        {{ features_blocks }}
+      {% endif %}
+    </div>
+  </div>
+  <style>
+    #shopify-section-{{ section.id }} .lp-features-carousel__title, #shopify-section-{{ section.id }} .lp-features-carousel__price, #shopify-section-{{ section.id }} .lp-features-carousel__variant-title {
+        color: {{ section.settings.text_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .lp-features-carousel__features {
+        background-color: {{ section.settings.background }} !important;
+    }
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-features-carousel__features {
+            padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+        #shopify-section-{{ section.id }} .lp-features-carousel__features {
+            padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+        }
+    }
+  </style>
+</section> 
+
+<script src="{{ 'lp-features-carousel.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'lp-features-carousel.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'lp-features-carousel.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+{% schema %}
+{
+  "name": "LP Features",
+  "class": "c-lp-features-carousel lp-section",      
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed above the features."
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed above the features."
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+          {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "LP Features",
+    "category": "Landing Page"
+  }
+]
+}
+{% endschema %}

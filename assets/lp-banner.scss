@@ -1,0 +1,112 @@
+.c-lp-banner-full {
+    .lp-banner-full {
+        position: relative;
+        .lp-banner-full__background {
+            position: relative;
+            .banner-background {
+                width: 100%;
+                height: auto;
+                &.mobile {
+                    display: block;
+                    @media (min-width: 700px) {
+                        display: none;
+                    }
+                }
+                &.desktop {
+                    display: none;
+                    @media (min-width: 700px) {
+                        display: block;
+                    }
+                }
+            }
+            .banner-background__video {
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                .banner-background__video-iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    transition: opacity 0.25s ease-in-out;
+                }
+            }
+        }
+        .lp-banner-full__foreground {
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .banner-item {
+            max-width: 100%;
+            &.image {
+
+            }
+            &.svg {
+
+            }
+            &.button {
+                &.button--primary {
+                    background-color: #1b3448;
+                    text-decoration: none;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #fff;
+                    padding: 14px 24px;
+                    border-radius: 2px;
+                }
+                &.button--secondary {
+                    background-color: #fff;
+                    text-decoration: none;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #000;
+                    padding: 14px 24px;
+                    border-radius: 2px;
+                }
+                &.link--primary {
+                    font-style: normal;
+                    font-size: 20px;
+                    font-weight: 600;
+                    border-bottom-style: solid;
+                    border-bottom-width: 2px;
+                    color: #000;
+                }
+                &.link--secondary {
+                    font-style: normal;
+                    font-size: 20px;
+                    font-weight: 600;
+                    border-bottom-style: solid;
+                    border-bottom-width: 2px;
+                    color: #fff;
+                }
+            }
+            &.richtext {
+
+            }
+            &.spacer {
+
+            }
+        }
+    }
+    .visibility__mobile-only {
+        @media (min-width: 700px) {
+            display: none !important;
+        }
+    }
+    .visibility__desktop-only {
+        @media (max-width: 699px) {
+            display: none !important;
+        }
+    }
+}

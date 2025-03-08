@@ -1,0 +1,45 @@
+{% assign menu = linklists.shop-filters %}
+
+<ul id="collection-nav-mobile" aria-label="Collection Navigation - Mobile" data-active-menu="">
+    <li class="collection-nav-mobile__item shop"><a class="collection-nav-mobile__link" href="#">Categories<span class="collection-nav-mobile__toggle"></span></a></li>
+    <li class="collection-nav-mobile__item filter"><span class="shop-filters__clear">Clear Filter</span><a class="collection-nav-mobile__link" href="#">Filters<span class="collection-nav-mobile__toggle"></span></a></li>
+</ul>
+
+<nav id="collection-nav" aria-label="Collection Navigation - Desktop" data-active-menu="">
+    <div class="collection-nav collection-nav-container"> 
+        {% for link in linklists['primary-menu'].links %}
+                {% if link.title == 'Shop' %}
+                    {% if link.links != blank %}
+                        <div class="site-subnav shop-categories">
+                            {% for category_group in link.links %}  
+                                {% if category_group.title == 'Primary' %}
+                                    <ul class="site-subnav-categories primary">
+                                        {% for subcategories in category_group.links %}  
+                                            <li class="site-subnav__item">
+                                                <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subcategories.url }}" tabindex="0">
+                                                    <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul> 
+                                {% endif %} 
+                                {% if category_group.title == 'Secondary' %}
+                                <ul class="site-subnav-categories secondary">
+                                    {% for subcategories in category_group.links %}  
+                                            <li class="site-subnav__item">
+                                                <a class="site-subnav__link{% if subcategories.current %} current{% endif %}" href= "{{ subcategories.url }}" tabindex="0">
+                                                    <span class="site-subnav__linktext">{{ subcategories.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul> 
+                                {% endif %} 
+                            {% endfor %}
+                          </div> 
+                    {% endif %}  
+                {% endif %} 
+            </li> 
+        {% endfor %} 
+    </div>
+    {% section 'shop-filters' %}
+</nav>

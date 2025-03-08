@@ -1,0 +1,768 @@
+{% assign image_mobile = section.settings.image_mobile %}
+{% assign image_desktop = section.settings.image_desktop %}
+
+{% if section.blocks.size > 0 %}
+    <section class="sustainable-features">
+        {% for block in section.blocks %}
+            <div class="sustainable-feature">
+
+								<div class="{% if block.type != 'photo' %}sustainable-features__text{% endif %}" style="align-items: flex-start;">
+
+									{% if block.settings.title != blank  %}
+									<h3>{{ block.settings.title }}</h3>
+									{% endif %}
+									{% if block.settings.description != blank  %}
+									<div class="sustainable-features__description">
+											{{ block.settings.description }}
+									</div>									{% endif %}
+									{% if block.settings.link_text != blank and block.settings.link_url != blank %}
+										<a class="button button--primary" href="{{ block.settings.link_url }}" style="font-size: 14px;margin-top: 16px;">{{ block.settings.link_text }}</a>
+									{% endif %}
+
+                  {% if block.type == 'photo' %}					
+                    <div class="suiting-photos">
+                      {%- if block.settings.image_1 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_1 -%}
+                            {%- assign current_image = block.settings.image_1 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_2 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_2 -%}
+                            {%- assign current_image = block.settings.image_2 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_3 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_3 -%}
+                            {%- assign current_image = block.settings.image_3 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                    {%- if block.settings.image_4 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_4 -%}
+                            {%- assign current_image = block.settings.image_4 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_5 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_5 -%}
+                            {%- assign current_image = block.settings.image_5 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_6 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_6 -%}
+                            {%- assign current_image = block.settings.image_6 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_7 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_7 -%}
+                            {%- assign current_image = block.settings.image_7 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_8 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_8 -%}
+                            {%- assign current_image = block.settings.image_8 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_9 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_9 -%}
+                            {%- assign current_image = block.settings.image_9 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.image_10 != blank -%}
+                        <div class="suiting-photo">
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.image_10 -%}
+                            {%- assign current_image = block.settings.image_10 -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                width="300"
+                                height="500"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ page.title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" width="300" height="500"alt="{{ page.title | escape }}">
+                            </noscript>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  {% endif %}
+                  
+									{% if block.type == 'form' %}									
+										{%- form 'contact', class: 'Form Form--spacingTight' -%}
+												{%- if form.posted_successfully? -%}
+													<p class="ProductForm__Title Alert Alert--success">{{ 'contact.wholesale.post_success' | t }}</p>
+												{%- endif -%}
+
+												{%- if form.errors -%}
+												<div class="Form__Alert Alert Alert--error">
+														<ul class="Alert__ErrorList">
+														{%- for field in form.errors -%}
+																{%- if field == 'form' -%}
+																<li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+																{%- else -%}
+																<li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+																{%- endif -%}
+														{%- endfor -%}
+														</ul>
+												</div>
+												{%- endif -%}
+
+                        <input type="hidden" class="Form__Input" name="contact[wholesale]" value="Website Wholesale Inquiry">
+
+
+												<div class="Form__Group">
+														<div class="Form__Item">
+																<input type="text" class="Form__Input" name="contact[name]" aria-label="Name" placeholder="Name" required {% if customer %}value="{{ customer.name }}"{% endif %}>
+																<label class="Form__FloatingLabel u-h6">Name</label>
+														</div>
+												</div>
+
+												<div class="Form__Group">
+														<div class="Form__Item">
+																<input type="email" class="Form__Input" name="contact[email]" aria-label="Email" placeholder="Email" required {% if customer %}value="{{ customer.email }}"{% endif %}>
+																<label class="Form__FloatingLabel u-h6">Email</label>
+														</div>
+												</div>
+
+												<div class="Form__Group">
+														<div class="Form__Item">
+																<input type="tel" class="Form__Input" name="contact[phone]" aria-label="Phone number" placeholder="Phone number" required {% if customer %}value="{{ customer.phone }}"{% endif %}>
+																<label class="Form__FloatingLabel u-h6">Phone number</label>
+														</div>
+												</div>
+
+												<div class="Form__Group">
+														<div class="Form__Item">
+																<input type="tel" class="Form__Input" name="contact[event_date]" aria-label="Event Date" placeholder="Event Date" required {% if customer %}value="{{ customer.phone }}"{% endif %}>
+																<label class="Form__FloatingLabel u-h6">Event Date</label>
+														</div>
+												</div>
+
+												<div class="Form__Group">
+														<div class="Form__Item Form__Item--Flex">
+																<label class="Form__SelectLabel u-h6">Number of suits needed</label>
+                                <select class="Form__Select" name="contact[number_of_suits]" aria-label="Number of suits" required>
+                                  <option value="10+">5+</option>
+                                  <option value="10+">10+</option>
+                                  <option value="10+">20+</option>
+                                  <option value="10+">30+</option>
+                                  <option value="10+">40+</option>
+                                  <option value="10+">50+</option> 
+                                </select>
+														</div>
+												</div>
+
+												<div class="Form__Item">
+														<label class="Form__FloatingLabel u-h6 textarea">Any notes or special requests?</label> 
+														<textarea name="contact[notes]" cols="30" rows="10" class="Form__Textarea" aria-label="Any notes, custom colors, etc." placeholder="Any notes, custom colors, etc."></textarea>
+												</div>
+
+												<button type="submit" class="Form__Submit button button--primary button--full" style="font-size: 14px; width: 100%;">{{ 'contact.wholesale.submit' | t }}</button>
+										{%- endform -%}
+									{% endif %}
+
+								</div>
+            </div>
+        {% endfor %}    
+    </section> 
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'sustainable-features.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'sustainable-features.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .Form__Select {
+    padding: 8px 24px 8px 16px;
+    border: solid 1px #000;
+    border-radius: 5px;
+    min-width: 60px;
+}
+  .Form__Item--Flex {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  label.Form__SelectLabel.u-h6 {
+      font-weight: 500;
+      margin-right: 15px;
+      display: block;
+  }
+@media screen and (max-width: 640px) {
+  .c-hp-features .hp-features .hp-features__features .hp-features__feature.plp-item {
+  margin-bottom: 28px !important
+  }
+  .c-hp-features .hp-features .hp-features__features .hp-features__feature.plp-item:before, .c-hp-features .hp-features .hp-features__features .hp-features__feature.plp-item:after {
+    content:none !important;
+  }  
+}
+div#shopify-section-template--15717753880665__suiting_form_8xRnk7 {
+    margin-top: -1px;
+}
+.Form {
+  width: 100%;
+}
+
+.Form__Item {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.Form__Input,
+.Form__Textarea,
+.spr-form-input-text,
+.spr-form-input-email,
+.spr-form-input-textarea {
+  -webkit-appearance: none;
+  display: block;
+  padding: 16px 18px;
+  border-radius: 0;
+  border: 1px solid var(--color-black);
+  width: 100%;
+  line-height: normal;
+  resize: none;
+  transition: border-color 0.1s ease-in-out;
+  background: transparent;
+  margin-top: 20px;
+}
+.Form__Input {
+    padding: 0 0 12px; 
+    border: 0;
+    border-bottom: 1px solid var(--color-black);
+}
+.Form__Textarea {
+    margin-top: 12px;
+    border: 1px solid var(--color-black);
+}
+
+.Form__Input:focus,
+.Form__Textarea:focus,
+.spr-form-input-text:focus,
+.spr-form-input-email:focus,
+.spr-form-input-textarea:focus {
+  border-color: var(--color-black);
+  outline: none;
+}
+
+.Form__Input::-moz-placeholder, .Form__Textarea::-moz-placeholder, .spr-form-input-text::-moz-placeholder, .spr-form-input-email::-moz-placeholder, .spr-form-input-textarea::-moz-placeholder {
+  color: var(--color-black);
+	font-weight: 500;
+}
+
+.Form__Input:-ms-input-placeholder, .Form__Textarea:-ms-input-placeholder, .spr-form-input-text:-ms-input-placeholder, .spr-form-input-email:-ms-input-placeholder, .spr-form-input-textarea:-ms-input-placeholder {
+    color: transparent;
+}
+
+.Form__Input::placeholder,
+.spr-form-input-text::placeholder,
+.spr-form-input-email::placeholder,
+.spr-form-input-textarea::placeholder {
+  color: transparent;
+}
+.Form__Textarea::placeholder {
+    color: var(--color-black);
+    opacity: 0.5;
+}
+
+.Form__FloatingLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  line-height: normal;
+  color: var(--color-black);
+  font-size: 14px;
+	font-weight: 500;
+  opacity: 1;
+  background: rgba(var(--background-rgb), 0);
+  pointer-events: none;
+  transform: translateY(150%);
+  transition: all 0.3s ease-in-out;
+}
+
+.Form__FloatingLabel.textarea {
+    display: block;
+    position: relative;
+    top: unset;
+    left: unset;
+    padding: 0;
+    line-height: normal;
+    color: var(--color-black);
+    transform: translateY(0);
+    margin-top: 16px;
+  }
+
+.Form__Input:not(:-moz-placeholder-shown) ~ .Form__FloatingLabel, .Form__Textarea:not(:-moz-placeholder-shown) ~ .Form__FloatingLabel {
+  opacity: 1;
+  color: var(--color-grey-soft);
+  transform: translateY(0);
+}
+
+.Form__Input:not(:-ms-input-placeholder) ~ .Form__FloatingLabel, .Form__Textarea:not(:-ms-input-placeholder) ~ .Form__FloatingLabel {
+  opacity: 1;
+  color: var(--color-grey-soft);
+  transform: translateY(0);
+}
+
+
+.Form__Input:not(:placeholder-shown) ~ .Form__FloatingLabel,
+.Form__Textarea:not(:placeholder-shown) ~ .Form__FloatingLabel {
+  opacity: 1;
+  color: var(--color-grey-soft);
+  transform: translateY(0);
+}
+
+
+.Form__Checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.Form__Checkbox ~ label::before {
+  display: inline-block;
+  content: "";
+  width: 1em;
+  height: 1em;
+  margin-right: 10px;
+  border: 1px solid var(--color-black);
+  vertical-align: -2px;
+}
+
+.Form__Checkbox ~ svg {
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 12px;
+  height: 12px;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+  will-change: transform;
+}
+
+.Form__Checkbox:checked ~ label::before {
+  border-color: var(--color-black);
+}
+
+.Form__Checkbox:checked ~ svg {
+  transform: scale(1);
+}
+
+.Form__Alert,
+.spr-form-message {
+  margin-bottom: 20px;
+}
+
+.Form__Submit {
+  display: block;
+  margin-top: 20px;
+}
+
+.Form__Label,
+.spr-form-label {
+  display: block;
+  padding-bottom: 8px;
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 11px));
+  text-transform: uppercase;
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  font-style: var(--heading-font-style);
+  letter-spacing: 0.2em;
+  line-height: normal;
+}
+
+.Form--small .Form__Input,
+.Form--small .Form__Textarea {
+  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.Form--spacingTight .Form__Item {
+  margin-bottom: 15px;
+}
+
+.Form--spacingTight .Form__Alert {
+  margin-bottom: 20px;
+}
+
+.Form__Group, .Form__FlexGroup {
+    display: flex;
+  }
+
+  .Form__Group > .Form__Item {
+    flex: 1;
+  }
+  .Form__FlexGroup > .Form__Item {
+    flex: 1;
+    display: flex;
+}
+
+.Alert--success {
+	color: var(--color-blue-bright);
+}
+
+@media screen and (min-width: 641px) {
+  .Form__Item,
+  .Form__Alert {
+    margin-bottom: 12px;
+  }
+
+  .Form__Group > :nth-child(2) {
+    margin-left: 30px;
+  }
+
+  .Form--spacingTight .Form__Group > :nth-child(2) {
+    margin-left: 15px;
+  }
+}
+
+.sustainable-features__header.image-header {
+	padding: 0 !important;
+	position: relative;
+}
+.sustainable-features__header .mobile {
+	display: block !important;
+}
+.sustainable-features__header .desktop {
+	display: none !important;
+}
+.sustainable-features__header .header-wrapper {
+	padding: 0 !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sustainable-features__header img {
+	width: 100%;
+}
+.sustainable-features__header .header-wrapper * {
+	color: #fff !important;
+}
+@media screen and (min-width: 641px) {
+	.sustainable-features__header .mobile {
+		display: none !important;
+	}
+	.sustainable-features__header .desktop {
+		display: block !important;
+	}
+}
+
+.suiting-photos {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.suiting-photo {
+  width: 100%;
+  padding-bottom: 120%;
+  overflow: hidden;
+}
+.suiting-photos img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.suiting-photos .flickity-page-dots {
+    display: flex;
+    justify-content: center;
+}
+.suiting-photos .flickity-page-dots .dot {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 6px;
+    width: 6px;
+    border-radius: 20px;
+    margin: 0 3px;
+    transition: background-color 0.35s ease-in-out;
+}
+.suiting-photos .flickity-page-dots .dot.is-selected {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+</style>
+
+{% schema %} 
+{
+	"name": "Suiting Form",
+  "templates": ["page"],
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Section Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Section Description</p>"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Desktop Image"
+        }
+    ],
+    "max_blocks": 2,
+    "blocks":[
+    {
+       "type":"form",
+       "name":"Form",
+       "settings":[
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+       ]
+    },
+    {
+       "type":"photo",
+       "name":"Photos",
+       "settings":[
+        {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image 3"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Image 4"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_5",
+            "label": "Image 5"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_6",
+            "label": "Image 6"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_7",
+            "label": "Image 7"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_8",
+            "label": "Image 8"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_9",
+            "label": "Image 9"
+        },
+                {
+            "type": "image_picker",
+            "id": "image_10",
+            "label": "Image 10"
+        }
+       ]
+    }
+ ],
+    "presets":[
+      {
+        "name":"Suiting Form",
+        "category":"Custom Content",
+        "settings":{
+        }
+      }
+  ]
+}
+{% endschema %}

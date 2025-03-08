@@ -1,0 +1,284 @@
+{% assign image_mobile = section.settings.image_mobile %}
+{% assign image_desktop = section.settings.image_desktop %}
+
+{% if template.suffix == 'press-features' %}
+	<div class="sustainable-features__header fixed-height-header{% if image_mobile != blank or image_desktop != blank %} image-header{% endif %}" style="flex-direction: column;">
+			{% if image_mobile != blank %}
+				{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_mobile -%}
+				{%- assign image_url = image_mobile | img_url: '1x1' -%}
+				<img class="mobile lazyload-img " loading="lazy"
+						src="{{ image_url }}"
+						data-src="{{ image_url }}"
+						data-widths="[{{ supported_sizes }}]"
+						sizes="(max-width: 700px) 50vw,33.33vw"
+						srcset="{{ image_srcset }}"
+						data-zoom="{{ image_mobile | img_url: '2048x', scale: 2 }}" 
+						data-image-id="{{ image_mobile.id }}"
+						alt="{{ section.settings.featured_title | escape }}">
+				<noscript>
+					<img src="{{ image_mobile | img_url: '1024x' }}" alt="{{ section.settings.featured_title | escape }}">
+				</noscript>
+			{% endif %}
+			{% if image_desktop != blank %}
+				{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_desktop -%}
+				{%- assign image_url = image_desktop | img_url: '1x1' -%}
+				<img class="desktop lazyload-img " loading="lazy"
+						src="{{ image_url }}"
+						data-src="{{ image_url }}"
+						data-widths="[{{ supported_sizes }}]"
+						sizes="(max-width: 700px) 50vw,33.33vw"
+						srcset="{{ image_srcset }}"
+						data-zoom="{{ image_desktop | img_url: '2048x', scale: 2 }}" 
+						data-image-id="{{ image_desktop.id }}"
+						alt="{{ section.settings.featured_title | escape }}">
+				<noscript>
+					<img src="{{ image_desktop | img_url: '1024x' }}" alt="{{ section.settings.featured_title | escape }}">
+				</noscript>
+			{% endif %}
+		<div class="header-wrapper c-Press__header">
+			{% if section.settings.featured_title != blank %}
+				<h2>{{ section.settings.featured_title }}</h2>
+			{% endif %}
+			{% if section.settings.description != blank %}
+				<div style="max-width: 400px; margin: 0 auto;">{{ section.settings.description }}</div>
+			{% endif %}
+		</div>
+	</div>
+{% endif %}
+
+<div class="c-Press">
+	{% if section.settings.title != blank and template.suffix != 'press-features' %}
+		<div class="c-Press__header" style="flex-direction: column;">
+				<h2>{{ section.settings.title }}</h2>
+		</div>
+	{% endif %}
+	<div class="c-Press__SnippetListWrapper">
+		{% assign reversed_blocks = section.blocks | reverse %}
+		{% for block in reversed_blocks %}
+			{% if template.suffix == 'press-features' and block.settings.featured == true %}
+				<a class="c-Press__SnippetWrapper featured" href="{{ block.settings.button_link }}">
+						{% if block.settings.featured_image != blank %}
+							<div class="c-Press__image-wrapper">
+								{%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: block.settings.featured_image -%}
+								{%- assign image_url = block.settings.featured_image | img_url: '1x1' -%}
+								<img class="c-Press__image lazyload-img " loading="lazy"
+										src="{{ image_url }}"
+										data-src="{{ image_url }}"
+										data-widths="[{{ supported_sizes }}]"
+										sizes="100vw"
+										srcset="{{ image_srcset }}"
+										data-zoom="{{ block.settings.featured_image | img_url: '2048x', scale: 2 }}" 
+										data-image-id="{{ block.settings.featured_image.id }}"
+										alt="{{ section.settings.featured_title | escape }}">
+								<noscript>
+									<img src="{{ block.settings.featured_image | img_url: '1024x' }}" alt="{{ block.settings.title | escape }}">
+								</noscript>
+							</div>
+						{% endif %}
+						<h2 class="c-Press__SnippetCopy">
+								{{ block.settings.title }}
+						</h2>
+						{% if block.settings.image %}
+								<img class="c-Press__SnippetLogo"
+											src="{{ block.settings.image | img_url: "master" }}" />
+						{% endif %}
+						<span class="c-Press__SnippetDate u-h6">
+								{{ block.settings.pub_date }}
+						</span>
+				</a>
+			{% elsif template.suffix != 'press-features' %}
+				<a class="c-Press__SnippetWrapper standard" href="{{ block.settings.button_link }}">
+						{% if block.settings.image %}
+								<img class="c-Press__SnippetLogo"
+											src="{{ block.settings.image | img_url: "master" }}" />
+						{% endif %}
+						<h2 class="c-Press__SnippetCopy">
+								{{ block.settings.title }}
+						</h2>
+						<span class="c-Press__SnippetDate u-h6">
+								{{ block.settings.pub_date }}
+						</span>
+				</a>
+			{% endif %}
+		{% endfor %}
+	</div>
+</div>
+{% if template.suffix == 'press-features' %}
+	<div class="c-Press__footer">
+		<a href="/pages/all-press/" class="button button--secondary">See More Press</a>
+		<div class="c-Press__footer-contact">
+			{{ section.settings.footer }}
+		</div>
+	</div>
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'styles-press.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'styles-press.min.css' | asset_url | stylesheet_tag }}</noscript>
+<style>
+.sustainable-features__header.image-header {
+	padding: 0 !important;
+	position: relative;
+}
+.sustainable-features__header .mobile {
+	display: block !important;
+}
+.sustainable-features__header .desktop {
+	display: none !important;
+}
+.sustainable-features__header .header-wrapper {
+	padding: 0 !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sustainable-features__header img {
+	width: 100%;
+}
+.sustainable-features__header .header-wrapper * {
+	color: #fff !important;
+}
+.c-Press__SnippetWrapper .c-Press__SnippetLogo {
+	max-height: 60px; 
+}
+@media screen and (min-width: 641px) {
+	.sustainable-features__header .mobile {
+		display: none !important;
+	}
+	.sustainable-features__header .desktop {
+		display: block !important;
+	}
+}
+.c-Press__SnippetWrapper.featured .c-Press__SnippetCopy {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+}
+.c-Press__SnippetWrapper.featured .c-Press__SnippetLogo {
+    max-width: 35%;
+		margin-bottom: 16px;
+
+}
+.c-Press__SnippetWrapper.featured {
+   justify-content: space-between;
+}
+.c-Press__footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
+	background-color: var(--color-blue-dark);
+	border-bottom: solid 1px #fff;
+}
+.c-Press__image-wrapper {
+	display: block;
+	position: relative;
+	padding-bottom: 55%;
+	width: 100%;
+	overflow: hidden;
+}
+.c-Press__image {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	object-position: center;
+                object-fit: cover;
+                object-fit: fill;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 100%;
+}
+.c-Press__footer-contact {
+	margin-top: 16px;
+}
+.c-Press__footer-contact * {
+	color: #fff;
+}
+.c-Press__footer .button:hover:before { border: solid 1px #fff !important; }
+</style>
+
+{% schema %}
+{
+		"name": "Press",
+		"settings":[
+				{
+						"type": "text",
+						"id": "featured_title",
+						"label": "Featured Page headline",
+						"default": "in the press."
+				},
+				{
+						"type": "text",
+						"id": "title",
+						"label": "Page headline",
+						"default": "in the press."
+				},
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Desktop Image"
+        },
+				{
+						"type": "richtext",
+						"id": "footer",
+						"label": "Press Footer"
+				}
+		],
+		"blocks": [
+				{
+						"type": "clipping",
+						"name": "Clipping",
+						"settings": [
+								{
+									"type": "text",
+									"id": "pub_date",
+									"label": "Date"
+								},
+								{ 
+										"type": "text",
+										"id": "pub_name",
+										"label": "Publication Name"
+								},
+								{
+										"type": "image_picker",
+										"id": "image",
+										"label": "Publication Logo"
+								},
+								{
+										"type": "textarea",
+										"id": "title",
+										"label": "Headline"
+								},
+								{
+										"type": "url",
+										"id": "button_link",
+										"label": "URL"
+								},
+								{
+										"type": "image_picker",
+										"id": "featured_image",
+										"label": "Featured Image"
+								},
+								{
+									"type": "checkbox",
+									"id": "featured",
+									"label": "Featured",
+									"default": false
+								}
+						]
+				}
+		]
+}
+{% endschema %}

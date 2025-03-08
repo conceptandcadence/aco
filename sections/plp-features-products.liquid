@@ -1,0 +1,242 @@
+<section class="plp-products" id="shop-container" data-collection-root="{{ collection.url | escape }}" data-infinite-scroll='{ "path": ".plp-products__pagination .next a", "append": ".plp-item", "history": false }'>
+  {% paginate collection.products by section.settings.product_count %}
+      {% if collection.products.size > 0 %}
+        {% assign shoppable_looks = false %}
+        {% for product in collection.products %}
+        
+          {% assign product_index = forloop.index %}
+          {% assign split_visibility = false %}
+          {% for block in section.blocks %}
+            {% if product_index == block.settings.placement and collection.handle == block.settings.collection %}
+              {% assign product_index_mobile = product_index | modulo: 2 %}
+              {% assign product_index_desktop = product_index | modulo: 3 %}
+              {% if product_index_mobile == product_index_desktop %}
+                {% include 'plp-shoppable-look', block: block %}
+                {% assign shoppable_looks = true %}
+              {% else %}
+                {% include 'plp-shoppable-look', block: block, visibility: 'mobile' %}
+                {% assign shoppable_looks = true %}
+                {% assign split_visibility = block %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% include 'plp-item' %}
+
+          {% if split_visibility %}
+            {% include 'plp-shoppable-look', block: split_visibility, visibility: 'desktop' %}
+          {% endif %}
+
+        {% endfor %}
+      {% else %}
+        <div class="plp-products__no-matches">
+            <h2>Sorry</h2>
+            <p>{{ 'collections.general.no_matches' | t }}{% if current_tags != blank %} Please remove some filters and try again.{% endif %}</p>
+            {% assign gender = 'men' %}
+            {% for tag in current_tags %}
+                {% if tag contains 'women' %}
+                    {% assign gender = 'women' %}
+                {% endif %}
+            {% endfor %} 
+            <a href="/collections/{{ gender }}" class="button button--primary shop-all" style="font-size: 14px; margin-top: 12px; display: inline-block;">Shop All</a>
+        </div>
+        <style>
+            .plp-products { display: flex !important; flex-direction: column; justify-content: center; align-items: center; }
+            .shop-all.button.button--primary:before {
+                background-color: var(--color-blue-dark) !important;
+            }
+        </style>
+      {% endif %}
+
+      {%- if paginate.pages > 1 -%}
+        <div class="plp-products__pagination">
+          {{ paginate | default_pagination: next: 'Next', previous: 'Previous' }}
+        </div>
+      {%- endif -%}
+
+  {% endpaginate %}
+</section>
+
+{%- if shoppable_looks -%}
+<link rel="stylesheet" href="{{ 'plp-shoppable-look.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-shoppable-look.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-shoppable-look.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% comment %}
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+{% endcomment %}
+
+<script src="{{ 'infinite-scroll.pkgd.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+  {
+    "name": "PLP Products",
+    "class": "product-listing",
+    "settings": [
+        {
+            "type": "range",
+            "id": "product_count",
+            "label": "Product Count",
+            "min": 6,
+            "max": 48,
+            "step": 1,
+            "unit": "cel",
+            "default": 18,
+            "info": "The number of products that will be initially loaded."
+        }
+    ],
+    "blocks":[
+        {
+        "type":"look",
+        "name":"Shoppable Look",
+        "settings":[
+            {
+                "type":"text",
+                "id":"title",
+                "label":"Admin Label"
+            },
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            }, 
+            {
+                "type":"collection",
+                "id":"collection",
+                "label":"Collection"
+            },
+            {
+                "type": "range",
+                "id": "placement",
+                "label": "Collection Placement",
+                "min": 1,
+                "max": 100,
+                "step": 1,
+                "unit": "prd",
+                "default": 12,
+                "info": "This will be displayed in the Nth slot in the collection. This should be an even number based on the mobile layout. If a blank space would occur on desktop with this placement, then it will display one position further down."
+            },
+            {
+               "type":"header",
+               "content":"Product 1"
+            },
+            {
+                "type":"product",
+                "id":"product_1",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_1_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_1_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 2"
+            },
+            {
+                "type":"product",
+                "id":"product_2",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_2_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_2_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 3"
+            },
+            {
+                "type":"product",
+                "id":"product_3",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_3_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_3_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            },
+            {
+               "type":"header",
+               "content":"Product 4"
+            },
+            {
+                "type":"product",
+                "id":"product_4",
+                "label":"Product"
+            },  
+            {
+                "type": "range",
+                "id": "position_4_h",
+                "label": "Horizontal Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The horizontal position of the product dot on the image."
+            },
+            {
+                "type": "range",
+                "id": "position_4_v",
+                "label": " Vertical Position",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "default": 50,
+                "info": "The vertical position of the product dot on the image."
+            }
+          ]
+        }
+    ]
+  }
+{% endschema %}

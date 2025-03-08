@@ -1,0 +1,80 @@
+<div class="product-material-headline">
+    {% assign product_title         = product.title | downcase %}
+    {% assign product_category      = "product" %}
+    {% assign product_article       = "This" %}
+    {% assign product_verb          = "is" %}
+    {% assign product_production = "made from" %}
+
+    {% if product_title contains 'sweater' %}
+        {% assign product_category     = 'sweater' %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'jacket' %}
+        {% assign product_category     = 'jacket' %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'pants' %}
+        {% assign product_category     = 'pants' %}
+        {% assign product_article   = "These" %}
+        {% assign product_verb      = "are" %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'tee' %}
+        {% assign product_category     = 'tee' %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'shirt' %}
+        {% assign product_category     = 'shirt' %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'cap' %}
+        {% assign product_category     = 'cap' %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'belt' %}
+        {% assign product_category     = 'belt' %}
+        {% assign product_production = "made from" %}
+    {% endif %}      
+
+    {% if product_title contains 'shorts' %}
+        {% assign product_category     = 'shorts' %}
+        {% assign product_article   = "These" %}
+        {% assign product_verb      = "are" %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'sandals' %}
+        {% assign product_category     = 'sandals' %}
+        {% assign product_article   = "These" %}
+        {% assign product_verb      = "are" %}
+        {% assign product_production = "made from" %}
+    {% endif %} 
+
+    {% if product_title contains 'scarf' %}
+        {% assign product_category     = 'scarf' %}
+        {% assign product_article   = "This" %}
+        {% assign product_verb      = "is" %}
+        {% assign product_production = "made of" %}
+    {% endif %} 
+
+    <div class="product-material-headline__static">
+        {{ product_article }} {{ product_category }} {{ product_verb }} {{ product_production }}
+    </div>
+    <ul class="product-material-headline__dynamic">
+        {% if material_cotton or material_linen or material_botanical %}<li>plants</li>{% endif %} 
+        {% if material_wool %}<li>wool</li>{% endif %} 
+        {% if material_rubber %}<li>trees</li>{% endif %} 
+        {% if material_corozo %}<li>nuts</li>{% endif %} 
+        {% if material_leather %}<li>leather</li>{% endif %} 
+        {% if material_cactus %}<li>cactus</li>{% endif %}
+        {% if material_alpaca %}<li>alpaca</li>{% endif %}
+        {% if material_banana %}<li>banana trees</li>{% endif %}
+    </ul>
+  <style>.product-material-headline__dynamic li {white-space: nowrap}</style>
+</div>

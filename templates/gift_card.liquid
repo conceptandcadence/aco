@@ -1,0 +1,284 @@
+{% layout none %}
+<!doctype html>
+<!--[if lt IE 8]><html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+    <link rel="canonical" href="{{ canonical_url }}"> 
+    {% if settings.favicon != blank %}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png"> {% endif %} 
+    <title>Alex Crane Gift Card</title>
+    <meta name="description" content="Gift Card">
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+
+<style>
+html, body {
+	background: #fff;
+	text-align: center;
+    overflow-x: hidden;
+}
+body > div:not('#password-content-wrapper') {
+	position: relative;
+	min-height: 100%;
+	float: left;
+	width: 100%;
+}
+
+.wrapper {
+  	max-width: none;
+	width: 100%;
+	margin: auto;
+}
+
+.content-holder {
+	background: #fff;
+	margin: 70px 0 20px;
+}
+
+p {
+	margin-bottom: 4px;
+}
+p:empty {
+		display: none;
+	}
+    .content-logo {
+    margin-bottom: 64px;
+}
+
+.card-background {
+    width: 65vw !important;
+    height: 46vw !important;
+    background-color: #333;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    border-radius: 4vw;
+    box-shadow: 3px 3px 20px 0px rgb(0 0 0 / 10%);
+}
+.card-value {
+    position: absolute;
+    top: 18.5vw;
+    right: unset;
+    left: 6vw;
+    width: 100%;
+    text-align: left;
+    font-size: 5.25vw;
+    line-height: 1;
+    margin: 0;
+}
+.card-value .disabled {
+		opacity: .05;
+		filter: alpha(opacity=5);
+	}
+.content-logo img {
+    width: 15vw;
+    max-width: 180px;
+}
+
+.card-content {
+	padding: 0 20px;
+    margin-top: 30px;
+}
+.card-code {
+    margin: 0;
+    display: block;
+    position: absolute;
+    bottom: 11.75vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 3.5vw;
+    color: #000;
+    letter-spacing: 0.25vw;
+}
+.card-text {
+    color: #000;
+    font-weight: 500;
+    font-size: 2vw;
+    padding-bottom: 3vw;
+}
+.card-text strong {
+		font-weight: bold;
+}
+.wrap-actions {
+    margin-top: 30px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-actions {
+	padding: 0;
+	width: 50%;
+	display: inline-block;
+}
+.button {
+    background-color: #1b3448;
+    width: 100%;
+    color: #fff;
+    font-weight: 500;
+    padding: 18px 64px;
+    border-radius: 0;
+    font-size: 1.5rem;
+    margin: 72px auto 0;
+    outline: none;
+    transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+    text-decoration: none;
+    min-width: 200px;
+    max-width: 100%;
+}
+.card-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+@media all and (max-width: 768px) {
+    .card-background {
+        width: 90vw !important;
+        height: 65vw !important;
+    }
+    .card-code {
+        bottom: 16.5vw;
+        font-size: 5vw;
+        letter-spacing: 0.25vw;
+    }
+    .card-text {
+        font-size: 4vw;
+        padding-bottom: 5vw;
+    }
+    .button {
+        padding: 12px 24px;
+    }
+    .card-value {
+        top: 26vw;
+        left: 7vw;
+        font-size: 7vw;
+    }
+    .content-logo img {
+        width: 100%;
+        max-width: 150px;
+    }
+    .content-logo {
+        margin-bottom: 36px;
+    }
+    .content-holder {
+        margin: 50px 0 20px;    
+    }
+}
+
+@media all and (min-width: 1500px) {
+    .card-background {
+        width: 920px !important;
+        height: 645px !important;
+        border-radius: 50px;
+    }
+    .card-code {
+        bottom: 165px;
+        font-size: 49px;
+        letter-spacing: 3.5px;
+    }
+    .card-text {
+        font-size: 28px;
+        padding-bottom: 42px;
+    }
+    .button {
+        padding: 12px 24px;
+    }
+    .card-value {
+        top: 260px;
+        left: 84px;
+        font-size: 74px;
+    }
+}
+
+@media print {
+	.card-actions, .footer {
+		display: none;
+	}
+	.card-text {
+		margin-bottom: 32px;
+	}
+	.content-holder {
+		box-shadow: none;
+	}
+	.card-background {
+		background: transparent !important;
+		color: #000;
+		height: 240px;
+	}
+	.wrapper {
+		min-height: 0 !important;
+		height: auto !important;
+		margin-bottom: 0 !important;
+		padding-bottom: 0 !important;
+	}
+}
+
+#attentive_overlay, .needsclick {
+    display: none !important;
+}
+</style>
+
+</head>
+
+<body class="no-touch clearfix">
+    <div> 
+        <div class="wrapper">
+            <main class="content-holder" role="main">
+                <div class="giftcard{% if gift_card.expired or gift_card.enabled != true %} expired{% endif %}">
+                    <div class="content-logo">
+                        <img src="//cdn.shopify.com/s/files/1/1892/3609/files/alex-crane-logo-01_150x.png?v=1517048415" srcset="//cdn.shopify.com/s/files/1/1892/3609/files/alex-crane-logo-01_150x.png?v=1517048415 1x, //cdn.shopify.com/s/files/1/1892/3609/files/alex-crane-logo-01_150x@2x.png?v=1517048415 2x" alt="Alex Crane" itemprop="logo">
+                    </div>
+                    <div class="card-background" style="background-image:url('{{ 'giftcard.jpg' | asset_url }}')">
+                        <a class="card-link" href="https://alexcrane.co/discount/{{ gift_card.code }}?redirect=/collections/shop"></a>
+                        {% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+                        {% assign formatted_initial_value_stripped = formatted_initial_value | strip_html %}
+                        <h3 class="card-value{% if gift_card.balance != gift_card.initial_value %} disabled{% endif %}">
+                            {{ formatted_initial_value }}
+                        </h3> 
+                        {% if gift_card.balance != gift_card.initial_value %}
+                            <h5 lass="card-left">{{ gift_card.balance | money }} {{ 'gift_cart.balance_left' | t }}</h5>
+                        {% endif %}
+                        <h6 class="card-code"> {{ gift_card.code | format_code }}</h6>
+                    </div>
+                    <div class="card-content"> {% assign code_size = gift_card.code | format_code | size %}
+                        <h4 class="card-text"> 
+                            {% capture date_format %}{{ 'general.date_format' | t }}{% endcapture %}
+                            {% assign gift_card_expiry_date = gift_card.expires_on | date: date_format %}
+                            {% if gift_card.enabled and gift_card.expired != true %} 
+                                Use this code at checkout to redeem your credit. 
+                                {% if gift_card.expires_on %}<br /><strong>{{ 'gift_card.active' | t: expiry: gift_card_expiry_date }}</strong>{% endif %} 
+                            {% else %} 
+                                This gift card is no longer available. 
+                                {% if gift_card.expired and gift_card.enabled %}<br /><strong>{{ 'gift_card.expired' | t: expiry: gift_card_expiry_date }}</strong>{% endif %} 
+                            {% endif %}
+                        </h4>
+                        <div class="wrap-actions">
+                            <div class="card-actions">
+                                <a class="button" href="https://alexcrane.co/discount/{{ gift_card.code }}?redirect=/collections/shop">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
+

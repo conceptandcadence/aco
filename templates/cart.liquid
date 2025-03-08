@@ -1,0 +1,154 @@
+{% if cart.item_count > 0 %}
+
+{% comment %}
+	{% assign giftbox_in_cart = false %}    
+    {% for item in cart.items %}
+        {% if item.product.type == 'Gifting'  %}
+            {% assign giftbox_in_cart = true %}
+        {% endif %}
+    {% endfor %}
+    {% if giftbox_in_cart == false  %}
+      {% section 'cart-gifting' %}
+  	{% endif %}
+{% endcomment %}
+{% section 'cart-holiday' %}
+
+<div id="ShoppingCart">
+
+  {% form 'cart', cart, id: 'ShoppingCartForm' %}
+        <div class="head">
+          <h1>Your Order</h1>
+          <span class="line"></span>
+          <input type="submit" name="update" class="update" value="{{ 'cart.general.update' | t }}">
+        </div>
+
+        {% for item in cart.items %}
+
+        {% comment %}
+
+        Cart Item Template
+        =====================
+        The data-label attributes on <td> elements are mobile-friendly
+        helpers used for responsive-table labels
+        {% endcomment %}
+
+    	{% assign isHolidayGift = false %}
+    
+        <div id="item-{{ item.id }}" class="item-row {% for collection in item.product.collections %}{% if collection.handle == 'holiday-gifting' %}holiday-gift{% assign isHolidayGift = true %}{% endif %}{% endfor %} {% if item.variant_id == 32267377016921 %}gift-wrap{% endif %}">
+            <div class="image" style="background-image:url('{{ item | img_url: '240x240' }}')"></div>
+
+            <div class="info">
+                <div class="head">
+                  <h4>
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                    {% if item.properties["PreOrder"] %} <span class="preorder">PRE-ORDER</span> {% endif %}
+                  </h4>
+                  <span class="line"></span>
+                  <span class="price">{{ item.line_price | money | remove: '.00' }}</span>
+                </div>
+
+                {% unless item.variant.title contains 'Default' %}
+              		{% if item.product.tags contains 'gift-card'  %}
+                		<p><label>Amount:</label> {{ item.variant.title }}</p>
+              		{% else %}
+              			<p><label>Size:</label> {{ item.variant.title }}</p>
+              		{% endif %}
+                {% endunless %}
+
+                <div style="display:none">
+                {%- assign property_size = item.properties | size -%}
+				{% if property_size > 0 %}
+                    {% for p in item.properties %}
+				{%- if p.first.first == '_' -%}{%- continue -%}{%- endif -%}
+                      {% unless p.last == blank %}
+                      {{ p.first }}:
+
+                      {% if p.last contains '/uploads/' %}
+                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                      {% else %}
+                        {{ p.last }}
+                      {% endif %}
+
+                      {% endunless %}
+                    {% endfor %}
+                  {% endif %}
+              </div>
+                {% if item.variant_id == 32267377016921 %}
+                    <span class="gift-wrap-note">The entire order will be gift wrapped.</span>
+                {% elsif isHolidayGift == true %}
+              		<label>Quantity</label>
+                    <input type="number"
+                     value="{{ item.quantity }}"
+                     min="1"
+                     max="1"
+                     aria-label="{{ 'cart.general.item_quantity' | t }}">
+                {% else %}
+                  <label>Quantity</label>
+                  <input type="number"
+                   name="updates[]"
+                   id="updates_{{ item.key }}"
+                   value="{{ item.quantity }}"
+                   min="0"
+                   aria-label="{{ 'cart.general.item_quantity' | t }}">
+                {% endif %}
+              	<br/>
+                <a class="remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                  <small>{{ 'cart.general.remove' | t }}</small>
+                </a>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <section class="order-subtotal">
+          <label>{{ 'cart.general.subtotal' | t }}</label>
+          <span>{{ cart.total_price | money | remove: '.00' }}</span>
+          <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+          {% include 'catch-callout-cart' %}
+          
+        </section>
+        {% comment %}{{ form | payment_terms }}{% endcomment %}
+      {% comment %}{% if settings.cart_notes_enable %}
+        <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+        <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+      {% endif %}{% endcomment %}
+    {% if cart.total_discounts > 0 %}
+      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money | remove: '.00' }}</p>
+    {% endif %}
+    <section class="cart-actions">
+      <div class="nvd-mini"></div>
+      <button type="submit" id="checkout-button"name="checkout" class="checkout">{{ 'cart.general.checkout' | t }}</button>
+      <a class="continue" href="/collections/all">Continue Shopping</a>
+    </section>
+  {% endform %}
+{% else %}
+<div class="blank-container">
+  <p>Cart is empty!</p>
+</div>
+{% endif %}
+</div>
+
+  <!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '167686923810802');
+  fbq('track', 'PageView');
+fbq('track', 'AddToCart');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=167686923810802&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+</div>
+
+
+{% comment %}<div data-rebuy-id="10745"></div>{% endcomment %}
+{% comment %}<div data-rebuy-id="18119"></div>{% endcomment %}

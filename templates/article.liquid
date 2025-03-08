@@ -1,0 +1,24 @@
+<article id="articleContainer" role="article" itemscope itemtype="http://schema.org/Article">
+  <div id="articleHero">
+    <div class="hero-info">
+      <h1>
+        <a href="{{ article.url }}">{{ article.title }}</a>
+      </h1>
+
+      <span class="line"></span>
+      {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+
+      <label>
+        {{ date }}
+      </label>
+    </div>
+    {% comment %}
+    {% if article.image %}
+      <img class="img" href="{{ article.url }}" src="{{ article | img_url: '2048x2048' }}"/>
+    {% endif %}
+    {% endcomment %}
+  </div>
+  <div class="rte" itemprop="articleBody">
+    {{ article.content }}
+  </div>
+</article>

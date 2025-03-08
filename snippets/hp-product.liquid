@@ -1,0 +1,175 @@
+{%- include 'product-tags' -%}
+
+{% capture filter_values %}
+    {% for variant in product.variants %}
+        {% if variant.available %}
+            data-size-{{- variant.title -}}
+        {% endif %}
+    {% endfor %}
+    {% for tag in product.tags %}
+        {% if tag contains 'colorway--' %}
+            data-colorway-{{- tag | remove: 'colorway--' -}}
+        {% endif %}
+        {% if tag contains 'Colorway--' %}
+            data-colorway-{{- tag | remove: 'Colorway--' -}}
+        {% endif %}
+    {% endfor %}
+{% endcapture %}
+
+<div class="hp-products__colorway plp-item" data-state="default" data-product="{{ product.handle }}">
+    <div class="plp-item__images">
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: hover_image -%}
+        {%- assign image_url = hover_image | img_url: '4x5' -%}
+        <img class="plp-item__images-image lazyload-img lifestyle " loading="lazy"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="(max-width: 700px) 50vw,33.33vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ hover_image.alt | escape }}">
+        <noscript>
+            <img class="plp-item__images-image lifestyle" src="{{ hover_image | img_url: '400x' }}" alt="{{ hover_image.alt | escape }}">
+        </noscript>
+
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: main_image -%}
+        {%- assign image_url = main_image | img_url: '4x5' -%}
+        <img class="plp-item__images-image lazyload-img flat " loading="lazy"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="(max-width: 700px) 50vw,33.33vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ main_image.alt | escape }}">
+        <noscript>
+            <img class="plp-item__images-image placeholder flat" src="{{ main_image | img_url: '400x' }}" alt="{{ main_image.alt | escape }}">
+        </noscript>
+    </div>
+
+    <div class="plp-item__info">
+        <h2 class="plp-item__title">{{ product.title }}</h2>
+        <div class="plp-item__title"">
+        {% if product.tags contains 'gift-card'%}
+            {{ product.price_min | money | remove: '.00' }}&ndash;{{ product.price_max | money | remove: '.00' }}
+        {% else %}
+            {% if product.price_varies %}
+                {{ product.price_max | money | remove: '.00' }}
+            {% else %}
+                <span class="sale-price">{{ product.price | money | remove: '.00' }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                {% if product.compare_at_price > product.price %}
+                    <s>{{ product.compare_at_price | money | remove: '.00' }}</s>
+                    {% assign price_difference = product.compare_at_price | minus: product.price %}
+                    {% assign percentage_difference = product.price | times: 1.00 | divided_by: product.compare_at_price %}
+                    {% assign percentage_difference = 1 | minus: percentage_difference | times: 100 | round | append: '% Off' %}
+                    <span class="discount-percentage">{{ percentage_difference }} {% if localization.country.iso_code == 'CA' %}{{ localization.country.currency.iso_code }}{% endif %}</span>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+
+    <a class="plp-item__link" href="{{ product.url | within: collection }}"><span class="visually-hidden">View {{ product.title }}</span></a>
+
+      <div class="plp-item__purchase">
+          <div class="plp-item__sizes">
+            {% assign sizes = nil %}
+            {% assign size_option_position = nil %}
+            {% assign lengths = nil %}
+            {% assign length_option_position = nil %}
+            {% for option in product.options_with_values %}
+                {%- if option.name == "Size" and option.values != blank -%}
+                  {% assign sizes = option.values %}
+                  {% assign size_option_position = option.position %}
+                  {% capture size_variant_option %}option{{- option.position -}}{% endcapture %}
+                {%- endif -%}
+                {%- if option.name == "Length" and option.values != blank -%}
+                  {% assign lengths = option.values %}
+                  {% assign length_option_position = option.position %}
+                  {% capture length_variant_option %}option{{- option.position -}}{% endcapture %}
+                {%- endif -%}
+            {% endfor %}  
+            {% if product.options.size > 1 %} 
+              <ul class="plp-item__size-list multiple"> 
+                  {% assign used_options = 'size_' %}
+                  {% for variant in product.variants %}
+                    {% assign formatted_size = 'size_' | append: variant[size_variant_option] %}
+                    {%- unless used_options contains formatted_size -%}
+                      <li class="variant-size soldout" tabindex="0" {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                        <input type="radio" name="size" value="{{variant[size_variant_option]}}" id="size_{{variant[size_variant_option]}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                        <label class="label" for="size_{{ variant[size_variant_option] }}" tabindex="-1">{{ variant[size_variant_option] }}</label>
+                      </li> 
+                      {% assign used_options = used_options | append: formatted_size | append: ', ' %}
+                    {%- endunless -%}
+                  {% endfor %}
+              </ul>
+              <ul class="plp-item__size-list plp-item__lengths"> 
+                  {% assign used_options = '' %}
+                  {% for length in lengths %}
+                    <li class="variant-length {% if forloop.first %}selected{% endif %}" tabindex="0" 
+                      {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                      <input type="radio" name="id" value="{{length | escape}}" id="length_{{length | escape}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                      <label class="label" for="length_{{length | escape}}" tabindex="-1">{{ length | escape }}</label>
+                    </li> 
+                  {% endfor %}
+              </ul>
+            {% else %}
+              <ul class="plp-item__size-list"> 
+                  {% assign used_options = 'size_' %}
+                  {% for variant in product.variants %}
+                    {% assign formatted_size = 'size_' | append: variant[size_variant_option] %}
+                    {%- unless used_options contains formatted_size -%}
+                      <li class="variant{% unless variant.available  %} soldout{% endunless %}{% if variant.metafields.custom_fields["preorder_estimated_ship_date"] != blank %} preorder{% endif %}" 
+                          data-variant="{{ variant.title }}"
+                          data-variant-id="{{ variant.id }}"
+                          data-product="{{ product.title | escape }} / {{ variant.title }}"
+                          data-price="{{- variant.price | money_without_currency | remove: '.00' -}}"
+                          data-compare-price="{{- variant.compare_at_price | money_without_currency | remove: '.00' -}}">                         
+                          <span class="label">{{ variant.title }}</span>
+                      </li> 
+                      {% assign used_options = used_options | append: formatted_size | append: ', ' %}
+                    {%- endunless -%}
+                  {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          <div class="plp-item__button" data-variant="">
+              <span class="default">Quick Add</span>
+              <span class="add">Add to cart</span>
+              <span class="select-size">Select a size</span>
+              <span class="adding">Adding to cart...</span>
+              <span class="success">Added to cart!</span>
+              <span class="error">Sorry there was a problem</span>
+              <span class="soldout">Out of Stock</span>
+          </div>
+      </div>
+
+    <div class="hp-products__variants">
+        {% if product_1 != blank %}
+            {% if product_1.metafields["custom_fields"]["swatch"] != blank %}
+                {% assign type = product_1.metafields["custom_fields"]["swatch"].value.media_type %}
+                <button class="hp-products__variant" data-handle="{{ product_1.handle }}" style="background-image: url({{ product_1.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                    <span class="visually-hidden">{{ product_1_title_secondary }}</span>
+                </button>
+                <style>[data-active-handle="{{ product_1.handle }}"] [data-handle="{{ product_1.handle }}"]:before { opacity: 1 !important; }</style>
+            {% endif %}
+        {% endif %}
+        {% if product_2 != blank %}
+            {% if product_2.metafields["custom_fields"]["swatch"] != blank %}
+                {% assign type = product_2.metafields["custom_fields"]["swatch"].value.media_type %}
+                <button class="hp-products__variant" data-handle="{{ product_2.handle }}" style="background-image: url({{ product_2.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                    <span class="visually-hidden">{{ product_2_title_secondary }}</span>
+                </button>
+                <style>[data-active-handle="{{ product_2.handle }}"] [data-handle="{{ product_2.handle }}"]:before { opacity: 1 !important; }</style>
+            {% endif %}
+        {% endif %}
+        {% if product_3 != blank %}
+            {% if product_3.metafields["custom_fields"]["swatch"] != blank %}
+                {% assign type = product_3.metafields["custom_fields"]["swatch"].value.media_type %}
+                <button class="hp-products__variant" data-handle="{{ product_3.handle }}" style="background-image: url({{ product_3.metafields["custom_fields"]["swatch"].value | image_url: width: 80 }});">
+                    <span class="visually-hidden">{{ product_3_title_secondary }}</span>
+                </button>
+                <style>[data-active-handle="{{ product_3.handle }}"] [data-handle="{{ product_3.handle }}"]:before { opacity: 1 !important; }</style>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</div>

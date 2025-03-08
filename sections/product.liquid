@@ -1,0 +1,387 @@
+
+
+{% include 'product-tags' %} 
+
+{% if product.tags contains 'gift-card' %}
+	{% assign giftcard_product = true %}
+{% else %}
+	{% assign giftcard_product = false %}
+{% endif %}
+
+{% assign novariants = false %} 
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+<div id="single-product" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product" {% if waitlist %}class="waitlist-enabled"{% endif %}>
+  <div class="product-wrapper"><meta itemprop="name" content="{{ product.title }} {% unless current_variant.title contains 'Default Title' %} - {{ current_variant.title }}{% endunless %}">
+    <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+    <meta itemprop="brand" content="{{ product.vendor }}">
+    <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+    <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+    <section class="product-images">
+      <h6 class="back-link">
+        <a class="product-back-button" href="#"> 
+          <svg width="410px" height="112px" viewBox="0 0 410 112" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>Back</title>
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="v" transform="translate(-348.000000, -362.000000)" fill="#000000" fill-rule="nonzero">
+                      <path d="M672.797451,363.641017 L673.073101,363.782304 L750.86374,404.905652 C754.787913,406.878705 757.480469,410.941577 757.480469,415.63333 C757.480469,420.093764 755.046872,423.9858 751.435008,426.054109 L673.570502,472.073288 C667.865079,475.44535 660.506323,473.553786 657.134261,467.848363 C653.815724,462.233502 655.595039,455.017379 661.090388,451.575687 L661.359186,451.412122 L701.590469,427.632736 L360.5,427.63333 C353.872583,427.63333 348.5,422.260747 348.5,415.63333 C348.5,409.107873 353.708544,403.798937 360.195025,403.63713 L360.5,403.63333 L697.104469,403.632736 L661.856587,384.999981 C656.089036,381.951022 653.829498,374.867863 656.714719,369.058536 L656.856006,368.782885 C659.904965,363.015334 666.988123,360.755797 672.797451,363.641017 Z" id="product-back-arrow" transform="translate(552.990234, 418.066665) rotate(-180.000000) translate(-552.990234, -418.066665) "></path>
+                  </g>
+              </g>
+          </svg>
+          <span>Back</span>
+        </a>
+      </h6>
+      <div class="featured">
+        <div class="status-overlay">
+          <div class="status-outofstock">
+            <span>{{ 'products.product.sold_out' | t }}</span>
+          </div>
+          <div class="status-waitlist">
+            <span>{{ 'products.product.waitlist' | t }}</span>
+          </div>
+          <div class="status-preorder">
+            <span>{{ 'products.product.preorder_title' | t }}</span>
+          </div>
+        </div> 
+        <div id="featured-image">
+
+            {% for image in product.images %}
+                {% unless image.alt contains 'Swatch' or image.alt contains 'swatch' %}
+                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image -%}
+                        {%- assign image_url = image | img_url: '1x1' -%}
+                        <div class="main-image-wrapper{% if forloop.first == true %} active{% endif%}" data-image-id="{{ image.id }}" data-zoom="{{ image | img_url: '1200x1200', scale: 1.5 }}" >
+                            <img class="main-image lazyload-img image-zoom " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="(max-width: 700px) 100vw,50vw"
+                                srcset="{{ image_srcset }}"
+                                data-zoom="{{ image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ image.id }}"
+                                alt="{% if image.alt != blank %}{{ image.alt | escape | append: ' ' | append: forloop.index }}{% else %}{{ product.title | escape | append: ' ' | append: forloop.index }}{% endif %}">
+                            <noscript>
+                                <img class="main-image{% if forloop.first == true %} active{% endif%}" src="{{ image | img_url: '1024x' }}" alt="{% if image.alt != blank %}{{ image.alt | escape | append: ' ' | append: forloop.index }}{% else %}{{ product.title | escape | append: ' ' | append: forloop.index }}{% endif %}">
+                            </noscript>
+                            <div class="img-zoom-wrapper"></div>
+                        </div>
+                {% endunless %}
+            {% endfor %}
+        </div>
+
+        {% if sale %} 
+        	<span class="on-sale">SALE</span>
+        {% endif %} 
+        {% if sold_out %} 
+        	<span class="sold-out">SOLD OUT</span> 
+        {% elsif new %} 
+        	{% if sale %} 
+        		<span class="new secondary">NEW!</span> 
+       		{% else %} 
+        		<span class="new">NEW!</span>
+        	{% endif %} 
+        {% endif %}
+      </div>
+      <div class="thumbnails"> 
+        {% for image in product.images %}
+        	{% unless image.alt contains 'Swatch' or image.alt contains 'swatch' %}
+                <div class="thumbnail"> 
+                  <img class="thumb"
+                      src="{{ image | img_url: '200x' }}"
+                      alt="{% if image.alt != blank %}{{ image.alt | escape | append: ' ' | append: forloop.index }}{% else %}{{ product.title | escape | append: ' ' | append: forloop.index }}{% endif %}">
+                </div> 
+        	{% endunless %}
+        {% endfor %}
+            </div>
+    </section>
+    <section class="product-info">
+      <div class="header">
+        {% comment %}
+        <h6 class="back-link mobile">
+            {% if product.tags contains "women" %} 
+                <a href="https://alexcrane.co/collections/shop#women">&lt; Back to {{ collections['shop'].title }}</a>
+            {% else %}
+                <a href="{{ collections['shop'].url }}">&lt; Back to {{ collections['shop'].title }}</a>
+            {% endif %}
+        </h6>
+        {% endcomment %}
+        <h1>
+          <span class="product-title">{{ product.title }}</span>
+          <div class="product-price"> 
+            {% if product.tags contains 'gift-card'%}
+              {{ product.price_min | money_without_trailing_zeros }}&ndash;{{ product.price_max | money_without_trailing_zeros }}
+            {% else %}
+              {% if product.compare_at_price  %}  
+                {% assign compare_price = product.compare_at_price | money_without_trailing_zeros %}
+                {% if product.compare_at_price < product.price  %} 
+                  <span
+                    class="compare-to-price">x{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                {% endif %} 
+                <span class="sale-price">{{ product.price | money_without_trailing_zeros }}</span>
+              {% elsif sold_out %} 
+                <span class="sold-out-price">Sold Out</span> 
+              {% else %} 
+                {{ product.price_max | money_without_trailing_zeros }}
+              {% endif %}
+            {% endif %}
+          </div>
+        </h1>
+      </div>
+      <div class="purchase" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+        <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+        <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+        {% include 'catch-callout-product' %}
+
+        <form id="ProductSubmitForm" class="ProductSubmitForm" action="/cart/add" method="post" enctype="multipart/form-data"> 
+          <div class="product-description rte">
+            {% if product.metafields.custom_fields["description"] != blank %}  
+              {{ product.metafields.custom_fields["description"] }}
+            {% else %}
+              {{ product.description }}
+            {% endif %}
+            {%- comment -%}
+            {% if product.handle contains 'primo-sandals'%}
+                {% include 'donation-progress' %}
+            {% endif %}
+            {%- endcomment -%}
+          </div> 
+          {% unless product.tags contains 'gift-card' or product.tags contains 'no-sizing' %}
+          <div class="product-size-chart">
+          	<a class="display-size-chart" href="#"><span>Size Chart</span></a> 
+            
+            {% if product.metafields.custom_fields["sizing_description"] != blank %}
+              <div class="product-sizing-note">{{ product.metafields.custom_fields["sizing_description"] }}</div>
+            {% else %}
+              <div class="product-sizing-note">Fits true to size.</div>
+            {% endif %}
+           
+          </div> 
+          {% endunless %}
+          <input type="hidden" id="Quantity" name="quantity" value="1" min="1"> 
+          {% if product.variants.size > 1 %}
+            {% if product.tags contains 'gift-card'%}
+          		<label id="gift-cart-select" class="gift-cart-select" for="gift-cart-select">Value: </label>
+               <select name="id" class="gift-cart-select" data-product-select>
+                    {% for variant in product.variants %}
+                        {% assign is_default = empty %}
+                        <option value="{{ variant.id }}">
+                            {{ variant.title | strip }}
+                        </option>
+                    {% endfor %}
+                </select>
+            {% else %}
+            {% assign includes_preorder = false %}
+            {% for variant in product.variants %}
+              {% include 'variant-availability' %} 
+              	{%- if variant_availability == 'preorder' -%}
+          			{% assign includes_preorder = true %}
+          			{% break %} 
+          		{%- endif -%}
+            {% endfor %}          
+              <ul id="variants" class="init{% if includes_preorder == true %} preorder{% endif %}"> 
+                  {% assign selected = true %} 
+                  {% for variant in product.variants %}
+					{% include 'variant-availability' %} 
+                	<li class="{%- if variant_availability == false -%}soldout{%- elsif variant_availability == 'preorder' -%}preorder{%- endif -%}{% if variant.metafields.custom_fields["preorder_estimated_ship_date"] != blank %} preorder{% endif %}" 
+                        data-variant="{{ variant.title }}"
+                        data-variant-id="{{ variant.id }}"
+                        data-product="{{ product.title | escape }} / {{ variant.title }}"
+                        data-price="{{- variant.price | money_without_currency | remove: '.00' -}}"
+                        data-compare-price="{{- variant.compare_at_price | money_without_currency | remove: '.00' -}}">                         
+                        <input type="radio" name="id" value="{{variant.id}}" id="radio_{{variant.id}}" {%if forloop.first%} checked="checked" {%endif%}/> 
+                        <label for="radio_{{variant.id}}">{{ variant.title }}</label>
+                    </li> 
+                  {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if product.tags contains 'size-boshorts' or product.tags contains 'primobelt' %}
+                <div class="sizing-helper">
+                    <span class="sizing-helper-text"></span>
+                </div>
+            {% endif %}
+            {% comment %}
+            {% for tag in product.tags %}
+                {% for block in section.blocks %}
+                    {% if tag == block.settings.tag %}
+                        <span class="size-up-note">{{ block.settings.note | escape }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            {% if product.tags contains 'runs-large' %}
+                <span class="size-up-note">We recommend sizing up. If you're usually an M, go for an L.</span>
+            {% endif %}
+            {% if product.tags contains 'runs-small-pants' %}
+                <span class="size-up-note">We recommend sizing up. If you’re usually a 30, go for a 32.</span>
+            {% endif %}
+            {% if product.tags contains 'size-suntees' %}
+                <span class="size-up-note" style="letter-spacing: -0.25px;">We recommend sizing down. If you're normally a M, go for a S.</span>
+            {% endif %}
+            {% endcomment %}
+		{% else %} 
+          <input type="hidden" class="product-id" name="id" value="{{ product.variants.first.id }}"/> 
+          {% assign novariants = true %} 
+        {% endif %} 
+        {% if colorset %} 
+            <a class="show-colors" href="#">Colors</a>
+            <div id="colorset-wrapper">
+                <ul id="colorset" class="init" data-color="{{ color }}" data-colorset="{{ colorset }}"></ul>
+            </div> 
+            <span class="colorset-instructions">Swipe for more</span>
+        {% endif %} 
+        
+        {% if product.tags contains 'no-sizing' %}
+          {% assign must_select_size = 'false' %}  
+        {% else %}
+          {% assign must_select_size = 'true' %}  
+        {% endif %}
+        <div class="product-purchase-wrapper" data-must-select-size="{{ must_select_size }}">
+            <div class="product-purchase-cta">
+                {% if novariants == true %} 
+                {% if product.available %} 
+                    <button id="AddToCart" type="submit" name="add" data-add-to-cart> 
+                {% else %} 
+                    <button id="AddToCart" type="submit" name="add" data-add-to-cart disabled="disabled" class="unavailable"> 
+                {% endif %} 
+                {% else %} 
+                {% if current_variant.available %} 
+                                    
+                    <button id="AddToCart" type="submit" name="add" data-add-to-cart {% unless product.tags contains 'no-sizing' %}class="must-select-size"{% endunless %}> 
+                {% else %} 
+                    <button id="AddToCart" type="submit" name="add" data-add-to-cart disabled="disabled" class="unavailable"> 
+                {% endif %} 
+                {% endif %} 
+                    <span data-add-to-cart-text class="available">{{ 'products.product.add_to_cart' | t }}</span> 
+                    <span data-add-to-cart-text class="unavailable">{{ 'products.product.sold_out' | t }}</span>
+                    <span data-add-to-cart-text class="preorder">{{ 'products.product.preorder_title' | t }}</span>
+                    {% if giftcard_product %} 
+                        <span data-add-to-cart-text class="select-size">Please select a value</span>
+                    {% else %} 
+                        <span data-add-to-cart-text class="select-size">Please select a size</span>
+                    {% endif %} 
+                </button>
+            </div>
+        </div>
+		</form> 
+                
+        {% include 'product-upsell-module' %}
+        
+        <ul class="preorder-info">
+        {% if novariants == true %} 
+
+        {% else %} 
+          {% for variant in product.variants %}
+            <li class="preorder-variant" data-id="{{ variant.id }}">
+              <span class="preorder-info__ship-date">
+                  {{ 'products.product.preorder_shipdate_text' | t }}
+                  {{ variant.metafields.custom_fields["preorder_estimated_ship_date"] }}
+              </span>
+              
+              <span class="preorder-info__discount">
+                {% capture preorder__promo_text -%}{{ 'products.product.preorder_promotion_text' | t }}{%- endcapture -%}
+                {% capture original_price %}{{- variant.compare_at_price | money_without_currency -}}{% endcapture %}
+                {% capture sale_price %}{{- variant.price | money_without_currency -}}{% endcapture %}
+                {% capture discount_percentage %}{{- sale_price | divided_by: original_price | round: 2 -}}{% endcapture %}
+                {% capture discount_percentage %}{{- 1 | minus: discount_percentage | times: 100 | round -}}%{% endcapture %}
+                {% if original_price > sale_price %}
+                  {% if variant.metafields.custom_fields["product_preorder_promotion"] != blank %}
+                      {{ variant.metafields.custom_fields["product_preorder_promotion"] | replace: '[discount]', discount_percentage }}
+                  {% else %}
+					{{ preorder__promo_text | replace: '[discount]', discount_percentage }}
+                  {% endif %}
+                {% endif %}
+              </span>
+            </li>
+          {% endfor %}
+        {% endif %} 
+        </ul>
+
+        <div class="product-details">
+          {% if product.metafields.custom_fields["details_model"] != blank %}
+            <div class="product-detail model">
+              <h2 class="product-detail-label"><span>MODEL</span></h2> {{ product.metafields.custom_fields["details_model"] }}
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_fit"] != blank %}
+            <div class="product-detail fit">
+              <h2 class="product-detail-label"><span>FIT</span></h2> {{ product.metafields.custom_fields["details_fit"] }}
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_materials"] != blank %}
+            <div class="product-detail materials">
+              <h2 class="product-detail-label"><span>MATERIALS</span></h2> {{ product.metafields.custom_fields["details_materials"] }}
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_care"] != blank %}
+            <div class="product-detail care">
+              <h2 class="product-detail-label"><span>CARE</span></h2> {{ product.metafields.custom_fields["details_care"] }}
+            </div>
+          {% endif %}
+          {% if product.metafields.custom_fields["details_origin"] != blank %}
+            <div class="product-detail origin">
+              <h2 class="product-detail-label"><span>ORIGIN</span></h2> {{ product.metafields.custom_fields["details_origin"] }}
+            </div>
+          {% endif %}
+          <div class="product-detail-questions">
+              <a href="mailto:hey@alexcrane.co">Questions? Write us at hey@alexcrane.co</a>
+          </div>
+        </div>
+          
+        {% if giftcard_product %} 
+            <style> .dropdown-butt, .dropdown-text, .related-products { display: none;}</style>
+        {% endif %}  
+	    </div>
+
+        {% include 'product-sustainability' %}
+    </section> 
+    </div> 
+	{% comment %}{% include 'product-related' %}{% endcomment %}
+        
+</div> 
+{% comment %}
+{% if product.title contains 'Cham Pants' %}
+      <style>
+        @media (max-width: 699px) {
+          #single-product section.product-info .purchase form ul#variants, #colorset {
+              display: flex;
+              flex-wrap: wrap;
+              width: 66% !important;
+          }
+          #single-product section.product-info .purchase form ul#colorset li {
+            max-width: 22%;
+            width: 22%;
+            margin: 3% 3% 3% 0;
+          }
+          #single-product section.product-info .purchase form ul#variants li {
+            max-width: 22%;
+            width: 22%;
+            margin: 3% 3% 3% 0;
+          }
+        }
+      </style>
+{% endif %}
+{% endcomment %}
+{% schema %} 
+{
+	"name": "Product pages",
+    "settings": [],
+    "blocks":[
+    {
+       "type":"sizingnote",
+       "name":"Sizing Note",
+       "settings":[
+          {
+             "type":"text",
+             "id":"tag",
+             "label":"Tag"
+          },
+          {
+            "type":"text",
+            "id":"note",
+            "label":"Sizing Note Text"
+         }
+       ]
+    }
+ ]
+}
+{% endschema %}

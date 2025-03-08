@@ -1,0 +1,525 @@
+<section id="section-{{ section.id }}" class="hp-section-variant" data-section-id="{{ section.id }}">
+  <div class="hp-features" style="background-color: {{ section.settings.background }}"> 
+    <div class="hp-features__features{% if section.blocks.size <= section.settings.cell_count %} disabled-on-desktop{% endif %}" data-cell-count="{{ section.settings.cell_count }}">
+        {% for block in section.blocks %}
+            {% assign editorial_image = nil %}
+            {% if block.settings.image != blank %}
+                {% assign editorial_image = block.settings.image %}
+            {% elsif block.settings.product != blank and block.settings.image_position != blank %}
+                {% assign editorial_image = all_products[block.settings.product].images[block.settings.image_position] %}
+            {% endif %}
+
+            {% assign editorial_hover_image = nil %}
+            {% if block.settings.hover_image != blank %}
+                {% assign editorial_hover_image = block.settings.image %}
+            {% elsif block.settings.product != blank and block.settings.hover_image_position != blank %}
+                {% assign editorial_hover_image = all_products[block.settings.product].images[block.settings.hover_image_position] %}
+            {% endif %}
+            
+            <div class="hp-features__feature plp-item{% if editorial_hover_image != blank %} hover-enabled{% endif %}" data-state="default">
+                <a href="{{ all_products[block.settings.product].url }}" class="hp-features__feature-wrapper">
+                    
+                    <div class="hp-features-feature__image">
+                        {% if editorial_image != blank %}
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: editorial_image -%}
+                            {%- assign editorial_image = editorial_image | img_url: '4x5' -%}
+                            <img class="hp-features-feature__image-img primary-image lazyload-img " loading="lazy" 
+                                src="{{ editorial_image }}" 
+                                data-src="{{ editorial_image }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                srcset="{{ image_srcset }}"
+                                alt="{{ block.settings.image.alt | default: all_products[block.settings.product].title | escape }}">
+                            <noscript>
+                            <img class="hp-features-feature__image-img" src="{{ editorial_image | img_url: '400x500' }}"
+                                alt="{{ editorial_image.alt | default: all_products[block.settings.product].title | escape }}">
+                            </noscript>
+                        {% endif %}
+                        {% if editorial_hover_image != blank %}
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: editorial_hover_image -%}
+                            {%- assign editorial_hover_image = editorial_hover_image | img_url: '4x5' -%}
+                            <img class="hp-features-feature__image-img secondary-image lazyload-img " loading="lazy" 
+                                src="{{ editorial_hover_image }}" 
+                                data-src="{{ editorial_hover_image }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="(max-width: 700px) 50vw,33.33vw"
+                                srcset="{{ image_srcset }}"
+                                alt="{{ block.settings.image.alt | default: all_products[block.settings.product].title | escape }}">
+                            <noscript>
+                            <img class="hp-features-feature__image-img" src="{{ editorial_image | img_url: '400x500' }}"
+                                alt="{{ editorial_hover_image.alt | default: all_products[block.settings.product].title | escape }}">
+                            </noscript>
+                        {% endif %}
+                    </div>
+
+                    {% if block.settings.product %}
+                        <div class="hp-features__description">
+                            {% if all_products[block.settings.product].title %}
+                                <h2 class="hp-features__title">
+                                    {{ all_products[block.settings.product].title }}
+                                </h2>
+                            {% endif %}
+                            {% if all_products[block.settings.product].price %}
+                                <div class="hp-features__price">
+                                    {{ all_products[block.settings.product].price | money_without_trailing_zeros }} {% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.colors != blank %}
+                                <div class="hp-features__note">
+                                    {{ block.settings.colors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </a>
+                <div class="plp-item__purchase">
+                    <div class="plp-item__sizes">
+                      {% assign sizes = nil %}
+                      {% assign size_option_position = nil %}
+                      {% assign lengths = nil %}
+                      {% assign length_option_position = nil %}
+                      {% for option in product.options_with_values %}
+                          {%- if option.name == "Size" and option.values != blank -%}
+                            {% assign sizes = option.values %}
+                            {% assign size_option_position = option.position %}
+                            {% capture size_variant_option %}option{{- option.position -}}{% endcapture %}
+                          {%- endif -%}
+                          {%- if option.name == "Length" and option.values != blank -%}
+                            {% assign lengths = option.values %}
+                            {% assign length_option_position = option.position %}
+                            {% capture length_variant_option %}option{{- option.position -}}{% endcapture %}
+                          {%- endif -%}
+                      {% endfor %}  
+                      {% if product.options.size > 1 %} 
+                        <ul class="plp-item__size-list multiple"> 
+                            {% assign used_options = 'size_' %}
+                            {% for variant in product.variants %}
+                              {% assign formatted_size = 'size_' | append: variant[size_variant_option] %}
+                              {%- unless used_options contains formatted_size -%}
+                                <li class="variant-size soldout" tabindex="0" {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                                  <input type="radio" name="size" value="{{variant[size_variant_option]}}" id="size_{{variant[size_variant_option]}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                                  <label class="label" for="size_{{ variant[size_variant_option] }}" tabindex="-1">{{ variant[size_variant_option] }}</label>
+                                </li> 
+                                {% assign used_options = used_options | append: formatted_size | append: ', ' %}
+                              {%- endunless -%}
+                            {% endfor %}
+                        </ul>
+                        <ul class="plp-item__size-list plp-item__lengths"> 
+                            {% assign used_options = '' %}
+                            {% for length in lengths %}
+                              <li class="variant-length {% if forloop.first %}selected{% endif %}" tabindex="0" 
+                                {% if product.metafields.custom_fields["details_model"] != blank %} data-size-note="{{ product.metafields.custom_fields["details_model"] | strip_html | escape }}"{% endif %}>                         
+                                <input type="radio" name="id" value="{{length | escape}}" id="length_{{length | escape}}" {%if forloop.first%} checked="checked" {%endif%}  tabindex="-1"/> 
+                                <label class="label" for="length_{{length | escape}}" tabindex="-1">{{ length | escape }}</label>
+                              </li> 
+                            {% endfor %}
+                        </ul>
+                      {% else %}
+                        <ul class="plp-item__size-list"> 
+                            {% assign used_options = 'size_' %}
+                            {% for variant in product.variants %}
+                              {% assign formatted_size = 'size_' | append: variant[size_variant_option] %}
+                              {%- unless used_options contains formatted_size -%}
+                                <li class="variant{% unless variant.available  %} soldout{% endunless %}{% if variant.metafields.custom_fields["preorder_estimated_ship_date"] != blank %} preorder{% endif %}" 
+                                    data-variant="{{ variant.title }}"
+                                    data-variant-id="{{ variant.id }}"
+                                    data-product="{{ product.title | escape }} / {{ variant.title }}"
+                                    data-price="{{- variant.price | money_without_currency | remove: '.00' -}}"
+                                    data-compare-price="{{- variant.compare_at_price | money_without_currency | remove: '.00' -}}">                         
+                                    <span class="label">{{ variant.title }}</span>
+                                </li> 
+                                {% assign used_options = used_options | append: formatted_size | append: ', ' %}
+                              {%- endunless -%}
+                            {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </div>
+                    <div class="plp-item__button" data-variant="">
+                        <span class="default">Quick Add</span>
+                        <span class="add">Add to cart</span>
+                        <span class="select-size">Select a size</span>
+                        <span class="adding">Adding to cart...</span>
+                        <span class="success">Added to cart!</span>
+                        <span class="error">Sorry there was a problem</span>
+                        <span class="soldout">Out of Stock</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    .flickity-enabled.is-fade .flickity-slider > * {
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .flickity-enabled.is-fade .flickity-slider > .is-selected {
+      pointer-events: auto;
+      z-index: 1;
+    }
+    #shopify-section-{{ section.id }} .hp-features__title, #shopify-section-{{ section.id }} .hp-features__price, #shopify-section-{{ section.id }} .hp-features__note {
+        color: {{ section.settings.text_color }} !important;
+    }
+    #shopify-section-{{ section.id }} .hp-features__features {
+        background-color: {{ section.settings.background }} !important;
+    }
+    @media (max-width: 699px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+        }
+        #shopify-section-{{ section.id }} .hp-features__features {
+            padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+        }
+    }
+    @media (min-width: 700px) {
+        #shopify-section-{{ section.id }} {
+            padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+        }
+        #shopify-section-{{ section.id }} .hp-features__features {
+            padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+        }
+    }
+    :root{
+        --transition-speed: {{ section.settings.transition_speed }}ms;
+    }
+  </style>
+</section> 
+
+<link rel="stylesheet" href="{{ 'hp-features.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'hp-features.min.css' | asset_url | stylesheet_tag }}</noscript>
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+<style>
+.hp-features .flickity-enabled {
+  position: relative;
+  width: 100%
+}
+
+.hp-features .flickity-enabled:focus { outline: none; }
+
+.hp-features .flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+.hp-features .flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.hp-features .flickity-enabled.is-draggable {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.hp-features .flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.hp-features .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+.hp-features__features:after {
+  content: 'flickity';
+  display: none;
+}
+
+@media screen and ( min-width: 700px ) {
+.hp-features__features:after {
+    content: '';
+  }
+}
+
+.hp-features .flickity-button {
+  position: absolute;
+  margin: 0;
+  border-radius: 50%;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  color: #000;
+  background: transparent;
+  border: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hp-features .flickity-button.previous {
+  left: 28px
+}
+
+.hp-features .flickity-button.next {
+  right: 28px
+}
+
+.hp-features .flickity-button .flickity-button-icon {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Suiting Collection",
+  "class": "c-hp-features hp-section",      
+  "settings": [
+    {
+        "type": "range",
+        "id": "transition_speed",
+        "min": 0,
+        "max": 5000,
+        "step": 100,
+        "unit": "ms",
+        "label": "Transition Speed",
+        "default": 1500
+    },
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+  {
+      "type": "feature",
+      "name": "Product Editorial",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+          {
+          "type": "number",
+          "id": "image_position",
+          "label": "Product Image Index"
+        },
+          {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image",
+          "info": "You can add a custom image to be used instead of one of the product images."
+        },
+          {
+          "type": "number",
+          "id": "hover_image_position",
+          "label": "Hover: Product Image Index"
+        },
+          {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover: Custom Image",
+          "info": "You can add a custom image to be used instead of one of the product images."
+        },
+          {
+          "type": "text",
+          "id": "colors",
+          "label": "Color Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "Suiting Collection",
+    "category": "Home Page"
+  }
+]
+}
+{% endschema %}

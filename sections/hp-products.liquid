@@ -1,0 +1,583 @@
+<section id="section-{{ section.id }}" class="lp-section-variant" data-section-id="{{ section.id }}" data-variation="{{ section.settings.variation }}">
+    <div class="hp-products{% if section.settings.group_cells %} group-cells{% endif %}{% if section.settings.wrap_around %} wrap-around{% endif %}" style="background-color: {{ section.settings.background }}">
+        {% if section.settings.subtitle != blank %}
+            <h4 class="hp-products__section-subtitle">{{ section.settings.subtitle }}</h2>
+        {% endif %}
+        {% if section.settings.title != blank %}
+            <h2 class="hp-products__section-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div id="{{ section.id | remove: 'template--' }}" class="{% unless section.settings.disable_carousel %}carousel-enabled {% endunless %}hp-products__products" data-cell-count="{{ section.settings.cell_count }}">
+            {% for block in section.blocks %}
+                {% assign product_1 = all_products[block.settings.product_1] %}
+                {% assign product_2 = all_products[block.settings.product_2] %}
+                {% assign product_3 = all_products[block.settings.product_3] %}
+                {% assign product_1_image = product_1.images[block.settings.image_number_1] %}
+                {% assign product_2_image = product_2.images[block.settings.image_number_2] %}
+                {% assign product_3_image = product_3.images[block.settings.image_number_3] %}
+                {% assign product_1_image_hover = product_1.images[block.settings.image_number_1_hover] %}
+                {% assign product_2_image_hover = product_2.images[block.settings.image_number_2_hover] %}
+                {% assign product_3_image_hover = product_3.images[block.settings.image_number_3_hover] %}
+
+                {% assign product_1_titles = product_1.title | split: ' / ' %}
+                {% if product_1_titles.size != 2 %}
+                    {% assign product_1_titles = product_1.title | split: ' | ' %}
+                {% endif %}
+                {% if product_1_titles.size != 2 %}
+                    {% assign product_1_title_primary = product_1.title %}
+                    {% assign product_1_title_secondary = '' %}
+                {% else %}
+                    {% assign product_1_title_primary = product_1_titles | first %}
+                    {% assign product_1_title_secondary = product_1_titles | last %}
+                {% endif %}
+
+                {% assign product_2_titles = product_2.title | split: ' / ' %}
+                {% if product_2_titles.size != 2 %}
+                    {% assign product_2_titles = product_2.title | split: ' | ' %}
+                {% endif %}
+                {% if product_2_titles.size != 2 %}
+                    {% assign product_2_title_primary = product_2.title %}
+                    {% assign product_2_title_secondary = '' %}
+                {% else %}
+                    {% assign product_2_title_primary = product_2_titles | first %}
+                    {% assign product_2_title_secondary = product_2_titles | last %} 
+                {% endif %}
+
+                {% assign product_3_titles = product_3.title | split: ' / ' %}
+                {% if product_3_titles.size != 2 %}
+                    {% assign product_3_titles = product_3.title | split: ' | ' %}
+                {% endif %}
+                {% if product_3_titles.size != 2 %}
+                    {% assign product_3_title_primary = product_3.title %}
+                    {% assign product_3_title_secondary = '' %}
+                {% else %}
+                    {% assign product_3_title_primary = product_3_titles | first %}
+                    {% assign product_3_title_secondary = product_3_titles | last %}
+                {% endif %}
+                
+                <div class="hp-products__product" data-active-handle="{{ product_1.handle }}" style="width: {{ 100.00 | divided_by: section.settings.cell_count }}%;">
+                    {% if product_1 != blank %}
+                      {% include 'hp-product', product: product_1, main_image: product_1_image, hover_image: product_1_image_hover %}
+                    {% endif %}
+                    
+                    {% if product_2 != blank %}
+                      {% include 'hp-product', product: product_2, main_image: product_2_image, hover_image: product_2_image_hover %}
+                    {% endif %}
+
+                    {% if product_3 != blank %}
+                      {% include 'hp-product', product: product_3, main_image: product_3_image, hover_image: product_3_image_hover %}
+                    {% endif %}
+                </div>
+                <style>
+                    [data-active-handle="{{ product_1.handle }}"] [data-handle="{{ product_1.handle }}"]:before { opacity: 1 }
+                    [data-active-handle="{{ product_2.handle }}"] [data-handle="{{ product_2.handle }}"]:before { opacity: 1 }
+                    [data-active-handle="{{ product_3.handle }}"] [data-handle="{{ product_3.handle }}"]:before { opacity: 1 }
+                </style>
+            {% endfor %}
+        </div>
+    </div>
+    <style>
+        #shopify-section-{{ section.id }} .hp-products__title, #shopify-section-{{ section.id }} .hp-products__price, #shopify-section-{{ section.id }} .hp-products__variant-title {
+            color: {{ section.settings.text_color }} !important;
+        }
+        #shopify-section-{{ section.id }} .hp-products__product {
+            color: {{ section.settings.background }} !important;
+        }
+        @media (max-width: 699px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_m }}px {{ section.settings.padding_right_m }}px {{ section.settings.padding_bottom_m }}px {{ section.settings.padding_left_m }}px;
+            }
+            #shopify-section-{{ section.id }} .hp-products__product {
+                padding: {{ section.settings.inner_padding_top_m }}px {{ section.settings.inner_padding_right_m }}px {{ section.settings.inner_padding_bottom_m }}px {{ section.settings.inner_padding_left_m }}px;
+            }
+        }
+        @media (min-width: 700px) {
+            #shopify-section-{{ section.id }} {
+                padding: {{ section.settings.padding_top_d }}px {{ section.settings.padding_right_d }}px {{ section.settings.padding_bottom_d }}px {{ section.settings.padding_left_d }}px;
+            }
+            #shopify-section-{{ section.id }} .hp-products__product {
+                padding: {{ section.settings.inner_padding_top_d }}px {{ section.settings.inner_padding_right_d }}px {{ section.settings.inner_padding_bottom_d }}px {{ section.settings.inner_padding_left_d }}px;
+            }
+        }
+        @media (min-width: 700px)
+        .hp-products .plp-item .plp-item__info .plp-item__title {
+            font-size: 16px !important;
+        }
+        {% if section.settings.permanent_buttons %}
+          #shopify-section-{{ section.id }} .plp-item .plp-item__purchase {
+              -webkit-transform: translate(-50%, 0) !important;
+              transform: translate(-50%, 0) !important;
+              opacity: 1 !important;
+          }
+        {% endif %}
+        {% if section.settings.dark_hover_text %}
+          .hp-products .plp-item:hover .plp-item__info .plp-item__title {
+              color: #000 !important;
+          }
+        {% endif %}
+				.plp-item__purchase {
+					max-width: none !important;
+				}
+    </style>
+</section> 
+
+<script src="{{ 'hp-products.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'hp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'hp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+<script src="{{ 'plp-products.min.js' | asset_url }}" defer="defer"></script>
+<link rel="stylesheet" href="{{ 'plp-products.min.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'plp-products.min.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+.hp-products__product {
+  padding: 36px 0 !important;
+}
+.hp-products__product .plp-item .plp-item__images {
+    position: relative;
+}
+.hp-products__product {
+  padding-bottom: 20px !important;
+}
+.hp-products__product .plp-item:before,
+  .hp-products__product .plp-item:after {
+  content: none !important;
+}
+
+.c-hp-products .hp-products .hp-products__products .hp-products__product .hp-products__variants {
+  padding: 0px 0 0;
+  bottom: unset;
+  left: unset;
+}
+  
+@media (min-width: 700px) {
+  .hp-products {
+   padding: 0 12px !important;
+}
+  .c-hp-products .hp-products .hp-products__products .hp-products__product .hp-products__variants {
+     bottom: unset !important;
+    left: unset !important;
+    position: relative !important;
+    padding: 0 0 10px !important;
+  }
+  .c-hp-products .hp-products .hp-products__products .hp-products__product .hp-products__variants .hp-products__variant {
+    height: 16px;
+    width: 16px;
+  }
+  .c-hp-products .hp-products .hp-products__products .hp-products__product .hp-products__variants .hp-products__variant:before {
+    top: -4px;
+    left: -4px;
+    width: 22px;
+    height: 22px;
+  }
+}
+  
+.hp-products__product  .plp-item__images-image.flat {
+  position: relative;
+}
+.hp-products__product  .plp-item__images-image.lifestyle {
+  position: absolute;
+}
+.hp-products__product .plp-item__info {
+ color: #000 !important;   
+  padding: 12px 0 !important;
+}
+.plp-item__info, .hp-products__variants {
+  position: relative !important;
+}
+.hp-products__colorway {
+  padding: 0 12px !important;
+  flex-direction: column;
+  overflow: visible;
+}
+.hp-products__product .plp-item__purchase {
+  display: none !important;
+}
+
+.hp-products__product .plp-item .plp-item__images img.flat {
+  opacity: 0 !important;
+}  
+.hp-products__product .plp-item .plp-item__images img.lifestyle {
+  opacity: 1 !important;
+}  
+.hp-products__product .plp-item:hover .plp-item__images img.flat {
+  opacity: 1 !important;
+}  
+.hp-products__product .plp-item:hover .plp-item__images img.lifestyle {
+  opacity: 0 !important;
+}    
+</style>
+
+{% schema %}
+{
+  "name": "HP Products",
+  "class": "c-hp-products lp-section",      
+  "max_blocks": 6,
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "all",
+                "label": "Universal"
+            },
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "all",
+        "label": "Variation"
+    },
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Shop Bestsellers"
+    },
+    {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "info": "The message that will be dispayed in the banner.",
+        "default": "Get 10% OFF Your First Order"
+    },
+    {
+        "type": "range",
+        "id": "cell_count",
+        "label": "Cell Count",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "unit": "cel",
+        "default": 3,
+        "info": "The number of cells that will be displayed on desktop."
+    },
+    {
+        "type": "checkbox",
+        "id": "group_cells",
+        "label": "Group cells on desktop",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "wrap_around",
+        "label": "Wrap cells around on desktop",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "disable_carousel",
+        "label": "Disable Carousel",
+        "info": "For use when implementing the module only via A/B Testing",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "permanent_buttons",
+        "label": "Always display quick add buttons",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "dark_hover_text",
+        "label": "Use dark text over hover image",
+        "default": true
+    },  
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background Color",
+        "default": "#ffffff"
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000" 
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Mobile"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_m",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Outer Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    },
+    {
+        "type": "header",
+        "content": "Inner Spacing Desktop"
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_top_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_bottom_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_left_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+    },
+    {
+        "type": "range",
+        "id": "inner_padding_right_d",
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+    }
+  ],
+  "blocks": [
+  {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+            {
+                "type": "header",
+                "content": "Product 1"
+            },
+            {
+                "type": "product",
+                "id": "product_1",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_1",
+                "label": "Primary Image Index",
+                "default": 1,
+                "info": "Displayed initially. Based on the order of images shown on the product page."
+            },
+            {
+                "type": "number",
+                "id": "image_number_1_hover",
+                "label": "Secondary Image Index",
+                "default": 0,
+                "info": "Displayed on hover. Based on the order of images shown on the product page."
+            },
+            {
+                "type": "header",
+                "content": "Product 2"
+            },
+            {
+                "type": "product",
+                "id": "product_2",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_2",
+                "label": "Primary Image Index",
+                "default": 1,
+                "info": "Displayed initially. Based on the order of images shown on the product page."
+            },
+            {
+                "type": "number",
+                "id": "image_number_2_hover",
+                "label": "Secondary Image Index",
+                "default": 0,
+                "info": "Displayed on hover. Based on the order of images shown on the product page."
+            },
+            {
+                "type": "header",
+                "content": "Product 3"
+            },
+            {
+                "type": "product",
+                "id": "product_3",
+                "label": "Product"
+            },
+            {
+                "type": "number",
+                "id": "image_number_3",
+                "label": "Primary Image Index",
+                "default": 1,
+                "info": "Displayed initially. Based on the order of images shown on the product page."
+            },
+            {
+                "type": "number",
+                "id": "image_number_3_hover",
+                "label": "Secondary Image Index",
+                "default": 0,
+                "info": "Displayed on hover. Based on the order of images shown on the product page."
+            }
+      ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "HP Products",
+    "category": "Home Page"
+  }
+]
+}
+{% endschema %}

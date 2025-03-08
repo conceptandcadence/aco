@@ -1,0 +1,327 @@
+{
+  "wrapper": "main.c-landing-page",
+  "sections": {
+    "settings": {
+      "type": "lp-settings",
+      "disabled": true,
+      "settings": {
+        "variation": "3",
+        "display": true
+      }
+    },
+    "166266950988187d24": {
+      "type": "lp-announcement",
+      "blocks": {
+        "e6f5efd5-d34b-4001-842c-fceadbfc68e7": {
+          "type": "message",
+          "settings": {
+            "country": "GB",
+            "message": "<p>Duties and Taxes included on orders shipping to the UK!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e6f5efd5-d34b-4001-842c-fceadbfc68e7"
+      ],
+      "disabled": true,
+      "settings": {
+        "variation": "all",
+        "title": "<p>Get 10% OFF Your First Order<\/p>",
+        "background": "#1b3448",
+        "text_color": "#ffffff"
+      }
+    },
+    "281bc0b3-eed7-4c4f-b92e-3bd8eed4c55c": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "4f6fbcfc-fa95-4aa4-93a3-bcd384b5ef35": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify:\/\/shop_images\/DSC00458.jpg",
+            "link": "",
+            "width_m": "100%",
+            "min_width_m": "",
+            "max_width_m": "1125px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "4f6fbcfc-fa95-4aa4-93a3-bcd384b5ef35"
+      ],
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#fff",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#fff",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "166266523192c5ec88": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "d846c401-4997-4b41-8caa-7096ceb12025": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify:\/\/shop_images\/steel_boshorts_02.jpg",
+            "link": "",
+            "width_m": "100%",
+            "min_width_m": "",
+            "max_width_m": "1125px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "d846c401-4997-4b41-8caa-7096ceb12025"
+      ],
+      "settings": {
+        "title": "Easy Layers",
+        "variation": "0",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 84,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 20,
+        "inner_padding_right_m": 20,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 64,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 20,
+        "inner_padding_right_d": 20
+      }
+    },
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957": {
+      "type": "plp-navigation",
+      "disabled": true,
+      "settings": {
+        "fabric_title": "",
+        "size_title": "",
+        "color_title": ""
+      }
+    },
+    "bc051e3f-a68b-458c-a637-8dae150e68f7": {
+      "type": "bfcm-banner",
+      "settings": {
+        "display": true
+      }
+    },
+    "44f21b42-4aca-47b6-8497-1db3280fdc71": {
+      "type": "plp-featured-products",
+      "disabled": true,
+      "settings": {
+        "product_count": 6,
+        "collection": "mixed-bestsellers",
+        "title": "Bestsellers"
+      }
+    },
+    "ebadcac7-99c4-411d-81aa-6050d899194c": {
+      "type": "plp-featured-products",
+      "disabled": true,
+      "settings": {
+        "product_count": 6,
+        "collection": "bfcm-under-100",
+        "title": "Under $100"
+      }
+    },
+    "884105fb-1649-482f-be1b-eaacb3e9997b": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "549d2946-43e1-4c92-bb94-777f4f6066c9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "visibility": "both",
+            "title": "<p>Cannot be combined with other discounts.<\/p>",
+            "text_style": "h3",
+            "alignment": "center",
+            "color": "#000000",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": -12,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": -20,
+            "padding_bottom_d": -8,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "639db84d-6fd8-42de-a4ed-d31607448137": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify:\/\/shop_images\/back-to-top.svg",
+            "link": "#shopify-section-template--14842026655833__16384769-bc5b-41ea-aa75-a2bbf64cf816",
+            "width_m": "90%",
+            "min_width_m": "",
+            "max_width_m": "450px",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 28,
+            "padding_bottom_m": 28,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 24,
+            "padding_bottom_d": 24,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        }
+      },
+      "block_order": [
+        "549d2946-43e1-4c92-bb94-777f4f6066c9",
+        "639db84d-6fd8-42de-a4ed-d31607448137"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": true,
+        "background_color_mobile": "#ffffff",
+        "video_mobile_url": "",
+        "video_mobile": "",
+        "padding_top_m": 36,
+        "padding_bottom_m": 48,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "column",
+        "alignment_horizontal_d": "center",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "video_desktop_url": "",
+        "video_desktop": "",
+        "padding_top_d": 36,
+        "padding_bottom_d": 48,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 16,
+        "inner_padding_bottom_d": 16,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    }
+  },
+  "order": [
+    "settings",
+    "166266950988187d24",
+    "281bc0b3-eed7-4c4f-b92e-3bd8eed4c55c",
+    "166266523192c5ec88",
+    "44f7e630-fc0e-4c3e-ab98-043c21c2f957",
+    "bc051e3f-a68b-458c-a637-8dae150e68f7",
+    "44f21b42-4aca-47b6-8497-1db3280fdc71",
+    "ebadcac7-99c4-411d-81aa-6050d899194c",
+    "884105fb-1649-482f-be1b-eaacb3e9997b"
+  ]
+}

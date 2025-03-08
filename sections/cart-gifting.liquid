@@ -1,0 +1,110 @@
+{% if section.settings.enabled %}
+  <section class="gift-upsell">
+    <div class="gift-upsell-wrapper">
+        <header class="product">
+            <h4>{{ section.settings.title }}</h4>
+            <p>{{ section.settings.text }}</p>
+        </header>
+        {% for block in section.blocks %}
+              <div class="product">
+                  <a href="{{ all_products[block.settings.product].url | within: collection }}" class="wrapper-link">
+                      {% assign featured_image = current_variant.featured_image | default: all_products[block.settings.product].featured_image %}
+                      {% for image in all_products[block.settings.product].images limit:2 %}
+                          {% unless image contains featured_image %}
+                          <img src="{{ image.src | img_url: '400x400' }}" alt="{{ image.alt | escape }}">
+                          {% endunless %}
+                      {% endfor %}
+                      <img src="{{ all_products[block.settings.product].featured_image.src | img_url: '1024x1024' }}" class="placeholder">
+                  </a>
+                  <p class="product-list--title">
+                      <a href="{{ all_products[block.settings.product].url | within: collection }}">{{ all_products[block.settings.product].title }} / {{ all_products[block.settings.product].price | money | remove: '.00' }}</a>
+                  </p>
+                  <input type="hidden" id="Quantity" name="quantity" value="1" min="1">
+                {% if block.settings.details != blank %}
+                  <div class="product-details">
+                    {{ block.settings.details }}
+                  </div>
+                {% endif %}
+                {% if product.handle == 'breezy-box' %}
+                  <ul class="product-details">
+                    <li>Everyday Oil</li>
+                    <li>Raaka Chocolate (Green Tea)</li>
+                    <li>Message in a bottle</li>
+                  </ul>
+                {% endif %}
+                  <a class="upsell-add-to-cart" href="https://alexcrane.co/cart/add?id={{ all_products[block.settings.product].selected_or_first_available_variant.id }}&amp;quantity=1">Add to Cart</a>
+              </div>
+        {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if section.blocks.size == 1 %}
+  <style>
+    @media only screen and (max-width: 600px) {
+      .gift-upsell div.product {
+        width: 50% !important;
+        margin: 0 auto !important;
+      }
+    }
+    @media only screen and (min-width: 601px) {
+	  body.template-cart .gift-upsell-wrapper div.product {
+        width: 35% !important;
+ 		min-width: 210px;
+        margin: 0 auto !important;
+      }
+    }
+  </style>
+{% endif %}
+
+<style>
+  .gift-upsell .product-details p {
+  	font-size: 14px !important;
+    padding-bottom: 16px !important;
+  }
+</style>
+
+{% schema %} 
+{
+   "name":"Gifting",
+   "settings":[
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Headline",
+		 "default": "IS THIS ORDER A GIFT?"
+      },
+      {
+         "type":"text",
+         "id":"text",
+         "label":"Copy",
+		 "default": "May we recommend adding a gift box?"
+      },
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "label":"Enable Gifting Section",
+         "default":true
+      }
+   ],
+   "blocks":[
+      {
+         "type":"giftbox",
+         "name":"Gift Box",
+         "settings":[
+            {
+               "type":"product",
+               "id":"product",
+               "label":"Product"
+            },
+            {
+               "type":"richtext",
+               "id":"details",
+               "label":"Gift Description"
+            }
+         ]
+      }
+   ],
+   "presets":[]
+}
+{% endschema %}

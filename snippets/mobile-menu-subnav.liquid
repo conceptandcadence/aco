@@ -1,0 +1,167 @@
+{% for link in menu %}
+    {% for block in section.blocks %}
+        {% assign has_megamenu = false %}
+        {% assign link_title = link.title | downcase %}
+        {% assign block_title = block.settings.title | downcase %}
+        {% if link_title == block_title %}
+            {% assign has_megamenu = true %}
+            {% assign megamenu_link = link_title %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+    {% if link.links != blank and has_megamenu %}
+        <div id="unid-{{- link_count -}}-0-{{- link_count -}}" data-parent-id="unid-0-0" data-parent-name="{{ link.title }}" class="mobNavULWrap secondLevelUL">
+            <ul>
+                <li class="mobNavBackBtn">{{ link.title }}</li>
+                {% for link2 in link.links %}
+                    <li class="mobNavCategory">
+                        <div class="mobNavCategoryTitle">
+                            {{ link2.title }}
+                        </div>
+                        <ul class="mobNavCategoryItems">
+                            {% for link3 in link2.links %}
+                                <li>
+                                    <a class="site-subnav__link" href="{{ link3.url }}" tabindex="0">
+                                      <span class="site-subnav__linktext">{{ link3.title | remove: ' - 40% OFF' }}</span>
+                                      {% if link3.title contains '40% OFF' %}<span class="site-subnav__linktext" style="color: var(--color-blue-bright);padding: 2px 5px; border: solid 1px #006aff82; border-radius: 5px; font-size: 11px; margin-left: 4px;">40% OFF</span>{% endif %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="mobItemTilesWrap">
+                {% for block in section.blocks %}
+                    {% assign has_megamenu = false %}
+                    {% assign block_title = block.settings.title | downcase %}
+                    {% if megamenu_link == block_title %}
+                        {% assign has_megamenu = true %}
+                        {% if block.settings.product_1 != blank %}
+
+                            {% for product in collections[block.settings.collection].products %}
+                              {% if product.handle == block.settings.product_1 %}
+                                {% assign product_1 = product %}
+                                {% break %}
+                              {% endif %}
+                            {% endfor %}
+
+                            <div class="menuProdBox menuProdBox1">
+                                <a href="{{ product_1.url }}">
+                                    {% if block.settings.product_1_index == blank %}
+                                        {% assign image_1_primary   = product_1.images[0] %}
+                                        {% assign image_1_secondary = product_1.images[1] %}
+                                    {% elsif block.settings.product_1_index == 1 %}
+                                        {% assign image_1_primary   = product_1.images[1] %}
+                                        {% assign image_1_secondary = product_1.images[0] %}
+                                    {% else %}
+                                        {% assign image_1_primary   = product_1.images[block.settings.product_1_index] %}
+                                        {% assign image_1_secondary = product_1.images[1] %}
+                                    {% endif %}
+                                    
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_secondary -%}
+                                    {%- assign image_url = image_1_secondary | img_url: '4x5' -%}
+                                    <img class="secondary lazyload-img flat " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ image_1_secondary.alt | default: block.settings.feature_2_title | escape }}">
+                                    <noscript>
+                                        <img class="plp-item__images-image placeholder flat" src="{{ image_1_secondary | img_url: '400x' }}" alt="{{ image_1_secondary.alt | escape }}">
+                                    </noscript>
+
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_1_primary -%}
+                                    {%- assign image_url = image_1_primary | img_url: '4x5' -%}
+                                    <img class="primary lazyload-img flat " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ image_1_primary.alt | default: block.settings.feature_2_title | escape }}">
+                                    <noscript>
+                                        <img class="plp-item__images-image placeholder flat" src="{{ image_1_primary | img_url: '400x' }}" alt="{{ image_1_primary.alt | escape }}">
+                                    </noscript>
+                                </a>
+                                <div class="product-info">
+                                    <a href="{{ product_1.url }}" class="product-title">{{ product_1.title | escape }}</a>
+                                    <span class="product-price">{{ product_1.price | money_without_trailing_zeros }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if block.settings.product_2 != blank %}
+
+                           {% for product in collections[block.settings.collection].products %}
+                              {% if product.handle == block.settings.product_2 %}
+                                {% assign product_2 = product %}
+                                {% break %}
+                              {% endif %}
+                            {% endfor %}
+
+                            <div class="menuProdBox menuProdBox2">
+                                <a href="{{ product_2.url }}">
+                                    {% if block.settings.product_2_index == blank %}
+                                        {% assign image_2_primary   = product_2.images[0] %}
+                                        {% assign image_2_secondary = product_2.images[1] %}
+                                    {% elsif block.settings.product_2_index == 1 %}
+                                        {% assign image_2_primary   = product_2.images[1] %}
+                                        {% assign image_2_secondary = product_2.images[0] %}
+                                    {% else %}
+                                        {% assign image_2_primary   = product_2.images[block.settings.product_2_index] %}
+                                        {% assign image_2_secondary = product_2.images[1] %}
+                                    {% endif %}
+                                    
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_secondary -%}
+                                    {%- assign image_url = image_2_secondary | img_url: '4x5' -%}
+                                    <img class="secondary lazyload-img flat " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ image_2_secondary.alt | default: block.settings.feature_2_title | escape }}">
+                                    <noscript>
+                                        <img class="plp-item__images-image placeholder flat" src="{{ image_2_secondary | img_url: '400x' }}" alt="{{ image_2_secondary.alt | escape }}">
+                                    </noscript>
+
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: image_2_primary -%}
+                                    {%- assign image_url = image_2_primary | img_url: '4x5' -%}
+                                    <img class="primary lazyload-img flat " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="(max-width: 700px) 50vw,33.33vw"
+                                        srcset="{{ image_srcset }}"
+                                        alt="{{ image_2_primary.alt | default: block.settings.feature_2_title | escape }}">
+                                    <noscript>
+                                        <img class="plp-item__images-image placeholder flat" src="{{ image_2_primary | img_url: '400x' }}" alt="{{ image_2_primary.alt | escape }}">
+                                    </noscript>
+                                </a>
+                                <div class="product-info">
+                                    <a href="{{ product_2.url }}" class="product-title">{{ product_2.title | escape }}</a>
+                                    <span class="product-price">{{ product_2.price | money_without_trailing_zeros }}{% if localization.country.iso_code == 'CA' %} {{ localization.country.currency.iso_code }}{% endif %}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% elsif link.links != blank %}
+        <div id="unid-{{- link_count -}}-0-{{- link_count -}}" data-parent-id="unid-0-0" data-parent-name="{{ link.title }}" class="mobNavULWrap secondLevelUL">
+            <ul>
+                <li class="mobNavBackBtn">{{ link.title }}</li>
+                {% for link2 in link.links %}
+                    <li>
+                        <a class="site-subnav__link" href="{{ link2.url }}" tabindex="0">
+                            <span class="site-subnav__linktext">{{ link2.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% assign link_count = link_count | plus: 1 %}
+{% endfor %}

@@ -1,0 +1,87 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%} 
+{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%} 
+{% assign waitlist = false %} 
+{% assign sale = false %} 
+{% assign color = nil %} 
+{% assign colorset = nil %} 
+{% assign nongendered = false %} 
+{% assign sizeguide = false %}
+{% assign material_tag = nil %}
+{% assign material_title = nil %}
+{% assign material_tag = nil %}
+{% assign material_title = nil %}
+
+{% assign material_botanical = false %} 
+{% assign material_linen = false %} 
+{% assign material_cotton = false %}
+{% assign material_naturaldyes = false %}  
+{% assign material_wool = false %} 
+{% assign material_rubber = false %} 
+{% assign material_corozo = false %} 
+{% assign material_leather = false %} 
+{% assign material_alpaca = false %} 
+{% assign material_cactus = false %} 
+{% assign material_softener = false %} 
+{% assign material_banana = false %} 
+{% for tag in product.tags %} 
+  {% case tag %} 
+    {% when 'waitlist' %} 
+       {% assign waitlist = true %} 
+    {% when 'sale' %} 
+       {% assign sale = true %} 
+    {% when 'nongendered' %} 
+       {% assign nongendered = true %} 
+    {% when 'material--european-linen' %} 
+       {% assign material_linen = true %} 
+    {% when 'material--wool' %} 
+       {% assign material_wool = true %} 
+    {% when 'material--organic-cotton' %} 
+       {% assign material_cotton = true %} 
+    {% when 'material--natural-dyes' %} 
+       {% assign material_naturaldyes = true %}
+    {% when 'material--rubber' %} 
+       {% assign material_rubber = true %} 
+    {% when 'material--raw-leather' %} 
+       {% assign material_leather = true %} 
+    {% when 'material--corozo' %} 
+       {% assign material_corozo = true %} 
+    {% when 'material--alpaca' %} 
+       {% assign material_alpaca = true %} 
+    {% when 'material--cactus' %} 
+       {% assign material_cactus = true %} 
+    {% when 'material--softener' %} 
+       {% assign material_softener = true %} 
+   {% when 'material--botanical' %} 
+      {% assign material_botanical = false %} 
+   {% when 'material--banana' %} 
+      {% assign material_banana = true %} 
+  {% endcase %} 
+  
+  {% assign tag_fragments_space = tag | split: ' ' %} 
+  {% assign tag_fragments_dash = tag | split: '-' %} 
+  {% assign tag_fragments_doubedash = tag | split: '--' %} 
+  {% if tag_fragments_space.first == 'color' %} 
+  	{% if tag_fragments_space.last != 'color' %} 
+  		{% assign color = tag_fragments_space.last %} 
+ 	{% endif %} 
+  {% endif %} 
+  {% if tag_fragments_space.first == 'colorset' %} 
+  	{% if tag_fragments_space.last != 'colorset' %} 
+  		{% assign colorset = tag_fragments_space.last %} 
+  	{% endif %} 
+  {% endif %} 
+  {% if tag_fragments_dash.first == 'size' %} 
+  	{% if tag_fragments_dash.last != 'colorset' %} 
+  		{% assign sizeguide = true %} 
+  	{% endif %} 
+  {% endif %} 
+  {% if tag_fragments_doubedash.first == 'category' %} 
+	{% capture category_tag %}{{ tag_fragments_doubedash.last | downcase }}{% endcapture %}
+	{% capture category_title %}{{ tag_fragments_doubedash.last | capitalize | replace: '-', ' ' }}{% endcapture %}
+  {% endif %} 
+  {% if tag_fragments_doubedash.first == 'material' %} 
+	{% capture material_tag %}{{ tag_fragments_doubedash.last | downcase }}{% endcapture %}
+	{% capture material_title %}{{ tag_fragments_doubedash.last | capitalize | replace: '-', ' ' }}{% endcapture %}
+  {% endif %} 
+
+{% endfor %}

@@ -1,0 +1,119 @@
+<header class="plp-header fixed-height-header">
+
+    {% assign header_image_mobile = images['plp-bg-mobile.jpg'] %}
+    {% assign header_image_desktop = images['plp-bg-desktop2.jpg'] %}
+
+    {% if current_tags contains 'women' or collection.handle == 'women' %}
+        {% assign title_image = 'title-womens.svg' %} 
+        {% assign active_tag = 'women' %}
+        {% if collection.metafields["custom_fields"]["womens_header_image_mobile"] != blank %}
+            {% assign header_image_mobile = collection.metafields.custom_fields["womens_header_image_mobile"] | split: '?' %}
+            {% assign header_image_mobile = header_image_mobile | first | split: 'files/' %}
+            {% assign header_image_mobile = images[header_image_mobile.last] %}
+        {% endif %}
+        {% if collection.metafields["custom_fields"]["womens_header_image_desktop"] != blank %}
+            {% assign header_image_desktop = collection.metafields.custom_fields["womens_header_image_desktop"] | split: '?' %}
+            {% assign header_image_desktop = header_image_desktop | first | split: 'files/' %}
+            {% assign header_image_desktop = images[header_image_desktop.last] %}
+        {% endif %}
+    {% else %}
+        {% assign title_image = 'title-mens.svg' %}
+        {% assign active_tag = 'men' %}
+        {% if collection.metafields["custom_fields"]["plp_header_image_mobile"] != blank %}
+            {% assign header_image_mobile = collection.metafields.custom_fields["plp_header_image_mobile"] | split: '?' %}
+            {% assign header_image_mobile = header_image_mobile | first | split: 'files/' %}
+            {% assign header_image_mobile = images[header_image_mobile.last] %}
+        {% endif %}
+        {% if collection.metafields["custom_fields"]["plp_header_image_desktop"] != blank %}
+            {% assign header_image_desktop = collection.metafields.custom_fields["plp_header_image_desktop"] | split: '?' %}
+            {% assign header_image_desktop = header_image_desktop | first | split: 'files/' %}
+            {% assign header_image_desktop = images[header_image_desktop.last] %}
+        {% endif %}
+    {% endif %}
+
+    {% if header_image_mobile != blank %}
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: header_image_mobile -%}
+        {%- assign image_url = header_image_mobile | img_url: '2x1' -%}
+        <img class="lazyload-img plp-header__image mobile " loading="eager"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="100vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ header_image_mobile.alt | escape }}">
+        <noscript>
+            <img class="plp-header__image mobile" src="{{ header_image_mobile | img_url: '400x' }}" alt="{{ header_image_mobile.alt | escape }}">
+        </noscript>
+    {% endif %}
+
+    {% if header_image_desktop != blank %}
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400', image: header_image_desktop -%}
+        {%- assign image_url = header_image_desktop | img_url: '4x1' -%}
+        <img class="lazyload-img plp-header__image desktop " loading="eager"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="100vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ header_image_desktop.alt | escape }}">
+        <noscript>
+            <img class="plp-header__image desktop" src="{{ header_image_desktop | img_url: '400x' }}" alt="{{ header_image_desktop.alt | escape }}">
+        </noscript>
+    {% endif %}
+
+    <h1 class="plp-header__title" data-title="{{  page.title }}">
+        {% if collection.handle == 'shop' and title_image != blank %}
+            <span class="visually-hidden">{{ collection.title }}</span>
+            <img class="plp-header__title-image" src="{{ title_image | file_url }}" alt="{{ collection.title | escape }}">
+				{% elsif page.metafields.custom_fields["plp_title_graphic"] != blank %}
+					<span {% if page.metafields.custom_fields["plp_title_graphic"] != blank %}class="visually-hidden"{% endif %}>{{ collection.title }}</span>
+					{% if page.title contains "Search" %}
+						<img class="plp-header__title-image" src="https://cdn.shopify.com/s/files/1/1892/3609/files/search.svg?v=1731173514" alt="Search">
+					{% endif %}
+				{% elsif page.title %}
+					<span class="h2">{{ page.title }}</span>
+				{% else %}
+					<span {% if collection.metafields.custom_fields["plp_title_graphic"] != blank %}class="visually-hidden"{% endif %}>{{ collection.title }}</span>
+					{% if collection.metafields.custom_fields["plp_title_graphic"] != blank %}
+							<img class="plp-header__title-image" src="{{ collection.metafields.custom_fields["plp_title_graphic"] }}" alt="{{ collection.title | escape }}">
+					{% endif %}
+			{% endif %}
+    </h1>
+
+    <div class="active-filters mobile">
+      {% for tag in current_tags %}
+          {% unless tag == 'men' or tag == 'women' %}
+          {% capture tag_string %}{{ tag }}{% endcapture %}
+          {% capture tag_title %}{{ tag | replace: 'Colorway--','' | replace: 'material--','' | replace: 'Size--','' | replace: '-',' ' | remove: 'colorway--' | remove: 'colorway' | remove: 'Colorway--' | remove: 'Colorway' | trim | capitalize }}{% endcapture %}
+          {% capture tags_after_removal %}{{ current_tags | join: '+' | replace: tag_string, '' }}{% endcapture %}
+          <a class="active-filter" href="{{ collection.url }}/{{ tags_after_removal | replace: '++','+' }}">{{ tag_title }}<span class="close">&times;</span></a>
+          {% endunless %}
+      {% endfor %} 
+    </div>
+
+    <link rel="stylesheet" href="{{ 'plp-header.min.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'plp-header.min.css' | asset_url | stylesheet_tag }}</noscript>
+</header>
+
+
+{% schema %}
+  {
+    "name": "PLP Header",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Inner Spacing Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image - Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image - Mobile"
+        }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,166 @@
+.c-hp-products {
+    .hp-products {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-top: solid 1px var(--color-blue-dark);
+        .hp-products__section-subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 auto;
+            padding-bottom: 16px;
+            @media (min-width: 700px) {
+                font-size: 20px;
+                padding-bottom: 24px;
+            }
+        }
+        .hp-products__section-title {
+            font-size: 32px;
+            font-weight: 500;
+            margin: 0 auto;
+            padding-bottom: 36px;
+            @media (min-width: 700px) {
+                font-size: 36px;
+                padding-bottom: 48px;
+            }
+        }
+        .hp-products__products {
+            position: relative;
+            display: block;
+            width: 100%;
+            text-align: center;
+            transition: opacity 0.25s ease-in-out;
+            &:not(.flickity-enabled) {
+                opacity: 0;
+            }
+            .flickity-viewport {
+                overflow: hidden;
+            }
+            .hp-products__product {
+                display: inline-block;
+                text-align: left;
+                position: relative;
+                padding-bottom: 24px;
+                //border-right: solid 1px var(--color-blue-dark);
+                @media (max-width: 699px) {
+                    width: 80% !important;
+                }
+                @media (min-width: 700px) and (max-width: 899px) {
+                    width: 50% !important;
+                }
+                .hp-products__colorway {
+                    display: none;
+                    &.active {
+                        display: flex;
+                    }
+                }
+                .hp-products__variants {
+                  display: flex;
+                  padding: 12px 0 18px;
+                  position: absolute;
+                  bottom: 56px;
+                  left: 20px;
+                  @media (min-width: 700px) {
+                    bottom: 66px;
+                    left: 32px;
+                  }
+                  .hp-products__variant {
+                    position: relative;
+                    height: 20px;
+                    width: 20px;
+                    border: 0;
+                    border-radius: 20px;
+                    margin-right: 12px;
+                    background-position: center;
+                    padding: 0 !important;
+
+                    &:before {
+                      content: '';
+                      position: absolute;
+                      top: -4px;
+                      left: -4px;
+                      width: 26px;
+                      height: 26px;
+                      border-radius: 26px;
+                      border: solid 1px #000;
+                      opacity: 0; 
+                      transition: opacity 0.25s ease-in-out, border-color 0.25s ease-in-out;
+                    }
+                  }
+                }
+            }
+            .flickity-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                border: solid 1px #1b3448;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 8px;
+                transition: opacity 0.25s ease-in-out;
+                &:disabled {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+                @media (min-width: 700px) {
+                    width: 36px;
+                    height: 36px;
+                    padding: 10px;
+                }
+                &.previous {
+                    left: 18px;
+                    @media (min-width: 700px) {
+                        left: -48px;
+                    }
+                }
+                
+                &.next {
+                    right: 18px;
+                    @media (min-width: 700px) {
+                        right: -48px;
+                    }
+                }
+                .flickity-button-icon {
+                    position: absolute;
+                    width: 14px;
+                }
+            }
+        }
+    }
+    .plp-item .plp-item__info .plp-item__title {
+      font-size: 16px !important;
+      transition: color 0.25s ease-in-out;
+    }
+    .plp-item:not(:hover) .hp-products__variants .hp-products__variant:before {
+      border: solid 1px #fff !important;
+    }
+    .hp-products__variants {
+      z-index: 4;
+      transition: opacity 0.25s ease-in-out;
+    }
+    .plp-item {
+      &[data-state="display-variants"],
+      &[data-state="adding"],
+      &[data-state="success"],
+      &[data-state="error"] {
+        .hp-products__variants {
+          pointer-events: none;
+          z-index: 0;
+          opacity: 0;
+        }
+      }
+    }
+    .plp-item__button {
+      border: solid 1px rgba(0, 0, 0, 0.125) !important;
+    }
+    .hp-products__variant {
+      border: solid 1px rgba(0, 0, 0, 0.35) !important;    
+    }
+}
+

@@ -1,0 +1,218 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "main.c-landing-page",
+  "sections": {
+    "settings": {
+      "type": "lp-settings",
+      "disabled": true,
+      "settings": {
+        "variation": "3",
+        "display": true
+      }
+    },
+    "166266523192c5ec88": {
+      "type": "lp-banner-full",
+      "blocks": {
+        "image_YVPQAm": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "visibility": "desktop",
+            "image": "shopify://shop_images/Asset_2_11af9a14-c490-47b0-97f0-7eb956ffe318.svg",
+            "link": "shopify://pages/bfcm",
+            "width_m": "260px",
+            "min_width_m": "120px",
+            "max_width_m": "100%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": ""
+          }
+        },
+        "image_CVFHBM": {
+          "type": "image",
+          "settings": {
+            "visibility": "both",
+            "image": "shopify://shop_images/Asset_31.svg",
+            "link": "",
+            "width_m": "250",
+            "min_width_m": "",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 28,
+            "padding_left_m": 0,
+            "padding_right_m": 0,
+            "width_d": "25%",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 20,
+            "padding_bottom_d": 0,
+            "padding_left_d": 200,
+            "padding_right_d": 200,
+            "custom_css": ""
+          }
+        },
+        "text_ErUiWF": {
+          "type": "text",
+          "settings": {
+            "visibility": "both",
+            "title": "",
+            "text_style": "p",
+            "alignment": "center",
+            "color": "#ffffff",
+            "width_m": "",
+            "min_width_m": "",
+            "max_width_m": "",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 0,
+            "padding_bottom_m": 0,
+            "padding_left_m": -200,
+            "padding_right_m": -200,
+            "width_d": "100%",
+            "min_width_d": "",
+            "max_width_d": "",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 0,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": "h2 { margin-top: 0 } p { max-width: 400px; margin: 0 auto 20px}"
+          }
+        },
+        "button_LD44bW": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "visibility": "desktop",
+            "button_text": "Shop Now",
+            "button_url": "shopify://pages/bfcm",
+            "button_style": "button--secondary",
+            "width_m": "auto",
+            "min_width_m": "150px",
+            "max_width_m": "90%",
+            "height_m": "",
+            "min_height_m": "",
+            "max_height_m": "",
+            "padding_top_m": 84,
+            "padding_bottom_m": -200,
+            "padding_left_m": 24,
+            "padding_right_m": 0,
+            "width_d": "30%",
+            "min_width_d": "",
+            "max_width_d": "260px",
+            "height_d": "",
+            "min_height_d": "",
+            "max_height_d": "",
+            "padding_top_d": 20,
+            "padding_bottom_d": 0,
+            "padding_left_d": 0,
+            "padding_right_d": 0,
+            "custom_css": "display: flex; justify-content: center;white-space: nowrap;text-transform: none; padding: 10px 48px; font-size: 16px;"
+          }
+        }
+      },
+      "block_order": [
+        "image_YVPQAm",
+        "image_CVFHBM",
+        "text_ErUiWF",
+        "button_LD44bW"
+      ],
+      "settings": {
+        "title": "",
+        "variation": "all",
+        "visibility": "both",
+        "alignment_direction_m": "column",
+        "alignment_horizontal_m": "center",
+        "alignment_vertical_m": "center",
+        "wrap_contents": false,
+        "defer": false,
+        "image_mobile": "shopify://shop_images/GiftGuideBannerMobile.jpg",
+        "background_color_mobile": "#ffffff",
+        "padding_top_m": 0,
+        "padding_bottom_m": 0,
+        "padding_left_m": 0,
+        "padding_right_m": 0,
+        "inner_padding_top_m": 0,
+        "inner_padding_bottom_m": 0,
+        "inner_padding_left_m": 0,
+        "inner_padding_right_m": 0,
+        "alignment_direction_d": "row",
+        "alignment_horizontal_d": "flex-end",
+        "alignment_vertical_d": "center",
+        "background_color_desktop": "#ffffff",
+        "image_desktop": "shopify://shop_images/BFCM_HP2.jpg",
+        "padding_top_d": 0,
+        "padding_bottom_d": 0,
+        "padding_left_d": 0,
+        "padding_right_d": 0,
+        "inner_padding_top_d": 0,
+        "inner_padding_bottom_d": 0,
+        "inner_padding_left_d": 0,
+        "inner_padding_right_d": 0
+      }
+    },
+    "lp_collection_4MTUne": {
+      "type": "lp-collection",
+      "settings": {
+        "collection": "gift-guide-the-sun-chaser",
+        "image": "shopify://shop_images/SunChaser_1.jpg",
+        "title": "The Snowbird"
+      }
+    },
+    "lp_collection_etiiH7": {
+      "type": "lp-collection",
+      "settings": {
+        "collection": "gift-guide-the-fireside-philosopher",
+        "image": "shopify://shop_images/firesidephilosopher1.jpg",
+        "title": "The Cabin-y Guy"
+      }
+    },
+    "lp_collection_Tgw4ai": {
+      "type": "lp-collection",
+      "settings": {
+        "collection": "gift-guide-the-local-explorer",
+        "image": "shopify://shop_images/LocalExplorer_1.jpg",
+        "title": "The Local"
+      }
+    }
+  },
+  "order": [
+    "settings",
+    "166266523192c5ec88",
+    "lp_collection_4MTUne",
+    "lp_collection_etiiH7",
+    "lp_collection_Tgw4ai"
+  ]
+}

@@ -1,0 +1,491 @@
+{% if template.name contains 'product' %}
+    {% for block in section.blocks %}
+        {% for tag in product.tags %}
+            {% if tag == block.settings.tag %}
+                {% assign matching_tag = block.settings.tag %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% if matching_tag != blank %}
+        {% for block in section.blocks %}
+            {% if matching_tag == block.settings.tag and block.settings.symbol != blank %}
+                <div class="material-symbol">
+                    <img src="{{ block.settings.symbol | img_url: '60x' }}" alt="{{ block.settings.title | escape }}">
+                    <span>{{ block.settings.title }}</span>
+                </div>
+            {% endif %}
+            {% if matching_tag == block.settings.tag and block.settings.enable_features %}
+                <div class="product-sustainability">
+                    <div class="sustainability__text">
+                        {% render 'sustainability-text' %}
+                    </div>
+                    <div class="sustainability__features">
+                        <ul>
+                            {% assign current_image = block.settings.feature_image_1 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    <div class="image-wrapper">
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                        {%- assign image_url = current_image | img_url: '1x1' -%}
+                                        <img class="lazyload-img " loading="lazy"
+                                            src="{{ image_url }}"
+                                            data-src="{{ image_url }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="100vw"
+                                            srcset="{{ image_srcset }}"
+                                            data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                            data-image-id="{{ current_image.id }}"
+                                            alt="{{ block.settings.feature_title_1 | escape }}">
+                                        <noscript>
+                                            <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.feature_title_1 | escape }}">
+                                        </noscript>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        {{ block.settings.feature_text_1 }}
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.feature_image_2 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    <div class="image-wrapper">
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                        {%- assign image_url = current_image | img_url: '1x1' -%}
+                                        <img class="lazyload-img " loading="lazy"
+                                            src="{{ image_url }}"
+                                            data-src="{{ image_url }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="100vw"
+                                            srcset="{{ image_srcset }}"
+                                            data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                            data-image-id="{{ current_image.id }}"
+                                            alt="{{ block.settings.feature_title_2 | escape }}">
+                                        <noscript>
+                                            <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.feature_title_2 | escape }}">
+                                        </noscript>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        {{ block.settings.feature_text_2 }}
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.feature_image_3 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    <div class="image-wrapper">
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                        {%- assign image_url = current_image | img_url: '1x1' -%}
+                                        <img class="lazyload-img " loading="lazy"
+                                            src="{{ image_url }}"
+                                            data-src="{{ image_url }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="100vw"
+                                            srcset="{{ image_srcset }}"
+                                            data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                            data-image-id="{{ current_image.id }}"
+                                            alt="{{ block.settings.feature_title_3 | escape }}">
+                                        <noscript>
+                                            <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.feature_title_3 | escape }}">
+                                        </noscript>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        {{ block.settings.feature_text_3 }}
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.feature_image_4 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    <div class="image-wrapper">
+                                        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                        {%- assign image_url = current_image | img_url: '1x1' -%}
+                                        <img class="lazyload-img " loading="lazy"
+                                            src="{{ image_url }}"
+                                            data-src="{{ image_url }}"
+                                            data-widths="[{{ supported_sizes }}]"
+                                            sizes="100vw"
+                                            srcset="{{ image_srcset }}"
+                                            data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                            data-image-id="{{ current_image.id }}"
+                                            alt="{{ block.settings.feature_title_4 | escape }}">
+                                        <noscript>
+                                            <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.feature_title_4 | escape }}">
+                                        </noscript>
+                                    </div>
+                                    <div class="text-wrapper">
+                                        {{ block.settings.feature_text_4 }}
+                                    </div>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    {% if block.settings.map_image != blank %}
+                        <div class="sustainability__map">
+                            {% assign current_image = block.settings.map_image %}
+                            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                            {%- assign image_url = current_image | img_url: '1x1' -%}
+                            <img class="lazyload-img " loading="lazy"
+                                src="{{ image_url }}"
+                                data-src="{{ image_url }}"
+                                data-widths="[{{ supported_sizes }}]"
+                                sizes="100vw"
+                                srcset="{{ image_srcset }}"
+                                data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                data-image-id="{{ current_image.id }}"
+                                alt="{{ block.settings.map_title | escape }}">
+                            <noscript>
+                                <img src="{{ current_image | img_url: '1024x' }}" alt="{{ block.settings.map_title | escape }}">
+                            </noscript>
+                        </div>
+                    {% endif %}
+                    <div class="sustainability__gallery">
+                        <ul>
+                            {% assign current_image = block.settings.gallery_image_1 %}
+                            {% assign current_title = block.settings.gallery_title_1 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.gallery_image_2 %}
+                            {% assign current_title = block.settings.gallery_title_2 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.gallery_image_3 %}
+                            {% assign current_title = block.settings.gallery_title_3 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.gallery_image_4 %}
+                            {% assign current_title = block.settings.gallery_title_4 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.gallery_image_5 %}
+                            {% assign current_title = block.settings.gallery_title_5 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                            {% assign current_image = block.settings.gallery_image_6 %}
+                            {% assign current_title = block.settings.gallery_title_6 %}
+                            {% if current_image != blank %}
+                                <li>
+                                    {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: current_image -%}
+                                    {%- assign image_url = current_image | img_url: '1x1' -%}
+                                    <img class="lazyload-img " loading="lazy"
+                                        src="{{ image_url }}"
+                                        data-src="{{ image_url }}"
+                                        data-widths="[{{ supported_sizes }}]"
+                                        sizes="100vw"
+                                        srcset="{{ image_srcset }}"
+                                        data-zoom="{{ current_image | img_url: '2048x', scale: 2 }}" 
+                                        data-image-id="{{ current_image.id }}"
+                                        alt="{{ current_title | escape }}">
+                                    <noscript>
+                                        <img src="{{ current_image | img_url: '1024x' }}" alt="{{ current_title | escape }}">
+                                    </noscript>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+
+{% if template.name contains 'collection' %}
+    {% for block in section.blocks %}
+        {% if block.settings.symbol != blank %}
+            <div class="material-symbol" data-handle="{{ block.settings.material_tag }}">
+                <img src="{{ block.settings.symbol | img_url: '60x' }}" alt="{{ block.settings.title | escape }}">
+                {%- comment -%}<span>{{ block.settings.title }}</span>{%- endcomment -%}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% schema %} 
+{
+	"name": "Sustainability",
+    "settings": [],
+    "blocks":[
+    {
+       "type":"group",
+       "name":"Product Group",
+       "settings":[
+        {
+            "type":"header",
+            "content": "Basic Info"
+        },
+        {
+            "type":"text",
+            "id":"tag",
+            "label":"Product Tag",
+            "info":"A product tag that corresponds to this set of features, such as material--organic-cotton or organic-cotton-chai"
+        }, 
+        {
+            "type":"text",
+            "id":"material_tag",
+            "label":"Material Tag",
+            "info":"The material tag that corresponds to this material, such as material--organic-cotton"
+        }, 
+        {
+            "type":"text",
+            "id":"title",
+            "label":"Display Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "symbol",
+            "label": "Symbol Image"
+        },
+        {
+            "type":"checkbox",
+            "id":"enable_features",
+            "label":"Enable Full PDP Section",
+            "default":false
+        },
+        {
+            "type":"header",
+            "content": "Features"
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_image_1",
+            "label": "Feature Image"
+        },
+        {
+            "type": "text",
+            "id": "feature_title_1",
+            "label": "Feature Title"
+        },
+        {
+            "type": "richtext",
+            "id": "feature_text_1",
+            "label": "Feature Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_image_2",
+            "label": "Feature Image"
+        },
+        {
+            "type": "text",
+            "id": "feature_title_2",
+            "label": "Feature Title"
+        },
+        {
+            "type": "richtext",
+            "id": "feature_text_2",
+            "label": "Feature Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_image_3",
+            "label": "Feature Image"
+        },
+        {
+            "type": "text",
+            "id": "feature_title_3",
+            "label": "Feature Title"
+        },
+        {
+            "type": "richtext",
+            "id": "feature_text_3",
+            "label": "Feature Description"
+        },
+        {
+            "type": "image_picker",
+            "id": "feature_image_4",
+            "label": "Feature Image"
+        },
+        {
+            "type": "text",
+            "id": "feature_title_4",
+            "label": "Feature Title"
+        },
+        {
+            "type": "richtext",
+            "id": "feature_text_4",
+            "label": "Feature Description"
+        },
+        {
+            "type":"header",
+            "content": "Map"
+        },
+        {
+            "type":"text",
+            "id":"map_title",
+            "label":"Map Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "map_image",
+            "label": "Map Image"
+        },
+        {
+            "type":"header",
+            "content": "Gallerys"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_1",
+            "label": "Image 1"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_1",
+            "label": "Image 1 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_2",
+            "label": "Image 2"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_2",
+            "label": "Image 2 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_3",
+            "label": "Image 3"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_3",
+            "label": "Image 3 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_4",
+            "label": "Image 4"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_4",
+            "label": "Image 4 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_5",
+            "label": "Image 5"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_5",
+            "label": "Image 5 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_6",
+            "label": "Image 6"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_6",
+            "label": "Image 6 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_7",
+            "label": "Image 7"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_7",
+            "label": "Image 7 Title"
+        },
+        {
+            "type": "image_picker",
+            "id": "gallery_image_8",
+            "label": "Image 8"
+        },
+        {
+            "type": "text",
+            "id": "gallery_title_8",
+            "label": "Image 8 Title"
+        }
+       ]
+    }
+ ]
+}
+{% endschema %}

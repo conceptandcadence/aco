@@ -1,0 +1,230 @@
+{% assign bundleAssigned = false %}
+
+{% if section.blocks.size > 0 and section.settings.enabled %}
+    {% for block in section.blocks %}
+        {% if block.type == 'upsell' %}
+            {% if block.settings.product_1 == product.handle or block.settings.product_2 == product.handle %}
+                {% assign bundleAssigned = true %}
+                <script>
+                    window.productUpsellCurrentProduct = "{{ product.handle | escape }}";
+                    window.productUpsellBundle = {
+                        "bundle_trigger": "product",
+                        "bundle_discount": "{{ block.settings.discount | escape }}",
+                        "bundle_product_1_handle": "{{ block.settings.product_1 }}",
+                        "bundle_product_1_url": "{{ all_products[block.settings.product_1].url | escape }}",
+                        "bundle_product_1_image": "{{ all_products[block.settings.product_1].featured_image | img_url: '100x100' }}",
+                        "bundle_product_1_price": "{{ all_products[block.settings.product_1].price | escape }}",
+                        "bundle_product_1_text": {{ block.settings.product_1_description | json }},
+                        "bundle_product_1_link": "{{ block.settings.product_1_collection | escape }}",
+                        "bundle_product_2_handle": "{{ block.settings.product_2 }}",
+                        "bundle_product_2_url": "{{ all_products[block.settings.product_2].url | escape }}",
+                        "bundle_product_2_image": "{{ all_products[block.settings.product_2].featured_image | img_url: '100x100' }}",
+                        "bundle_product_2_text": {{ block.settings.product_2_description | json }},
+                        "bundle_product_2_link": "{{ block.settings.product_2_collection | escape }}"
+                    };
+                </script> 
+                {% break %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% unless bundleAssigned %}
+        {% for block in section.blocks %}
+            {% if block.type == 'collection_upsell' %}
+                {% capture productCollections %}{% for collection in product.collections %}{{ collection.handle }}{% endfor %}{% endcapture %}
+
+                {% if productCollections contains block.settings.collection %}
+                    {% assign bundleAssigned = true %}
+                    {%- capture bundleProductURL -%}{%- if block.settings.collection_only -%}{{ block.settings.product_1_collection | escape  }}{%- else -%}{{ all_products[block.settings.product_1].url | escape  }}{%- endif -%}{%- endcapture -%}
+                    <script>
+                        window.productUpsellCurrentProduct = "{{ product.handle | escape }}";
+                        window.productUpsellCurrentProductVariant = {{ all_products[block.settings.product_1].selected_or_first_available_variant.id }},
+                        window.productUpsellCurrentCollection = "{{ block.settings.collection | escape }}";
+                        window.productUpsellBundle = {
+                            "bundle_trigger": "collection",
+                            "bundle_ajax": {{ block.settings.ajax }},
+                          	"gifting": {{ block.settings.gifting }},
+                            "bundle_discount": "{{ block.settings.discount | escape }}",
+                            "bundle_product_1_handle": "{{ block.settings.product_1 }}",
+                            "bundle_product_1_url": "{{ bundleProductURL }}",
+                            "bundle_product_1_image": "{{ all_products[block.settings.product_1].featured_image | img_url: '100x100' }}",
+                            "bundle_product_1_text": {{ block.settings.product_1_description | json }},
+                            "bundle_product_1_link": "{{ block.settings.product_1_collection }}"
+                        };
+                    </script> 
+                    {% break %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endunless %}
+{% endif %}
+
+{% for item in cart.items %}
+    <script>
+        //console.log('{{ item.id }}');
+    </script>
+    {% if item.id == 32267377016921 %}
+        <script>
+            //console.log('Gift Wrapping in cart');
+            window.productUpsell = true;
+        </script>
+    {% endif %}
+{% endfor %}
+
+
+<style>
+    .product-upsell-ajax {
+        background-color: #1b3448;
+        border-radius: 20px;
+        padding: 3px 12px;
+        color: #fff;
+        transition: opacity 0.35s ease-in-out;
+    }
+    .product-upsell-ajax:hover  {
+        opacity: 0.7;
+    }
+    .product-upsell-module .product-upsell-list .product-upsell-product .product-upsell-description .product-upsell-description-text {
+        margin-bottom: 8px;
+        margin-right: 4px;
+        display: inline-block;
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Product Upsell",
+  "settings": [
+    {
+        "type": "checkbox",
+        "id": "enabled",
+        "label": "Enable Upsell Module",
+        "default": true
+    }
+  ], 
+  "blocks": [
+  {
+    "type": "upsell",
+    "name": "Product Upsell",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product 1"
+      },
+      {
+        "type": "product",
+        "id": "product_1",
+        "label": "Product"
+      },
+      {
+        "type": "textarea",
+        "id": "product_1_description",
+        "label": "Description",
+        "info": "Text to be displayed with the offer"
+      },
+      {
+        "type": "url",
+        "id": "product_1_collection",
+        "label": "View All Collection",
+        "info": "Link to view all options for this product (optional)"
+      }, 
+      {
+        "type": "header",
+        "content": "Product 2"
+      },
+      {
+        "type": "product",
+        "id": "product_2",
+        "label": "Product"
+      },
+      {
+        "type": "textarea",
+        "id": "product_2_description",
+        "label": "Description",
+        "info": "Text to be displayed with the offer"
+      },
+      {
+        "type": "url",
+        "id": "product_2_collection",
+        "label": "View All Collection",
+        "info": "Link to view all options for this product (optional)"
+      },
+      {
+        "type": "header",
+        "content": "Options"
+      },
+      {
+        "type": "text",
+        "id": "discount",
+        "label": "Discount Code",
+        "info": "Optional discount code to be automatically applied"
+      }
+    ]
+  },
+  {
+    "type": "collection_upsell",
+    "name": "Collection Upsell",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection",
+        "info": "Any product in this collection will trigger the upsell below to display."
+      },
+      {
+        "type": "header",
+        "content": "Product"
+      },
+      {
+        "type": "product",
+        "id": "product_1",
+        "label": "Product"
+      },
+      {
+        "type": "textarea",
+        "id": "product_1_description",
+        "label": "Description",
+        "info": "Text to be displayed with the offer"
+      },
+      {
+        "type": "url",
+        "id": "product_1_collection",
+        "label": "View All Collection",
+        "info": "Link to view all options for this product (optional)"
+      }, 
+      { 
+        "type": "header",
+        "content": "Options"
+      },
+      {
+        "type": "text",
+        "id": "discount",
+        "label": "Discount Code",
+        "info": "Optional discount code to be automatically applied"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_only",
+        "label": "Link to the entire collection instead of the specific product",
+        "default": false
+      },
+      {
+          "type": "checkbox",
+          "id": "ajax",
+          "label": "Add Product On Page",
+          "info": "Clicking the product will add it to cart immediately",
+          "default": false
+      },
+      {
+          "type": "checkbox",
+          "id": "gifting",
+          "label": "Change from product upsell to add more to get gift",
+          "default": true
+      }
+    ]
+  }
+]
+}
+{% endschema %}

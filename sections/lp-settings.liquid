@@ -1,0 +1,76 @@
+
+{% if request.design_mode or section.settings.display %}
+    {% capture variation %}{% if section.settings.variation == '0' %} Control{% else %}Variation{{ section.settings.variation }}{% endif %}{% endcapture %}
+
+    <section id="lp-settings" class="lp-settings" style="background-color: #006aff; text-align: center; padding: 12px; display: flex; justify-content: center; align-items: center;">
+      <div class="lp-settings__text">
+        <h6 style="color: #fff; margin: 0; font-size: 14px;">Previewing &nbsp; &nbsp;</h6>
+      </div>
+      <select class="lp-settings__select" onchange="updateVariationPreview()" style="padding: 4px 24px 4px 16px; background-color: #fff; text-align: center; border-radius: 4px;">
+        <option value="0" data-title="Control">Control</option>
+        <option value="1" data-title="Variation 1">Variation 1</option>
+        <option value="2" data-title="Variation 2">Variation 2</option>
+        <option value="3" data-title="Variation 3">Variation 3</option>
+        <option value="4" data-title="Variation 4">Variation 4</option>
+        <option value="5" data-title="Variation 5">Variation 5</option>
+      </select>
+    </section>
+    <script>
+      let bodyVariation = document.querySelector("body");
+      let variationSelect = document.querySelector('.lp-settings__select');
+
+      bodyVariation.setAttribute("data-variation", variationSelect.value);
+      variationSelect.value = {{ section.settings.variation }};
+      function updateVariationPreview() {
+        bodyVariation.setAttribute("data-variation", variationSelect.value);
+      }
+    </script>
+{% endif %}
+{% schema %}
+{
+  "name": "LP Variation Settings",
+  "class": "c-lp-settings",
+  "settings": [
+    {
+        "type": "select",
+        "id": "variation",
+        "options": [
+            {
+                "value": "0",
+                "label": "Control"
+            },
+            {
+                "value": "1",
+                "label": "Variation 1"
+            },
+            {
+                "value": "2",
+                "label": "Variation 2"
+            },
+            {
+                "value": "3",
+                "label": "Variation 3"
+            },
+            {
+                "value": "4",
+                "label": "Variation 4"
+            },
+            {
+                "value": "5",
+                "label": "Variation 5"
+            }
+        ],
+        "default": "0",
+        "label": "Variation",
+        "info": "Select the Variant you want to preview"
+    },
+    {
+      "type": "checkbox",
+      "id": "display",
+      "label": "Display on Frontend",
+      "default": true
+    }
+  ],
+  "blocks": []
+}
+{% endschema %}

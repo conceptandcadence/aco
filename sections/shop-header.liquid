@@ -1,0 +1,52 @@
+
+{% if section.settings.image_desktop %}
+    <header class="image">
+        <h1 class="visually-hidden">{{ collection.title }}</h1>
+        {% unless section.settings.image_mobile == blank %}
+            {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: section.settings.image_mobile -%}
+            {%- assign image_url = section.settings.image_mobile | img_url: '1x1' -%}
+            <img class="lazyload-img shop-header-image mobile " loading="lazy"
+                src="{{ image_url }}"
+                data-src="{{ image_url }}"
+                data-widths="[{{ supported_sizes }}]"
+                sizes="100vw"
+                srcset="{{ image_srcset }}"
+                alt="{{ section.settings.image_mobile.alt | escape }}">
+            <noscript>
+                <img class="shop-header-image mobile" src="{{ section.settings.image_mobile | img_url: '400x' }}" alt="{{ section.settings.image_mobile.alt | escape }}">
+            </noscript>
+        {% endunless %}
+        {% unless section.settings.image_desktop == blank %}
+        {%- include 'image-size', sizes: '200,400,600,700,800,900,1000,1200', image: section.settings.image_desktop -%}
+        {%- assign image_url = section.settings.image_desktop | img_url: '1x1' -%}
+        <img class="lazyload-img shop-header-image desktop {% if block.settings.block_image_mobile == blank %} universal{% endif %}"
+            src="{{ image_url }}"
+            data-src="{{ image_url }}"
+            data-widths="[{{ supported_sizes }}]"
+            sizes="100vw"
+            srcset="{{ image_srcset }}"
+            alt="{{ section.settings.image_desktop.alt | escape }}">
+        <noscript>
+            <img class="shop-header-image desktop{% if block.settings.block_image_mobile == blank %} universal{% endif %}" src="{{ section.settings.image_desktop | img_url: '400x' }}" alt="{{ section.settings.image_desktop.alt | escape }}">
+        </noscript>
+    {% endunless %}
+    </header>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Shop Header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image - Desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image - Mobile"
+        }
+    ]
+  }
+{% endschema %}
